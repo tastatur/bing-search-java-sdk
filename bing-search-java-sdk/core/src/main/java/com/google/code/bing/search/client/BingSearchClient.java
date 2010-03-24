@@ -5,8 +5,6 @@ package com.google.code.bing.search.client;
 
 import java.util.concurrent.Future;
 
-import com.google.code.bing.webservices.client.geocode.BingMapsGeocodeServiceClient.ReverseGeocodeRequestBuilder;
-import com.google.code.bing.webservices.client.geocode.impl.BingMapsGeocodeServiceClientImpl.ReverseGeocodeRequestBuilderImpl;
 import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
 import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
