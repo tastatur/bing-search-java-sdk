@@ -6,16 +6,14 @@ import java.io.InputStream;
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
-import com.google.code.linkedinapi.client.LinkedInApiClientException;
-import com.google.code.linkedinapi.client.constant.LinkedInApiUrls.LinkedInApiUrlBuilder;
-import com.google.code.linkedinapi.schema.ObjectFactory;
-import com.google.code.linkedinapi.schema.SchemaElementFactory;
+import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
+import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 
 /**
  * @author Nabeel Mukhtar
@@ -27,7 +25,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
     private static final String JAXB_PACKAGE_NAME = "com.google.code.linkedinapi.schema";
     
     /** Field description */
-    private static final SchemaElementFactory<JAXBElement<?>> OBJECT_FACTORY = new JaxbElementFactory();
+    private static final SchemaElementFactory OBJECT_FACTORY = new JaxbElementFactory();
     
     /** Do not access directly. It may be null!!!. Use {@link #getJaxbContext()} */
     private static JAXBContext JAXB_CONTEXT;
@@ -48,7 +46,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 
             return (T) u.unmarshal(xmlContent);
         } catch (JAXBException e) {
-            throw new LinkedInApiClientException(e);
+            throw new BingSearchException(e);
         }
     }
 
@@ -69,7 +67,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 
             return writer.toString();
         } catch (JAXBException e) {
-            throw new LinkedInApiClientException(e);
+            throw new BingSearchException(e);
         }
     }
 
@@ -78,7 +76,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
      *
      * @return
      */
-    protected SchemaElementFactory<?> createObjectFactory() {
+    protected SchemaElementFactory createObjectFactory() {
     	return OBJECT_FACTORY;
     }
     
@@ -113,7 +111,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 		JAXB_CONTEXT = context;
 	}
 	
-	private static class JaxbElementFactory extends ObjectFactory implements SchemaElementFactory<JAXBElement<?>> {
+	private static class JaxbElementFactory extends ObjectFactory implements SchemaElementFactory {
 		public JaxbElementFactory() {
 			super();
 		}

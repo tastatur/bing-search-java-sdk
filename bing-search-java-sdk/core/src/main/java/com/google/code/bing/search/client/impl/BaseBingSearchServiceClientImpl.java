@@ -15,6 +15,7 @@ import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption;
+import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
@@ -28,13 +29,13 @@ import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 public abstract class BaseBingSearchServiceClientImpl implements
 	BingSearchClient {
 	
-	protected static final ObjectFactory COMMON_FACTORY = new ObjectFactory();
+	protected static final SchemaElementFactory COMMON_FACTORY = new ObjectFactory();
 	
 	public static class SearchRequestBuilderImpl implements SearchRequestBuilder {
 		protected SearchRequest result;
-		protected ObjectFactory factory;
+		protected SchemaElementFactory factory;
 		
-		protected SearchRequestBuilderImpl(ObjectFactory factory) {
+		protected SearchRequestBuilderImpl(SchemaElementFactory factory) {
 			this.factory = factory;
 			this.result = factory.createSearchRequest();
 		}

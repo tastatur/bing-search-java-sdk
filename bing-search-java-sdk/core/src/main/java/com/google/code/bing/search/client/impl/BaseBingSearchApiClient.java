@@ -18,12 +18,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
 
 /**
  * @author Nabeel Mukhtar
@@ -101,7 +104,19 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
 
         return readResponse(People.class, callApiMethod(apiUrl));
     }
+    
+	@Override
+	public SearchResponse search(SearchRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public Future<SearchResponse> searchAsync(SearchRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
     /**
      * Method description
      *
