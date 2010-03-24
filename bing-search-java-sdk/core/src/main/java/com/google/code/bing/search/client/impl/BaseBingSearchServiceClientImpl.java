@@ -2,6 +2,11 @@ package com.google.code.bing.search.client.impl;
 
 import com.google.code.bing.search.client.BingSearchClient;
 import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfMobileWebSearchOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSearchOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSourceType;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfString;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebSearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ImageRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.MobileWebRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
@@ -54,7 +59,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withImageRequestFilter(String filter) {
-			getImageRequest().getFilters().getString().add(filter);
+			getImageRequestFilters().getString().add(filter);
 			return this;
 		}
 
@@ -97,7 +102,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		@Override
 		public SearchRequestBuilder withMobileWebRequestSearchOption(
 				MobileWebSearchOption mobileWebSearchOption) {
-			getMobileWebRequest().getOptions().getMobileWebSearchOption().add(mobileWebSearchOption);
+			getMobileWebRequestOptions().getMobileWebSearchOption().add(mobileWebSearchOption);
 			return this;
 		}
 
@@ -184,13 +189,13 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withSearchOption(SearchOption searchOption) {
-			getParameters().getOptions().getSearchOption().add(searchOption);
+			getParameterOptions().getSearchOption().add(searchOption);
 			return this;
 		}
 
 		@Override
 		public SearchRequestBuilder withSourceType(SourceType sourceType) {
-			getParameters().getSources().getSourceType().add(sourceType);
+			getParameterSources().getSourceType().add(sourceType);
 			return this;
 		}
 
@@ -228,7 +233,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withVideoRequestFilter(String filter) {
-			getVideoRequest().getFilters().getString().add(filter);
+			getVideoRequestFilters().getString().add(filter);
 			return this;
 		}
 
@@ -266,16 +271,16 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		@Override
 		public SearchRequestBuilder withWebRequestSearchOption(
 				WebSearchOption webSearchOption) {
-			getWebRequest().getOptions().getWebSearchOption().add(webSearchOption);
+			getWebRequestOptions().getWebSearchOption().add(webSearchOption);
 			return this;
 		}
 
 		@Override
 		public SearchRequestBuilder withWebRequestSearchTag(String searchTag) {
-			getWebRequest().getSearchTags().getString().add(searchTag);
+			getWebRequestSearchTags().getString().add(searchTag);
 			return this;
 		}
-		
+
 		public SearchRequest getResult() {
 			return result;
 		}
@@ -339,6 +344,55 @@ public abstract class BaseBingSearchServiceClientImpl implements
 				getParameters().setWeb(factory.createWebRequest());
 			}
 			return getParameters().getWeb();
+		}
+		
+		private ArrayOfString getImageRequestFilters() {
+			if (getImageRequest().getFilters() == null) {
+				getImageRequest().setFilters(factory.createArrayOfString());
+			}
+			return getImageRequest().getFilters();
+		}
+
+		private ArrayOfMobileWebSearchOption getMobileWebRequestOptions() {
+			if (getMobileWebRequest().getOptions() == null) {
+				getMobileWebRequest().setOptions(factory.createArrayOfMobileWebSearchOption());
+			}
+			return getMobileWebRequest().getOptions();
+		}
+		
+		private ArrayOfSearchOption getParameterOptions() {
+			if (getParameters().getOptions() == null) {
+				getParameters().setOptions(factory.createArrayOfSearchOption());
+			}
+			return getParameters().getOptions();
+		}
+
+		private ArrayOfSourceType getParameterSources() {
+			if (getParameters().getSources() == null) {
+				getParameters().setSources(factory.createArrayOfSourceType());
+			}
+			return getParameters().getSources();
+		}
+
+		private ArrayOfString getVideoRequestFilters() {
+			if (getVideoRequest().getFilters() == null) {
+				getVideoRequest().setFilters(factory.createArrayOfString());
+			}
+			return getVideoRequest().getFilters();
+		}
+		
+		private ArrayOfWebSearchOption getWebRequestOptions() {
+			if (getWebRequest().getOptions() == null) {
+				getWebRequest().setOptions(factory.createArrayOfWebSearchOption());
+			}
+			return getWebRequest().getOptions();
+		}
+		
+		private ArrayOfString getWebRequestSearchTags() {
+			if (getWebRequest().getSearchTags() == null) {
+				getWebRequest().setSearchTags(factory.createArrayOfString());
+			}
+			return getWebRequest().getSearchTags();
 		}
 	}
 
