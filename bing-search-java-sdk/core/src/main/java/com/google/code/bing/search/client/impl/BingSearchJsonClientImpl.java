@@ -77,7 +77,7 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
         return new BingSearchApiUrlBuilder(urlFormat);
     }
-
+    
 	private static class JsonElementFactory extends ObjectFactory implements SchemaElementFactory {
 		public JsonElementFactory() {
 			super();

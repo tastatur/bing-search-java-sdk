@@ -29,7 +29,7 @@ import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 public abstract class BaseBingSearchServiceClientImpl implements
 	BingSearchClient {
 	
-	protected static final SchemaElementFactory COMMON_FACTORY = new ObjectFactory();
+	protected final SchemaElementFactory OBJECT_FACTORY = createObjectFactory();
 	
 	public static class SearchRequestBuilderImpl implements SearchRequestBuilder {
 		protected SearchRequest result;
@@ -399,6 +399,16 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 	@Override
 	public SearchRequestBuilder newSearchRequestBuilder() {
-		return new SearchRequestBuilderImpl(COMMON_FACTORY);
+		return new SearchRequestBuilderImpl(OBJECT_FACTORY);
+	}
+
+	protected SchemaElementFactory createObjectFactory() {
+		return new JaxbElementFactory();
+	}
+	
+	private static class JaxbElementFactory extends ObjectFactory implements SchemaElementFactory {
+		public JaxbElementFactory() {
+			super();
+		}
 	}
 }

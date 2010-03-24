@@ -4,27 +4,23 @@
 package com.google.code.bing.search.client.impl;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
 import com.google.code.bing.search.client.BingSearchException;
+import com.google.code.bing.search.client.constant.BingSearchApiUrls;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
+import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
+import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
 
@@ -341,5 +337,5 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
      *
      * @return
      */
-    protected abstract SchemaElementFactory<?> createObjectFactory();
+    protected abstract SchemaElementFactory createObjectFactory();
 }
