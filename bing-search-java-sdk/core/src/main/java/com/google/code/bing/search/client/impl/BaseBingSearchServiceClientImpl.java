@@ -1,42 +1,349 @@
 package com.google.code.bing.search.client.impl;
 
 import com.google.code.bing.search.client.BingSearchClient;
+import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ImageRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.MobileWebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
+import com.microsoft.schemas.livesearch._2008._03.search.NewsRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
+import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
+import com.microsoft.schemas.livesearch._2008._03.search.SourceType;
+import com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.VideoRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption;
+import com.microsoft.schemas.livesearch._2008._03.search.WebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 
-public class BaseBingSearchServiceClientImpl implements
+public abstract class BaseBingSearchServiceClientImpl implements
 	BingSearchClient {
 	
 	protected static final ObjectFactory COMMON_FACTORY = new ObjectFactory();
 	
 	public static class SearchRequestBuilderImpl implements SearchRequestBuilder {
 		protected SearchRequest result;
+		protected ObjectFactory factory;
 		
-		protected SearchRequestBuilderImpl(SearchRequest result) {
-			this.result = result;
+		protected SearchRequestBuilderImpl(ObjectFactory factory) {
+			this.factory = factory;
+			this.result = factory.createSearchRequest();
 		}
 
 		@Override
-		public SearchRequestBuilder withCredentials(String applicationId,
-				String token) {
-			// TODO Auto-generated method stub
+		public SearchRequestBuilder withAppId(String applicationId) {
+			getParameters().setAppId(applicationId);
 			return this;
 		}
 
 		@Override
-		public SearchRequestBuilder withCulture(String culture) {
-			// TODO Auto-generated method stub
+		public SearchRequestBuilder withAdultOption(AdultOption adult) {
+			getParameters().setAdult(adult);
 			return this;
 		}
 
 		@Override
-		public SearchRequestBuilder withExecutionOptions(boolean suppressFaults) {
-			// TODO Auto-generated method stub
+		public SearchRequestBuilder withImageRequestCount(Long count) {
+			getImageRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withImageRequestFilter(String filter) {
+			getImageRequest().getFilters().getString().add(filter);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withImageRequestOffset(Long offset) {
+			getImageRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withLatitude(Double latitude) {
+			getParameters().setLatitude(latitude);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withLongitude(Double longitude) {
+			getParameters().setLongitude(longitude);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withMarket(String market) {
+			getParameters().setMarket(market);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withMobileWebRequestCount(Long count) {
+			getMobileWebRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withMobileWebRequestOffset(Long offset) {
+			getMobileWebRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withMobileWebRequestSearchOption(
+				MobileWebSearchOption mobileWebSearchOption) {
+			getMobileWebRequest().getOptions().getMobileWebSearchOption().add(mobileWebSearchOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withNewsRequestCategory(String category) {
+			getNewsRequest().setCategory(category);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withNewsRequestCount(Long count) {
+			getNewsRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withNewsRequestLocationOverride(
+				String locationOverride) {
+			getNewsRequest().setLocationOverride(locationOverride);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withNewsRequestOffset(Long offset) {
+			getNewsRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withNewsRequestSortOption(
+				NewsSortOption newsSortOption) {
+			getNewsRequest().setSortBy(newsSortOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestCategory(String category) {
+			getPhonebookRequest().setCategory(category);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestCount(Long count) {
+			getPhonebookRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestFileType(String fileType) {
+			getPhonebookRequest().setFileType(fileType);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestLocId(String locId) {
+			getPhonebookRequest().setLocId(locId);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestOffset(Long offset) {
+			getPhonebookRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withPhonebookRequestSortOption(
+				PhonebookSortOption phonebookSortOption) {
+			getPhonebookRequest().setSortBy(phonebookSortOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withQuery(String query) {
+			getParameters().setQuery(query);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withRadius(Double radius) {
+			getParameters().setRadius(radius);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withSearchOption(SearchOption searchOption) {
+			getParameters().getOptions().getSearchOption().add(searchOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withSourceType(SourceType sourceType) {
+			getParameters().getSources().getSourceType().add(sourceType);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withTranslationRequestSourceLanguage(
+				String sourceLanguage) {
+			getTranslationRequest().setSourceLanguage(sourceLanguage);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withTranslationRequestTargetLanguage(
+				String targetLanguage) {
+			getTranslationRequest().setTargetLanguage(targetLanguage);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withUILanguage(String uiLanguage) {
+			getParameters().setUILanguage(uiLanguage);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withVersion(String version) {
+			getParameters().setVersion(version);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withVideoRequestCount(Long count) {
+			getVideoRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withVideoRequestFilter(String filter) {
+			getVideoRequest().getFilters().getString().add(filter);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withVideoRequestOffset(Long offset) {
+			getVideoRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withVideoRequestSortOption(
+				VideoSortOption videoSortOption) {
+			getVideoRequest().setSortBy(videoSortOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withWebRequestCount(Long count) {
+			getWebRequest().setCount(count);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withWebRequestFileType(String fileType) {
+			getWebRequest().setFileType(fileType);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withWebRequestOffset(Long offset) {
+			getWebRequest().setOffset(offset);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withWebRequestSearchOption(
+				WebSearchOption webSearchOption) {
+			getWebRequest().getOptions().getWebSearchOption().add(webSearchOption);
+			return this;
+		}
+
+		@Override
+		public SearchRequestBuilder withWebRequestSearchTag(String searchTag) {
+			getWebRequest().getSearchTags().getString().add(searchTag);
 			return this;
 		}
 		
 		public SearchRequest getResult() {
 			return result;
 		}
+
+		@Override
+		public void reset() {
+			result = factory.createSearchRequest();
+		}
+		
+		private SearchRequestParameters getParameters() {
+			if (result.getParameters() == null) {
+				result.setParameters(factory.createSearchRequestParameters());
+			}
+			return result.getParameters();
+		}
+		
+		private ImageRequest getImageRequest() {
+			if (getParameters().getImage() == null) {
+				getParameters().setImage(factory.createImageRequest());
+			}
+			return getParameters().getImage();
+		}
+
+		private MobileWebRequest getMobileWebRequest() {
+			if (getParameters().getMobileWeb() == null) {
+				getParameters().setMobileWeb(factory.createMobileWebRequest());
+			}
+			return getParameters().getMobileWeb();
+		}
+
+		private NewsRequest getNewsRequest() {
+			if (getParameters().getNews() == null) {
+				getParameters().setNews(factory.createNewsRequest());
+			}
+			return getParameters().getNews();
+		}
+
+		private PhonebookRequest getPhonebookRequest() {
+			if (getParameters().getPhonebook() == null) {
+				getParameters().setPhonebook(factory.createPhonebookRequest());
+			}
+			return getParameters().getPhonebook();
+		}
+
+		private TranslationRequest getTranslationRequest() {
+			if (getParameters().getTranslation() == null) {
+				getParameters().setTranslation(factory.createTranslationRequest());
+			}
+			return getParameters().getTranslation();
+		}
+		
+		private VideoRequest getVideoRequest() {
+			if (getParameters().getVideo() == null) {
+				getParameters().setVideo(factory.createVideoRequest());
+			}
+			return getParameters().getVideo();
+		}
+		
+		private WebRequest getWebRequest() {
+			if (getParameters().getWeb() == null) {
+				getParameters().setWeb(factory.createWebRequest());
+			}
+			return getParameters().getWeb();
+		}
+	}
+
+	@Override
+	public SearchRequestBuilder newSearchRequestBuilder() {
+		return new SearchRequestBuilderImpl(COMMON_FACTORY);
 	}
 }
