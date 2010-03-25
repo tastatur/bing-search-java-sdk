@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +21,6 @@ import java.util.zip.GZIPInputStream;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
-import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
@@ -38,7 +39,10 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     
     /** Field description */
     private Map<String, String> requestHeaders;
-
+    
+    /** Field description */
+    private ExecutorService taskExecutor;
+    
     /**
      * Constructs ...
      *
@@ -82,36 +86,58 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * {@inheritDoc}
+     * Method description
+     *
+     *
+     * @param task
+     *
+     * @return
      */
-    @Override
-    public People searchPeople(Map<SearchParameter, String> searchParameters, int start, int count,
-                               SearchSortOrder sortOrder) {
-        assertNotNull("search parameters", searchParameters);
-        assertPositiveNumber("start", start);
-        assertPositiveNumber("count", count);
+    @SuppressWarnings("unchecked")
+	protected Future execute(Runnable task) {
+        return taskExecutor.submit(task);
+    }
 
-        BingSearchApiUrlBuilder builder = createLinkedInApiUrlBuilder(BingSearchApiUrls.SEARCH_PEOPLE);
-        String                apiUrl  =
-            builder.withParameterEnumMap(searchParameters).withParameterEnum("sortCriteria",
-                                         sortOrder).withParameter("start",
-                                             String.valueOf(start)).withParameter("count",
-                                                 String.valueOf(count)).buildUrl();
-
-        return readResponse(People.class, callApiMethod(apiUrl));
+    /**
+     * Method description
+     *
+     *
+     * @param task
+     * @param <T>
+     *
+     * @return
+     */
+    protected <T> Future<T> execute(Callable<T> task) {
+        return taskExecutor.submit(task);
     }
     
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	public SearchResponse search(SearchRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+        assertNotNull("search request", request);
+        assertNotNull("search parameters", request.getParameters());
+
+        BingSearchApiUrlBuilder builder = createBingSearchApiUrlBuilder(BingSearchApiUrls.BASE_URL);
+        String                apiUrl  =
+            builder.withSearchRequest(request).buildUrl();
+
+        return readResponse(SearchResponse.class, callApiMethod(apiUrl));
 	}
 
+    /**
+     * {@inheritDoc}
+     */
 	@Override
-	public Future<SearchResponse> searchAsync(SearchRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Future<SearchResponse> searchAsync(final SearchRequest request) {
+		return execute(new Callable<SearchResponse>() {
+            @Override
+            public SearchResponse call() throws Exception {
+                return search(request);
+            }
+        });	
+     }
     
     /**
      * Method description

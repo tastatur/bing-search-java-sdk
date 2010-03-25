@@ -22,12 +22,6 @@ import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
  * @author Nabeel Mukhtar
  */
 public interface BingSearchClient {
-	public enum ClientProtocol {
-		XML,
-		JSON,
-		SOAP,
-		RSS;
-	}
 	
 	public SearchRequestBuilder newSearchRequestBuilder();
 	

@@ -12,6 +12,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
+import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 
@@ -22,7 +23,10 @@ import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 
     /** Field description */
-    private static final String JAXB_PACKAGE_NAME = "com.google.code.linkedinapi.schema";
+    private static final String JAXB_PACKAGE_NAME = "com.microsoft.schemas.livesearch._2008._03.search";
+    
+    /** Field description */
+    private static final ApiProtocol SUPPORTED_PROTOCOL = ApiProtocol.XML;
     
     /** Field description */
     private static final SchemaElementFactory OBJECT_FACTORY = new JaxbElementFactory();
@@ -89,7 +93,7 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
      * @return
      */
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
-        return new BingSearchApiUrlBuilder(urlFormat);
+        return new BingSearchApiUrlBuilder(urlFormat, SUPPORTED_PROTOCOL);
     }
 
     /**

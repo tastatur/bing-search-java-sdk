@@ -7,6 +7,7 @@ import java.io.StringWriter;
 
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
+import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 
@@ -18,6 +19,9 @@ public class BingSearchRssClientImpl extends BaseBingSearchApiClient {
 
     /** Field description */
     private static final SchemaElementFactory OBJECT_FACTORY = new RssElementFactory();
+    
+    /** Field description */
+    private static final ApiProtocol SUPPORTED_PROTOCOL = ApiProtocol.RSS;
     
     /**
      * Method description
@@ -77,7 +81,7 @@ public class BingSearchRssClientImpl extends BaseBingSearchApiClient {
      * @return
      */
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
-        return new BingSearchApiUrlBuilder(urlFormat);
+        return new BingSearchApiUrlBuilder(urlFormat, SUPPORTED_PROTOCOL);
     }
 
 	private static class RssElementFactory extends ObjectFactory implements SchemaElementFactory {

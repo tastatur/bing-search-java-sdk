@@ -13,6 +13,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 
 /**
@@ -67,7 +68,7 @@ public final class BingSearchApiUrls {
 	    private String urlFormat;
     	
 	    /** The protocol. */
-		private String protocol;
+		private ApiProtocol protocol;
     	
     	/** The parameters map. */
 	    private Map<String, String> parametersMap = new HashMap<String, String>();
@@ -77,7 +78,7 @@ public final class BingSearchApiUrls {
 	     * 
 	     * @param urlFormat the url format
 	     */
-	    public BingSearchApiUrlBuilder(String urlFormat, String protocol) {
+	    public BingSearchApiUrlBuilder(String urlFormat, ApiProtocol protocol) {
     		this.urlFormat = urlFormat;
     		this.protocol = protocol;
     	}
@@ -119,7 +120,7 @@ public final class BingSearchApiUrls {
         		} else if (placeHolderFlag && urlFormat.charAt(i) == API_URLS_PLACEHOLDER_END) {
         			String placeHolder = placeHolderBuilder.toString();
         			if (PROTOCOL_PLACEHOLDER.equals(placeHolder)) {
-        				urlBuilder.append(protocol);
+        				urlBuilder.append(protocol.value());
         			} else if (QUERY_PARAMETERS_PLACEHOLDER.equals(placeHolder)) {
     			    	StringBuilder builder = new StringBuilder();
     			    	if (!parametersMap.isEmpty()) {
