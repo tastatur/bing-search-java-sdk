@@ -28,7 +28,7 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 	public static void main(String[] args) throws Exception {
 		searchService = new LiveSearchService();
 		BingSearchClient client = new BingSearchSoapClientImpl();
-		SearchResponse response = client.search(new BingSearchSoapClientImpl().createSearchRequest());
+		SearchResponse response = client.search(((BingSearchSoapClientImpl) client).createSearchRequest());
 		for (WebResult result : response.getParameters().getWeb().getResults().getWebResult()) {
 			System.out.println(result.getTitle());
 			System.out.println(result.getDescription());

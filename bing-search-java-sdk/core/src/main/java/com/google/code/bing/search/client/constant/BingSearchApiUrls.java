@@ -6,16 +6,28 @@ package com.google.code.bing.search.client.constant;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.microsoft.schemas.livesearch._2008._03.search.ImageRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.MobileWebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.NewsRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
+import com.microsoft.schemas.livesearch._2008._03.search.SourceType;
+import com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.VideoRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.WebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 
 /**
  * The Class LinkedInApiUrls.
@@ -100,14 +112,151 @@ public final class BingSearchApiUrls {
     		return this;
     	}
     	
+    	/**
+	     * With parameter.
+	     * 
+	     * @param name the name
+	     * @param value the value
+	     * 
+	     * @return the linked in api url builder
+	     */
+	    private BingSearchApiUrlBuilder withParameter(String name, List<String> values) {
+	    	if (values != null && values.size() > 0) {
+	    		StringBuilder builder = new StringBuilder();
+	    		Iterator<String> iter = values.iterator();
+	    		while (iter.hasNext()) {
+	    			builder.append(encodeUrl(iter.next()));
+	    			if (iter.hasNext()) {
+	    				builder.append("+");
+	    			}
+	    		}
+	    		parametersMap.put(name, builder.toString());
+	    	}
+    		
+    		return this;
+    	}
+	    
+    	/**
+	     * With parameter.
+	     * 
+	     * @param name the name
+	     * @param value the value
+	     * 
+	     * @return the linked in api url builder
+	     */
+	    private BingSearchApiUrlBuilder withParameter(String name, Object value) {
+	    	if (value != null) {
+	    		parametersMap.put(name, encodeUrl(value.toString()));
+	    	}
+    		
+    		return this;
+    	}
+	    
 	    public BingSearchApiUrlBuilder withSearchRequest(SearchRequest request) {
 	    	if (request.getParameters() != null) {
 	    		SearchRequestParameters parameters = request.getParameters();
-	    		withParameter("Adult", parameters.getAdult().value());
+	    		withParameter("Version", parameters.getVersion());
+	    		withParameter("Market", parameters.getMarket());
+	    		withParameter("UILanguage", parameters.getUILanguage());
+	    		withParameter("Query", parameters.getQuery());
+	    		if (parameters.getAdult() != null) {
+		    		withParameter("Adult", parameters.getAdult().value());
+	    		}
 	    		withParameter("AppId", parameters.getAppId());
+	    		withParameter("Latitude", parameters.getLatitude());
+	    		withParameter("Longitude", parameters.getLongitude());
+	    		withParameter("Radius", parameters.getRadius());
+	    		if (parameters.getOptions() != null) {
+	    			List<String> values = new ArrayList<String>(); 
+	    			for (SearchOption option : parameters.getOptions().getSearchOption()) {
+	    				values.add(option.value());
+	    			}
+		    		withParameter("Options", values);
+	    		}
+	    		if (parameters.getSources() != null) {
+	    			List<String> values = new ArrayList<String>(); 
+	    			for (SourceType sourceType : parameters.getSources().getSourceType()) {
+	    				values.add(sourceType.value());
+	    			}
+	    			withParameter("Sources", values);
+	    		}
+	    		if (parameters.getWeb() != null) {
+	    			withWebRequest("Web", parameters.getWeb());
+	    		}
+	    		if (parameters.getImage() != null) {
+	    			withImageRequest("Image", parameters.getImage());
+	    		}
+	    		if (parameters.getPhonebook() != null) {
+	    			withPhonebookRequest("Phonebook", parameters.getPhonebook());
+	    		}
+	    		if (parameters.getVideo() != null) {
+	    			withVideoRequest("Video", parameters.getVideo());
+	    		}
+	    		if (parameters.getNews() != null) {
+	    			withNewsRequest("News", parameters.getNews());
+	    		}
+	    		if (parameters.getMobileWeb() != null) {
+	    			withMobileWebRequest("MobileWeb", parameters.getMobileWeb());
+	    		}
+	    		if (parameters.getTranslation() != null) {
+	    			withTranslationRequest("Translation", parameters.getTranslation());
+	    		}
 	    	}
     		return this;
     	}
+	    
+	    public BingSearchApiUrlBuilder withWebRequest(String name, WebRequest request) {
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+	    	withParameter(name + ".FileType", request.getFileType());
+	    	
+    		if (request.getOptions() != null) {
+    			List<String> values = new ArrayList<String>(); 
+    			for (WebSearchOption option : request.getOptions().getWebSearchOption()) {
+    				values.add(option.value());
+    			}
+    			withParameter(name + ".Options", values);
+    		}
+    		if (request.getSearchTags() != null) {
+    			List<String> values = new ArrayList<String>(); 
+    			for (String tag : request.getSearchTags().getString()) {
+    				values.add(tag);
+    			}
+    			withParameter(name + ".SearchTags", values);
+    		}
+	    	
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withImageRequest(String name, ImageRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withPhonebookRequest(String name, PhonebookRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withVideoRequest(String name, VideoRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withNewsRequest(String name, NewsRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withMobileWebRequest(String name, MobileWebRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
+	    
+	    public BingSearchApiUrlBuilder withTranslationRequest(String name, TranslationRequest request) {
+	    	// TODO-NM Implement this method
+	    	return this;
+	    }
 	    
     	/**
 	     * Builds the url.
