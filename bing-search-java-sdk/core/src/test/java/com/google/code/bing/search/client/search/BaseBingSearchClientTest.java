@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchServiceClientFactory;
+import com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 
 /**
@@ -24,7 +25,9 @@ public class BaseBingSearchClientTest extends TestCase {
 	 * 
 	 */
 	protected SearchRequest createSearchRequest() {
-		return null;
+		SearchRequestBuilder requestBuilder = client.newSearchRequestBuilder();
+		// TODO-NM: Populate request with test data.
+		return requestBuilder.getResult();
 	}
 	
 	/**
