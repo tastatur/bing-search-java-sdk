@@ -1,5 +1,7 @@
 package com.google.code.bing.search.client.impl;
 
+import java.util.concurrent.ExecutorService;
+
 import com.google.code.bing.search.client.BingSearchClient;
 import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfMobileWebSearchOption;
@@ -29,6 +31,9 @@ import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 public abstract class BaseBingSearchServiceClientImpl implements
 	BingSearchClient {
 	
+    /** Field description */
+    protected ExecutorService taskExecutor;
+
 	protected final SchemaElementFactory OBJECT_FACTORY = createObjectFactory();
 	
 	public static class SearchRequestBuilderImpl implements SearchRequestBuilder {
@@ -400,6 +405,20 @@ public abstract class BaseBingSearchServiceClientImpl implements
 	@Override
 	public SearchRequestBuilder newSearchRequestBuilder() {
 		return new SearchRequestBuilderImpl(OBJECT_FACTORY);
+	}
+
+	/**
+	 * @return the taskExecutor
+	 */
+	public ExecutorService getTaskExecutor() {
+		return taskExecutor;
+	}
+
+	/**
+	 * @param taskExecutor the taskExecutor to set
+	 */
+	public void setTaskExecutor(ExecutorService taskExecutor) {
+		this.taskExecutor = taskExecutor;
 	}
 
 	protected SchemaElementFactory createObjectFactory() {

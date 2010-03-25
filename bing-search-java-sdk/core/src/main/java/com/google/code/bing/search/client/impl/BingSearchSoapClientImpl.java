@@ -21,6 +21,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 	@WebServiceRef(wsdlLocation="http://api.search.live.net/search.wsdl")
 	static LiveSearchService searchService;
 	
+	public BingSearchSoapClientImpl() {
+		searchService.setExecutor(taskExecutor);
+	}
+	
 	public static void main(String[] args) throws Exception {
 		searchService = new LiveSearchService();
 		BingSearchClient client = new BingSearchSoapClientImpl();

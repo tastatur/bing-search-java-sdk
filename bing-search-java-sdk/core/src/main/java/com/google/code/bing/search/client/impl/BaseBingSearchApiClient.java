@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,9 +38,6 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     
     /** Field description */
     private Map<String, String> requestHeaders;
-    
-    /** Field description */
-    private ExecutorService taskExecutor;
     
     /**
      * Constructs ...
