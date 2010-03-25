@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.microsoft.schemas.livesearch._2008._03.search.ImageRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.MobileWebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.NewsRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
@@ -229,32 +230,74 @@ public final class BingSearchApiUrls {
 	    }
 	    
 	    public BingSearchApiUrlBuilder withImageRequest(String name, ImageRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+    		if (request.getFilters() != null) {
+    			List<String> values = new ArrayList<String>(); 
+    			for (String filter : request.getFilters().getString()) {
+    				values.add(filter);
+    			}
+    			withParameter(name + ".Filters", values);
+    		}
 	    	return this;
 	    }
 	    
 	    public BingSearchApiUrlBuilder withPhonebookRequest(String name, PhonebookRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+	    	withParameter(name + ".FileType", request.getFileType());
+	    	if (request.getSortBy() != null) {
+		    	withParameter(name + ".SortBy", request.getSortBy().value());
+	    	}
+	    	withParameter(name + ".LocId", request.getLocId());
+	    	withParameter(name + ".Category", request.getCategory());
+	    	
 	    	return this;
 	    }
 	    
 	    public BingSearchApiUrlBuilder withVideoRequest(String name, VideoRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+    		if (request.getFilters() != null) {
+    			List<String> values = new ArrayList<String>(); 
+    			for (String filter : request.getFilters().getString()) {
+    				values.add(filter);
+    			}
+    			withParameter(name + ".Filters", values);
+    		}
+	    	if (request.getSortBy() != null) {
+		    	withParameter(name + ".SortBy", request.getSortBy().value());
+	    	}
 	    	return this;
 	    }
 	    
 	    public BingSearchApiUrlBuilder withNewsRequest(String name, NewsRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+	    	withParameter(name + ".LocationOverride", request.getLocationOverride());
+	    	withParameter(name + ".Category", request.getCategory());
+	    	if (request.getSortBy() != null) {
+		    	withParameter(name + ".SortBy", request.getSortBy().value());
+	    	}
 	    	return this;
 	    }
 	    
 	    public BingSearchApiUrlBuilder withMobileWebRequest(String name, MobileWebRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".Offset", request.getOffset());
+	    	withParameter(name + ".Count", request.getCount());
+    		if (request.getOptions() != null) {
+    			List<String> values = new ArrayList<String>(); 
+    			for (MobileWebSearchOption option : request.getOptions().getMobileWebSearchOption()) {
+    				values.add(option.value());
+    			}
+    			withParameter(name + ".Options", values);
+    		}
 	    	return this;
 	    }
 	    
 	    public BingSearchApiUrlBuilder withTranslationRequest(String name, TranslationRequest request) {
-	    	// TODO-NM Implement this method
+	    	withParameter(name + ".SourceLanguage", request.getSourceLanguage());
+	    	withParameter(name + ".TargetLanguage", request.getTargetLanguage());
 	    	return this;
 	    }
 	    
