@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
 
 /**
  * The Class LinkedInApiUrls.
@@ -100,7 +101,11 @@ public final class BingSearchApiUrls {
     	}
     	
 	    public BingSearchApiUrlBuilder withSearchRequest(SearchRequest request) {
-	    	// TODO-NM: Implement this method..Fill parametersMap.
+	    	if (request.getParameters() != null) {
+	    		SearchRequestParameters parameters = request.getParameters();
+	    		withParameter("Adult", parameters.getAdult().value());
+	    		withParameter("AppId", parameters.getAppId());
+	    	}
     		return this;
     	}
 	    
