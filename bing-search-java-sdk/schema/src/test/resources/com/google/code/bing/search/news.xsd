@@ -15,9 +15,10 @@
   <xs:element name="News">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="news:Total"/>
-        <xs:element ref="news:Offset"/>
-        <xs:element ref="news:Results"/>
+        <xs:element minOccurs="0" ref="news:Total"/>
+        <xs:element minOccurs="0" ref="news:Offset"/>
+		<xs:element minOccurs="0" ref="news:RelatedSearches"/>
+        <xs:element minOccurs="0" ref="news:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,23 +27,73 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="news:NewsResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="news:NewsResult"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RelatedSearches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="news:NewsRelatedSearch"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewsRelatedSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="news:Title"/>
+        <xs:element minOccurs="0" ref="news:Url"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="NewsResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="news:Title"/>
+        <xs:element minOccurs="0" ref="news:Title"/>
         <xs:element minOccurs="0" ref="news:Url"/>
-        <xs:element ref="news:Source"/>
-        <xs:element ref="news:Snippet"/>
+        <xs:element minOccurs="0" ref="news:Source"/>
+        <xs:element minOccurs="0" ref="news:Snippet"/>
         <xs:element minOccurs="0" ref="news:Date"/>
-        <xs:element ref="news:BreakingNews"/>
+        <xs:element minOccurs="0" ref="news:BreakingNews"/>
+		<xs:element minOccurs="0" ref="news:NewsCollections"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewsCollections">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="news:NewsCollection"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewsRelatedSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="news:Name"/>
+        <xs:element minOccurs="0" ref="news:NewsArticles"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewsArticles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="news:NewsArticle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewsArticle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="news:Title"/>
+        <xs:element minOccurs="0" ref="news:Url"/>
+        <xs:element minOccurs="0" ref="news:Source"/>
+        <xs:element minOccurs="0" ref="news:Snippet"/>
+        <xs:element minOccurs="0" ref="news:Date"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Title" type="xs:string"/>
+  <xs:element name="Name" type="xs:string"/>
   <xs:element name="Url" type="xs:anyURI"/>
   <xs:element name="Source" type="xs:string"/>
   <xs:element name="Snippet" type="xs:string"/>
