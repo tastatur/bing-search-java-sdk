@@ -17,7 +17,7 @@
       <xs:sequence>
         <xs:element ref="mms:Total"/>
         <xs:element ref="mms:Offset"/>
-        <xs:element ref="mms:Results"/>
+        <xs:element ref="mms:ImageResults"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,30 +26,34 @@
       <xs:sequence>
         <xs:element ref="mms:Total"/>
         <xs:element ref="mms:Offset"/>
-        <xs:element ref="mms:Results"/>
+        <xs:element ref="mms:VideoResults"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Total" type="xs:integer"/>
   <xs:element name="Offset" type="xs:integer"/>
-  <xs:element name="Results">
+  <xs:element name="ImageResults">
     <xs:complexType>
-      <xs:choice>
-        <xs:element maxOccurs="unbounded" ref="mms:ImageResult"/>
-        <xs:element maxOccurs="unbounded" ref="mms:VideoResult"/>
-      </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mms:ImageResult"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VideoResults">
+    <xs:complexType>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mms:VideoResult"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImageResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Title"/>
-        <xs:element ref="mms:MediaUrl"/>
-        <xs:element ref="mms:Url"/>
-        <xs:element ref="mms:DisplayUrl"/>
-        <xs:element ref="mms:Width"/>
-        <xs:element ref="mms:Height"/>
-        <xs:element ref="mms:Thumbnail"/>
+        <xs:element minOccurs="0" ref="mms:Title"/>
+        <xs:element minOccurs="0" ref="mms:MediaUrl"/>
+        <xs:element minOccurs="0" ref="mms:Url"/>
+        <xs:element minOccurs="0" ref="mms:DisplayUrl"/>
+        <xs:element minOccurs="0" ref="mms:Width"/>
+        <xs:element minOccurs="0" ref="mms:Height"/>
+		<xs:element minOccurs="0" ref="mms:FileSize"/>
+		<xs:element minOccurs="0" ref="mms:ContentType"/>
+        <xs:element minOccurs="0" ref="mms:Thumbnail"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -58,22 +62,24 @@
   <xs:element name="Thumbnail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Url"/>
-        <xs:element ref="mms:ContentType"/>
-        <xs:element ref="mms:Width"/>
-        <xs:element ref="mms:Height"/>
-        <xs:element ref="mms:FileSize"/>
+        <xs:element minOccurs="0" ref="mms:Url"/>
+        <xs:element minOccurs="0" ref="mms:ContentType"/>
+        <xs:element minOccurs="0" ref="mms:Width"/>
+        <xs:element minOccurs="0" ref="mms:Height"/>
+        <xs:element minOccurs="0" ref="mms:FileSize"/>
+		<xs:element minOccurs="0" ref="mms:RunTime"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="VideoResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Title"/>
-        <xs:element ref="mms:PlayUrl"/>
-        <xs:element ref="mms:RunTime"/>
-        <xs:element ref="mms:ClickThroughPageUrl"/>
-        <xs:element ref="mms:StaticThumbnail"/>
+        <xs:element minOccurs="0" ref="mms:Title"/>
+        <xs:element minOccurs="0" ref="mms:PlayUrl"/>
+		<xs:element minOccurs="0" ref="mms:SourceTitle"/>
+        <xs:element minOccurs="0" ref="mms:RunTime"/>
+        <xs:element minOccurs="0" ref="mms:ClickThroughPageUrl"/>
+        <xs:element minOccurs="0" ref="mms:StaticThumbnail"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -83,11 +89,12 @@
   <xs:element name="StaticThumbnail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Url"/>
-        <xs:element ref="mms:ContentType"/>
-        <xs:element ref="mms:Width"/>
-        <xs:element ref="mms:Height"/>
-        <xs:element ref="mms:FileSize"/>
+        <xs:element minOccurs="0" ref="mms:Url"/>
+        <xs:element minOccurs="0" ref="mms:ContentType"/>
+        <xs:element minOccurs="0" ref="mms:Width"/>
+        <xs:element minOccurs="0" ref="mms:Height"/>
+        <xs:element minOccurs="0" ref="mms:FileSize"/>
+		<xs:element minOccurs="0" ref="mms:RunTime"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,4 +104,5 @@
   <xs:element name="Height" type="xs:integer"/>
   <xs:element name="ContentType" type="xs:string"/>
   <xs:element name="FileSize" type="xs:integer"/>
+  <xs:element name="SourceTitle" type="xs:string"/>
 </xs:schema>
