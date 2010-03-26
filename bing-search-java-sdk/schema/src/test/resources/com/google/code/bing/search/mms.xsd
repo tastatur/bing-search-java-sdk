@@ -15,31 +15,29 @@
   <xs:element name="Image">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Total"/>
-        <xs:element ref="mms:Offset"/>
-        <xs:element ref="mms:ImageResults"/>
+        <xs:element minOccurs="0" ref="mms:Total"/>
+        <xs:element minOccurs="0" ref="mms:Offset"/>
+        <xs:element minOccurs="0" ref="mms:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Video">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mms:Total"/>
-        <xs:element ref="mms:Offset"/>
-        <xs:element ref="mms:VideoResults"/>
+        <xs:element minOccurs="0" ref="mms:Total"/>
+        <xs:element minOccurs="0" ref="mms:Offset"/>
+        <xs:element minOccurs="0" ref="mms:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Total" type="xs:integer"/>
   <xs:element name="Offset" type="xs:integer"/>
-  <xs:element name="ImageResults">
+  <xs:element name="Results">
     <xs:complexType>
+      <xs:choice>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mms:ImageResult"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VideoResults">
-    <xs:complexType>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mms:VideoResult"/>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:element name="ImageResult">
