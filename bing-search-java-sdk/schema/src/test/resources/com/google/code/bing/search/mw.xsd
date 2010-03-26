@@ -15,9 +15,9 @@
   <xs:element name="MobileWeb">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mw:Total"/>
-        <xs:element ref="mw:Offset"/>
-        <xs:element ref="mw:Results"/>
+        <xs:element minOccurs="0" ref="mw:Total"/>
+        <xs:element minOccurs="0" ref="mw:Offset"/>
+        <xs:element minOccurs="0" ref="mw:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,7 +26,7 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="mw:MobileWebResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mw:MobileWebResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -45,5 +45,5 @@
   <xs:element name="Description" type="xs:string"/>
   <xs:element name="Url" type="xs:anyURI"/>
   <xs:element name="DisplayUrl" type="xs:string"/>
-  <xs:element name="DateTime" type="xs:NMTOKEN"/>
+  <xs:element name="DateTime" type="xs:string"/>
 </xs:schema>
