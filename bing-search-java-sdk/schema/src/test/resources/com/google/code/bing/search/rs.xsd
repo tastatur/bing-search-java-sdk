@@ -15,22 +15,22 @@
   <xs:element name="RelatedSearch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="rs:Results"/>
+        <xs:element minOccurs="0" ref="rs:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="rs:RelatedSearchResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="rs:RelatedSearchResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RelatedSearchResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="rs:Title"/>
-        <xs:element ref="rs:Url"/>
+        <xs:element minOccurs="0" ref="rs:Title"/>
+        <xs:element minOccurs="0" ref="rs:Url"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
