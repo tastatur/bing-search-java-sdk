@@ -5,7 +5,7 @@
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/encarta" schemaLocation="enc.xsd"/>
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer" schemaLocation="ia.xsd"/>
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb" schemaLocation="mw.xsd"/>
-  <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia" schemaLocation="bing-api.xsd"/>
+  <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia" schemaLocation="mms.xsd"/>
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/news" schemaLocation="news.xsd"/>
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook" schemaLocation="pho.xsd"/>
   <xs:import namespace="http://schemas.microsoft.com/LiveSearch/2008/04/XML/relatedsearch" schemaLocation="rs.xsd"/>
