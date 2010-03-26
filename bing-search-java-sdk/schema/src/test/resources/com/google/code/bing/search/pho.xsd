@@ -15,11 +15,11 @@
   <xs:element name="Phonebook">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="pho:Total"/>
-        <xs:element ref="pho:Offset"/>
-        <xs:element ref="pho:LocalSerpUrl"/>
-        <xs:element ref="pho:Title"/>
-        <xs:element ref="pho:Results"/>
+        <xs:element minOccurs="0" ref="pho:Total"/>
+        <xs:element minOccurs="0" ref="pho:Offset"/>
+        <xs:element minOccurs="0" ref="pho:LocalSerpUrl"/>
+        <xs:element minOccurs="0" ref="pho:Title"/>
+        <xs:element minOccurs="0" ref="pho:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -29,7 +29,7 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="pho:PhonebookResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="pho:PhonebookResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -59,15 +59,13 @@
   <xs:element name="Business" type="xs:string"/>
   <xs:element name="PhoneNumber" type="xs:string"/>
   <xs:element name="Address" type="xs:string"/>
-  <xs:element name="City" type="xs:NCName"/>
-  <xs:element name="StateOrProvince" type="xs:NCName"/>
-  <xs:element name="CountryOrRegion" type="xs:NCName"/>
-  <xs:element name="PostalCode">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="City" type="xs:string"/>
+  <xs:element name="StateOrProvince" type="xs:string"/>
+  <xs:element name="CountryOrRegion" type="xs:string"/>
+  <xs:element name="PostalCode" type="xs:string"/>
   <xs:element name="Latitude" type="xs:decimal"/>
   <xs:element name="Longitude" type="xs:decimal"/>
-  <xs:element name="UniqueId" type="xs:NCName"/>
+  <xs:element name="UniqueId" type="xs:string"/>
   <xs:element name="BusinessUrl" type="xs:anyURI"/>
   <xs:element name="UserRating" type="xs:decimal"/>
   <xs:element name="ReviewCount" type="xs:integer"/>
