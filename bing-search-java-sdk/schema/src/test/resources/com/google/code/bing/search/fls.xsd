@@ -39,10 +39,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AirlineCode" type="xs:NCName"/>
-  <xs:element name="AirlineName" type="xs:NCName"/>
+  <xs:element name="AirlineCode" type="xs:string"/>
+  <xs:element name="AirlineName" type="xs:string"/>
   <xs:element name="FlightNumber" type="xs:integer"/>
-  <xs:element name="FlightName" type="xs:NCName"/>
+  <xs:element name="FlightName" type="xs:string"/>
   <xs:element name="StatusString" type="xs:string"/>
   <xs:element name="StatusCode" type="xs:integer"/>
   <xs:element name="OnTimeString">
@@ -99,6 +99,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="TimeZoneOffset" type="xs:integer"/>
-  <xs:element name="Code" type="xs:NCName"/>
-  <xs:element name="Name" type="xs:NCName"/>
+  <xs:element name="Code" type="xs:string"/>
+  <xs:element name="Name" type="xs:string"/>
 </xs:schema>
