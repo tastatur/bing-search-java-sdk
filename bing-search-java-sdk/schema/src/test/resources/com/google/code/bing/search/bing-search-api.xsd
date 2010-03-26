@@ -16,21 +16,17 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="element:Query"/>
-        <xs:choice minOccurs="0">
-          <xs:element ref="ads:Ad"/>
-          <xs:element ref="ia:InstantAnswer"/>
-          <xs:element ref="mw:MobileWeb"/>
-          <xs:element ref="mms:Image"/>
-          <xs:element ref="mms:Video"/>
-          <xs:element ref="pho:Phonebook"/>
-          <xs:element ref="rs:RelatedSearch"/>
-        </xs:choice>
-        <xs:element minOccurs="0" ref="spl:Spell"/>
-        <xs:choice minOccurs="0">
-          <xs:element ref="news:News"/>
-          <xs:element ref="tra:Translation"/>
-          <xs:element ref="web:Web"/>
-        </xs:choice>
+		  <xs:element minOccurs="0" ref="ads:Ad"/>
+		  <xs:element minOccurs="0" ref="ia:InstantAnswer"/>
+		  <xs:element minOccurs="0" ref="mw:MobileWeb"/>
+		  <xs:element minOccurs="0" ref="mms:Image"/>
+		  <xs:element minOccurs="0" ref="mms:Video"/>
+		  <xs:element minOccurs="0" ref="pho:Phonebook"/>
+		  <xs:element minOccurs="0" ref="rs:RelatedSearch"/>
+		  <xs:element minOccurs="0" ref="spl:Spell"/>
+          <xs:element minOccurs="0" ref="news:News"/>
+          <xs:element minOccurs="0" ref="tra:Translation"/>
+          <xs:element minOccurs="0" ref="web:Web"/>
       </xs:sequence>
       <xs:attribute name="Version" use="required" type="xs:decimal"/>
     </xs:complexType>
@@ -38,15 +34,10 @@
   <xs:element name="Query">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="element:SearchTerms"/>
-        <xs:sequence minOccurs="0">
-          <xs:element ref="element:AlteredQuery"/>
-          <xs:element ref="element:AlterationOverrideQuery"/>
-        </xs:sequence>
+		<xs:element minOccurs="0" name="SearchTerms" type="xs:string" />
+		<xs:element minOccurs="0" name="AlteredQuery" type="xs:string" />
+		<xs:element minOccurs="0" name="AlterationOverrideQuery" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SearchTerms" type="xs:string"/>
-  <xs:element name="AlteredQuery" type="xs:NCName"/>
-  <xs:element name="AlterationOverrideQuery" type="xs:string"/>
 </xs:schema>
