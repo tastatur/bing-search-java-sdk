@@ -15,21 +15,21 @@
   <xs:element name="Translation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="tra:Results"/>
+        <xs:element minOccurs="0" ref="tra:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="tra:TranslationResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="tra:TranslationResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TranslationResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="tra:TranslatedTerm"/>
+        <xs:element minOccurs="0" ref="tra:TranslatedTerm"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
