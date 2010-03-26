@@ -45,21 +45,15 @@
   <xs:element name="FlightName" type="xs:string"/>
   <xs:element name="StatusString" type="xs:string"/>
   <xs:element name="StatusCode" type="xs:integer"/>
-  <xs:element name="OnTimeString">
-    <xs:complexType/>
-  </xs:element>
-  <xs:element name="ScheduledDeparture" type="xs:NMTOKEN"/>
-  <xs:element name="UpdatedDeparture" type="xs:NMTOKEN"/>
-  <xs:element name="ScheduledArrival" type="xs:NMTOKEN"/>
-  <xs:element name="UpdatedArrival" type="xs:NMTOKEN"/>
+  <xs:element name="OnTimeString" type="xs:string"/>
+  <xs:element name="ScheduledDeparture" type="xs:string"/>
+  <xs:element name="UpdatedDeparture" type="xs:string"/>
+  <xs:element name="ScheduledArrival" type="xs:string"/>
+  <xs:element name="UpdatedArrival" type="xs:string"/>
   <xs:element name="DepartureGate" type="xs:integer"/>
-  <xs:element name="DepartureTerminal">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="DepartureTerminal" type="xs:string"/>
   <xs:element name="ArrivalGate" type="xs:integer"/>
-  <xs:element name="ArrivalTerminal">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="ArrivalTerminal" type="xs:string"/>
   <xs:element name="PreviousSegment">
     <xs:complexType>
       <xs:sequence>
