@@ -15,8 +15,8 @@
   <xs:element name="Spell">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="spl:Total"/>
-        <xs:element ref="spl:Results"/>
+        <xs:element minOccurs="0" ref="spl:Total"/>
+        <xs:element minOccurs="0" ref="spl:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,14 +24,14 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="spl:SpellResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spl:SpellResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SpellResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="spl:Value"/>
+        <xs:element minOccurs="0" ref="spl:Value"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
