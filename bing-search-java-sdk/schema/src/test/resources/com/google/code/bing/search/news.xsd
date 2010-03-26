@@ -66,7 +66,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="NewsRelatedSearch">
+  <xs:element name="NewsCollection">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="news:Name"/>
