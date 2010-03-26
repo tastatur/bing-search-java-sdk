@@ -28,7 +28,7 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="ads:AdResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ads:AdResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
