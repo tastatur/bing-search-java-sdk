@@ -42,7 +42,7 @@ import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
 public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 
     /** Field description */
-    private static final String JAXB_PACKAGE_NAME = "com.microsoft.schemas.livesearch._2008._03.search";
+    private static final String JAXB_PACKAGE_NAME = "com.microsoft.schemas.livesearch._2008._04.xml.element";
     
     /** Field description */
     private static final ApiProtocol SUPPORTED_PROTOCOL = ApiProtocol.XML;
@@ -66,23 +66,23 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
     protected <T> T unmarshallObject(Class<T> clazz, InputStream xmlContent) {
         try {
             Unmarshaller u  = getJaxbContext().createUnmarshaller();
-            NamespaceFilter filter = new NamespaceFilter("http://schemas.microsoft.com/LiveSearch/2008/03/Search", true);
-
-          //Create an XMLReader to use with our filter
-            XMLReader reader = XMLReaderFactory.createXMLReader();
-
-            filter.setParent(reader);
-
-            //Prepare the input, in this case a java.io.File (output)
-            InputSource is = new InputSource(xmlContent);
-
-            //Create a SAXSource specifying the filter
-            SAXSource source = new SAXSource(filter, is);
+//            NamespaceFilter filter = new NamespaceFilter("http://schemas.microsoft.com/LiveSearch/2008/03/Search", true);
+//
+//          //Create an XMLReader to use with our filter
+//            XMLReader reader = XMLReaderFactory.createXMLReader();
+//
+//            filter.setParent(reader);
+//
+//            //Prepare the input, in this case a java.io.File (output)
+//            InputSource is = new InputSource(xmlContent);
+//
+//            //Create a SAXSource specifying the filter
+//            SAXSource source = new SAXSource(filter, is);
             
-            return (T) u.unmarshal(source);
+            return (T) u.unmarshal(xmlContent);
         } catch (JAXBException e) {
             throw new BingSearchException(e);
-        } catch (SAXException e) {
+        } catch (Exception e) {
             throw new BingSearchException(e);
         }
     }
