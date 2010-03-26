@@ -97,6 +97,6 @@
   <xs:element name="Url" type="xs:anyURI"/>
   <xs:element name="Source" type="xs:string"/>
   <xs:element name="Snippet" type="xs:string"/>
-  <xs:element name="Date" type="xs:NMTOKEN"/>
+  <xs:element name="Date" type="xs:string"/>
   <xs:element name="BreakingNews" type="xs:integer"/>
 </xs:schema>

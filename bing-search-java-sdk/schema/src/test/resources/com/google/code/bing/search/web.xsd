@@ -15,9 +15,9 @@
   <xs:element name="Web">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="web:Total"/>
-        <xs:element ref="web:Offset"/>
-        <xs:element ref="web:Results"/>
+        <xs:element minOccurs="0" ref="web:Total"/>
+        <xs:element minOccurs="0" ref="web:Offset"/>
+        <xs:element minOccurs="0" ref="web:Results"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,19 +26,21 @@
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="web:WebResult"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="web:WebResult"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="WebResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="web:Title"/>
-        <xs:element ref="web:Description"/>
-        <xs:element ref="web:Url"/>
-        <xs:element ref="web:DisplayUrl"/>
-        <xs:element ref="web:DateTime"/>
+        <xs:element minOccurs="0" ref="web:Title"/>
+        <xs:element minOccurs="0" ref="web:Description"/>
+        <xs:element minOccurs="0" ref="web:Url"/>
+		<xs:element minOccurs="0" ref="web:CacheUrl"/>
+        <xs:element minOccurs="0" ref="web:DisplayUrl"/>
+        <xs:element minOccurs="0" ref="web:DateTime"/>
         <xs:element minOccurs="0" ref="web:SearchTags"/>
+		<xs:element minOccurs="0" ref="web:DeepLinks"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,22 +48,38 @@
   <xs:element name="Description" type="xs:string"/>
   <xs:element name="Url" type="xs:anyURI"/>
   <xs:element name="DisplayUrl" type="xs:anyURI"/>
-  <xs:element name="DateTime" type="xs:NMTOKEN"/>
+  <xs:element name="CacheUrl" type="xs:anyURI"/>
+  <xs:element name="DateTime" type="xs:string"/>
   <xs:element name="SearchTags">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="web:WebSearchTag"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="web:WebSearchTag"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="WebSearchTag">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="web:Name"/>
-        <xs:element ref="web:Value"/>
+        <xs:element minOccurs="0" ref="web:Name"/>
+        <xs:element minOccurs="0" ref="web:Value"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Name" type="xs:NCName"/>
+  <xs:element name="Name" type="xs:string"/>
   <xs:element name="Value" type="xs:string"/>
+  <xs:element name="DeepLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="web:DeepLink"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeepLink">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="web:Title"/>
+        <xs:element minOccurs="0" ref="web:Url"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
