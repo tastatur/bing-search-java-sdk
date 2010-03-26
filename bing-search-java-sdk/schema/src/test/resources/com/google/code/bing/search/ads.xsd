@@ -45,7 +45,7 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="Rank" type="xs:integer"/>
-  <xs:element name="Position" type="xs:NCName"/>
+  <xs:element name="Position" type="xs:string"/>
   <xs:element name="Title" type="xs:string"/>
   <xs:element name="Description" type="xs:string"/>
   <xs:element name="DisplayUrl" type="xs:string"/>
