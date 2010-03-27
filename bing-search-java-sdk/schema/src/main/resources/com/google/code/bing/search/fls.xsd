@@ -15,27 +15,27 @@
   <xs:element name="FlightStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="fls:AirlineCode"/>
-        <xs:element ref="fls:AirlineName"/>
-        <xs:element ref="fls:FlightNumber"/>
-        <xs:element ref="fls:FlightName"/>
-        <xs:element ref="fls:FlightHistoryId"/>
-        <xs:element ref="fls:StatusString"/>
-        <xs:element ref="fls:StatusCode"/>
-        <xs:element ref="fls:OnTimeString"/>
-        <xs:element ref="fls:ScheduledDeparture"/>
-        <xs:element ref="fls:UpdatedDeparture"/>
-        <xs:element ref="fls:ScheduledArrival"/>
-        <xs:element ref="fls:UpdatedArrival"/>
-        <xs:element ref="fls:OriginAirport"/>
-        <xs:element ref="fls:DestinationAirport"/>
-        <xs:element ref="fls:DepartureGate"/>
-        <xs:element ref="fls:DepartureTerminal"/>
-        <xs:element ref="fls:ArrivalGate"/>
-        <xs:element ref="fls:ArrivalTerminal"/>
-        <xs:element ref="fls:PreviousSegment"/>
-        <xs:element ref="fls:NextSegment"/>
-        <xs:element ref="fls:DataFreshness"/>
+        <xs:element minOccurs="0" ref="fls:AirlineCode"/>
+        <xs:element minOccurs="0" ref="fls:AirlineName"/>
+        <xs:element minOccurs="0" ref="fls:FlightNumber"/>
+        <xs:element minOccurs="0" ref="fls:FlightName"/>
+        <xs:element minOccurs="0" ref="fls:FlightHistoryId"/>
+        <xs:element minOccurs="0" ref="fls:StatusString"/>
+        <xs:element minOccurs="0" ref="fls:StatusCode"/>
+        <xs:element minOccurs="0" ref="fls:OnTimeString"/>
+        <xs:element minOccurs="0" ref="fls:ScheduledDeparture"/>
+        <xs:element minOccurs="0" ref="fls:UpdatedDeparture"/>
+        <xs:element minOccurs="0" ref="fls:ScheduledArrival"/>
+        <xs:element minOccurs="0" ref="fls:UpdatedArrival"/>
+        <xs:element minOccurs="0" ref="fls:OriginAirport"/>
+        <xs:element minOccurs="0" ref="fls:DestinationAirport"/>
+        <xs:element minOccurs="0" ref="fls:DepartureGate"/>
+        <xs:element minOccurs="0" ref="fls:DepartureTerminal"/>
+        <xs:element minOccurs="0" ref="fls:ArrivalGate"/>
+        <xs:element minOccurs="0" ref="fls:ArrivalTerminal"/>
+        <xs:element minOccurs="0" ref="fls:PreviousSegment"/>
+        <xs:element minOccurs="0" ref="fls:NextSegment"/>
+        <xs:element minOccurs="0" ref="fls:DataFreshness"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -57,39 +57,39 @@
   <xs:element name="PreviousSegment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="fls:FlightHistoryId"/>
-        <xs:element ref="fls:OriginAirport"/>
-        <xs:element ref="fls:DestinationAirport"/>
+        <xs:element minOccurs="0" ref="fls:FlightHistoryId"/>
+        <xs:element minOccurs="0" ref="fls:OriginAirport"/>
+        <xs:element minOccurs="0" ref="fls:DestinationAirport"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="NextSegment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="fls:FlightHistoryId"/>
-        <xs:element ref="fls:OriginAirport"/>
-        <xs:element ref="fls:DestinationAirport"/>
+        <xs:element minOccurs="0" ref="fls:FlightHistoryId"/>
+        <xs:element minOccurs="0" ref="fls:OriginAirport"/>
+        <xs:element minOccurs="0" ref="fls:DestinationAirport"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DataFreshness" type="xs:integer"/>
   <xs:element name="FlightHistoryId" type="xs:integer"/>
   <xs:element name="OriginAirport">
-    <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="fls:Code"/>
-        <xs:element ref="fls:Name"/>
-        <xs:element ref="fls:TimeZoneOffset"/>
-      </xs:choice>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="fls:Code"/>
+        <xs:element minOccurs="0" ref="fls:Name"/>
+        <xs:element minOccurs="0" ref="fls:TimeZoneOffset"/>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DestinationAirport">
-    <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="fls:Code"/>
-        <xs:element ref="fls:Name"/>
-        <xs:element ref="fls:TimeZoneOffset"/>
-      </xs:choice>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="fls:Code"/>
+        <xs:element minOccurs="0" ref="fls:Name"/>
+        <xs:element minOccurs="0" ref="fls:TimeZoneOffset"/>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TimeZoneOffset" type="xs:integer"/>
