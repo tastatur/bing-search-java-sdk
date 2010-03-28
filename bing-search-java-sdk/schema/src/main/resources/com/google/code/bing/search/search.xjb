@@ -9,17 +9,29 @@
 		<xjc:superInterface name="SchemaEntity"/>
 		<xjc:serializable uid="2461660169443089969"/>
 	</globalBindings>
+    <schemaBindings>
+      <package name="com.google.code.bing.search.schema" />
+    </schemaBindings>
 	<bindings schemaLocation="ads.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.ads" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='ads:AdResult']">
 			<property name="adResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="ia.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.instantanswer" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='ia:InstantAnswerResult']">
 			<property name="instantAnswerResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="mms.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.multimedia" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:choice/xs:element[@ref='mms:ImageResult']">
 			<property name="imageResultList"/>
 		</bindings>
@@ -28,11 +40,17 @@
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="mw.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.mobileweb" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='mw:MobileWebResult']">
 			<property name="mobileWebResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="news.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.news" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='news:NewsResult']">
 			<property name="newsResultList"/>
 		</bindings>
@@ -47,26 +65,41 @@
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="pho.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.phonebook" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='pho:PhonebookResult']">
 			<property name="phonebookResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="rs.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.relatedsearch" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='rs:RelatedSearchResult']">
 			<property name="relatedSearchResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="spl.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.spell" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='spl:SpellResult']">
 			<property name="spellResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="tra.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.translation" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='tra:TranslationResult']">
 			<property name="translationResultList"/>
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="web.xsd">
+	    <schemaBindings>
+	      <package name="com.google.code.bing.search.schema.web" />
+	    </schemaBindings>
 		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:sequence/xs:element[@ref='web:WebResult']">
 			<property name="webResultList"/>
 		</bindings>
