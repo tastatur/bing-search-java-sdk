@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.web;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "deepLink"
+    "deepLinkList"
 })
 @XmlRootElement(name = "DeepLinks")
-public class DeepLinks {
+public class DeepLinks
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "DeepLink")
-    protected List<DeepLink> deepLink;
+    protected List<DeepLink> deepLinkList;
 
     /**
-     * Gets the value of the deepLink property.
+     * Gets the value of the deepLinkList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the deepLink property.
+     * This is why there is not a <CODE>set</CODE> method for the deepLinkList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDeepLink().add(newItem);
+     *    getDeepLinkList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class DeepLinks {
      * 
      * 
      */
-    public List<DeepLink> getDeepLink() {
-        if (deepLink == null) {
-            deepLink = new ArrayList<DeepLink>();
+    public List<DeepLink> getDeepLinkList() {
+        if (deepLinkList == null) {
+            deepLinkList = new ArrayList<DeepLink>();
         }
-        return this.deepLink;
+        return this.deepLinkList;
     }
 
 }

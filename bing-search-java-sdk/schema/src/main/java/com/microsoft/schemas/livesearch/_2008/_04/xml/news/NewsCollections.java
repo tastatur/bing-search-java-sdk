@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.news;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "newsCollection"
+    "newsCollectionList"
 })
 @XmlRootElement(name = "NewsCollections")
-public class NewsCollections {
+public class NewsCollections
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "NewsCollection")
-    protected List<NewsCollection> newsCollection;
+    protected List<NewsCollection> newsCollectionList;
 
     /**
-     * Gets the value of the newsCollection property.
+     * Gets the value of the newsCollectionList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the newsCollection property.
+     * This is why there is not a <CODE>set</CODE> method for the newsCollectionList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNewsCollection().add(newItem);
+     *    getNewsCollectionList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class NewsCollections {
      * 
      * 
      */
-    public List<NewsCollection> getNewsCollection() {
-        if (newsCollection == null) {
-            newsCollection = new ArrayList<NewsCollection>();
+    public List<NewsCollection> getNewsCollectionList() {
+        if (newsCollectionList == null) {
+            newsCollectionList = new ArrayList<NewsCollection>();
         }
-        return this.newsCollection;
+        return this.newsCollectionList;
     }
 
 }

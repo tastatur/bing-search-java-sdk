@@ -1,13 +1,15 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.ads;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -40,14 +42,20 @@ import javax.xml.bind.annotation.XmlType;
     "results"
 })
 @XmlRootElement(name = "Ad")
-public class Ad {
+public class Ad
+    implements Serializable
+{
 
-    @XmlElement(name = "Total", required = true)
-    protected BigInteger total;
-    @XmlElement(name = "PageNumber", required = true)
-    protected BigInteger pageNumber;
-    @XmlElement(name = "AdApiVersion", required = true)
-    protected BigDecimal adApiVersion;
+    private final static long serialVersionUID = 2461660169443089969L;
+    @XmlElement(name = "Total", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long total;
+    @XmlElement(name = "PageNumber", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long pageNumber;
+    @XmlElement(name = "AdApiVersion", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Double adApiVersion;
     @XmlElement(name = "Results", required = true)
     protected Results results;
 
@@ -56,10 +64,10 @@ public class Ad {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getTotal() {
+    public Long getTotal() {
         return total;
     }
 
@@ -68,10 +76,10 @@ public class Ad {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setTotal(BigInteger value) {
+    public void setTotal(Long value) {
         this.total = value;
     }
 
@@ -80,10 +88,10 @@ public class Ad {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getPageNumber() {
+    public Long getPageNumber() {
         return pageNumber;
     }
 
@@ -92,10 +100,10 @@ public class Ad {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setPageNumber(BigInteger value) {
+    public void setPageNumber(Long value) {
         this.pageNumber = value;
     }
 
@@ -104,10 +112,10 @@ public class Ad {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public BigDecimal getAdApiVersion() {
+    public Double getAdApiVersion() {
         return adApiVersion;
     }
 
@@ -116,10 +124,10 @@ public class Ad {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public void setAdApiVersion(BigDecimal value) {
+    public void setAdApiVersion(Double value) {
         this.adApiVersion = value;
     }
 

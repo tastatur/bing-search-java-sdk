@@ -1,13 +1,15 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.phonebook;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -64,8 +66,11 @@ import javax.xml.bind.annotation.XmlType;
     "displayUrl"
 })
 @XmlRootElement(name = "PhonebookResult")
-public class PhonebookResult {
+public class PhonebookResult
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "Title", required = true)
     protected String title;
     @XmlElement(name = "Url", required = true)
@@ -84,18 +89,22 @@ public class PhonebookResult {
     protected String countryOrRegion;
     @XmlElement(name = "PostalCode", required = true)
     protected String postalCode;
-    @XmlElement(name = "Latitude", required = true)
-    protected BigDecimal latitude;
-    @XmlElement(name = "Longitude", required = true)
-    protected BigDecimal longitude;
+    @XmlElement(name = "Latitude", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Double latitude;
+    @XmlElement(name = "Longitude", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Double longitude;
     @XmlElement(name = "UniqueId", required = true)
     protected String uniqueId;
     @XmlElement(name = "BusinessUrl", required = true)
     protected String businessUrl;
-    @XmlElement(name = "UserRating", required = true)
-    protected BigDecimal userRating;
-    @XmlElement(name = "ReviewCount", required = true)
-    protected BigInteger reviewCount;
+    @XmlElement(name = "UserRating", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Double userRating;
+    @XmlElement(name = "ReviewCount", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long reviewCount;
     @XmlElement(name = "DisplayUrl", required = true)
     protected String displayUrl;
 
@@ -320,10 +329,10 @@ public class PhonebookResult {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public BigDecimal getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
@@ -332,10 +341,10 @@ public class PhonebookResult {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public void setLatitude(BigDecimal value) {
+    public void setLatitude(Double value) {
         this.latitude = value;
     }
 
@@ -344,10 +353,10 @@ public class PhonebookResult {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public BigDecimal getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
@@ -356,10 +365,10 @@ public class PhonebookResult {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public void setLongitude(BigDecimal value) {
+    public void setLongitude(Double value) {
         this.longitude = value;
     }
 
@@ -416,10 +425,10 @@ public class PhonebookResult {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public BigDecimal getUserRating() {
+    public Double getUserRating() {
         return userRating;
     }
 
@@ -428,10 +437,10 @@ public class PhonebookResult {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public void setUserRating(BigDecimal value) {
+    public void setUserRating(Double value) {
         this.userRating = value;
     }
 
@@ -440,10 +449,10 @@ public class PhonebookResult {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getReviewCount() {
+    public Long getReviewCount() {
         return reviewCount;
     }
 
@@ -452,10 +461,10 @@ public class PhonebookResult {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setReviewCount(BigInteger value) {
+    public void setReviewCount(Long value) {
         this.reviewCount = value;
     }
 

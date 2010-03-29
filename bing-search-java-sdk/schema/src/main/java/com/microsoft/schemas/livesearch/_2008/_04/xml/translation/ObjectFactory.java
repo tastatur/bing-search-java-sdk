@@ -34,14 +34,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Translation }
-     * 
-     */
-    public Translation createTranslation() {
-        return new Translation();
-    }
-
-    /**
      * Create an instance of {@link TranslationResult }
      * 
      */
@@ -55,6 +47,14 @@ public class ObjectFactory {
      */
     public Results createResults() {
         return new Results();
+    }
+
+    /**
+     * Create an instance of {@link Translation }
+     * 
+     */
+    public Translation createTranslation() {
+        return new Translation();
     }
 
     /**

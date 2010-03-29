@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.translation;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -32,8 +33,11 @@ import javax.xml.bind.annotation.XmlType;
     "translatedTerm"
 })
 @XmlRootElement(name = "TranslationResult")
-public class TranslationResult {
+public class TranslationResult
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "TranslatedTerm")
     protected String translatedTerm;
 

@@ -1,12 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.multimedia;
 
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -37,12 +39,17 @@ import javax.xml.bind.annotation.XmlType;
     "results"
 })
 @XmlRootElement(name = "Image")
-public class Image {
+public class Image
+    implements Serializable
+{
 
-    @XmlElement(name = "Total")
-    protected BigInteger total;
-    @XmlElement(name = "Offset")
-    protected BigInteger offset;
+    private final static long serialVersionUID = 2461660169443089969L;
+    @XmlElement(name = "Total", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long total;
+    @XmlElement(name = "Offset", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long offset;
     @XmlElement(name = "Results")
     protected Results results;
 
@@ -51,10 +58,10 @@ public class Image {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getTotal() {
+    public Long getTotal() {
         return total;
     }
 
@@ -63,10 +70,10 @@ public class Image {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setTotal(BigInteger value) {
+    public void setTotal(Long value) {
         this.total = value;
     }
 
@@ -75,10 +82,10 @@ public class Image {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getOffset() {
+    public Long getOffset() {
         return offset;
     }
 
@@ -87,10 +94,10 @@ public class Image {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setOffset(BigInteger value) {
+    public void setOffset(Long value) {
         this.offset = value;
     }
 

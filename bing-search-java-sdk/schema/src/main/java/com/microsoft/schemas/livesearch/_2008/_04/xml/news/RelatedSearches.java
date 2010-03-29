@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.news;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "newsRelatedSearch"
+    "newsRelatedSearchList"
 })
 @XmlRootElement(name = "RelatedSearches")
-public class RelatedSearches {
+public class RelatedSearches
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "NewsRelatedSearch")
-    protected List<NewsRelatedSearch> newsRelatedSearch;
+    protected List<NewsRelatedSearch> newsRelatedSearchList;
 
     /**
-     * Gets the value of the newsRelatedSearch property.
+     * Gets the value of the newsRelatedSearchList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the newsRelatedSearch property.
+     * This is why there is not a <CODE>set</CODE> method for the newsRelatedSearchList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNewsRelatedSearch().add(newItem);
+     *    getNewsRelatedSearchList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class RelatedSearches {
      * 
      * 
      */
-    public List<NewsRelatedSearch> getNewsRelatedSearch() {
-        if (newsRelatedSearch == null) {
-            newsRelatedSearch = new ArrayList<NewsRelatedSearch>();
+    public List<NewsRelatedSearch> getNewsRelatedSearchList() {
+        if (newsRelatedSearchList == null) {
+            newsRelatedSearchList = new ArrayList<NewsRelatedSearch>();
         }
-        return this.newsRelatedSearch;
+        return this.newsRelatedSearchList;
     }
 
 }

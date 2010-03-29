@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.web;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "webSearchTag"
+    "webSearchTagList"
 })
 @XmlRootElement(name = "SearchTags")
-public class SearchTags {
+public class SearchTags
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "WebSearchTag")
-    protected List<WebSearchTag> webSearchTag;
+    protected List<WebSearchTag> webSearchTagList;
 
     /**
-     * Gets the value of the webSearchTag property.
+     * Gets the value of the webSearchTagList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the webSearchTag property.
+     * This is why there is not a <CODE>set</CODE> method for the webSearchTagList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getWebSearchTag().add(newItem);
+     *    getWebSearchTagList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class SearchTags {
      * 
      * 
      */
-    public List<WebSearchTag> getWebSearchTag() {
-        if (webSearchTag == null) {
-            webSearchTag = new ArrayList<WebSearchTag>();
+    public List<WebSearchTag> getWebSearchTagList() {
+        if (webSearchTagList == null) {
+            webSearchTagList = new ArrayList<WebSearchTag>();
         }
-        return this.webSearchTag;
+        return this.webSearchTagList;
     }
 
 }

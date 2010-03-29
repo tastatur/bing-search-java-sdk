@@ -1,13 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.element;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.microsoft.schemas.livesearch._2008._04.xml.ads.Ad;
 import com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswer;
 import com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWeb;
@@ -19,6 +20,7 @@ import com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.RelatedSearc
 import com.microsoft.schemas.livesearch._2008._04.xml.spell.Spell;
 import com.microsoft.schemas.livesearch._2008._04.xml.translation.Translation;
 import com.microsoft.schemas.livesearch._2008._04.xml.web.Web;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -44,7 +46,7 @@ import com.microsoft.schemas.livesearch._2008._04.xml.web.Web;
  *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/translation}Translation" minOccurs="0"/>
  *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Web" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="Version" use="required" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+ *       &lt;attribute name="Version" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -68,8 +70,11 @@ import com.microsoft.schemas.livesearch._2008._04.xml.web.Web;
     "web"
 })
 @XmlRootElement(name = "SearchResponse")
-public class SearchResponse {
+public class SearchResponse
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "Query", required = true)
     protected Query query;
     @XmlElement(name = "Ad", namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads")
@@ -95,7 +100,8 @@ public class SearchResponse {
     @XmlElement(name = "Web", namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/web")
     protected Web web;
     @XmlAttribute(name = "Version", required = true)
-    protected BigDecimal version;
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    protected Double version;
 
     /**
      * Gets the value of the query property.
@@ -390,10 +396,10 @@ public class SearchResponse {
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public BigDecimal getVersion() {
+    public Double getVersion() {
         return version;
     }
 
@@ -402,10 +408,10 @@ public class SearchResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link String }
      *     
      */
-    public void setVersion(BigDecimal value) {
+    public void setVersion(Double value) {
         this.version = value;
     }
 

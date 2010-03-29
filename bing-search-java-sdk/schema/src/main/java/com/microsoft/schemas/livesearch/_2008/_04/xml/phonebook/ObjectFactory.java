@@ -1,12 +1,13 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.phonebook;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -87,12 +88,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "UserRating")
-    public JAXBElement<BigDecimal> createUserRating(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_UserRating_QNAME, BigDecimal.class, null, value);
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Double> createUserRating(Double value) {
+        return new JAXBElement<Double>(_UserRating_QNAME, Double.class, null, value);
     }
 
     /**
@@ -105,12 +107,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "Offset")
-    public JAXBElement<BigInteger> createOffset(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Offset_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createOffset(Long value) {
+        return new JAXBElement<Long>(_Offset_QNAME, Long.class, null, value);
     }
 
     /**
@@ -123,21 +126,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "ReviewCount")
-    public JAXBElement<BigInteger> createReviewCount(BigInteger value) {
-        return new JAXBElement<BigInteger>(_ReviewCount_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createReviewCount(Long value) {
+        return new JAXBElement<Long>(_ReviewCount_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "Longitude")
-    public JAXBElement<BigDecimal> createLongitude(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_Longitude_QNAME, BigDecimal.class, null, value);
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Double> createLongitude(Double value) {
+        return new JAXBElement<Double>(_Longitude_QNAME, Double.class, null, value);
     }
 
     /**
@@ -150,12 +155,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "Latitude")
-    public JAXBElement<BigDecimal> createLatitude(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_Latitude_QNAME, BigDecimal.class, null, value);
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Double> createLatitude(Double value) {
+        return new JAXBElement<Double>(_Latitude_QNAME, Double.class, null, value);
     }
 
     /**
@@ -177,12 +183,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**

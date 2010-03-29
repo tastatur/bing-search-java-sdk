@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.instantanswer;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -42,8 +43,11 @@ import javax.xml.bind.annotation.XmlType;
     "instantAnswerSpecificData"
 })
 @XmlRootElement(name = "InstantAnswerResult")
-public class InstantAnswerResult {
+public class InstantAnswerResult
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "ContentType")
     protected String contentType;
     @XmlElement(name = "Title")

@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.web;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "webResult"
+    "webResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "WebResult")
-    protected List<WebResult> webResult;
+    protected List<WebResult> webResultList;
 
     /**
-     * Gets the value of the webResult property.
+     * Gets the value of the webResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the webResult property.
+     * This is why there is not a <CODE>set</CODE> method for the webResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getWebResult().add(newItem);
+     *    getWebResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<WebResult> getWebResult() {
-        if (webResult == null) {
-            webResult = new ArrayList<WebResult>();
+    public List<WebResult> getWebResultList() {
+        if (webResultList == null) {
+            webResultList = new ArrayList<WebResult>();
         }
-        return this.webResult;
+        return this.webResultList;
     }
 
 }

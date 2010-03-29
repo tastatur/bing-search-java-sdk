@@ -1,11 +1,12 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.multimedia;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -56,19 +57,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VideoResult }
+     * Create an instance of {@link Video }
      * 
      */
-    public VideoResult createVideoResult() {
-        return new VideoResult();
-    }
-
-    /**
-     * Create an instance of {@link Thumbnail }
-     * 
-     */
-    public Thumbnail createThumbnail() {
-        return new Thumbnail();
+    public Video createVideo() {
+        return new Video();
     }
 
     /**
@@ -80,19 +73,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StaticThumbnail }
+     * Create an instance of {@link Thumbnail }
      * 
      */
-    public StaticThumbnail createStaticThumbnail() {
-        return new StaticThumbnail();
-    }
-
-    /**
-     * Create an instance of {@link Video }
-     * 
-     */
-    public Video createVideo() {
-        return new Video();
+    public Thumbnail createThumbnail() {
+        return new Thumbnail();
     }
 
     /**
@@ -101,6 +86,22 @@ public class ObjectFactory {
      */
     public Results createResults() {
         return new Results();
+    }
+
+    /**
+     * Create an instance of {@link StaticThumbnail }
+     * 
+     */
+    public StaticThumbnail createStaticThumbnail() {
+        return new StaticThumbnail();
+    }
+
+    /**
+     * Create an instance of {@link VideoResult }
+     * 
+     */
+    public VideoResult createVideoResult() {
+        return new VideoResult();
     }
 
     /**
@@ -140,12 +141,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "FileSize")
-    public JAXBElement<BigInteger> createFileSize(BigInteger value) {
-        return new JAXBElement<BigInteger>(_FileSize_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createFileSize(Long value) {
+        return new JAXBElement<Long>(_FileSize_QNAME, Long.class, null, value);
     }
 
     /**
@@ -167,12 +169,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "RunTime")
-    public JAXBElement<BigInteger> createRunTime(BigInteger value) {
-        return new JAXBElement<BigInteger>(_RunTime_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createRunTime(Long value) {
+        return new JAXBElement<Long>(_RunTime_QNAME, Long.class, null, value);
     }
 
     /**
@@ -185,21 +188,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "Offset")
-    public JAXBElement<BigInteger> createOffset(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Offset_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createOffset(Long value) {
+        return new JAXBElement<Long>(_Offset_QNAME, Long.class, null, value);
     }
 
     /**
@@ -212,21 +217,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "Width")
-    public JAXBElement<BigInteger> createWidth(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Width_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createWidth(Long value) {
+        return new JAXBElement<Long>(_Width_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia", name = "Height")
-    public JAXBElement<BigInteger> createHeight(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Height_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createHeight(Long value) {
+        return new JAXBElement<Long>(_Height_QNAME, Long.class, null, value);
     }
 
 }

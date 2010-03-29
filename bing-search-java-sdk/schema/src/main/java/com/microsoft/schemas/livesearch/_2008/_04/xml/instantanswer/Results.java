@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.instantanswer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "instantAnswerResult"
+    "instantAnswerResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "InstantAnswerResult", required = true)
-    protected List<InstantAnswerResult> instantAnswerResult;
+    protected List<InstantAnswerResult> instantAnswerResultList;
 
     /**
-     * Gets the value of the instantAnswerResult property.
+     * Gets the value of the instantAnswerResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the instantAnswerResult property.
+     * This is why there is not a <CODE>set</CODE> method for the instantAnswerResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getInstantAnswerResult().add(newItem);
+     *    getInstantAnswerResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<InstantAnswerResult> getInstantAnswerResult() {
-        if (instantAnswerResult == null) {
-            instantAnswerResult = new ArrayList<InstantAnswerResult>();
+    public List<InstantAnswerResult> getInstantAnswerResultList() {
+        if (instantAnswerResultList == null) {
+            instantAnswerResultList = new ArrayList<InstantAnswerResult>();
         }
-        return this.instantAnswerResult;
+        return this.instantAnswerResultList;
     }
 
 }

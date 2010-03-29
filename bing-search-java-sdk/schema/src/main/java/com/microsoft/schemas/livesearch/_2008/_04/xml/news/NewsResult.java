@@ -1,12 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.news;
 
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -45,8 +47,11 @@ import javax.xml.bind.annotation.XmlType;
     "newsCollections"
 })
 @XmlRootElement(name = "NewsResult")
-public class NewsResult {
+public class NewsResult
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "Title")
     protected String title;
     @XmlElement(name = "Url")
@@ -57,8 +62,9 @@ public class NewsResult {
     protected String snippet;
     @XmlElement(name = "Date")
     protected String date;
-    @XmlElement(name = "BreakingNews")
-    protected BigInteger breakingNews;
+    @XmlElement(name = "BreakingNews", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long breakingNews;
     @XmlElement(name = "NewsCollections")
     protected NewsCollections newsCollections;
 
@@ -187,10 +193,10 @@ public class NewsResult {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getBreakingNews() {
+    public Long getBreakingNews() {
         return breakingNews;
     }
 
@@ -199,10 +205,10 @@ public class NewsResult {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setBreakingNews(BigInteger value) {
+    public void setBreakingNews(Long value) {
         this.breakingNews = value;
     }
 

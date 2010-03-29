@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.instantanswer;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -36,8 +37,11 @@ import com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta;
     "encarta"
 })
 @XmlRootElement(name = "InstantAnswerSpecificData")
-public class InstantAnswerSpecificData {
+public class InstantAnswerSpecificData
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "FlightStatus", namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus")
     protected FlightStatus flightStatus;
     @XmlElement(name = "Encarta", namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/encarta")

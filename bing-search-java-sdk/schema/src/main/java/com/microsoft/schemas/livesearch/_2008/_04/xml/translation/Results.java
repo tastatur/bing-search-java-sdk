@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.translation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "translationResult"
+    "translationResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "TranslationResult")
-    protected List<TranslationResult> translationResult;
+    protected List<TranslationResult> translationResultList;
 
     /**
-     * Gets the value of the translationResult property.
+     * Gets the value of the translationResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the translationResult property.
+     * This is why there is not a <CODE>set</CODE> method for the translationResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTranslationResult().add(newItem);
+     *    getTranslationResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<TranslationResult> getTranslationResult() {
-        if (translationResult == null) {
-            translationResult = new ArrayList<TranslationResult>();
+    public List<TranslationResult> getTranslationResultList() {
+        if (translationResultList == null) {
+            translationResultList = new ArrayList<TranslationResult>();
         }
-        return this.translationResult;
+        return this.translationResultList;
     }
 
 }

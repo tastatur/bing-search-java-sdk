@@ -1,11 +1,12 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.mobileweb;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -92,12 +93,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**
@@ -110,12 +112,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb", name = "Offset")
-    public JAXBElement<BigInteger> createOffset(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Offset_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createOffset(Long value) {
+        return new JAXBElement<Long>(_Offset_QNAME, Long.class, null, value);
     }
 
     /**

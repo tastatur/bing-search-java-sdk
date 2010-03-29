@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.ads;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "adResult"
+    "adResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "AdResult")
-    protected List<AdResult> adResult;
+    protected List<AdResult> adResultList;
 
     /**
-     * Gets the value of the adResult property.
+     * Gets the value of the adResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the adResult property.
+     * This is why there is not a <CODE>set</CODE> method for the adResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAdResult().add(newItem);
+     *    getAdResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<AdResult> getAdResult() {
-        if (adResult == null) {
-            adResult = new ArrayList<AdResult>();
+    public List<AdResult> getAdResultList() {
+        if (adResultList == null) {
+            adResultList = new ArrayList<AdResult>();
         }
-        return this.adResult;
+        return this.adResultList;
     }
 
 }

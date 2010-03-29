@@ -1,12 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.spell;
 
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -35,10 +37,14 @@ import javax.xml.bind.annotation.XmlType;
     "results"
 })
 @XmlRootElement(name = "Spell")
-public class Spell {
+public class Spell
+    implements Serializable
+{
 
-    @XmlElement(name = "Total")
-    protected BigInteger total;
+    private final static long serialVersionUID = 2461660169443089969L;
+    @XmlElement(name = "Total", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long total;
     @XmlElement(name = "Results")
     protected Results results;
 
@@ -47,10 +53,10 @@ public class Spell {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getTotal() {
+    public Long getTotal() {
         return total;
     }
 
@@ -59,10 +65,10 @@ public class Spell {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setTotal(BigInteger value) {
+    public void setTotal(Long value) {
         this.total = value;
     }
 

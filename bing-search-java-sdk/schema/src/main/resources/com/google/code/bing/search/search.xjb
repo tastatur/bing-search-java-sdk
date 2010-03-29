@@ -3,10 +3,9 @@
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     extensionBindingPrefixes="xjc"
     schemaLocation="bing-search-api.xsd" node="/xs:schema">
-	<globalBindings localScoping="toplevel" generateValueClass="false">
+	<globalBindings localScoping="toplevel">
 		<javaType name="double" xmlType="xs:double"/>
 		<javaType name="long" xmlType="xs:integer"/>
-		<xjc:superInterface name="com.google.code.bing.search.schema.SchemaEntity"/>
 		<xjc:serializable uid="2461660169443089969"/>
 	</globalBindings>
 	<bindings schemaLocation="ads.xsd" node="/xs:schema">

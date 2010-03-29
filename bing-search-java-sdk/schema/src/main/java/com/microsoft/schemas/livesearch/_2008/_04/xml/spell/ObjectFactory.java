@@ -1,11 +1,12 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.spell;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -36,14 +37,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Spell }
-     * 
-     */
-    public Spell createSpell() {
-        return new Spell();
-    }
-
-    /**
      * Create an instance of {@link SpellResult }
      * 
      */
@@ -60,12 +53,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link Spell }
+     * 
+     */
+    public Spell createSpell() {
+        return new Spell();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/spell", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**

@@ -1,11 +1,12 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.news;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -43,43 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RelatedSearches }
-     * 
-     */
-    public RelatedSearches createRelatedSearches() {
-        return new RelatedSearches();
-    }
-
-    /**
-     * Create an instance of {@link NewsCollection }
-     * 
-     */
-    public NewsCollection createNewsCollection() {
-        return new NewsCollection();
-    }
-
-    /**
-     * Create an instance of {@link News }
-     * 
-     */
-    public News createNews() {
-        return new News();
-    }
-
-    /**
      * Create an instance of {@link NewsResult }
      * 
      */
     public NewsResult createNewsResult() {
         return new NewsResult();
-    }
-
-    /**
-     * Create an instance of {@link NewsArticles }
-     * 
-     */
-    public NewsArticles createNewsArticles() {
-        return new NewsArticles();
     }
 
     /**
@@ -91,6 +60,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RelatedSearches }
+     * 
+     */
+    public RelatedSearches createRelatedSearches() {
+        return new RelatedSearches();
+    }
+
+    /**
+     * Create an instance of {@link NewsArticles }
+     * 
+     */
+    public NewsArticles createNewsArticles() {
+        return new NewsArticles();
+    }
+
+    /**
      * Create an instance of {@link Results }
      * 
      */
@@ -99,11 +84,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link News }
+     * 
+     */
+    public News createNews() {
+        return new News();
+    }
+
+    /**
      * Create an instance of {@link NewsRelatedSearch }
      * 
      */
     public NewsRelatedSearch createNewsRelatedSearch() {
         return new NewsRelatedSearch();
+    }
+
+    /**
+     * Create an instance of {@link NewsCollection }
+     * 
+     */
+    public NewsCollection createNewsCollection() {
+        return new NewsCollection();
     }
 
     /**
@@ -133,21 +134,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/news", name = "Offset")
-    public JAXBElement<BigInteger> createOffset(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Offset_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createOffset(Long value) {
+        return new JAXBElement<Long>(_Offset_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/news", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**
@@ -160,12 +163,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/news", name = "BreakingNews")
-    public JAXBElement<BigInteger> createBreakingNews(BigInteger value) {
-        return new JAXBElement<BigInteger>(_BreakingNews_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createBreakingNews(Long value) {
+        return new JAXBElement<Long>(_BreakingNews_QNAME, Long.class, null, value);
     }
 
     /**

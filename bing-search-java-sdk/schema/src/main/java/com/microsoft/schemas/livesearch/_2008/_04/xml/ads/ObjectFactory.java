@@ -1,12 +1,13 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.ads;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -44,6 +45,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AdResult }
+     * 
+     */
+    public AdResult createAdResult() {
+        return new AdResult();
+    }
+
+    /**
      * Create an instance of {@link Ad }
      * 
      */
@@ -60,29 +69,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AdResult }
-     * 
-     */
-    public AdResult createAdResult() {
-        return new AdResult();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads", name = "Total")
-    public JAXBElement<BigInteger> createTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Total_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTotal(Long value) {
+        return new JAXBElement<Long>(_Total_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads", name = "AdApiVersion")
-    public JAXBElement<BigDecimal> createAdApiVersion(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_AdApiVersion_QNAME, BigDecimal.class, null, value);
+    @XmlJavaTypeAdapter(Adapter2 .class)
+    public JAXBElement<Double> createAdApiVersion(Double value) {
+        return new JAXBElement<Double>(_AdApiVersion_QNAME, Double.class, null, value);
     }
 
     /**
@@ -131,21 +134,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads", name = "Rank")
-    public JAXBElement<BigInteger> createRank(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Rank_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createRank(Long value) {
+        return new JAXBElement<Long>(_Rank_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads", name = "PageNumber")
-    public JAXBElement<BigInteger> createPageNumber(BigInteger value) {
-        return new JAXBElement<BigInteger>(_PageNumber_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createPageNumber(Long value) {
+        return new JAXBElement<Long>(_PageNumber_QNAME, Long.class, null, value);
     }
 
 }

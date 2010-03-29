@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.mobileweb;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,8 +41,11 @@ import javax.xml.bind.annotation.XmlType;
     "dateTime"
 })
 @XmlRootElement(name = "MobileWebResult")
-public class MobileWebResult {
+public class MobileWebResult
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "Title", required = true)
     protected String title;
     @XmlElement(name = "Description", required = true)

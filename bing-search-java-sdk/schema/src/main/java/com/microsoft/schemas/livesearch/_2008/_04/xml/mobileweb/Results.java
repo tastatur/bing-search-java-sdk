@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.mobileweb;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "mobileWebResult"
+    "mobileWebResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "MobileWebResult")
-    protected List<MobileWebResult> mobileWebResult;
+    protected List<MobileWebResult> mobileWebResultList;
 
     /**
-     * Gets the value of the mobileWebResult property.
+     * Gets the value of the mobileWebResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the mobileWebResult property.
+     * This is why there is not a <CODE>set</CODE> method for the mobileWebResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getMobileWebResult().add(newItem);
+     *    getMobileWebResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<MobileWebResult> getMobileWebResult() {
-        if (mobileWebResult == null) {
-            mobileWebResult = new ArrayList<MobileWebResult>();
+    public List<MobileWebResult> getMobileWebResultList() {
+        if (mobileWebResultList == null) {
+            mobileWebResultList = new ArrayList<MobileWebResult>();
         }
-        return this.mobileWebResult;
+        return this.mobileWebResultList;
     }
 
 }

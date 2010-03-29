@@ -1,11 +1,12 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus;
 
-import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -54,14 +55,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NextSegment }
-     * 
-     */
-    public NextSegment createNextSegment() {
-        return new NextSegment();
-    }
-
-    /**
      * Create an instance of {@link DestinationAirport }
      * 
      */
@@ -70,11 +63,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FlightStatus }
+     * Create an instance of {@link NextSegment }
      * 
      */
-    public FlightStatus createFlightStatus() {
-        return new FlightStatus();
+    public NextSegment createNextSegment() {
+        return new NextSegment();
     }
 
     /**
@@ -91,6 +84,14 @@ public class ObjectFactory {
      */
     public OriginAirport createOriginAirport() {
         return new OriginAirport();
+    }
+
+    /**
+     * Create an instance of {@link FlightStatus }
+     * 
+     */
+    public FlightStatus createFlightStatus() {
+        return new FlightStatus();
     }
 
     /**
@@ -130,12 +131,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "StatusCode")
-    public JAXBElement<BigInteger> createStatusCode(BigInteger value) {
-        return new JAXBElement<BigInteger>(_StatusCode_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createStatusCode(Long value) {
+        return new JAXBElement<Long>(_StatusCode_QNAME, Long.class, null, value);
     }
 
     /**
@@ -157,21 +159,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "FlightNumber")
-    public JAXBElement<BigInteger> createFlightNumber(BigInteger value) {
-        return new JAXBElement<BigInteger>(_FlightNumber_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createFlightNumber(Long value) {
+        return new JAXBElement<Long>(_FlightNumber_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "DepartureGate")
-    public JAXBElement<BigInteger> createDepartureGate(BigInteger value) {
-        return new JAXBElement<BigInteger>(_DepartureGate_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createDepartureGate(Long value) {
+        return new JAXBElement<Long>(_DepartureGate_QNAME, Long.class, null, value);
     }
 
     /**
@@ -193,21 +197,23 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "ArrivalGate")
-    public JAXBElement<BigInteger> createArrivalGate(BigInteger value) {
-        return new JAXBElement<BigInteger>(_ArrivalGate_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createArrivalGate(Long value) {
+        return new JAXBElement<Long>(_ArrivalGate_QNAME, Long.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "DataFreshness")
-    public JAXBElement<BigInteger> createDataFreshness(BigInteger value) {
-        return new JAXBElement<BigInteger>(_DataFreshness_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createDataFreshness(Long value) {
+        return new JAXBElement<Long>(_DataFreshness_QNAME, Long.class, null, value);
     }
 
     /**
@@ -220,12 +226,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "FlightHistoryId")
-    public JAXBElement<BigInteger> createFlightHistoryId(BigInteger value) {
-        return new JAXBElement<BigInteger>(_FlightHistoryId_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createFlightHistoryId(Long value) {
+        return new JAXBElement<Long>(_FlightHistoryId_QNAME, Long.class, null, value);
     }
 
     /**
@@ -256,12 +263,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus", name = "TimeZoneOffset")
-    public JAXBElement<BigInteger> createTimeZoneOffset(BigInteger value) {
-        return new JAXBElement<BigInteger>(_TimeZoneOffset_QNAME, BigInteger.class, null, value);
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    public JAXBElement<Long> createTimeZoneOffset(Long value) {
+        return new JAXBElement<Long>(_TimeZoneOffset_QNAME, Long.class, null, value);
     }
 
     /**

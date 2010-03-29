@@ -1,12 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.multimedia;
 
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -43,20 +45,27 @@ import javax.xml.bind.annotation.XmlType;
     "runTime"
 })
 @XmlRootElement(name = "StaticThumbnail")
-public class StaticThumbnail {
+public class StaticThumbnail
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "Url")
     protected String url;
     @XmlElement(name = "ContentType")
     protected String contentType;
-    @XmlElement(name = "Width")
-    protected BigInteger width;
-    @XmlElement(name = "Height")
-    protected BigInteger height;
-    @XmlElement(name = "FileSize")
-    protected BigInteger fileSize;
-    @XmlElement(name = "RunTime")
-    protected BigInteger runTime;
+    @XmlElement(name = "Width", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long width;
+    @XmlElement(name = "Height", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long height;
+    @XmlElement(name = "FileSize", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long fileSize;
+    @XmlElement(name = "RunTime", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long runTime;
 
     /**
      * Gets the value of the url property.
@@ -111,10 +120,10 @@ public class StaticThumbnail {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getWidth() {
+    public Long getWidth() {
         return width;
     }
 
@@ -123,10 +132,10 @@ public class StaticThumbnail {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setWidth(BigInteger value) {
+    public void setWidth(Long value) {
         this.width = value;
     }
 
@@ -135,10 +144,10 @@ public class StaticThumbnail {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getHeight() {
+    public Long getHeight() {
         return height;
     }
 
@@ -147,10 +156,10 @@ public class StaticThumbnail {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setHeight(BigInteger value) {
+    public void setHeight(Long value) {
         this.height = value;
     }
 
@@ -159,10 +168,10 @@ public class StaticThumbnail {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getFileSize() {
+    public Long getFileSize() {
         return fileSize;
     }
 
@@ -171,10 +180,10 @@ public class StaticThumbnail {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setFileSize(BigInteger value) {
+    public void setFileSize(Long value) {
         this.fileSize = value;
     }
 
@@ -183,10 +192,10 @@ public class StaticThumbnail {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getRunTime() {
+    public Long getRunTime() {
         return runTime;
     }
 
@@ -195,10 +204,10 @@ public class StaticThumbnail {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setRunTime(BigInteger value) {
+    public void setRunTime(Long value) {
         this.runTime = value;
     }
 

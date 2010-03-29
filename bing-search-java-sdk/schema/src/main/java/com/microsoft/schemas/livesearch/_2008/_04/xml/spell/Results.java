@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.spell;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,27 +32,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "spellResult"
+    "spellResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "SpellResult")
-    protected List<SpellResult> spellResult;
+    protected List<SpellResult> spellResultList;
 
     /**
-     * Gets the value of the spellResult property.
+     * Gets the value of the spellResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the spellResult property.
+     * This is why there is not a <CODE>set</CODE> method for the spellResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSpellResult().add(newItem);
+     *    getSpellResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -61,11 +65,11 @@ public class Results {
      * 
      * 
      */
-    public List<SpellResult> getSpellResult() {
-        if (spellResult == null) {
-            spellResult = new ArrayList<SpellResult>();
+    public List<SpellResult> getSpellResultList() {
+        if (spellResultList == null) {
+            spellResultList = new ArrayList<SpellResult>();
         }
-        return this.spellResult;
+        return this.spellResultList;
     }
 
 }

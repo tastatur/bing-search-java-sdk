@@ -1,12 +1,14 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus;
 
-import java.math.BigInteger;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -19,27 +21,27 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}AirlineCode"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}AirlineName"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightNumber"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightName"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightHistoryId"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}StatusString"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}StatusCode"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}OnTimeString"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ScheduledDeparture"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}UpdatedDeparture"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ScheduledArrival"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}UpdatedArrival"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}OriginAirport"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DestinationAirport"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DepartureGate"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DepartureTerminal"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ArrivalGate"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ArrivalTerminal"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}PreviousSegment"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}NextSegment"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DataFreshness"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}AirlineCode" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}AirlineName" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightNumber" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightName" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}FlightHistoryId" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}StatusString" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}StatusCode" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}OnTimeString" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ScheduledDeparture" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}UpdatedDeparture" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ScheduledArrival" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}UpdatedArrival" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}OriginAirport" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DestinationAirport" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DepartureGate" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DepartureTerminal" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ArrivalGate" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}ArrivalTerminal" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}PreviousSegment" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}NextSegment" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element/flightstatus}DataFreshness" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -73,50 +75,59 @@ import javax.xml.bind.annotation.XmlType;
     "dataFreshness"
 })
 @XmlRootElement(name = "FlightStatus")
-public class FlightStatus {
+public class FlightStatus
+    implements Serializable
+{
 
-    @XmlElement(name = "AirlineCode", required = true)
+    private final static long serialVersionUID = 2461660169443089969L;
+    @XmlElement(name = "AirlineCode")
     protected String airlineCode;
-    @XmlElement(name = "AirlineName", required = true)
+    @XmlElement(name = "AirlineName")
     protected String airlineName;
-    @XmlElement(name = "FlightNumber", required = true)
-    protected BigInteger flightNumber;
-    @XmlElement(name = "FlightName", required = true)
+    @XmlElement(name = "FlightNumber", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long flightNumber;
+    @XmlElement(name = "FlightName")
     protected String flightName;
-    @XmlElement(name = "FlightHistoryId", required = true)
-    protected BigInteger flightHistoryId;
-    @XmlElement(name = "StatusString", required = true)
+    @XmlElement(name = "FlightHistoryId", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long flightHistoryId;
+    @XmlElement(name = "StatusString")
     protected String statusString;
-    @XmlElement(name = "StatusCode", required = true)
-    protected BigInteger statusCode;
-    @XmlElement(name = "OnTimeString", required = true)
+    @XmlElement(name = "StatusCode", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long statusCode;
+    @XmlElement(name = "OnTimeString")
     protected String onTimeString;
-    @XmlElement(name = "ScheduledDeparture", required = true)
+    @XmlElement(name = "ScheduledDeparture")
     protected String scheduledDeparture;
-    @XmlElement(name = "UpdatedDeparture", required = true)
+    @XmlElement(name = "UpdatedDeparture")
     protected String updatedDeparture;
-    @XmlElement(name = "ScheduledArrival", required = true)
+    @XmlElement(name = "ScheduledArrival")
     protected String scheduledArrival;
-    @XmlElement(name = "UpdatedArrival", required = true)
+    @XmlElement(name = "UpdatedArrival")
     protected String updatedArrival;
-    @XmlElement(name = "OriginAirport", required = true)
+    @XmlElement(name = "OriginAirport")
     protected OriginAirport originAirport;
-    @XmlElement(name = "DestinationAirport", required = true)
+    @XmlElement(name = "DestinationAirport")
     protected DestinationAirport destinationAirport;
-    @XmlElement(name = "DepartureGate", required = true)
-    protected BigInteger departureGate;
-    @XmlElement(name = "DepartureTerminal", required = true)
+    @XmlElement(name = "DepartureGate", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long departureGate;
+    @XmlElement(name = "DepartureTerminal")
     protected String departureTerminal;
-    @XmlElement(name = "ArrivalGate", required = true)
-    protected BigInteger arrivalGate;
-    @XmlElement(name = "ArrivalTerminal", required = true)
+    @XmlElement(name = "ArrivalGate", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long arrivalGate;
+    @XmlElement(name = "ArrivalTerminal")
     protected String arrivalTerminal;
-    @XmlElement(name = "PreviousSegment", required = true)
+    @XmlElement(name = "PreviousSegment")
     protected PreviousSegment previousSegment;
-    @XmlElement(name = "NextSegment", required = true)
+    @XmlElement(name = "NextSegment")
     protected NextSegment nextSegment;
-    @XmlElement(name = "DataFreshness", required = true)
-    protected BigInteger dataFreshness;
+    @XmlElement(name = "DataFreshness", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    protected Long dataFreshness;
 
     /**
      * Gets the value of the airlineCode property.
@@ -171,10 +182,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getFlightNumber() {
+    public Long getFlightNumber() {
         return flightNumber;
     }
 
@@ -183,10 +194,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setFlightNumber(BigInteger value) {
+    public void setFlightNumber(Long value) {
         this.flightNumber = value;
     }
 
@@ -219,10 +230,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getFlightHistoryId() {
+    public Long getFlightHistoryId() {
         return flightHistoryId;
     }
 
@@ -231,10 +242,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setFlightHistoryId(BigInteger value) {
+    public void setFlightHistoryId(Long value) {
         this.flightHistoryId = value;
     }
 
@@ -267,10 +278,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getStatusCode() {
+    public Long getStatusCode() {
         return statusCode;
     }
 
@@ -279,10 +290,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setStatusCode(BigInteger value) {
+    public void setStatusCode(Long value) {
         this.statusCode = value;
     }
 
@@ -459,10 +470,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getDepartureGate() {
+    public Long getDepartureGate() {
         return departureGate;
     }
 
@@ -471,10 +482,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setDepartureGate(BigInteger value) {
+    public void setDepartureGate(Long value) {
         this.departureGate = value;
     }
 
@@ -507,10 +518,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getArrivalGate() {
+    public Long getArrivalGate() {
         return arrivalGate;
     }
 
@@ -519,10 +530,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setArrivalGate(BigInteger value) {
+    public void setArrivalGate(Long value) {
         this.arrivalGate = value;
     }
 
@@ -603,10 +614,10 @@ public class FlightStatus {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getDataFreshness() {
+    public Long getDataFreshness() {
         return dataFreshness;
     }
 
@@ -615,10 +626,10 @@ public class FlightStatus {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setDataFreshness(BigInteger value) {
+    public void setDataFreshness(Long value) {
         this.dataFreshness = value;
     }
 

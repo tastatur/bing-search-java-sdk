@@ -1,6 +1,7 @@
 
 package com.microsoft.schemas.livesearch._2008._04.xml.multimedia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -32,30 +33,33 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "imageResult",
-    "videoResult"
+    "imageResultList",
+    "videoResultList"
 })
 @XmlRootElement(name = "Results")
-public class Results {
+public class Results
+    implements Serializable
+{
 
+    private final static long serialVersionUID = 2461660169443089969L;
     @XmlElement(name = "ImageResult")
-    protected List<ImageResult> imageResult;
+    protected List<ImageResult> imageResultList;
     @XmlElement(name = "VideoResult")
-    protected List<VideoResult> videoResult;
+    protected List<VideoResult> videoResultList;
 
     /**
-     * Gets the value of the imageResult property.
+     * Gets the value of the imageResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the imageResult property.
+     * This is why there is not a <CODE>set</CODE> method for the imageResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getImageResult().add(newItem);
+     *    getImageResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -65,26 +69,26 @@ public class Results {
      * 
      * 
      */
-    public List<ImageResult> getImageResult() {
-        if (imageResult == null) {
-            imageResult = new ArrayList<ImageResult>();
+    public List<ImageResult> getImageResultList() {
+        if (imageResultList == null) {
+            imageResultList = new ArrayList<ImageResult>();
         }
-        return this.imageResult;
+        return this.imageResultList;
     }
 
     /**
-     * Gets the value of the videoResult property.
+     * Gets the value of the videoResultList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the videoResult property.
+     * This is why there is not a <CODE>set</CODE> method for the videoResultList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getVideoResult().add(newItem);
+     *    getVideoResultList().add(newItem);
      * </pre>
      * 
      * 
@@ -94,11 +98,11 @@ public class Results {
      * 
      * 
      */
-    public List<VideoResult> getVideoResult() {
-        if (videoResult == null) {
-            videoResult = new ArrayList<VideoResult>();
+    public List<VideoResult> getVideoResultList() {
+        if (videoResultList == null) {
+            videoResultList = new ArrayList<VideoResult>();
         }
-        return this.videoResult;
+        return this.videoResultList;
     }
 
 }
