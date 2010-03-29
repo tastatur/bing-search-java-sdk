@@ -46,7 +46,6 @@ import com.google.code.bing.search.schema.web.WebRequest;
 import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebResult;
 import com.google.code.bing.search.schema.web.WebSearchTag;
-import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 
 /**
  * @author Nabeel Mukhtar
