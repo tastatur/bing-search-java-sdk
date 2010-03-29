@@ -5,16 +5,16 @@ package com.google.code.bing.search.client;
 
 import java.util.concurrent.Future;
 
-import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
-import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
-import com.microsoft.schemas.livesearch._2008._03.search.SourceType;
-import com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
+import com.google.code.bing.search.schema.AdultOption;
+import com.google.code.bing.search.schema.SearchOption;
+import com.google.code.bing.search.schema.SearchRequest;
+import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.SourceType;
+import com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption;
+import com.google.code.bing.search.schema.multimedia.VideoSortOption;
+import com.google.code.bing.search.schema.news.NewsSortOption;
+import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
+import com.google.code.bing.search.schema.web.WebSearchOption;
 
 /**
  * The Interface BingMapsWebServiesClient. 
