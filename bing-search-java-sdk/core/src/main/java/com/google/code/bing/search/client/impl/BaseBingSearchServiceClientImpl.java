@@ -1,32 +1,26 @@
 package com.google.code.bing.search.client.impl;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import com.google.code.bing.search.client.BingSearchClient;
+import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.SchemaElementFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfMobileWebSearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSourceType;
-import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfString;
-import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebSearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ImageRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.MobileWebRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.NewsRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
-import com.microsoft.schemas.livesearch._2008._03.search.SourceType;
-import com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.VideoRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.WebRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
+import com.google.code.bing.search.schema.SearchOption;
+import com.google.code.bing.search.schema.SearchRequest;
+import com.google.code.bing.search.schema.SourceType;
+import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
+import com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption;
+import com.google.code.bing.search.schema.multimedia.ImageRequest;
+import com.google.code.bing.search.schema.multimedia.VideoRequest;
+import com.google.code.bing.search.schema.multimedia.VideoSortOption;
+import com.google.code.bing.search.schema.news.NewsRequest;
+import com.google.code.bing.search.schema.news.NewsSortOption;
+import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
+import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
+import com.google.code.bing.search.schema.translation.TranslationRequest;
+import com.google.code.bing.search.schema.web.WebRequest;
+import com.google.code.bing.search.schema.web.WebSearchOption;
 
 public abstract class BaseBingSearchServiceClientImpl implements
 	BingSearchClient {
@@ -65,7 +59,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withImageRequestFilter(String filter) {
-			getImageRequestFilters().getString().add(filter);
+			getImageRequestFilters().add(filter);
 			return this;
 		}
 
@@ -108,7 +102,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		@Override
 		public SearchRequestBuilder withMobileWebRequestSearchOption(
 				MobileWebSearchOption mobileWebSearchOption) {
-			getMobileWebRequestOptions().getMobileWebSearchOption().add(mobileWebSearchOption);
+			getMobileWebRequestOptions().add(mobileWebSearchOption);
 			return this;
 		}
 
@@ -195,13 +189,13 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withSearchOption(SearchOption searchOption) {
-			getParameterOptions().getSearchOption().add(searchOption);
+			getParameterOptions().add(searchOption);
 			return this;
 		}
 
 		@Override
 		public SearchRequestBuilder withSourceType(SourceType sourceType) {
-			getParameterSources().getSourceType().add(sourceType);
+			getParameterSources().add(sourceType);
 			return this;
 		}
 
@@ -239,7 +233,7 @@ public abstract class BaseBingSearchServiceClientImpl implements
 
 		@Override
 		public SearchRequestBuilder withVideoRequestFilter(String filter) {
-			getVideoRequestFilters().getString().add(filter);
+			getVideoRequestFilters().add(filter);
 			return this;
 		}
 
@@ -277,13 +271,13 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		@Override
 		public SearchRequestBuilder withWebRequestSearchOption(
 				WebSearchOption webSearchOption) {
-			getWebRequestOptions().getWebSearchOption().add(webSearchOption);
+			getWebRequestOptions().add(webSearchOption);
 			return this;
 		}
 
 		@Override
 		public SearchRequestBuilder withWebRequestSearchTag(String searchTag) {
-			getWebRequestSearchTags().getString().add(searchTag);
+			getWebRequestSearchTags().add(searchTag);
 			return this;
 		}
 
@@ -296,11 +290,8 @@ public abstract class BaseBingSearchServiceClientImpl implements
 			result = factory.createSearchRequest();
 		}
 		
-		private SearchRequestParameters getParameters() {
-			if (result.getParameters() == null) {
-				result.setParameters(factory.createSearchRequestParameters());
-			}
-			return result.getParameters();
+		private SearchRequest getParameters() {
+			return result;
 		}
 		
 		private ImageRequest getImageRequest() {
@@ -352,53 +343,32 @@ public abstract class BaseBingSearchServiceClientImpl implements
 			return getParameters().getWeb();
 		}
 		
-		private ArrayOfString getImageRequestFilters() {
-			if (getImageRequest().getFilters() == null) {
-				getImageRequest().setFilters(factory.createArrayOfString());
-			}
-			return getImageRequest().getFilters();
+		private  List<String> getImageRequestFilters() {
+			return getImageRequest().getFilterList();
 		}
 
-		private ArrayOfMobileWebSearchOption getMobileWebRequestOptions() {
-			if (getMobileWebRequest().getOptions() == null) {
-				getMobileWebRequest().setOptions(factory.createArrayOfMobileWebSearchOption());
-			}
-			return getMobileWebRequest().getOptions();
+		private  List<MobileWebSearchOption> getMobileWebRequestOptions() {
+			return getMobileWebRequest().getMobileWebSearchOptionList();
 		}
 		
-		private ArrayOfSearchOption getParameterOptions() {
-			if (getParameters().getOptions() == null) {
-				getParameters().setOptions(factory.createArrayOfSearchOption());
-			}
-			return getParameters().getOptions();
+		private  List<SearchOption> getParameterOptions() {
+			return getParameters().getSearchOptionList();
 		}
 
-		private ArrayOfSourceType getParameterSources() {
-			if (getParameters().getSources() == null) {
-				getParameters().setSources(factory.createArrayOfSourceType());
-			}
-			return getParameters().getSources();
+		private  List<SourceType> getParameterSources() {
+			return getParameters().getSourceTypeList();
 		}
 
-		private ArrayOfString getVideoRequestFilters() {
-			if (getVideoRequest().getFilters() == null) {
-				getVideoRequest().setFilters(factory.createArrayOfString());
-			}
-			return getVideoRequest().getFilters();
+		private  List<String> getVideoRequestFilters() {
+			return getVideoRequest().getFilterList();
 		}
 		
-		private ArrayOfWebSearchOption getWebRequestOptions() {
-			if (getWebRequest().getOptions() == null) {
-				getWebRequest().setOptions(factory.createArrayOfWebSearchOption());
-			}
-			return getWebRequest().getOptions();
+		private  List<WebSearchOption> getWebRequestOptions() {
+			return getWebRequest().getWebSearchOptionList();
 		}
 		
-		private ArrayOfString getWebRequestSearchTags() {
-			if (getWebRequest().getSearchTags() == null) {
-				getWebRequest().setSearchTags(factory.createArrayOfString());
-			}
-			return getWebRequest().getSearchTags();
+		private  List<String> getWebRequestSearchTags() {
+			return getWebRequest().getSearchTagList();
 		}
 	}
 
@@ -421,13 +391,5 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		this.taskExecutor = taskExecutor;
 	}
 
-	protected SchemaElementFactory createObjectFactory() {
-		return new JaxbElementFactory();
-	}
-	
-	private static class JaxbElementFactory extends ObjectFactory implements SchemaElementFactory {
-		public JaxbElementFactory() {
-			super();
-		}
-	}
+	protected abstract SchemaElementFactory createObjectFactory();
 }
