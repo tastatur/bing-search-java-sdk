@@ -1,17 +1,17 @@
 
 package com.google.code.bing.search.schema;
 
-import com.google.code.bing.search.schema.ads.Ad;
-import com.google.code.bing.search.schema.instantanswer.InstantAnswer;
-import com.google.code.bing.search.schema.mobileweb.MobileWeb;
-import com.google.code.bing.search.schema.multimedia.Image;
-import com.google.code.bing.search.schema.multimedia.Video;
-import com.google.code.bing.search.schema.news.News;
-import com.google.code.bing.search.schema.phonebook.Phonebook;
-import com.google.code.bing.search.schema.relatedsearch.RelatedSearch;
-import com.google.code.bing.search.schema.spell.Spell;
-import com.google.code.bing.search.schema.translation.Translation;
-import com.google.code.bing.search.schema.web.Web;
+import com.google.code.bing.search.schema.ads.AdResponse;
+import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
+import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
+import com.google.code.bing.search.schema.multimedia.ImageResponse;
+import com.google.code.bing.search.schema.multimedia.VideoResponse;
+import com.google.code.bing.search.schema.news.NewsResponse;
+import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
+import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
+import com.google.code.bing.search.schema.spell.SpellResponse;
+import com.google.code.bing.search.schema.translation.TranslationResponse;
+import com.google.code.bing.search.schema.web.WebResponse;
 
 
 /**
@@ -75,220 +75,220 @@ public interface SearchResponse
      * 
      * @return
      *     possible object is
-     *     {@link Ad }
+     *     {@link AdResponse }
      *     
      */
-    Ad getAd();
+    AdResponse getAd();
 
     /**
      * Sets the value of the ad property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Ad }
+     *     {@link AdResponse }
      *     
      */
-    void setAd(Ad value);
+    void setAd(AdResponse value);
 
     /**
      * Gets the value of the instantAnswer property.
      * 
      * @return
      *     possible object is
-     *     {@link InstantAnswer }
+     *     {@link InstantAnswerResponse }
      *     
      */
-    InstantAnswer getInstantAnswer();
+    InstantAnswerResponse getInstantAnswer();
 
     /**
      * Sets the value of the instantAnswer property.
      * 
      * @param value
      *     allowed object is
-     *     {@link InstantAnswer }
+     *     {@link InstantAnswerResponse }
      *     
      */
-    void setInstantAnswer(InstantAnswer value);
+    void setInstantAnswer(InstantAnswerResponse value);
 
     /**
      * Gets the value of the mobileWeb property.
      * 
      * @return
      *     possible object is
-     *     {@link MobileWeb }
+     *     {@link MobileWebResponse }
      *     
      */
-    MobileWeb getMobileWeb();
+    MobileWebResponse getMobileWeb();
 
     /**
      * Sets the value of the mobileWeb property.
      * 
      * @param value
      *     allowed object is
-     *     {@link MobileWeb }
+     *     {@link MobileWebResponse }
      *     
      */
-    void setMobileWeb(MobileWeb value);
+    void setMobileWeb(MobileWebResponse value);
 
     /**
      * Gets the value of the image property.
      * 
      * @return
      *     possible object is
-     *     {@link Image }
+     *     {@link ImageResponse }
      *     
      */
-    Image getImage();
+    ImageResponse getImage();
 
     /**
      * Sets the value of the image property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Image }
+     *     {@link ImageResponse }
      *     
      */
-    void setImage(Image value);
+    void setImage(ImageResponse value);
 
     /**
      * Gets the value of the video property.
      * 
      * @return
      *     possible object is
-     *     {@link Video }
+     *     {@link VideoResponse }
      *     
      */
-    Video getVideo();
+    VideoResponse getVideo();
 
     /**
      * Sets the value of the video property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Video }
+     *     {@link VideoResponse }
      *     
      */
-    void setVideo(Video value);
+    void setVideo(VideoResponse value);
 
     /**
      * Gets the value of the phonebook property.
      * 
      * @return
      *     possible object is
-     *     {@link Phonebook }
+     *     {@link PhonebookResponse }
      *     
      */
-    Phonebook getPhonebook();
+    PhonebookResponse getPhonebook();
 
     /**
      * Sets the value of the phonebook property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Phonebook }
+     *     {@link PhonebookResponse }
      *     
      */
-    void setPhonebook(Phonebook value);
+    void setPhonebook(PhonebookResponse value);
 
     /**
      * Gets the value of the relatedSearch property.
      * 
      * @return
      *     possible object is
-     *     {@link RelatedSearch }
+     *     {@link RelatedSearchResponse }
      *     
      */
-    RelatedSearch getRelatedSearch();
+    RelatedSearchResponse getRelatedSearch();
 
     /**
      * Sets the value of the relatedSearch property.
      * 
      * @param value
      *     allowed object is
-     *     {@link RelatedSearch }
+     *     {@link RelatedSearchResponse }
      *     
      */
-    void setRelatedSearch(RelatedSearch value);
+    void setRelatedSearch(RelatedSearchResponse value);
 
     /**
      * Gets the value of the spell property.
      * 
      * @return
      *     possible object is
-     *     {@link Spell }
+     *     {@link SpellResponse }
      *     
      */
-    Spell getSpell();
+    SpellResponse getSpell();
 
     /**
      * Sets the value of the spell property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Spell }
+     *     {@link SpellResponse }
      *     
      */
-    void setSpell(Spell value);
+    void setSpell(SpellResponse value);
 
     /**
      * Gets the value of the news property.
      * 
      * @return
      *     possible object is
-     *     {@link News }
+     *     {@link NewsResponse }
      *     
      */
-    News getNews();
+    NewsResponse getNews();
 
     /**
      * Sets the value of the news property.
      * 
      * @param value
      *     allowed object is
-     *     {@link News }
+     *     {@link NewsResponse }
      *     
      */
-    void setNews(News value);
+    void setNews(NewsResponse value);
 
     /**
      * Gets the value of the translation property.
      * 
      * @return
      *     possible object is
-     *     {@link Translation }
+     *     {@link TranslationResponse }
      *     
      */
-    Translation getTranslation();
+    TranslationResponse getTranslation();
 
     /**
      * Sets the value of the translation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Translation }
+     *     {@link TranslationResponse }
      *     
      */
-    void setTranslation(Translation value);
+    void setTranslation(TranslationResponse value);
 
     /**
      * Gets the value of the web property.
      * 
      * @return
      *     possible object is
-     *     {@link Web }
+     *     {@link WebResponse }
      *     
      */
-    Web getWeb();
+    WebResponse getWeb();
 
     /**
      * Sets the value of the web property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Web }
+     *     {@link WebResponse }
      *     
      */
-    void setWeb(Web value);
+    void setWeb(WebResponse value);
 
     /**
      * Gets the value of the version property.

@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.spell;
+package com.google.code.bing.search.schema.ads;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,8 +14,10 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/spell}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/spell}Results" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Total"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}PageNumber"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}AdApiVersion"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Results"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -24,7 +26,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface Spell
+public interface AdResponse
     extends SchemaEntity
 {
 
@@ -48,6 +50,46 @@ public interface Spell
      *     
      */
     void setTotal(Long value);
+
+    /**
+     * Gets the value of the pageNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    Long getPageNumber();
+
+    /**
+     * Sets the value of the pageNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    void setPageNumber(Long value);
+
+    /**
+     * Gets the value of the adApiVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    Double getAdApiVersion();
+
+    /**
+     * Sets the value of the adApiVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    void setAdApiVersion(Double value);
 
     /**
      * Gets the value of the results property.

@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.ads;
+package com.google.code.bing.search.schema.news;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,10 +14,10 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Total"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}PageNumber"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}AdApiVersion"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Results"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Total" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Offset" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}RelatedSearches" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Results" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,7 +26,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface Ad
+public interface NewsResponse
     extends SchemaEntity
 {
 
@@ -52,44 +52,44 @@ public interface Ad
     void setTotal(Long value);
 
     /**
-     * Gets the value of the pageNumber property.
+     * Gets the value of the offset property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    Long getPageNumber();
+    Long getOffset();
 
     /**
-     * Sets the value of the pageNumber property.
+     * Sets the value of the offset property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    void setPageNumber(Long value);
+    void setOffset(Long value);
 
     /**
-     * Gets the value of the adApiVersion property.
+     * Gets the value of the relatedSearches property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link RelatedSearches }
      *     
      */
-    Double getAdApiVersion();
+    RelatedSearches getRelatedSearches();
 
     /**
-     * Sets the value of the adApiVersion property.
+     * Sets the value of the relatedSearches property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link RelatedSearches }
      *     
      */
-    void setAdApiVersion(Double value);
+    void setRelatedSearches(RelatedSearches value);
 
     /**
      * Gets the value of the results property.

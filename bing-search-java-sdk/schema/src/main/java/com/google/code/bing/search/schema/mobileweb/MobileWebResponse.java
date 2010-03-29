@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.news;
+package com.google.code.bing.search.schema.mobileweb;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,10 +14,9 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}RelatedSearches" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Results" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Total" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Offset" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Results" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,7 +25,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface News
+public interface MobileWebResponse
     extends SchemaEntity
 {
 
@@ -70,26 +69,6 @@ public interface News
      *     
      */
     void setOffset(Long value);
-
-    /**
-     * Gets the value of the relatedSearches property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RelatedSearches }
-     *     
-     */
-    RelatedSearches getRelatedSearches();
-
-    /**
-     * Sets the value of the relatedSearches property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RelatedSearches }
-     *     
-     */
-    void setRelatedSearches(RelatedSearches value);
 
     /**
      * Gets the value of the results property.

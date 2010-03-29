@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.mobileweb;
+package com.google.code.bing.search.schema.web;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,9 +14,9 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Results" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Total" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Offset" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Results" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,7 +25,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface MobileWeb
+public interface WebResponse
     extends SchemaEntity
 {
 

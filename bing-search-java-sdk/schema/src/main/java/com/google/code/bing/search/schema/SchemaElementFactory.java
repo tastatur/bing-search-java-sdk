@@ -1,36 +1,36 @@
 package com.google.code.bing.search.schema;
 
-import com.google.code.bing.search.schema.instantanswer.InstantAnswer;
+import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
-import com.google.code.bing.search.schema.mobileweb.MobileWeb;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
+import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
-import com.google.code.bing.search.schema.multimedia.Image;
 import com.google.code.bing.search.schema.multimedia.ImageRequest;
+import com.google.code.bing.search.schema.multimedia.ImageResponse;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
 import com.google.code.bing.search.schema.multimedia.Thumbnail;
-import com.google.code.bing.search.schema.multimedia.Video;
 import com.google.code.bing.search.schema.multimedia.VideoRequest;
+import com.google.code.bing.search.schema.multimedia.VideoResponse;
 import com.google.code.bing.search.schema.multimedia.VideoResult;
-import com.google.code.bing.search.schema.news.News;
 import com.google.code.bing.search.schema.news.NewsArticle;
 import com.google.code.bing.search.schema.news.NewsCollection;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 import com.google.code.bing.search.schema.news.NewsRequest;
+import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.NewsResult;
-import com.google.code.bing.search.schema.phonebook.Phonebook;
 import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
+import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
-import com.google.code.bing.search.schema.relatedsearch.RelatedSearch;
+import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
-import com.google.code.bing.search.schema.spell.Spell;
+import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.spell.SpellResult;
-import com.google.code.bing.search.schema.translation.Translation;
 import com.google.code.bing.search.schema.translation.TranslationRequest;
+import com.google.code.bing.search.schema.translation.TranslationResponse;
 import com.google.code.bing.search.schema.translation.TranslationResult;
 import com.google.code.bing.search.schema.web.DeepLink;
-import com.google.code.bing.search.schema.web.Web;
 import com.google.code.bing.search.schema.web.WebRequest;
+import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebResult;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 
@@ -70,7 +70,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link PhonebookResponse }
 	 * 
 	 */
-	public Phonebook createPhonebookResponse();
+	public PhonebookResponse createPhonebookResponse();
 
 	/**
 	 * Create an instance of {@link NewsRelatedSearch }
@@ -100,7 +100,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link ImageResponse }
 	 * 
 	 */
-	public Image createImageResponse();
+	public ImageResponse createImageResponse();
 
 	/**
 	 * Create an instance of {@link NewsArticle }
@@ -112,7 +112,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link TranslationResponse }
 	 * 
 	 */
-	public Translation createTranslationResponse();
+	public TranslationResponse createTranslationResponse();
 
 	/**
 	 * Create an instance of {@link NewsRequest }
@@ -136,7 +136,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link VideoResponse }
 	 * 
 	 */
-	public Video createVideoResponse();
+	public VideoResponse createVideoResponse();
 
 	/**
 	 * Create an instance of {@link VideoResult }
@@ -172,7 +172,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link NewsResponse }
 	 * 
 	 */
-	public News createNewsResponse();
+	public NewsResponse createNewsResponse();
 
 	/**
 	 * Create an instance of {@link WebRequest }
@@ -196,19 +196,19 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link MobileWebResponse }
 	 * 
 	 */
-	public MobileWeb createMobileWebResponse();
+	public MobileWebResponse createMobileWebResponse();
 
 	/**
 	 * Create an instance of {@link WebResponse }
 	 * 
 	 */
-	public Web createWebResponse();
+	public WebResponse createWebResponse();
 
 	/**
 	 * Create an instance of {@link RelatedSearchResponse }
 	 * 
 	 */
-	public RelatedSearch createRelatedSearchResponse();
+	public RelatedSearchResponse createRelatedSearchResponse();
 
 	/**
 	 * Create an instance of {@link InstantAnswerResult }
@@ -226,7 +226,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link SpellResponse }
 	 * 
 	 */
-	public Spell createSpellResponse();
+	public SpellResponse createSpellResponse();
 
 	/**
 	 * Create an instance of {@link SearchRequest }
@@ -238,7 +238,7 @@ public interface SchemaElementFactory {
 	 * Create an instance of {@link InstantAnswerResponse }
 	 * 
 	 */
-	public InstantAnswer createInstantAnswerResponse();
+	public InstantAnswerResponse createInstantAnswerResponse();
 
 	/**
 	 * Create an instance of {@link MobileWebResult }

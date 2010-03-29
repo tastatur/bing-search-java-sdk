@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.web;
+package com.google.code.bing.search.schema.multimedia;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,9 +14,9 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Results" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Total" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Offset" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Results" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,7 +25,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface Web
+public interface ImageResponse
     extends SchemaEntity
 {
 

@@ -1,5 +1,5 @@
 
-package com.google.code.bing.search.schema.translation;
+package com.google.code.bing.search.schema.instantanswer;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -14,7 +14,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/translation}Results" minOccurs="0"/>
+ *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}Results" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -23,7 +23,7 @@ import com.google.code.bing.search.schema.SchemaEntity;
  * 
  * 
  */
-public interface Translation
+public interface InstantAnswerResponse
     extends SchemaEntity
 {
 
