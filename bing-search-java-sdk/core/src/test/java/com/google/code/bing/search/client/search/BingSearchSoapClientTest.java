@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
+import com.google.code.bing.search.schema.SearchResponse;
 
 /**
  * @author nmukhtar
