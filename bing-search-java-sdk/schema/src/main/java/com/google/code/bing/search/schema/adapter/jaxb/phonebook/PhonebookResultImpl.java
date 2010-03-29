@@ -3,9 +3,10 @@ package com.google.code.bing.search.schema.adapter.jaxb.phonebook;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
 public class PhonebookResultImpl
-    implements Serializable, PhonebookResult
+    implements Serializable, PhonebookResult, Adaptable<PhonebookResult, com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -153,5 +154,19 @@ public class PhonebookResultImpl
     public void setDisplayUrl(String value) {
         this.displayUrl = value;
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult toAdaptee(
+			PhonebookResult adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PhonebookResult toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.jaxb.ads.AdImpl;
 import com.google.code.bing.search.schema.adapter.jaxb.instantanswer.InstantAnswerImpl;
 import com.google.code.bing.search.schema.adapter.jaxb.mobileweb.MobileWebImpl;
@@ -28,7 +29,7 @@ import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.translation.TranslationResponse;
 import com.google.code.bing.search.schema.web.WebResponse;
 public class SearchResponseImpl
-    implements Serializable, SearchResponse
+    implements Serializable, SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -149,5 +150,19 @@ public class SearchResponseImpl
     public void setVersion(Double value) {
         this.version = value;
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse toAdaptee(
+			SearchResponse adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SearchResponse toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

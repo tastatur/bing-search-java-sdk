@@ -3,10 +3,11 @@ package com.google.code.bing.search.schema.adapter.jaxb.multimedia;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
 import com.google.code.bing.search.schema.multimedia.Thumbnail;
 public class ImageResultImpl
-    implements Serializable, ImageResult
+    implements Serializable, ImageResult, Adaptable<ImageResult, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -91,5 +92,19 @@ public class ImageResultImpl
     public void setThumbnail(Thumbnail value) {
         this.thumbnail = ((ThumbnailImpl) value);
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult toAdaptee(
+			ImageResult adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ImageResult toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

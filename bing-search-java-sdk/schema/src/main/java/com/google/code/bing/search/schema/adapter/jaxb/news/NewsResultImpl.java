@@ -3,10 +3,11 @@ package com.google.code.bing.search.schema.adapter.jaxb.news;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.news.NewsCollections;
 import com.google.code.bing.search.schema.news.NewsResult;
 public class NewsResultImpl
-    implements Serializable, NewsResult
+    implements Serializable, NewsResult, Adaptable<NewsResult, com.microsoft.schemas.livesearch._2008._04.xml.news.NewsResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -73,5 +74,19 @@ public class NewsResultImpl
     public void setNewsCollections(NewsCollections value) {
         this.newsCollections = ((NewsCollectionsImpl) value);
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.news.NewsResult toAdaptee(
+			NewsResult adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NewsResult toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.news.NewsResult adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

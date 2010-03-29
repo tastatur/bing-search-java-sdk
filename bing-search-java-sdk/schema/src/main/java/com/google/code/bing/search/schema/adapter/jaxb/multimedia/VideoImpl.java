@@ -3,10 +3,12 @@ package com.google.code.bing.search.schema.adapter.jaxb.multimedia;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.multimedia.Results;
 import com.google.code.bing.search.schema.multimedia.VideoResponse;
+import com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Video;
 public class VideoImpl
-    implements Serializable, VideoResponse
+    implements Serializable, VideoResponse, Adaptable<VideoResponse, Video>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -37,5 +39,17 @@ public class VideoImpl
     public void setResults(Results value) {
         this.results = ((ResultsImpl) value);
     }
+
+	@Override
+	public Video toAdaptee(VideoResponse adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public VideoResponse toAdapter(Video adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

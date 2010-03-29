@@ -3,11 +3,12 @@ package com.google.code.bing.search.schema.adapter.jaxb.web;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.web.DeepLinks;
 import com.google.code.bing.search.schema.web.SearchTags;
 import com.google.code.bing.search.schema.web.WebResult;
 public class WebResultImpl
-    implements Serializable, WebResult
+    implements Serializable, WebResult, Adaptable<WebResult, com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -83,5 +84,19 @@ public class WebResultImpl
     public void setDeepLinks(DeepLinks value) {
         this.deepLinks = ((DeepLinksImpl) value);
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult toAdaptee(
+			WebResult adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public WebResult toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

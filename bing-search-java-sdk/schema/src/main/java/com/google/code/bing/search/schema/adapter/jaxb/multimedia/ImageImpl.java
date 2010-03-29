@@ -3,10 +3,12 @@ package com.google.code.bing.search.schema.adapter.jaxb.multimedia;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.multimedia.ImageResponse;
 import com.google.code.bing.search.schema.multimedia.Results;
+import com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Image;
 public class ImageImpl
-    implements Serializable, ImageResponse
+    implements Serializable, ImageResponse, Adaptable<ImageResponse, Image>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -37,5 +39,17 @@ public class ImageImpl
     public void setResults(Results value) {
         this.results = ((ResultsImpl) value);
     }
+
+	@Override
+	public Image toAdaptee(ImageResponse adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ImageResponse toAdapter(Image adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

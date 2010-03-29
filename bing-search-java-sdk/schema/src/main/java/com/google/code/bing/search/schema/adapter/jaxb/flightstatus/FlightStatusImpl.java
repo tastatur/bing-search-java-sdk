@@ -2,13 +2,15 @@
 package com.google.code.bing.search.schema.adapter.jaxb.flightstatus;
 
 import java.io.Serializable;
+
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 import com.google.code.bing.search.schema.flightstatus.NextSegment;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 import com.google.code.bing.search.schema.flightstatus.PreviousSegment;
 public class FlightStatusImpl
-    implements Serializable, FlightStatus
+    implements Serializable, FlightStatus, Adaptable<FlightStatus, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -201,5 +203,19 @@ public class FlightStatusImpl
     public void setDataFreshness(Long value) {
         this.dataFreshness = value;
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus toAdaptee(
+			FlightStatus adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FlightStatus toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

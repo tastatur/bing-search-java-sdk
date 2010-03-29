@@ -2,11 +2,13 @@
 package com.google.code.bing.search.schema.adapter.jaxb.flightstatus;
 
 import java.io.Serializable;
+
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 import com.google.code.bing.search.schema.flightstatus.NextSegment;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 public class NextSegmentImpl
-    implements Serializable, NextSegment
+    implements Serializable, NextSegment, Adaptable<NextSegment, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -37,5 +39,19 @@ public class NextSegmentImpl
     public void setDestinationAirport(DestinationAirport value) {
         this.destinationAirport = ((DestinationAirportImpl) value);
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment toAdaptee(
+			NextSegment adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NextSegment toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

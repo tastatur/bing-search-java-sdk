@@ -3,9 +3,10 @@ package com.google.code.bing.search.schema.adapter.jaxb.multimedia;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.multimedia.StaticThumbnail;
 public class StaticThumbnailImpl
-    implements Serializable, StaticThumbnail
+    implements Serializable, StaticThumbnail, Adaptable<StaticThumbnail, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.StaticThumbnail>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -63,5 +64,19 @@ public class StaticThumbnailImpl
     public void setRunTime(Long value) {
         this.runTime = value;
     }
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.StaticThumbnail toAdaptee(
+			StaticThumbnail adapter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public StaticThumbnail toAdapter(
+			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.StaticThumbnail adaptee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
