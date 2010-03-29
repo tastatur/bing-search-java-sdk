@@ -2,8 +2,8 @@
 package com.google.code.bing.search.schema.instantanswer;
 
 import com.google.code.bing.search.schema.SchemaEntity;
-import com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus;
-import com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta;
+import com.google.code.bing.search.schema.encarta.Encarta;
+import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 
 
 /**

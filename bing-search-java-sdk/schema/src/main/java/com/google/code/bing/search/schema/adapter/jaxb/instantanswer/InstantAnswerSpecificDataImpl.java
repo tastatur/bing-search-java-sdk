@@ -3,6 +3,10 @@ package com.google.code.bing.search.schema.adapter.jaxb.instantanswer;
 
 import java.io.Serializable;
 
+import com.google.code.bing.search.schema.adapter.jaxb.encarta.EncartaImpl;
+import com.google.code.bing.search.schema.adapter.jaxb.flightstatus.FlightStatusImpl;
+import com.google.code.bing.search.schema.encarta.Encarta;
+import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
 public class InstantAnswerSpecificDataImpl
     implements Serializable, InstantAnswerSpecificData
