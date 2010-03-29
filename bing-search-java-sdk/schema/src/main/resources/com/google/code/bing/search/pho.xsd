@@ -63,11 +63,11 @@
   <xs:element name="StateOrProvince" type="xs:string"/>
   <xs:element name="CountryOrRegion" type="xs:string"/>
   <xs:element name="PostalCode" type="xs:string"/>
-  <xs:element name="Latitude" type="xs:decimal"/>
-  <xs:element name="Longitude" type="xs:decimal"/>
+  <xs:element name="Latitude" type="xs:double"/>
+  <xs:element name="Longitude" type="xs:double"/>
   <xs:element name="UniqueId" type="xs:string"/>
   <xs:element name="BusinessUrl" type="xs:anyURI"/>
-  <xs:element name="UserRating" type="xs:decimal"/>
+  <xs:element name="UserRating" type="xs:double"/>
   <xs:element name="ReviewCount" type="xs:integer"/>
   <xs:element name="DisplayUrl" type="xs:anyURI"/>
   <xs:element name="Title" type="xs:string"/>

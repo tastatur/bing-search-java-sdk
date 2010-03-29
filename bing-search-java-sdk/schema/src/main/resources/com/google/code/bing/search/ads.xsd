@@ -24,7 +24,7 @@
   </xs:element>
   <xs:element name="Total" type="xs:integer"/>
   <xs:element name="PageNumber" type="xs:integer"/>
-  <xs:element name="AdApiVersion" type="xs:decimal"/>
+  <xs:element name="AdApiVersion" type="xs:double"/>
   <xs:element name="Results">
     <xs:complexType>
       <xs:sequence>

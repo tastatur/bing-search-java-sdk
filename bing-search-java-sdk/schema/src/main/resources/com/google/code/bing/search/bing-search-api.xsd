@@ -28,7 +28,7 @@
           <xs:element minOccurs="0" ref="tra:Translation"/>
           <xs:element minOccurs="0" ref="web:Web"/>
       </xs:sequence>
-      <xs:attribute name="Version" use="required" type="xs:decimal"/>
+      <xs:attribute name="Version" use="required" type="xs:double"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Query">
