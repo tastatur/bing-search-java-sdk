@@ -8,8 +8,8 @@ import java.io.StringWriter;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 
 /**
  * @author Nabeel Mukhtar

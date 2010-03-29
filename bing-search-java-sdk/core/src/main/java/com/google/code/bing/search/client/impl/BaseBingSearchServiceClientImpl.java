@@ -3,6 +3,7 @@ package com.google.code.bing.search.client.impl;
 import java.util.concurrent.ExecutorService;
 
 import com.google.code.bing.search.client.BingSearchClient;
+import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfMobileWebSearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSearchOption;
@@ -17,7 +18,6 @@ import com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption;
 import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
 import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
