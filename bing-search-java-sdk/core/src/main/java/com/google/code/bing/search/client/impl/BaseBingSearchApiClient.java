@@ -20,9 +20,9 @@ import java.util.zip.GZIPInputStream;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
-import com.microsoft.schemas.livesearch._2008._03.search.SchemaElementFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
+import com.google.code.bing.search.schema.SchemaElementFactory;
+import com.google.code.bing.search.schema.SearchRequest;
+import com.google.code.bing.search.schema.SearchResponse;
 
 /**
  * @author Nabeel Mukhtar
@@ -113,7 +113,6 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
 	@Override
 	public SearchResponse search(SearchRequest request) {
         assertNotNull("search request", request);
-        assertNotNull("search parameters", request.getParameters());
 
         BingSearchApiUrlBuilder builder = createBingSearchApiUrlBuilder(BingSearchApiUrls.BASE_URL);
         String                apiUrl  =
