@@ -1,11 +1,10 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SearchResponse;
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.adapter.jaxb.ads.AdImpl;
 import com.google.code.bing.search.schema.adapter.jaxb.instantanswer.InstantAnswerImpl;
 import com.google.code.bing.search.schema.adapter.jaxb.mobileweb.MobileWebImpl;
@@ -29,7 +28,7 @@ import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.translation.TranslationResponse;
 import com.google.code.bing.search.schema.web.WebResponse;
 public class SearchResponseImpl
-    implements Serializable, SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse>
+    extends BaseAdapter implements SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -152,17 +151,15 @@ public class SearchResponseImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse toAdaptee(
-			SearchResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse();
+		copyProperties(adapter , this);
+		return adapter;
 	}
 
 	@Override
-	public SearchResponse toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

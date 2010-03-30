@@ -1,14 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.web;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.DeepLinks;
 import com.google.code.bing.search.schema.web.SearchTags;
 import com.google.code.bing.search.schema.web.WebResult;
 public class WebResultImpl
-    implements Serializable, WebResult, Adaptable<WebResult, com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult>
+    extends BaseAdapter implements WebResult, Adaptable<WebResult, com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -86,17 +85,15 @@ public class WebResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult toAdaptee(
-			WebResult adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public WebResult toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

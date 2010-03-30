@@ -1,12 +1,11 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.translation;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.translation.TranslationResult;
 public class TranslationResultImpl
-    implements Serializable, TranslationResult, Adaptable<TranslationResult, com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult>
+    extends BaseAdapter implements TranslationResult, Adaptable<TranslationResult, com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -21,17 +20,15 @@ public class TranslationResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult toAdaptee(
-			TranslationResult adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public TranslationResult toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

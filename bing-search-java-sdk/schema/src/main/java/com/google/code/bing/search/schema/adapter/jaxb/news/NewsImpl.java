@@ -1,15 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.news;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.RelatedSearches;
 import com.google.code.bing.search.schema.news.Results;
 import com.microsoft.schemas.livesearch._2008._04.xml.news.News;
 public class NewsImpl
-    implements Serializable, NewsResponse, Adaptable<NewsResponse, News>
+    extends BaseAdapter implements NewsResponse, Adaptable<NewsResponse, News>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -51,15 +50,14 @@ public class NewsImpl
     }
 
 	@Override
-	public News toAdaptee(NewsResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public News adaptTo() {
+		News adapter = new News();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public NewsResponse toAdapter(News adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adaptFrom(News adaptee) {
+		copyProperties(this, adaptee);
 	}
-
 }

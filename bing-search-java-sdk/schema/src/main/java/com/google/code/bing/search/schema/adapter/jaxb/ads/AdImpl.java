@@ -1,15 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.ads;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.ads.AdResponse;
 import com.google.code.bing.search.schema.ads.Results;
 import com.microsoft.schemas.livesearch._2008._04.xml.ads.Ad;
 
 public class AdImpl
-    implements Serializable, AdResponse, Adaptable<AdResponse, Ad>
+    extends BaseAdapter implements AdResponse, Adaptable<AdResponse, Ad>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -51,15 +50,14 @@ public class AdImpl
     }
 
 	@Override
-	public Ad toAdaptee(AdResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ad adaptTo() {
+		Ad adapter = new Ad();
+		copyProperties(adapter , this);
+		return adapter;
 	}
 
 	@Override
-	public AdResponse toAdapter(Ad adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adaptFrom(Ad adaptee) {
+		copyProperties(this, adaptee);
 	}
-
 }

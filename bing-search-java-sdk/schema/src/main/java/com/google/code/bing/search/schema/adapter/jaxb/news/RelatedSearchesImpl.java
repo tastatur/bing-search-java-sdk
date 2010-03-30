@@ -1,15 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.news;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 import com.google.code.bing.search.schema.news.RelatedSearches;
 public class RelatedSearchesImpl
-    implements Serializable, RelatedSearches, Adaptable<RelatedSearches, com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches>
+    extends BaseAdapter implements RelatedSearches, Adaptable<RelatedSearches, com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,17 +23,15 @@ public class RelatedSearchesImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches toAdaptee(
-			RelatedSearches adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public RelatedSearches toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

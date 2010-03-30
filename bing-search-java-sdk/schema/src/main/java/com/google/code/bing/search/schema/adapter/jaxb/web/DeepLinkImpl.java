@@ -1,12 +1,11 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.web;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.DeepLink;
 public class DeepLinkImpl
-    implements Serializable, DeepLink, Adaptable<DeepLink, com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink>
+    extends BaseAdapter implements DeepLink, Adaptable<DeepLink, com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -30,17 +29,15 @@ public class DeepLinkImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink toAdaptee(
-			DeepLink adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public DeepLink toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

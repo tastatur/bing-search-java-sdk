@@ -1,12 +1,11 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.flightstatus;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 public class DestinationAirportImpl
-    implements Serializable, DestinationAirport, Adaptable<DestinationAirport, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport>
+    extends BaseAdapter implements DestinationAirport, Adaptable<DestinationAirport, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -39,17 +38,15 @@ public class DestinationAirportImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport toAdaptee(
-			DestinationAirport adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport();
+		copyProperties(adapter    , this);
+		return adapter;
 	}
 
 	@Override
-	public DestinationAirport toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.DestinationAirport adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

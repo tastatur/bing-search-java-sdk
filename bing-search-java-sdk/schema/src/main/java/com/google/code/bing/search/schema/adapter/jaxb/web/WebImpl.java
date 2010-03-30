@@ -1,14 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.web;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.Results;
 import com.google.code.bing.search.schema.web.WebResponse;
 import com.microsoft.schemas.livesearch._2008._04.xml.web.Web;
 public class WebImpl
-    implements Serializable, WebResponse, Adaptable<WebResponse, Web>
+    extends BaseAdapter implements WebResponse, Adaptable<WebResponse, Web>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -41,15 +40,14 @@ public class WebImpl
     }
 
 	@Override
-	public Web toAdaptee(WebResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public Web adaptTo() {
+		Web adapter = new Web();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public WebResponse toAdapter(Web adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adaptFrom(Web adaptee) {
+		copyProperties(this, adaptee);
 	}
-
 }

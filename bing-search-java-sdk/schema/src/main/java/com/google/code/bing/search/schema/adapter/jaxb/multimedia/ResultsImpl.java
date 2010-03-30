@@ -1,16 +1,16 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.multimedia;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
 import com.google.code.bing.search.schema.multimedia.Results;
 import com.google.code.bing.search.schema.multimedia.VideoResult;
 public class ResultsImpl
-    implements Serializable, Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -32,17 +32,15 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results toAdaptee(
-			Results adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results();
+		copyProperties(adapter  , this);
+		return adapter;
 	}
 
 	@Override
-	public Results toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

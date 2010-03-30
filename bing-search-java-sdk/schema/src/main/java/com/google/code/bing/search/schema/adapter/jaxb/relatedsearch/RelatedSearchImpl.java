@@ -1,14 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.relatedsearch;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.Results;
 import com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.RelatedSearch;
 public class RelatedSearchImpl
-    implements Serializable, RelatedSearchResponse, Adaptable<RelatedSearchResponse, RelatedSearch>
+    extends BaseAdapter implements RelatedSearchResponse, Adaptable<RelatedSearchResponse, RelatedSearch>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,15 +22,14 @@ public class RelatedSearchImpl
     }
 
 	@Override
-	public RelatedSearch toAdaptee(RelatedSearchResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public RelatedSearch adaptTo() {
+		RelatedSearch adapter = new RelatedSearch();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public RelatedSearchResponse toAdapter(RelatedSearch adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adaptFrom(RelatedSearch adaptee) {
+		copyProperties(this, adaptee);
 	}
-
 }

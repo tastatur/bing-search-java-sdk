@@ -1,14 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.spell;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.spell.Results;
 import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.microsoft.schemas.livesearch._2008._04.xml.spell.Spell;
 public class SpellImpl
-    implements Serializable, SpellResponse, Adaptable<SpellResponse, Spell>
+    extends BaseAdapter implements SpellResponse, Adaptable<SpellResponse, Spell>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -32,15 +31,14 @@ public class SpellImpl
     }
 
 	@Override
-	public Spell toAdaptee(SpellResponse adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public Spell adaptTo() {
+		Spell adapter = new Spell();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public SpellResponse toAdapter(Spell adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void adaptFrom(Spell adaptee) {
+		copyProperties(this, adaptee);
 	}
-
 }

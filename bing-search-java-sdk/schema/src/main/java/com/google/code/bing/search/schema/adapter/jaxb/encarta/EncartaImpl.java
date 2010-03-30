@@ -1,12 +1,11 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.encarta;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.encarta.Encarta;
 public class EncartaImpl
-    implements Serializable, Encarta, Adaptable<Encarta, com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta>
+    extends BaseAdapter implements Encarta, Adaptable<Encarta, com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -21,17 +20,15 @@ public class EncartaImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta toAdaptee(
-			Encarta adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adapter = new com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta();
+		copyProperties(adapter   , this);
+		return adapter;
 	}
 
 	@Override
-	public Encarta toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

@@ -17,18 +17,14 @@ public interface Adaptable<Adapter, Adaptee> {
      *
      *
      * @param adaptee
-     *
-     * @return
      */
-    public Adapter toAdapter(Adaptee adaptee);
+    public void adaptFrom(Adaptee adaptee);
 
     /**
      * Method description
      *
      *
-     * @param adapter
-     *
      * @return
      */
-    public Adaptee toAdaptee(Adapter adapter);
+    public Adaptee adaptTo();
 }

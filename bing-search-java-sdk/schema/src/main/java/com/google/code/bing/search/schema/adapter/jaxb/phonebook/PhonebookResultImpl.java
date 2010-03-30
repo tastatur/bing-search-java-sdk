@@ -1,12 +1,11 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.phonebook;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
 public class PhonebookResultImpl
-    implements Serializable, PhonebookResult, Adaptable<PhonebookResult, com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult>
+    extends BaseAdapter implements PhonebookResult, Adaptable<PhonebookResult, com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -156,17 +155,15 @@ public class PhonebookResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult toAdaptee(
-			PhonebookResult adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public PhonebookResult toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

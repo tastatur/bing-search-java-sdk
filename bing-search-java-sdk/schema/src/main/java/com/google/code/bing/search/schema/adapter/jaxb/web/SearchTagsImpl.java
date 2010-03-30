@@ -1,15 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.web;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.SearchTags;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 public class SearchTagsImpl
-    implements Serializable, SearchTags, Adaptable<SearchTags, com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags>
+    extends BaseAdapter implements SearchTags, Adaptable<SearchTags, com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,17 +23,15 @@ public class SearchTagsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags toAdaptee(
-			SearchTags adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags();
+		copyProperties(adapter, this);
+		return adapter;
 	}
 
 	@Override
-	public SearchTags toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

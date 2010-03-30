@@ -1,16 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.instantanswer;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.adapter.jaxb.encarta.EncartaImpl;
 import com.google.code.bing.search.schema.adapter.jaxb.flightstatus.FlightStatusImpl;
 import com.google.code.bing.search.schema.encarta.Encarta;
 import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
 public class InstantAnswerSpecificDataImpl
-    implements Serializable, InstantAnswerSpecificData, Adaptable<InstantAnswerSpecificData, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData>
+    extends BaseAdapter implements InstantAnswerSpecificData, Adaptable<InstantAnswerSpecificData, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -34,17 +33,15 @@ public class InstantAnswerSpecificDataImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData toAdaptee(
-			InstantAnswerSpecificData adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData();
+		copyProperties(adapter    , this);
+		return adapter;
 	}
 
 	@Override
-	public InstantAnswerSpecificData toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }

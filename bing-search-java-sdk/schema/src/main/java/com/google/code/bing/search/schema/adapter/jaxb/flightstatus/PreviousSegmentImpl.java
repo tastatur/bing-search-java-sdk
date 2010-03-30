@@ -1,14 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.jaxb.flightstatus;
 
-import java.io.Serializable;
-
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 import com.google.code.bing.search.schema.flightstatus.PreviousSegment;
 public class PreviousSegmentImpl
-    implements Serializable, PreviousSegment, Adaptable<PreviousSegment, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment>
+    extends BaseAdapter implements PreviousSegment, Adaptable<PreviousSegment, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -41,17 +40,15 @@ public class PreviousSegmentImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment toAdaptee(
-			PreviousSegment adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment adaptTo() {
+		com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment();
+		copyProperties(adapter , this);
+		return adapter;
 	}
 
 	@Override
-	public PreviousSegment toAdapter(
+	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.PreviousSegment adaptee) {
-		// TODO Auto-generated method stub
-		return null;
+		copyProperties(this, adaptee);
 	}
-
 }
