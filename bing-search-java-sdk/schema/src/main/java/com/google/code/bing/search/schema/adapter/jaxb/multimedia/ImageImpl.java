@@ -43,11 +43,19 @@ public class ImageImpl
 	public Image adaptTo() {
 		Image adapter = new Image();
 		copyProperties(adapter, this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(Image adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

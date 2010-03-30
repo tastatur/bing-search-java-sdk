@@ -25,11 +25,19 @@ public class InstantAnswerImpl
 	public InstantAnswer adaptTo() {
 		InstantAnswer adapter = new InstantAnswer();
 		copyProperties(adapter  , this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(InstantAnswer adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

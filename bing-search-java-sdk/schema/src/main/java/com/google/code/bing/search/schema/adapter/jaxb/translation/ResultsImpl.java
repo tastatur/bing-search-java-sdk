@@ -26,6 +26,9 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.translation.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.translation.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.translation.Results();
 		copyProperties(adapter, this);
+		for (TranslationResult o : getTranslationResultList()) {
+			adapter.getTranslationResultList().add(((TranslationResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.translation.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.translation.TranslationResult o : adaptee.getTranslationResultList()) {
+			TranslationResultImpl result = new TranslationResultImpl();
+			result.adaptFrom(o);
+			getTranslationResultList().add(result);
+		}
 	}
 }

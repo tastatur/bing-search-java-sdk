@@ -36,6 +36,12 @@ public class InstantAnswerSpecificDataImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData();
 		copyProperties(adapter    , this);
+		if (getFlightStatus() != null) {
+			adapter.setFlightStatus(((FlightStatusImpl) getFlightStatus()).adaptTo());
+		}
+		if (getEncarta() != null) {
+			adapter.setEncarta(((EncartaImpl) getEncarta()).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -43,5 +49,15 @@ public class InstantAnswerSpecificDataImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getFlightStatus() != null) {
+			FlightStatusImpl results = new FlightStatusImpl();
+			results.adaptFrom(adaptee.getFlightStatus());
+			setFlightStatus(results);
+		}
+		if (adaptee.getEncarta() != null) {
+			EncartaImpl results = new EncartaImpl();
+			results.adaptFrom(adaptee.getEncarta());
+			setEncarta(results);
+		}
 	}
 }

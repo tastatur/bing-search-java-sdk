@@ -53,11 +53,19 @@ public class AdImpl
 	public Ad adaptTo() {
 		Ad adapter = new Ad();
 		copyProperties(adapter , this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(Ad adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

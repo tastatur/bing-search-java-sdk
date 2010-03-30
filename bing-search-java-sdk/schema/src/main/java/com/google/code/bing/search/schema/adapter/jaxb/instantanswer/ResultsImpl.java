@@ -26,6 +26,9 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results();
 		copyProperties(adapter , this);
+		for (InstantAnswerResult o : getInstantAnswerResultList()) {
+			adapter.getInstantAnswerResultList().add(((InstantAnswerResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult o : adaptee.getInstantAnswerResultList()) {
+			InstantAnswerResultImpl result = new InstantAnswerResultImpl();
+			result.adaptFrom(o);
+			getInstantAnswerResultList().add(result);
+		}
 	}
 }

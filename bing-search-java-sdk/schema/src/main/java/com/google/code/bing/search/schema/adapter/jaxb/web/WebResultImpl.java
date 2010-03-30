@@ -88,6 +88,12 @@ public class WebResultImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult();
 		copyProperties(adapter, this);
+		if (getSearchTags() != null) {
+			adapter.setSearchTags(((SearchTagsImpl) getSearchTags()).adaptTo());
+		}
+		if (getDeepLinks() != null) {
+			adapter.setDeepLinks(((DeepLinksImpl) getDeepLinks()).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -95,5 +101,15 @@ public class WebResultImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getSearchTags() != null) {
+			SearchTagsImpl results = new SearchTagsImpl();
+			results.adaptFrom(adaptee.getSearchTags());
+			setSearchTags(results);
+		}
+		if (adaptee.getDeepLinks() != null) {
+			DeepLinksImpl results = new DeepLinksImpl();
+			results.adaptFrom(adaptee.getDeepLinks());
+			setDeepLinks(results);
+		}
 	}
 }

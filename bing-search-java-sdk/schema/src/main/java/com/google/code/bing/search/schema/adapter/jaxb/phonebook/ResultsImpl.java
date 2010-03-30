@@ -26,6 +26,9 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results();
 		copyProperties(adapter, this);
+		for (PhonebookResult o : getPhonebookResultList()) {
+			adapter.getPhonebookResultList().add(((PhonebookResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult o : adaptee.getPhonebookResultList()) {
+			PhonebookResultImpl result = new PhonebookResultImpl();
+			result.adaptFrom(o);
+			getPhonebookResultList().add(result);
+		}
 	}
 }

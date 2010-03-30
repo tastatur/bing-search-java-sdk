@@ -34,11 +34,19 @@ public class SpellImpl
 	public Spell adaptTo() {
 		Spell adapter = new Spell();
 		copyProperties(adapter, this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(Spell adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

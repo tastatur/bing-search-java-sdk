@@ -69,6 +69,9 @@ public class VideoResultImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult();
 		copyProperties(adapter, this);
+		if (getStaticThumbnail() != null) {
+			adapter.setStaticThumbnail(((StaticThumbnailImpl) getStaticThumbnail()).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -76,5 +79,10 @@ public class VideoResultImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getStaticThumbnail() != null) {
+			StaticThumbnailImpl results = new StaticThumbnailImpl();
+			results.adaptFrom(adaptee.getStaticThumbnail());
+			setStaticThumbnail(results);
+		}
 	}
 }

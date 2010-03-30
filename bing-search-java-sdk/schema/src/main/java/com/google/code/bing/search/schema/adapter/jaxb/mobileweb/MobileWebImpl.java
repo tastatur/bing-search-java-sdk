@@ -43,11 +43,19 @@ public class MobileWebImpl
 	public MobileWeb adaptTo() {
 		MobileWeb adapter = new MobileWeb();
 		copyProperties(adapter  , this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(MobileWeb adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

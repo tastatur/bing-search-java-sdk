@@ -25,11 +25,19 @@ public class RelatedSearchImpl
 	public RelatedSearch adaptTo() {
 		RelatedSearch adapter = new RelatedSearch();
 		copyProperties(adapter, this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(RelatedSearch adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
 	}
 }

@@ -96,6 +96,10 @@ public class ImageResultImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult();
 		copyProperties(adapter , this);
+		if (getThumbnail() != null) {
+			adapter.setThumbnail(((ThumbnailImpl) getThumbnail()).adaptTo());
+		}
+		
 		return adapter;
 	}
 
@@ -103,5 +107,10 @@ public class ImageResultImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getThumbnail() != null) {
+			ThumbnailImpl thumbnail = new ThumbnailImpl();
+			thumbnail.adaptFrom(adaptee.getThumbnail());
+			setThumbnail(thumbnail);
+		}
 	}
 }

@@ -53,11 +53,27 @@ public class NewsImpl
 	public News adaptTo() {
 		News adapter = new News();
 		copyProperties(adapter, this);
+		if (getResults() != null) {
+			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+		}
+		if (getRelatedSearches() != null) {
+			adapter.setRelatedSearches(((RelatedSearchesImpl) getRelatedSearches()).adaptTo());
+		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(News adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getResults() != null) {
+			ResultsImpl results = new ResultsImpl();
+			results.adaptFrom(adaptee.getResults());
+			setResults(results);
+		}
+		if (adaptee.getRelatedSearches() != null) {
+			RelatedSearchesImpl results = new RelatedSearchesImpl();
+			results.adaptFrom(adaptee.getRelatedSearches());
+			setRelatedSearches(results);
+		}
 	}
 }

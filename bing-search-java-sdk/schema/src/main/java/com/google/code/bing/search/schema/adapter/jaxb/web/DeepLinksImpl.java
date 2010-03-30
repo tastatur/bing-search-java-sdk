@@ -26,6 +26,9 @@ public class DeepLinksImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks();
 		copyProperties(adapter, this);
+		for (DeepLink deepLink : getDeepLinkList()) {
+			adapter.getDeepLinkList().add(((DeepLinkImpl) deepLink).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class DeepLinksImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink o : adaptee.getDeepLinkList()) {
+			DeepLinkImpl deepLink = new DeepLinkImpl();
+			deepLink.adaptFrom(o);
+			getDeepLinkList().add(deepLink);
+		}
 	}
 }

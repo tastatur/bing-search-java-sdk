@@ -26,6 +26,9 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.web.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.web.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.Results();
 		copyProperties(adapter, this);
+		for (WebResult o : getWebResultList()) {
+			adapter.getWebResultList().add(((WebResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult o : adaptee.getWebResultList()) {
+			WebResultImpl result = new WebResultImpl();
+			result.adaptFrom(o);
+			getWebResultList().add(result);
+		}
 	}
 }

@@ -26,6 +26,9 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.spell.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.spell.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.spell.Results();
 		copyProperties(adapter, this);
+		for (SpellResult o : getSpellResultList()) {
+			adapter.getSpellResultList().add(((SpellResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.spell.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.spell.SpellResult o : adaptee.getSpellResultList()) {
+			SpellResultImpl result = new SpellResultImpl();
+			result.adaptFrom(o);
+			getSpellResultList().add(result);
+		}
 	}
 }

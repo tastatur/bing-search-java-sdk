@@ -26,6 +26,9 @@ public class SearchTagsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags();
 		copyProperties(adapter, this);
+		for (WebSearchTag o : getWebSearchTagList()) {
+			adapter.getWebSearchTagList().add(((WebSearchTagImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class SearchTagsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.web.SearchTags adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag o : adaptee.getWebSearchTagList()) {
+			WebSearchTagImpl result = new WebSearchTagImpl();
+			result.adaptFrom(o);
+			getWebSearchTagList().add(result);
+		}
 	}
 }

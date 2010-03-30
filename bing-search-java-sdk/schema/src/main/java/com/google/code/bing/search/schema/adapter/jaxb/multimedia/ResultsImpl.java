@@ -35,6 +35,12 @@ public class ResultsImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results();
 		copyProperties(adapter  , this);
+		for (ImageResult o : getImageResultList()) {
+			adapter.getImageResultList().add(((ImageResultImpl) o).adaptTo());
+		}
+		for (VideoResult o : getVideoResultList()) {
+			adapter.getVideoResultList().add(((VideoResultImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -42,5 +48,15 @@ public class ResultsImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Results adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult o : adaptee.getImageResultList()) {
+			ImageResultImpl result = new ImageResultImpl();
+			result.adaptFrom(o);
+			getImageResultList().add(result);
+		}
+		for (com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult o : adaptee.getVideoResultList()) {
+			VideoResultImpl result = new VideoResultImpl();
+			result.adaptFrom(o);
+			getVideoResultList().add(result);
+		}
 	}
 }

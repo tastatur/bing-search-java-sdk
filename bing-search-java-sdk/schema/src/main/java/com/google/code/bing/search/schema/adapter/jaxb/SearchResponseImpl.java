@@ -154,6 +154,43 @@ public class SearchResponseImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse();
 		copyProperties(adapter , this);
+		if (getQuery() != null) {
+			adapter.setQuery(((QueryImpl) getQuery()).adaptTo());
+		}
+		if (getAd() != null) {
+			adapter.setAd(((AdImpl) getAd()).adaptTo());
+		}
+		if (getInstantAnswer() != null) {
+			adapter.setInstantAnswer(((InstantAnswerImpl) getInstantAnswer()).adaptTo());
+		}
+		if (getMobileWeb() != null) {
+			adapter.setMobileWeb(((MobileWebImpl) getMobileWeb()).adaptTo());
+		}
+		if (getImage() != null) {
+			adapter.setImage(((ImageImpl) getImage()).adaptTo());
+		}
+		if (getVideo() != null) {
+			adapter.setVideo(((VideoImpl) getVideo()).adaptTo());
+		}
+		if (getPhonebook() != null) {
+			adapter.setPhonebook(((PhonebookImpl) getPhonebook()).adaptTo());
+		}
+		if (getRelatedSearch() != null) {
+			adapter.setRelatedSearch(((RelatedSearchImpl) getRelatedSearch()).adaptTo());
+		}
+		if (getSpell() != null) {
+			adapter.setSpell(((SpellImpl) getSpell()).adaptTo());
+		}
+		if (getNews() != null) {
+			adapter.setNews(((NewsImpl) getNews()).adaptTo());
+		}
+		if (getTranslation() != null) {
+			adapter.setTranslation(((TranslationImpl) getTranslation()).adaptTo());
+		}
+		if (getWeb() != null) {
+			adapter.setWeb(((WebImpl) getWeb()).adaptTo());
+		}
+		
 		return adapter;
 	}
 
@@ -161,5 +198,65 @@ public class SearchResponseImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getQuery() != null) {
+			QueryImpl results = new QueryImpl();
+			results.adaptFrom(adaptee.getQuery());
+			setQuery(results);
+		}
+		if (adaptee.getAd() != null) {
+			AdImpl results = new AdImpl();
+			results.adaptFrom(adaptee.getAd());
+			setAd(results);
+		}
+		if (adaptee.getInstantAnswer() != null) {
+			InstantAnswerImpl results = new InstantAnswerImpl();
+			results.adaptFrom(adaptee.getInstantAnswer());
+			setInstantAnswer(results);
+		}
+		if (adaptee.getMobileWeb() != null) {
+			MobileWebImpl results = new MobileWebImpl();
+			results.adaptFrom(adaptee.getMobileWeb());
+			setMobileWeb(results);
+		}
+		if (adaptee.getImage() != null) {
+			ImageImpl results = new ImageImpl();
+			results.adaptFrom(adaptee.getImage());
+			setImage(results);
+		}
+		if (adaptee.getVideo() != null) {
+			VideoImpl results = new VideoImpl();
+			results.adaptFrom(adaptee.getVideo());
+			setVideo(results);
+		}
+		if (adaptee.getPhonebook() != null) {
+			PhonebookImpl results = new PhonebookImpl();
+			results.adaptFrom(adaptee.getPhonebook());
+			setPhonebook(results);
+		}
+		if (adaptee.getRelatedSearch() != null) {
+			RelatedSearchImpl results = new RelatedSearchImpl();
+			results.adaptFrom(adaptee.getRelatedSearch());
+			setRelatedSearch(results);
+		}
+		if (adaptee.getSpell() != null) {
+			SpellImpl results = new SpellImpl();
+			results.adaptFrom(adaptee.getSpell());
+			setSpell(results);
+		}
+		if (adaptee.getNews() != null) {
+			NewsImpl results = new NewsImpl();
+			results.adaptFrom(adaptee.getNews());
+			setNews(results);
+		}
+		if (adaptee.getTranslation() != null) {
+			TranslationImpl results = new TranslationImpl();
+			results.adaptFrom(adaptee.getTranslation());
+			setTranslation(results);
+		}
+		if (adaptee.getWeb() != null) {
+			WebImpl results = new WebImpl();
+			results.adaptFrom(adaptee.getWeb());
+			setWeb(results);
+		}
 	}
 }

@@ -26,6 +26,9 @@ public class RelatedSearchesImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches();
 		copyProperties(adapter, this);
+		for (NewsRelatedSearch o : getNewsRelatedSearchList()) {
+			adapter.getNewsRelatedSearchList().add(((NewsRelatedSearchImpl) o).adaptTo());
+		}
 		return adapter;
 	}
 
@@ -33,5 +36,10 @@ public class RelatedSearchesImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptee) {
 		copyProperties(this, adaptee);
+		for (com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch o : adaptee.getNewsRelatedSearchList()) {
+			NewsRelatedSearchImpl result = new NewsRelatedSearchImpl();
+			result.adaptFrom(o);
+			getNewsRelatedSearchList().add(result);
+		}
 	}
 }

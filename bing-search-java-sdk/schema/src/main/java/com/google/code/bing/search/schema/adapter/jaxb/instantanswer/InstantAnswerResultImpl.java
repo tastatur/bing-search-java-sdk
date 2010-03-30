@@ -69,6 +69,10 @@ public class InstantAnswerResultImpl
 	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptTo() {
 		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult();
 		copyProperties(adapter   , this);
+		if (getInstantAnswerSpecificData() != null) {
+			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
+		}
+		
 		return adapter;
 	}
 
@@ -76,5 +80,10 @@ public class InstantAnswerResultImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptee) {
 		copyProperties(this, adaptee);
+		if (adaptee.getInstantAnswerSpecificData() != null) {
+			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
+			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
+			setInstantAnswerSpecificData(results);
+		}
 	}
 }
