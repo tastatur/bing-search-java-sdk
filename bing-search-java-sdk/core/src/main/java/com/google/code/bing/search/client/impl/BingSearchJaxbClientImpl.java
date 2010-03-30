@@ -4,6 +4,8 @@
 package com.google.code.bing.search.client.impl;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -14,15 +16,51 @@ import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.google.code.bing.search.schema.AdultOption;
+import com.google.code.bing.search.schema.Error;
+import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SchemaElementFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.AdultOption;
-import com.microsoft.schemas.livesearch._2008._03.search.ObjectFactory;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchOption;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchRequest;
-import com.microsoft.schemas.livesearch._2008._03.search.SearchResponse;
-import com.microsoft.schemas.livesearch._2008._03.search.SourceType;
-import com.microsoft.schemas.livesearch._2008._03.search.WebResult;
-import com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption;
+import com.google.code.bing.search.schema.SchemaEntity;
+import com.google.code.bing.search.schema.SearchOption;
+import com.google.code.bing.search.schema.SearchRequest;
+import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.SourceType;
+import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.jaxb.SearchResponseImpl;
+import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
+import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
+import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
+import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
+import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
+import com.google.code.bing.search.schema.multimedia.ImageRequest;
+import com.google.code.bing.search.schema.multimedia.ImageResponse;
+import com.google.code.bing.search.schema.multimedia.ImageResult;
+import com.google.code.bing.search.schema.multimedia.Thumbnail;
+import com.google.code.bing.search.schema.multimedia.VideoRequest;
+import com.google.code.bing.search.schema.multimedia.VideoResponse;
+import com.google.code.bing.search.schema.multimedia.VideoResult;
+import com.google.code.bing.search.schema.news.NewsArticle;
+import com.google.code.bing.search.schema.news.NewsCollection;
+import com.google.code.bing.search.schema.news.NewsRelatedSearch;
+import com.google.code.bing.search.schema.news.NewsRequest;
+import com.google.code.bing.search.schema.news.NewsResponse;
+import com.google.code.bing.search.schema.news.NewsResult;
+import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
+import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
+import com.google.code.bing.search.schema.phonebook.PhonebookResult;
+import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
+import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
+import com.google.code.bing.search.schema.spell.SpellResponse;
+import com.google.code.bing.search.schema.spell.SpellResult;
+import com.google.code.bing.search.schema.translation.TranslationRequest;
+import com.google.code.bing.search.schema.translation.TranslationResponse;
+import com.google.code.bing.search.schema.translation.TranslationResult;
+import com.google.code.bing.search.schema.web.DeepLink;
+import com.google.code.bing.search.schema.web.WebRequest;
+import com.google.code.bing.search.schema.web.WebResponse;
+import com.google.code.bing.search.schema.web.WebResult;
+import com.google.code.bing.search.schema.web.WebSearchOption;
+import com.google.code.bing.search.schema.web.WebSearchTag;
 
 /**
  * @author Nabeel Mukhtar
@@ -41,7 +79,14 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
     
     /** Do not access directly. It may be null!!!. Use {@link #getJaxbContext()} */
     private static JAXBContext JAXB_CONTEXT;
-
+    
+    /** Field description */
+	private static final Map<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>> ADAPTER_CLASSES_MAP = new HashMap<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>>();
+	
+	static {
+		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
+	}
+    
     /**
      * Method description
      *
@@ -57,13 +102,10 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
             Unmarshaller u  = getJaxbContext().createUnmarshaller();
             
             com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse response = (com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse) u.unmarshal(xmlContent);
-    		for (com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult result : response.getWeb().getResults().getWebResultList()) {
-    			System.out.println(result.getTitle());
-    			System.out.println(result.getDescription());
-    			System.out.println(result.getUrl());
-    		}
+            Adaptable<?, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse> adaptable = (Adaptable<?, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse>) ADAPTER_CLASSES_MAP.get(clazz).newInstance();
             
-            return null;
+            adaptable.adaptFrom(response);
+            return (T) adaptable;
         } catch (JAXBException e) {
             throw new BingSearchException(e);
         } catch (Exception e) {
@@ -132,16 +174,235 @@ public class BingSearchJaxbClientImpl extends BaseBingSearchApiClient {
 		JAXB_CONTEXT = context;
 	}
 	
-	private static class JaxbElementFactory extends ObjectFactory implements SchemaElementFactory {
-		public JaxbElementFactory() {
-			super();
+	private static class JaxbElementFactory implements SchemaElementFactory {
+
+		@Override
+		public DeepLink createDeepLink() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Error createError() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public ImageRequest createImageRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public ImageResponse createImageResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public ImageResult createImageResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InstantAnswerResponse createInstantAnswerResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public InstantAnswerResult createInstantAnswerResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public MobileWebRequest createMobileWebRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public MobileWebResponse createMobileWebResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public MobileWebResult createMobileWebResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsArticle createNewsArticle() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsCollection createNewsCollection() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsRelatedSearch createNewsRelatedSearch() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsRequest createNewsRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsResponse createNewsResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public NewsResult createNewsResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public PhonebookRequest createPhonebookRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public PhonebookResponse createPhonebookResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public PhonebookResult createPhonebookResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Query createQuery() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public RelatedSearchResponse createRelatedSearchResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public RelatedSearchResult createRelatedSearchResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SearchRequest createSearchRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SearchResponse createSearchResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SpellResponse createSpellResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SpellResult createSpellResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Thumbnail createThumbnail() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public TranslationRequest createTranslationRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public TranslationResponse createTranslationResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public TranslationResult createTranslationResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public VideoRequest createVideoRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public VideoResponse createVideoResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public VideoResult createVideoResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public WebRequest createWebRequest() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public WebResponse createWebResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public WebResult createWebResult() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public WebSearchTag createWebSearchTag() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 	
 	public static void main(String[] args) throws Exception {
 		BingSearchClient client = new BingSearchJaxbClientImpl();
 		SearchResponse response = client.search(((BingSearchJaxbClientImpl) client).createSearchRequest());
-		for (WebResult result : response.getParameters().getWeb().getResults().getWebResult()) {
+		for (WebResult result : response.getWeb().getResults().getWebResultList()) {
 			System.out.println(result.getTitle());
 			System.out.println(result.getDescription());
 			System.out.println(result.getUrl());
