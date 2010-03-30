@@ -13,6 +13,43 @@ import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.adapter.json.ErrorImpl;
+import com.google.code.bing.search.schema.adapter.json.QueryImpl;
+import com.google.code.bing.search.schema.adapter.json.SearchRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.SearchResponseImpl;
+import com.google.code.bing.search.schema.adapter.json.instantanswer.InstantAnswerImpl;
+import com.google.code.bing.search.schema.adapter.json.instantanswer.InstantAnswerResultImpl;
+import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebImpl;
+import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebResultImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.ImageImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.ImageRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.ImageResultImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.ThumbnailImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.VideoImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.VideoRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.VideoResultImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsArticleImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsCollectionImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsRelatedSearchImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsResultImpl;
+import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookImpl;
+import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookResultImpl;
+import com.google.code.bing.search.schema.adapter.json.relatedsearch.RelatedSearchImpl;
+import com.google.code.bing.search.schema.adapter.json.relatedsearch.RelatedSearchResultImpl;
+import com.google.code.bing.search.schema.adapter.json.spell.SpellImpl;
+import com.google.code.bing.search.schema.adapter.json.spell.SpellResultImpl;
+import com.google.code.bing.search.schema.adapter.json.translation.TranslationImpl;
+import com.google.code.bing.search.schema.adapter.json.translation.TranslationRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.translation.TranslationResultImpl;
+import com.google.code.bing.search.schema.adapter.json.web.DeepLinkImpl;
+import com.google.code.bing.search.schema.adapter.json.web.WebImpl;
+import com.google.code.bing.search.schema.adapter.json.web.WebRequestImpl;
+import com.google.code.bing.search.schema.adapter.json.web.WebResultImpl;
+import com.google.code.bing.search.schema.adapter.json.web.WebSearchTagImpl;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
@@ -125,224 +162,187 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
 
 		@Override
 		public DeepLink createDeepLink() {
-			// TODO Auto-generated method stub
-			return null;
+			return new DeepLinkImpl();
 		}
 
 		@Override
 		public Error createError() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ErrorImpl();
 		}
 
 		@Override
 		public ImageRequest createImageRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ImageRequestImpl();
 		}
 
 		@Override
 		public ImageResponse createImageResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ImageImpl();
 		}
 
 		@Override
 		public ImageResult createImageResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ImageResultImpl();
 		}
 
 		@Override
 		public InstantAnswerResponse createInstantAnswerResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new InstantAnswerImpl();
 		}
 
 		@Override
 		public InstantAnswerResult createInstantAnswerResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new InstantAnswerResultImpl();
 		}
 
 		@Override
 		public MobileWebRequest createMobileWebRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new MobileWebRequestImpl();
 		}
 
 		@Override
 		public MobileWebResponse createMobileWebResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new MobileWebImpl();
 		}
 
 		@Override
 		public MobileWebResult createMobileWebResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new MobileWebResultImpl();
 		}
 
 		@Override
 		public NewsArticle createNewsArticle() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsArticleImpl();
 		}
 
 		@Override
 		public NewsCollection createNewsCollection() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsCollectionImpl();
 		}
 
 		@Override
 		public NewsRelatedSearch createNewsRelatedSearch() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsRelatedSearchImpl();
 		}
 
 		@Override
 		public NewsRequest createNewsRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsRequestImpl();
 		}
 
 		@Override
 		public NewsResponse createNewsResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsImpl();
 		}
 
 		@Override
 		public NewsResult createNewsResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new NewsResultImpl();
 		}
 
 		@Override
 		public PhonebookRequest createPhonebookRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new PhonebookRequestImpl();
 		}
 
 		@Override
 		public PhonebookResponse createPhonebookResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new PhonebookImpl();
 		}
 
 		@Override
 		public PhonebookResult createPhonebookResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new PhonebookResultImpl();
 		}
 
 		@Override
 		public Query createQuery() {
-			// TODO Auto-generated method stub
-			return null;
+			return new QueryImpl();
 		}
 
 		@Override
 		public RelatedSearchResponse createRelatedSearchResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new RelatedSearchImpl();
 		}
 
 		@Override
 		public RelatedSearchResult createRelatedSearchResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new RelatedSearchResultImpl();
 		}
 
 		@Override
 		public SearchRequest createSearchRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new SearchRequestImpl();
 		}
 
 		@Override
 		public SearchResponse createSearchResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new SearchResponseImpl();
 		}
 
 		@Override
 		public SpellResponse createSpellResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new SpellImpl();
 		}
 
 		@Override
 		public SpellResult createSpellResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new SpellResultImpl();
 		}
 
 		@Override
 		public Thumbnail createThumbnail() {
-			// TODO Auto-generated method stub
-			return null;
+			return new ThumbnailImpl();
 		}
 
 		@Override
 		public TranslationRequest createTranslationRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new TranslationRequestImpl();
 		}
 
 		@Override
 		public TranslationResponse createTranslationResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new TranslationImpl();
 		}
 
 		@Override
 		public TranslationResult createTranslationResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new TranslationResultImpl();
 		}
 
 		@Override
 		public VideoRequest createVideoRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new VideoRequestImpl();
 		}
 
 		@Override
 		public VideoResponse createVideoResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new VideoImpl();
 		}
 
 		@Override
 		public VideoResult createVideoResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new VideoResultImpl();
 		}
 
 		@Override
 		public WebRequest createWebRequest() {
-			// TODO Auto-generated method stub
-			return null;
+			return new WebRequestImpl();
 		}
 
 		@Override
 		public WebResponse createWebResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			return new WebImpl();
 		}
 
 		@Override
 		public WebResult createWebResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return new WebResultImpl();
 		}
 
 		@Override
 		public WebSearchTag createWebSearchTag() {
-			// TODO Auto-generated method stub
-			return null;
+			return new WebSearchTagImpl();
 		}
 	}
 }
