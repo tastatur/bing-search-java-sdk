@@ -7,17 +7,25 @@ import java.io.Serializable;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * @author nmukhtar
  *
  */
 public abstract class BaseAdapter implements Serializable {
+	
+	/**
+	 * Logging for this instance
+	 */
+	protected Log log = LogFactory.getLog(getClass());
+	
 	protected void copyProperties(Object dest, Object src) {
 		try {
 			BeanUtils.copyProperties(dest, src);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error while copying properties.", e);
 		}		
 	}
 	@SuppressWarnings("unchecked")
@@ -25,7 +33,7 @@ public abstract class BaseAdapter implements Serializable {
 		try {
 			BeanUtils.populate(dest, src);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error while copying properties.", e);
 		}		
 	}
 	
@@ -35,7 +43,7 @@ public abstract class BaseAdapter implements Serializable {
 			Map srcMap = BeanUtils.describe(src);
 			dest.putAll(srcMap);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error while copying properties.", e);
 		}		
 	}
 }

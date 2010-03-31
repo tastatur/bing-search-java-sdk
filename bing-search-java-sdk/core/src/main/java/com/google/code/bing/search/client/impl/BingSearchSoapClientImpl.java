@@ -6,6 +6,7 @@ import java.util.concurrent.Future;
 
 import javax.xml.ws.WebServiceRef;
 
+import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 
@@ -176,6 +177,7 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 	 */
 	@SuppressWarnings("unchecked")
 	private static void registerEnumConverters() {
+		BeanUtilsBean.setInstance(new com.google.code.bing.search.schema.adapter.BeanUtilsBean());
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
