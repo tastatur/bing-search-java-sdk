@@ -1,11 +1,12 @@
 
 package com.google.code.bing.search.schema.adapter.soap.translation;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.translation.TranslationRequest;
 
 public class TranslationRequestImpl 
-	extends BaseAdapter implements TranslationRequest
+	extends BaseAdapter implements TranslationRequest, Adaptable<TranslationRequest, com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest>
 {
 
     /**
@@ -63,4 +64,16 @@ public class TranslationRequestImpl
         this.targetLanguage = value;
     }
 
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest adaptee) {
+		copyProperties(this, adaptee);
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest adapter = new com.microsoft.schemas.livesearch._2008._03.search.TranslationRequest();
+		copyProperties(adapter , this);
+		return adapter;
+	}
 }
