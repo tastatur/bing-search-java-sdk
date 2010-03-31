@@ -1,12 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.soap.phonebook;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
 
 public class PhonebookRequestImpl 
-	extends BaseAdapter implements PhonebookRequest
+	extends BaseAdapter implements PhonebookRequest, Adaptable<PhonebookRequest, com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest>
 {
 
     /**
@@ -164,4 +165,16 @@ public class PhonebookRequestImpl
         this.category = value;
     }
 
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest adaptee) {
+		copyProperties(this, adaptee);
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest adapter = new com.microsoft.schemas.livesearch._2008._03.search.PhonebookRequest();
+		copyProperties(adapter , this);
+		return adapter;
+	}
 }
