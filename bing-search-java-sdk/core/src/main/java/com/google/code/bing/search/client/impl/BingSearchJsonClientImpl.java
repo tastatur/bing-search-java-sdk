@@ -3,7 +3,13 @@
  */
 package com.google.code.bing.search.client.impl;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
@@ -11,8 +17,10 @@ import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SchemaElementFactory;
+import com.google.code.bing.search.schema.SchemaEntity;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.json.ErrorImpl;
 import com.google.code.bing.search.schema.adapter.json.QueryImpl;
 import com.google.code.bing.search.schema.adapter.json.SearchRequestImpl;
@@ -96,6 +104,15 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
     /** Field description */
     private static final ApiProtocol SUPPORTED_PROTOCOL = ApiProtocol.JSON;
     
+    private final JSONParser parser = new JSONParser();
+    
+    /** Field description */
+	private static final Map<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>> ADAPTER_CLASSES_MAP = new HashMap<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>>();
+	
+	static {
+		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
+	}
+    
     /**
      * Method description
      *
@@ -106,10 +123,15 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
      * @return
      */
     @SuppressWarnings("unchecked")
-    protected <T> T unmarshallObject(Class<T> clazz, InputStream xmlContent) {
+    protected <T> T unmarshallObject(Class<T> clazz, InputStream jsonContent) {
         try {
-        	// TODO-NM: Implement this method
-            return (T) null;
+        	Object response = parser.parse(new InputStreamReader(jsonContent));
+        	if (response instanceof JSONObject) {
+        		Adaptable<?, JSONObject> adaptable = (Adaptable<?, JSONObject>) ADAPTER_CLASSES_MAP.get(clazz).newInstance();
+        		adaptable.adaptFrom((JSONObject) response);
+        		return (T) adaptable;
+        	}
+        	throw new BingSearchException("Unknown content found in response:" + response.toString());
         } catch (Exception e) {
             throw new BingSearchException(e);
         }
