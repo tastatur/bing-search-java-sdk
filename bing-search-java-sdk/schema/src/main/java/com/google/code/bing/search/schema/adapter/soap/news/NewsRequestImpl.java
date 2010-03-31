@@ -1,12 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.soap.news;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsRequest;
 import com.google.code.bing.search.schema.news.NewsSortOption;
 
 public class NewsRequestImpl
-	extends BaseAdapter implements NewsRequest
+	extends BaseAdapter implements NewsRequest, Adaptable<NewsRequest, com.microsoft.schemas.livesearch._2008._03.search.NewsRequest>
 {
 
     /**
@@ -138,5 +139,18 @@ public class NewsRequestImpl
     public void setSortBy(NewsSortOption value) {
         this.sortBy = value;
     }
+
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.NewsRequest adaptee) {
+		copyProperties(this, adaptee);		
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.NewsRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.NewsRequest adapter = new com.microsoft.schemas.livesearch._2008._03.search.NewsRequest();
+		copyProperties(adapter , this);
+		return adapter;
+	}
 
 }
