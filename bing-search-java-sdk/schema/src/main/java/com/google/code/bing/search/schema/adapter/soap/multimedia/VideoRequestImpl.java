@@ -4,12 +4,14 @@ package com.google.code.bing.search.schema.adapter.soap.multimedia;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.VideoRequest;
 import com.google.code.bing.search.schema.multimedia.VideoSortOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfString;
 
 public class VideoRequestImpl 
-	extends BaseAdapter implements VideoRequest
+	extends BaseAdapter implements VideoRequest, Adaptable<VideoRequest, com.microsoft.schemas.livesearch._2008._03.search.VideoRequest>
 {
 
     /**
@@ -106,4 +108,27 @@ public class VideoRequestImpl
 		filterList = value;
 	}
 
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.VideoRequest adaptee) {
+		copyProperties(this, adaptee);
+		if (adaptee.getFilters() != null) {
+			for (String result : adaptee.getFilters().getString()) {
+				getFilterList().add(result);
+			}
+		}
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.VideoRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.VideoRequest adapter = new com.microsoft.schemas.livesearch._2008._03.search.VideoRequest();
+		copyProperties(adapter , this);
+		for (String o : getFilterList()) {
+			if (adapter.getFilters() == null) {
+				adapter.setFilters(new ArrayOfString());
+			}
+			adapter.getFilters().getString().add(o);
+		}
+		return adapter;
+	}
 }

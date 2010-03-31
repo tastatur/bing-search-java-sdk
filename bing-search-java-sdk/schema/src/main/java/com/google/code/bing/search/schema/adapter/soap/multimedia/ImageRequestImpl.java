@@ -4,11 +4,13 @@ package com.google.code.bing.search.schema.adapter.soap.multimedia;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.ImageRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfString;
 
 public class ImageRequestImpl 
-	extends BaseAdapter implements ImageRequest
+	extends BaseAdapter implements ImageRequest, Adaptable<ImageRequest, com.microsoft.schemas.livesearch._2008._03.search.ImageRequest>
 {
 
     /**
@@ -78,5 +80,30 @@ public class ImageRequestImpl
 	@Override
 	public void setFilterList(List<String> value) {
 		filterList = value;
+	}
+
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.ImageRequest adaptee) {
+		copyProperties(this, adaptee);
+		if (adaptee.getFilters() != null) {
+			for (String result : adaptee.getFilters().getString()) {
+				getFilterList().add(result);
+			}
+		}
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.ImageRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ImageRequest adapter = new com.microsoft.schemas.livesearch._2008._03.search.ImageRequest();
+		copyProperties(adapter , this);
+		for (String o : getFilterList()) {
+			if (adapter.getFilters() == null) {
+				adapter.setFilters(new ArrayOfString());
+			}
+			adapter.getFilters().getString().add(o);
+		}
+		
+		return adapter;
 	}
 }
