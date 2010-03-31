@@ -10,7 +10,9 @@ import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.translation.TranslationRequest;
 import com.google.code.bing.search.schema.web.WebRequest;
 
-public interface SearchRequest {
+public interface SearchRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the version property.

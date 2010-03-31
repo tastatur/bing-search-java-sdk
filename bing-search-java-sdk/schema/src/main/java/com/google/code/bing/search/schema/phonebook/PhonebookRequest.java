@@ -1,6 +1,10 @@
 package com.google.code.bing.search.schema.phonebook;
 
-public interface PhonebookRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface PhonebookRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the offset property.

@@ -2,7 +2,11 @@ package com.google.code.bing.search.schema.mobileweb;
 
 import java.util.List;
 
-public interface MobileWebRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface MobileWebRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the offset property.

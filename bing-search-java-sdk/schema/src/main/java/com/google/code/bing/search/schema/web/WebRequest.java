@@ -2,7 +2,11 @@ package com.google.code.bing.search.schema.web;
 
 import java.util.List;
 
-public interface WebRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface WebRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the offset property.

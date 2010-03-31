@@ -7,6 +7,7 @@ import java.util.concurrent.Future;
 import javax.xml.ws.WebServiceRef;
 
 import com.google.code.bing.search.client.BingSearchClient;
+import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
@@ -17,8 +18,11 @@ import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
 import com.google.code.bing.search.schema.SourceType;
 import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.AdaptableFuture;
 import com.google.code.bing.search.schema.adapter.soap.ErrorImpl;
 import com.google.code.bing.search.schema.adapter.soap.QueryImpl;
+import com.google.code.bing.search.schema.adapter.soap.SearchRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.SearchResponseImpl;
 import com.google.code.bing.search.schema.adapter.soap.instantanswer.InstantAnswerImpl;
 import com.google.code.bing.search.schema.adapter.soap.instantanswer.InstantAnswerResultImpl;
 import com.google.code.bing.search.schema.adapter.soap.mobileweb.MobileWebImpl;
@@ -52,8 +56,6 @@ import com.google.code.bing.search.schema.adapter.soap.web.WebImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebRequestImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebResultImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebSearchTagImpl;
-import com.google.code.bing.search.schema.adapter.soap.SearchRequestImpl;
-import com.google.code.bing.search.schema.adapter.soap.SearchResponseImpl;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
@@ -90,6 +92,7 @@ import com.google.code.bing.search.schema.web.WebSearchOption;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 import com.microsoft.schemas.livesearch._2008._03.search.LiveSearchPortType;
 import com.microsoft.schemas.livesearch._2008._03.search.LiveSearchService;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
 
 public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl implements
 		BingSearchClient {
@@ -124,16 +127,43 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public SearchResponse search(SearchRequest request) {
-		LiveSearchPortType proxy = searchService.getLiveSearchPort();
-		return proxy.search(request);
+		try {
+			LiveSearchPortType proxy = searchService.getLiveSearchPort();
+			Adaptable<SearchRequest, SearchRequestParameters> requestAdapter = (Adaptable<SearchRequest, SearchRequestParameters>) ADAPTER_CLASSES_MAP.get(SearchRequest.class).newInstance();
+			SearchRequestParameters parameters = requestAdapter.adaptTo();
+			com.microsoft.schemas.livesearch._2008._03.search.SearchResponse response = proxy.search(createSearchRequest(parameters));
+			SearchResponseImpl responseAdapter = new SearchResponseImpl();
+			if (response.getParameters() != null) {
+				responseAdapter.adaptFrom(response);
+			}
+			return responseAdapter;
+		} catch (Exception e) {
+			throw new BingSearchException(e); 
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Future<SearchResponse> searchAsync(SearchRequest request) {
-		LiveSearchPortType proxy = searchService.getLiveSearchPort();
-		return proxy.searchAsync(request);
+		try {
+			LiveSearchPortType proxy = searchService.getLiveSearchPort();
+			Adaptable<SearchRequest, SearchRequestParameters> requestAdapter = (Adaptable<SearchRequest, SearchRequestParameters>) ADAPTER_CLASSES_MAP.get(SearchRequest.class).newInstance();
+			SearchRequestParameters parameters = requestAdapter.adaptTo();
+			SearchResponseImpl responseAdapter = new SearchResponseImpl();
+			return new AdaptableFuture<SearchResponse, com.microsoft.schemas.livesearch._2008._03.search.SearchResponse>(proxy.searchAsync(createSearchRequest(parameters)), responseAdapter);
+		} catch (Exception e) {
+			throw new BingSearchException(e); 
+		}
+	}
+	
+	private com.microsoft.schemas.livesearch._2008._03.search.SearchRequest createSearchRequest(
+			SearchRequestParameters parameters) {
+		com.microsoft.schemas.livesearch._2008._03.search.SearchRequest request = new com.microsoft.schemas.livesearch._2008._03.search.SearchRequest();
+		request.setParameters(parameters);
+		return request;
 	}
 	
 	private SearchRequest createSearchRequest() {

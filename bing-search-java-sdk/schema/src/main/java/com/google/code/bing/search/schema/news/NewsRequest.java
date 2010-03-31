@@ -1,6 +1,10 @@
 package com.google.code.bing.search.schema.news;
 
-public interface NewsRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface NewsRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the offset property.

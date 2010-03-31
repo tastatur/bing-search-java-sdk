@@ -1,6 +1,10 @@
 package com.google.code.bing.search.schema.translation;
 
-public interface TranslationRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface TranslationRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the sourceLanguage property.

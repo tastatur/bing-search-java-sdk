@@ -2,7 +2,11 @@ package com.google.code.bing.search.schema.multimedia;
 
 import java.util.List;
 
-public interface ImageRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+public interface ImageRequest 
+	extends SchemaEntity
+{
 
 	/**
 	 * Gets the value of the offset property.

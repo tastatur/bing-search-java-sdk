@@ -27,8 +27,9 @@ import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.translation.TranslationResponse;
 import com.google.code.bing.search.schema.web.WebResponse;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters;
 public class SearchResponseImpl
-    extends BaseAdapter implements SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters>
+    extends BaseAdapter implements SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._03.search.SearchResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -151,7 +152,7 @@ public class SearchResponseImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adaptTo() {
+	public com.microsoft.schemas.livesearch._2008._03.search.SearchResponse adaptTo() {
 		com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adapter = new com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters();
 		copyProperties(adapter , this);
 		if (getQuery() != null) {
@@ -191,72 +192,77 @@ public class SearchResponseImpl
 			adapter.setWeb(((WebImpl) getWeb()).adaptTo());
 		}
 		
-		return adapter;
+		com.microsoft.schemas.livesearch._2008._03.search.SearchResponse container = new com.microsoft.schemas.livesearch._2008._03.search.SearchResponse();
+		container.setParameters(adapter);
+		return container;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adaptee) {
-		copyProperties(this, adaptee);
-		if (adaptee.getQuery() != null) {
-			QueryImpl results = new QueryImpl();
-			results.adaptFrom(adaptee.getQuery());
-			setQuery(results);
-		}
-//		if (adaptee.getAd() != null) {
-//			AdImpl results = new AdImpl();
-//			results.adaptFrom(adaptee.getAd());
-//			setAd(results);
-//		}
-		if (adaptee.getInstantAnswer() != null) {
-			InstantAnswerImpl results = new InstantAnswerImpl();
-			results.adaptFrom(adaptee.getInstantAnswer());
-			setInstantAnswer(results);
-		}
-		if (adaptee.getMobileWeb() != null) {
-			MobileWebImpl results = new MobileWebImpl();
-			results.adaptFrom(adaptee.getMobileWeb());
-			setMobileWeb(results);
-		}
-		if (adaptee.getImage() != null) {
-			ImageImpl results = new ImageImpl();
-			results.adaptFrom(adaptee.getImage());
-			setImage(results);
-		}
-		if (adaptee.getVideo() != null) {
-			VideoImpl results = new VideoImpl();
-			results.adaptFrom(adaptee.getVideo());
-			setVideo(results);
-		}
-		if (adaptee.getPhonebook() != null) {
-			PhonebookImpl results = new PhonebookImpl();
-			results.adaptFrom(adaptee.getPhonebook());
-			setPhonebook(results);
-		}
-		if (adaptee.getRelatedSearch() != null) {
-			RelatedSearchImpl results = new RelatedSearchImpl();
-			results.adaptFrom(adaptee.getRelatedSearch());
-			setRelatedSearch(results);
-		}
-		if (adaptee.getSpell() != null) {
-			SpellImpl results = new SpellImpl();
-			results.adaptFrom(adaptee.getSpell());
-			setSpell(results);
-		}
-		if (adaptee.getNews() != null) {
-			NewsImpl results = new NewsImpl();
-			results.adaptFrom(adaptee.getNews());
-			setNews(results);
-		}
-		if (adaptee.getTranslation() != null) {
-			TranslationImpl results = new TranslationImpl();
-			results.adaptFrom(adaptee.getTranslation());
-			setTranslation(results);
-		}
-		if (adaptee.getWeb() != null) {
-			WebImpl results = new WebImpl();
-			results.adaptFrom(adaptee.getWeb());
-			setWeb(results);
+			com.microsoft.schemas.livesearch._2008._03.search.SearchResponse container) {
+		SearchResponseParameters adaptee = container.getParameters();
+		if (adaptee != null) {
+			copyProperties(this, adaptee);
+			if (adaptee.getQuery() != null) {
+				QueryImpl results = new QueryImpl();
+				results.adaptFrom(adaptee.getQuery());
+				setQuery(results);
+			}
+//			if (adaptee.getAd() != null) {
+//				AdImpl results = new AdImpl();
+//				results.adaptFrom(adaptee.getAd());
+//				setAd(results);
+//			}
+			if (adaptee.getInstantAnswer() != null) {
+				InstantAnswerImpl results = new InstantAnswerImpl();
+				results.adaptFrom(adaptee.getInstantAnswer());
+				setInstantAnswer(results);
+			}
+			if (adaptee.getMobileWeb() != null) {
+				MobileWebImpl results = new MobileWebImpl();
+				results.adaptFrom(adaptee.getMobileWeb());
+				setMobileWeb(results);
+			}
+			if (adaptee.getImage() != null) {
+				ImageImpl results = new ImageImpl();
+				results.adaptFrom(adaptee.getImage());
+				setImage(results);
+			}
+			if (adaptee.getVideo() != null) {
+				VideoImpl results = new VideoImpl();
+				results.adaptFrom(adaptee.getVideo());
+				setVideo(results);
+			}
+			if (adaptee.getPhonebook() != null) {
+				PhonebookImpl results = new PhonebookImpl();
+				results.adaptFrom(adaptee.getPhonebook());
+				setPhonebook(results);
+			}
+			if (adaptee.getRelatedSearch() != null) {
+				RelatedSearchImpl results = new RelatedSearchImpl();
+				results.adaptFrom(adaptee.getRelatedSearch());
+				setRelatedSearch(results);
+			}
+			if (adaptee.getSpell() != null) {
+				SpellImpl results = new SpellImpl();
+				results.adaptFrom(adaptee.getSpell());
+				setSpell(results);
+			}
+			if (adaptee.getNews() != null) {
+				NewsImpl results = new NewsImpl();
+				results.adaptFrom(adaptee.getNews());
+				setNews(results);
+			}
+			if (adaptee.getTranslation() != null) {
+				TranslationImpl results = new TranslationImpl();
+				results.adaptFrom(adaptee.getTranslation());
+				setTranslation(results);
+			}
+			if (adaptee.getWeb() != null) {
+				WebImpl results = new WebImpl();
+				results.adaptFrom(adaptee.getWeb());
+				setWeb(results);
+			}
 		}
 	}
 }
