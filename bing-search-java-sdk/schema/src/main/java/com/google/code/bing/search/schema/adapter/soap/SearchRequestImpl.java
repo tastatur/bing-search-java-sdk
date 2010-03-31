@@ -8,7 +8,15 @@ import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SourceType;
+import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
+import com.google.code.bing.search.schema.adapter.soap.mobileweb.MobileWebRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.multimedia.ImageRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.multimedia.VideoRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.news.NewsRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.phonebook.PhonebookRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.translation.TranslationRequestImpl;
+import com.google.code.bing.search.schema.adapter.soap.web.WebRequestImpl;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
 import com.google.code.bing.search.schema.multimedia.ImageRequest;
 import com.google.code.bing.search.schema.multimedia.VideoRequest;
@@ -16,9 +24,12 @@ import com.google.code.bing.search.schema.news.NewsRequest;
 import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.translation.TranslationRequest;
 import com.google.code.bing.search.schema.web.WebRequest;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSearchOption;
+import com.microsoft.schemas.livesearch._2008._03.search.ArrayOfSourceType;
+import com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters;
 
 public class SearchRequestImpl 
-	extends BaseAdapter implements SearchRequest {
+	extends BaseAdapter implements SearchRequest, Adaptable<SearchRequest, com.microsoft.schemas.livesearch._2008._03.search.SearchRequest> {
 
     /**
 	 * 
@@ -451,5 +462,112 @@ public class SearchRequestImpl
 	@Override
 	public void setSourceTypeList(List<SourceType> value) {
 		sourceTypeList = value;
+	}
+
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.SearchRequest container) {
+		SearchRequestParameters adaptee = container.getParameters();
+		if (adaptee != null) {
+			copyProperties(this, adaptee);
+//			if (adaptee.getAd() != null) {
+//				AdImpl results = new AdImpl();
+//				results.adaptFrom(adaptee.getAd());
+//				setAd(results);
+//			}
+			if (adaptee.getMobileWeb() != null) {
+				MobileWebRequestImpl results = new MobileWebRequestImpl();
+				results.adaptFrom(adaptee.getMobileWeb());
+				setMobileWeb(results);
+			}
+			if (adaptee.getImage() != null) {
+				ImageRequestImpl results = new ImageRequestImpl();
+				results.adaptFrom(adaptee.getImage());
+				setImage(results);
+			}
+			if (adaptee.getVideo() != null) {
+				VideoRequestImpl results = new VideoRequestImpl();
+				results.adaptFrom(adaptee.getVideo());
+				setVideo(results);
+			}
+			if (adaptee.getPhonebook() != null) {
+				PhonebookRequestImpl results = new PhonebookRequestImpl();
+				results.adaptFrom(adaptee.getPhonebook());
+				setPhonebook(results);
+			}
+			if (adaptee.getNews() != null) {
+				NewsRequestImpl results = new NewsRequestImpl();
+				results.adaptFrom(adaptee.getNews());
+				setNews(results);
+			}
+			if (adaptee.getTranslation() != null) {
+				TranslationRequestImpl results = new TranslationRequestImpl();
+				results.adaptFrom(adaptee.getTranslation());
+				setTranslation(results);
+			}
+			if (adaptee.getWeb() != null) {
+				WebRequestImpl results = new WebRequestImpl();
+				results.adaptFrom(adaptee.getWeb());
+				setWeb(results);
+			}
+			if (adaptee.getOptions() != null) {
+				for (com.microsoft.schemas.livesearch._2008._03.search.SearchOption o : adaptee.getOptions().getSearchOption()) {
+					SearchOption result = SearchOption.valueOf(o.name()) ;
+					getSearchOptionList().add(result);
+				}
+			}
+			if (adaptee.getSources() != null) {
+				for (com.microsoft.schemas.livesearch._2008._03.search.SourceType o : adaptee.getSources().getSourceType()) {
+					SourceType result = SourceType.valueOf(o.name()) ;
+					getSourceTypeList().add(result);
+				}
+			}
+		}
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.SearchRequest adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters adapter = new com.microsoft.schemas.livesearch._2008._03.search.SearchRequestParameters();
+		copyProperties(adapter , this);
+//		if (getAd() != null) {
+//			adapter.setAd(((AdImpl) getAd()).adaptTo());
+//		}
+		if (getMobileWeb() != null) {
+			adapter.setMobileWeb(((MobileWebRequestImpl) getMobileWeb()).adaptTo());
+		}
+		if (getImage() != null) {
+			adapter.setImage(((ImageRequestImpl) getImage()).adaptTo());
+		}
+		if (getVideo() != null) {
+			adapter.setVideo(((VideoRequestImpl) getVideo()).adaptTo());
+		}
+		if (getPhonebook() != null) {
+			adapter.setPhonebook(((PhonebookRequestImpl) getPhonebook()).adaptTo());
+		}
+		if (getNews() != null) {
+			adapter.setNews(((NewsRequestImpl) getNews()).adaptTo());
+		}
+		if (getTranslation() != null) {
+			adapter.setTranslation(((TranslationRequestImpl) getTranslation()).adaptTo());
+		}
+		if (getWeb() != null) {
+			adapter.setWeb(((WebRequestImpl) getWeb()).adaptTo());
+		}
+		for (SearchOption o : getSearchOptionList()) {
+			if (adapter.getOptions() == null) {
+				adapter.setOptions(new ArrayOfSearchOption());
+			}
+			adapter.getOptions().getSearchOption().add(com.microsoft.schemas.livesearch._2008._03.search.SearchOption.valueOf(o.name()));
+		}
+		for (SourceType o : getSourceTypeList()) {
+			if (adapter.getSources() == null) {
+				adapter.setSources(new ArrayOfSourceType());
+			}
+			adapter.getSources().getSourceType().add(com.microsoft.schemas.livesearch._2008._03.search.SourceType.valueOf(o.name()));
+		}
+		
+		com.microsoft.schemas.livesearch._2008._03.search.SearchRequest container = new com.microsoft.schemas.livesearch._2008._03.search.SearchRequest();
+		container.setParameters(adapter);
+		return container;
 	}
 }
