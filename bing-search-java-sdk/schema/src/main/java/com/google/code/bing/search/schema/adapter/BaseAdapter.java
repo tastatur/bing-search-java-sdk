@@ -4,6 +4,7 @@
 package com.google.code.bing.search.schema.adapter;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -15,6 +16,14 @@ public abstract class BaseAdapter implements Serializable {
 	protected void copyProperties(Object dest, Object src) {
 		try {
 			BeanUtils.copyProperties(dest, src);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
+	@SuppressWarnings("unchecked")
+	protected void copyProperties(Object dest, Map src) {
+		try {
+			BeanUtils.populate(dest, src);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
