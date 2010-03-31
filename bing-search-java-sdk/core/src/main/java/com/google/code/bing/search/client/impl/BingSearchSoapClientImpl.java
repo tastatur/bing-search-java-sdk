@@ -6,6 +6,9 @@ import java.util.concurrent.Future;
 
 import javax.xml.ws.WebServiceRef;
 
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.Converter;
+
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.schema.AdultOption;
@@ -61,6 +64,7 @@ import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
+import com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption;
 import com.google.code.bing.search.schema.multimedia.ImageRequest;
 import com.google.code.bing.search.schema.multimedia.ImageResponse;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
@@ -68,15 +72,18 @@ import com.google.code.bing.search.schema.multimedia.Thumbnail;
 import com.google.code.bing.search.schema.multimedia.VideoRequest;
 import com.google.code.bing.search.schema.multimedia.VideoResponse;
 import com.google.code.bing.search.schema.multimedia.VideoResult;
+import com.google.code.bing.search.schema.multimedia.VideoSortOption;
 import com.google.code.bing.search.schema.news.NewsArticle;
 import com.google.code.bing.search.schema.news.NewsCollection;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 import com.google.code.bing.search.schema.news.NewsRequest;
 import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.NewsResult;
+import com.google.code.bing.search.schema.news.NewsSortOption;
 import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
+import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
 import com.google.code.bing.search.schema.spell.SpellResponse;
@@ -108,9 +115,9 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 	static {
 		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
 		ADAPTER_CLASSES_MAP.put(SearchRequest.class, SearchRequestImpl.class);
+		registerEnumConverters();
 	}
-	
-	
+
 	public BingSearchSoapClientImpl() {
 		searchService.setExecutor(taskExecutor);
 	}
@@ -162,6 +169,100 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		builder.withWebRequestCount(10L).withWebRequestOffset(0L);
 		builder.withWebRequestSearchOption(WebSearchOption.DISABLE_HOST_COLLAPSING).withWebRequestSearchOption(WebSearchOption.DISABLE_QUERY_ALTERATIONS);
 		return builder.getResult();
+	}
+	
+	/**
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	private static void registerEnumConverters() {
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.AdultOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.AdultOption.valueOf(((AdultOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.AdultOption.class);
+
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SearchOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.SearchOption.valueOf(((SearchOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.SearchOption.class);
+
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SourceType.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.SourceType.valueOf(((SourceType) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.SourceType.class);
+		
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.valueOf(((WebSearchOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.class);
+		
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.valueOf(((PhonebookSortOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.class);
+
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.valueOf(((VideoSortOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.class);
+
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.valueOf(((NewsSortOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.class);
+		
+		ConvertUtils.register(new Converter() {
+			@Override
+			public Object convert(Class clazz, Object value) {
+				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.class)) {
+					return com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.valueOf(((MobileWebSearchOption) value).name());
+				}
+				return null;
+			}
+			
+		}, com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.class);
 	}
 	
     /**
