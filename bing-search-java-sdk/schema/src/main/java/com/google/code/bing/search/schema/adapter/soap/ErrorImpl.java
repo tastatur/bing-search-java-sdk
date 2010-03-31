@@ -1,11 +1,12 @@
 
 package com.google.code.bing.search.schema.adapter.soap;
 
-import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.Error;
+import com.google.code.bing.search.schema.adapter.Adaptable;
+import com.google.code.bing.search.schema.adapter.BaseAdapter;
 
 public class ErrorImpl 
-	extends BaseAdapter implements Error {
+	extends BaseAdapter implements Error, Adaptable<Error, com.microsoft.schemas.livesearch._2008._03.search.Error> {
 
     /**
 	 * 
@@ -186,4 +187,17 @@ public class ErrorImpl
     public void setSourceTypeErrorCode(Long value) {
         this.sourceTypeErrorCode = value;
     }
+
+	@Override
+	public void adaptFrom(
+			com.microsoft.schemas.livesearch._2008._03.search.Error adaptee) {
+		copyProperties(this, adaptee);
+	}
+
+	@Override
+	public com.microsoft.schemas.livesearch._2008._03.search.Error adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.Error adapter = new com.microsoft.schemas.livesearch._2008._03.search.Error();
+		copyProperties(adapter, this);
+		return adapter;
+	}
 }
