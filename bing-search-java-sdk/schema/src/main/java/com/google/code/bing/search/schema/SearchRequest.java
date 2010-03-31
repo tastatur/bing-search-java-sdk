@@ -210,7 +210,7 @@ public interface SearchRequest
 	 *     {@link WebRequest }
 	 *     
 	 */
-	public WebRequest getWeb();
+	public WebRequest getWebRequest();
 
 	/**
 	 * Sets the value of the web property.
@@ -220,7 +220,7 @@ public interface SearchRequest
 	 *     {@link WebRequest }
 	 *     
 	 */
-	public void setWeb(WebRequest value);
+	public void setWebRequest(WebRequest value);
 
 	/**
 	 * Gets the value of the image property.
@@ -230,7 +230,7 @@ public interface SearchRequest
 	 *     {@link ImageRequest }
 	 *     
 	 */
-	public ImageRequest getImage();
+	public ImageRequest getImageRequest();
 
 	/**
 	 * Sets the value of the image property.
@@ -240,7 +240,7 @@ public interface SearchRequest
 	 *     {@link ImageRequest }
 	 *     
 	 */
-	public void setImage(ImageRequest value);
+	public void setImageRequest(ImageRequest value);
 
 	/**
 	 * Gets the value of the phonebook property.
@@ -250,7 +250,7 @@ public interface SearchRequest
 	 *     {@link PhonebookRequest }
 	 *     
 	 */
-	public PhonebookRequest getPhonebook();
+	public PhonebookRequest getPhonebookRequest();
 
 	/**
 	 * Sets the value of the phonebook property.
@@ -260,7 +260,7 @@ public interface SearchRequest
 	 *     {@link PhonebookRequest }
 	 *     
 	 */
-	public void setPhonebook(PhonebookRequest value);
+	public void setPhonebookRequest(PhonebookRequest value);
 
 	/**
 	 * Gets the value of the video property.
@@ -270,7 +270,7 @@ public interface SearchRequest
 	 *     {@link VideoRequest }
 	 *     
 	 */
-	public VideoRequest getVideo();
+	public VideoRequest getVideoRequest();
 
 	/**
 	 * Sets the value of the video property.
@@ -280,7 +280,7 @@ public interface SearchRequest
 	 *     {@link VideoRequest }
 	 *     
 	 */
-	public void setVideo(VideoRequest value);
+	public void setVideoRequest(VideoRequest value);
 
 	/**
 	 * Gets the value of the news property.
@@ -290,7 +290,7 @@ public interface SearchRequest
 	 *     {@link NewsRequest }
 	 *     
 	 */
-	public NewsRequest getNews();
+	public NewsRequest getNewsRequest();
 
 	/**
 	 * Sets the value of the news property.
@@ -300,7 +300,7 @@ public interface SearchRequest
 	 *     {@link NewsRequest }
 	 *     
 	 */
-	public void setNews(NewsRequest value);
+	public void setNewsRequest(NewsRequest value);
 
 	/**
 	 * Gets the value of the mobileWeb property.
@@ -310,7 +310,7 @@ public interface SearchRequest
 	 *     {@link MobileWebRequest }
 	 *     
 	 */
-	public MobileWebRequest getMobileWeb();
+	public MobileWebRequest getMobileWebRequest();
 
 	/**
 	 * Sets the value of the mobileWeb property.
@@ -320,7 +320,7 @@ public interface SearchRequest
 	 *     {@link MobileWebRequest }
 	 *     
 	 */
-	public void setMobileWeb(MobileWebRequest value);
+	public void setMobileWebRequest(MobileWebRequest value);
 
 	/**
 	 * Gets the value of the translation property.
@@ -330,7 +330,7 @@ public interface SearchRequest
 	 *     {@link TranslationRequest }
 	 *     
 	 */
-	public TranslationRequest getTranslation();
+	public TranslationRequest getTranslationRequest();
 
 	/**
 	 * Sets the value of the translation property.
@@ -340,6 +340,6 @@ public interface SearchRequest
 	 *     {@link TranslationRequest }
 	 *     
 	 */
-	public void setTranslation(TranslationRequest value);
+	public void setTranslationRequest(TranslationRequest value);
 
 }

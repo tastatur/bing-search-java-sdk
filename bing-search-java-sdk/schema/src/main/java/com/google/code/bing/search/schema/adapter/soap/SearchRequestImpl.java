@@ -278,7 +278,7 @@ public class SearchRequestImpl
      *     {@link WebRequest }
      *     
      */
-    public WebRequest getWeb() {
+    public WebRequest getWebRequest() {
         return web;
     }
 
@@ -290,7 +290,7 @@ public class SearchRequestImpl
      *     {@link WebRequest }
      *     
      */
-    public void setWeb(WebRequest value) {
+    public void setWebRequest(WebRequest value) {
         this.web = value;
     }
 
@@ -302,7 +302,7 @@ public class SearchRequestImpl
      *     {@link ImageRequest }
      *     
      */
-    public ImageRequest getImage() {
+    public ImageRequest getImageRequest() {
         return image;
     }
 
@@ -314,7 +314,7 @@ public class SearchRequestImpl
      *     {@link ImageRequest }
      *     
      */
-    public void setImage(ImageRequest value) {
+    public void setImageRequest(ImageRequest value) {
         this.image = value;
     }
 
@@ -326,7 +326,7 @@ public class SearchRequestImpl
      *     {@link PhonebookRequest }
      *     
      */
-    public PhonebookRequest getPhonebook() {
+    public PhonebookRequest getPhonebookRequest() {
         return phonebook;
     }
 
@@ -338,7 +338,7 @@ public class SearchRequestImpl
      *     {@link PhonebookRequest }
      *     
      */
-    public void setPhonebook(PhonebookRequest value) {
+    public void setPhonebookRequest(PhonebookRequest value) {
         this.phonebook = value;
     }
 
@@ -350,7 +350,7 @@ public class SearchRequestImpl
      *     {@link VideoRequest }
      *     
      */
-    public VideoRequest getVideo() {
+    public VideoRequest getVideoRequest() {
         return video;
     }
 
@@ -362,7 +362,7 @@ public class SearchRequestImpl
      *     {@link VideoRequest }
      *     
      */
-    public void setVideo(VideoRequest value) {
+    public void setVideoRequest(VideoRequest value) {
         this.video = value;
     }
 
@@ -374,7 +374,7 @@ public class SearchRequestImpl
      *     {@link NewsRequest }
      *     
      */
-    public NewsRequest getNews() {
+    public NewsRequest getNewsRequest() {
         return news;
     }
 
@@ -386,7 +386,7 @@ public class SearchRequestImpl
      *     {@link NewsRequest }
      *     
      */
-    public void setNews(NewsRequest value) {
+    public void setNewsRequest(NewsRequest value) {
         this.news = value;
     }
 
@@ -398,7 +398,7 @@ public class SearchRequestImpl
      *     {@link MobileWebRequest }
      *     
      */
-    public MobileWebRequest getMobileWeb() {
+    public MobileWebRequest getMobileWebRequest() {
         return mobileWeb;
     }
 
@@ -410,7 +410,7 @@ public class SearchRequestImpl
      *     {@link MobileWebRequest }
      *     
      */
-    public void setMobileWeb(MobileWebRequest value) {
+    public void setMobileWebRequest(MobileWebRequest value) {
         this.mobileWeb = value;
     }
 
@@ -422,7 +422,7 @@ public class SearchRequestImpl
      *     {@link TranslationRequest }
      *     
      */
-    public TranslationRequest getTranslation() {
+    public TranslationRequest getTranslationRequest() {
         return translation;
     }
 
@@ -434,7 +434,7 @@ public class SearchRequestImpl
      *     {@link TranslationRequest }
      *     
      */
-    public void setTranslation(TranslationRequest value) {
+    public void setTranslationRequest(TranslationRequest value) {
         this.translation = value;
     }
 
@@ -478,37 +478,37 @@ public class SearchRequestImpl
 			if (adaptee.getMobileWeb() != null) {
 				MobileWebRequestImpl results = new MobileWebRequestImpl();
 				results.adaptFrom(adaptee.getMobileWeb());
-				setMobileWeb(results);
+				setMobileWebRequest(results);
 			}
 			if (adaptee.getImage() != null) {
 				ImageRequestImpl results = new ImageRequestImpl();
 				results.adaptFrom(adaptee.getImage());
-				setImage(results);
+				setImageRequest(results);
 			}
 			if (adaptee.getVideo() != null) {
 				VideoRequestImpl results = new VideoRequestImpl();
 				results.adaptFrom(adaptee.getVideo());
-				setVideo(results);
+				setVideoRequest(results);
 			}
 			if (adaptee.getPhonebook() != null) {
 				PhonebookRequestImpl results = new PhonebookRequestImpl();
 				results.adaptFrom(adaptee.getPhonebook());
-				setPhonebook(results);
+				setPhonebookRequest(results);
 			}
 			if (adaptee.getNews() != null) {
 				NewsRequestImpl results = new NewsRequestImpl();
 				results.adaptFrom(adaptee.getNews());
-				setNews(results);
+				setNewsRequest(results);
 			}
 			if (adaptee.getTranslation() != null) {
 				TranslationRequestImpl results = new TranslationRequestImpl();
 				results.adaptFrom(adaptee.getTranslation());
-				setTranslation(results);
+				setTranslationRequest(results);
 			}
 			if (adaptee.getWeb() != null) {
 				WebRequestImpl results = new WebRequestImpl();
 				results.adaptFrom(adaptee.getWeb());
-				setWeb(results);
+				setWebRequest(results);
 			}
 			if (adaptee.getOptions() != null) {
 				for (com.microsoft.schemas.livesearch._2008._03.search.SearchOption o : adaptee.getOptions().getSearchOption()) {
@@ -532,26 +532,26 @@ public class SearchRequestImpl
 //		if (getAd() != null) {
 //			adapter.setAd(((AdImpl) getAd()).adaptTo());
 //		}
-		if (getMobileWeb() != null) {
-			adapter.setMobileWeb(((MobileWebRequestImpl) getMobileWeb()).adaptTo());
+		if (getMobileWebRequest() != null) {
+			adapter.setMobileWeb(((MobileWebRequestImpl) getMobileWebRequest()).adaptTo());
 		}
-		if (getImage() != null) {
-			adapter.setImage(((ImageRequestImpl) getImage()).adaptTo());
+		if (getImageRequest() != null) {
+			adapter.setImage(((ImageRequestImpl) getImageRequest()).adaptTo());
 		}
-		if (getVideo() != null) {
-			adapter.setVideo(((VideoRequestImpl) getVideo()).adaptTo());
+		if (getVideoRequest() != null) {
+			adapter.setVideo(((VideoRequestImpl) getVideoRequest()).adaptTo());
 		}
-		if (getPhonebook() != null) {
-			adapter.setPhonebook(((PhonebookRequestImpl) getPhonebook()).adaptTo());
+		if (getPhonebookRequest() != null) {
+			adapter.setPhonebook(((PhonebookRequestImpl) getPhonebookRequest()).adaptTo());
 		}
-		if (getNews() != null) {
-			adapter.setNews(((NewsRequestImpl) getNews()).adaptTo());
+		if (getNewsRequest() != null) {
+			adapter.setNews(((NewsRequestImpl) getNewsRequest()).adaptTo());
 		}
-		if (getTranslation() != null) {
-			adapter.setTranslation(((TranslationRequestImpl) getTranslation()).adaptTo());
+		if (getTranslationRequest() != null) {
+			adapter.setTranslation(((TranslationRequestImpl) getTranslationRequest()).adaptTo());
 		}
-		if (getWeb() != null) {
-			adapter.setWeb(((WebRequestImpl) getWeb()).adaptTo());
+		if (getWebRequest() != null) {
+			adapter.setWeb(((WebRequestImpl) getWebRequest()).adaptTo());
 		}
 		for (SearchOption o : getSearchOptionList()) {
 			if (adapter.getOptions() == null) {

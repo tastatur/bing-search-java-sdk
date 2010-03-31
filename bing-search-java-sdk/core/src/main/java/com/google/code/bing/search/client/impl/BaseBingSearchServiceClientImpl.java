@@ -295,52 +295,52 @@ public abstract class BaseBingSearchServiceClientImpl implements
 		}
 		
 		private ImageRequest getImageRequest() {
-			if (getParameters().getImage() == null) {
-				getParameters().setImage(factory.createImageRequest());
+			if (getParameters().getImageRequest() == null) {
+				getParameters().setImageRequest(factory.createImageRequest());
 			}
-			return getParameters().getImage();
+			return getParameters().getImageRequest();
 		}
 
 		private MobileWebRequest getMobileWebRequest() {
-			if (getParameters().getMobileWeb() == null) {
-				getParameters().setMobileWeb(factory.createMobileWebRequest());
+			if (getParameters().getMobileWebRequest() == null) {
+				getParameters().setMobileWebRequest(factory.createMobileWebRequest());
 			}
-			return getParameters().getMobileWeb();
+			return getParameters().getMobileWebRequest();
 		}
 
 		private NewsRequest getNewsRequest() {
-			if (getParameters().getNews() == null) {
-				getParameters().setNews(factory.createNewsRequest());
+			if (getParameters().getNewsRequest() == null) {
+				getParameters().setNewsRequest(factory.createNewsRequest());
 			}
-			return getParameters().getNews();
+			return getParameters().getNewsRequest();
 		}
 
 		private PhonebookRequest getPhonebookRequest() {
-			if (getParameters().getPhonebook() == null) {
-				getParameters().setPhonebook(factory.createPhonebookRequest());
+			if (getParameters().getPhonebookRequest() == null) {
+				getParameters().setPhonebookRequest(factory.createPhonebookRequest());
 			}
-			return getParameters().getPhonebook();
+			return getParameters().getPhonebookRequest();
 		}
 
 		private TranslationRequest getTranslationRequest() {
-			if (getParameters().getTranslation() == null) {
-				getParameters().setTranslation(factory.createTranslationRequest());
+			if (getParameters().getTranslationRequest() == null) {
+				getParameters().setTranslationRequest(factory.createTranslationRequest());
 			}
-			return getParameters().getTranslation();
+			return getParameters().getTranslationRequest();
 		}
 		
 		private VideoRequest getVideoRequest() {
-			if (getParameters().getVideo() == null) {
-				getParameters().setVideo(factory.createVideoRequest());
+			if (getParameters().getVideoRequest() == null) {
+				getParameters().setVideoRequest(factory.createVideoRequest());
 			}
-			return getParameters().getVideo();
+			return getParameters().getVideoRequest();
 		}
 		
 		private WebRequest getWebRequest() {
-			if (getParameters().getWeb() == null) {
-				getParameters().setWeb(factory.createWebRequest());
+			if (getParameters().getWebRequest() == null) {
+				getParameters().setWebRequest(factory.createWebRequest());
 			}
-			return getParameters().getWeb();
+			return getParameters().getWebRequest();
 		}
 		
 		private  List<String> getImageRequestFilters() {

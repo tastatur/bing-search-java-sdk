@@ -178,26 +178,26 @@ public final class BingSearchApiUrls {
     			}
     			withParameter("Sources", values);
     		}
-    		if (parameters.getWeb() != null) {
-    			withWebRequest("Web", parameters.getWeb());
+    		if (parameters.getWebRequest() != null) {
+    			withWebRequest("Web", parameters.getWebRequest());
     		}
-    		if (parameters.getImage() != null) {
-    			withImageRequest("Image", parameters.getImage());
+    		if (parameters.getImageRequest() != null) {
+    			withImageRequest("Image", parameters.getImageRequest());
     		}
-    		if (parameters.getPhonebook() != null) {
-    			withPhonebookRequest("Phonebook", parameters.getPhonebook());
+    		if (parameters.getPhonebookRequest() != null) {
+    			withPhonebookRequest("Phonebook", parameters.getPhonebookRequest());
     		}
-    		if (parameters.getVideo() != null) {
-    			withVideoRequest("Video", parameters.getVideo());
+    		if (parameters.getVideoRequest() != null) {
+    			withVideoRequest("Video", parameters.getVideoRequest());
     		}
-    		if (parameters.getNews() != null) {
-    			withNewsRequest("News", parameters.getNews());
+    		if (parameters.getNewsRequest() != null) {
+    			withNewsRequest("News", parameters.getNewsRequest());
     		}
-    		if (parameters.getMobileWeb() != null) {
-    			withMobileWebRequest("MobileWeb", parameters.getMobileWeb());
+    		if (parameters.getMobileWebRequest() != null) {
+    			withMobileWebRequest("MobileWeb", parameters.getMobileWebRequest());
     		}
-    		if (parameters.getTranslation() != null) {
-    			withTranslationRequest("Translation", parameters.getTranslation());
+    		if (parameters.getTranslationRequest() != null) {
+    			withTranslationRequest("Translation", parameters.getTranslationRequest());
     		}
     		return this;
     	}

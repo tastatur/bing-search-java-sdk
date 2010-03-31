@@ -267,7 +267,7 @@ public class SearchRequestImpl
      *     {@link WebRequest }
      *     
      */
-    public WebRequest getWeb() {
+    public WebRequest getWebRequest() {
         return web;
     }
 
@@ -279,7 +279,7 @@ public class SearchRequestImpl
      *     {@link WebRequest }
      *     
      */
-    public void setWeb(WebRequest value) {
+    public void setWebRequest(WebRequest value) {
         this.web = value;
     }
 
@@ -291,7 +291,7 @@ public class SearchRequestImpl
      *     {@link ImageRequest }
      *     
      */
-    public ImageRequest getImage() {
+    public ImageRequest getImageRequest() {
         return image;
     }
 
@@ -303,7 +303,7 @@ public class SearchRequestImpl
      *     {@link ImageRequest }
      *     
      */
-    public void setImage(ImageRequest value) {
+    public void setImageRequest(ImageRequest value) {
         this.image = value;
     }
 
@@ -315,7 +315,7 @@ public class SearchRequestImpl
      *     {@link PhonebookRequest }
      *     
      */
-    public PhonebookRequest getPhonebook() {
+    public PhonebookRequest getPhonebookRequest() {
         return phonebook;
     }
 
@@ -327,7 +327,7 @@ public class SearchRequestImpl
      *     {@link PhonebookRequest }
      *     
      */
-    public void setPhonebook(PhonebookRequest value) {
+    public void setPhonebookRequest(PhonebookRequest value) {
         this.phonebook = value;
     }
 
@@ -339,7 +339,7 @@ public class SearchRequestImpl
      *     {@link VideoRequest }
      *     
      */
-    public VideoRequest getVideo() {
+    public VideoRequest getVideoRequest() {
         return video;
     }
 
@@ -351,7 +351,7 @@ public class SearchRequestImpl
      *     {@link VideoRequest }
      *     
      */
-    public void setVideo(VideoRequest value) {
+    public void setVideoRequest(VideoRequest value) {
         this.video = value;
     }
 
@@ -363,7 +363,7 @@ public class SearchRequestImpl
      *     {@link NewsRequest }
      *     
      */
-    public NewsRequest getNews() {
+    public NewsRequest getNewsRequest() {
         return news;
     }
 
@@ -375,7 +375,7 @@ public class SearchRequestImpl
      *     {@link NewsRequest }
      *     
      */
-    public void setNews(NewsRequest value) {
+    public void setNewsRequest(NewsRequest value) {
         this.news = value;
     }
 
@@ -387,7 +387,7 @@ public class SearchRequestImpl
      *     {@link MobileWebRequest }
      *     
      */
-    public MobileWebRequest getMobileWeb() {
+    public MobileWebRequest getMobileWebRequest() {
         return mobileWeb;
     }
 
@@ -399,7 +399,7 @@ public class SearchRequestImpl
      *     {@link MobileWebRequest }
      *     
      */
-    public void setMobileWeb(MobileWebRequest value) {
+    public void setMobileWebRequest(MobileWebRequest value) {
         this.mobileWeb = value;
     }
 
@@ -411,7 +411,7 @@ public class SearchRequestImpl
      *     {@link TranslationRequest }
      *     
      */
-    public TranslationRequest getTranslation() {
+    public TranslationRequest getTranslationRequest() {
         return translation;
     }
 
@@ -423,7 +423,7 @@ public class SearchRequestImpl
      *     {@link TranslationRequest }
      *     
      */
-    public void setTranslation(TranslationRequest value) {
+    public void setTranslationRequest(TranslationRequest value) {
         this.translation = value;
     }
 
