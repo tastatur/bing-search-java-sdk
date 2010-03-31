@@ -28,4 +28,14 @@ public abstract class BaseAdapter implements Serializable {
 			e.printStackTrace();
 		}		
 	}
+	
+	@SuppressWarnings("unchecked")
+	protected void copyProperties(Map dest, Object src) {
+		try {
+			Map srcMap = BeanUtils.describe(src);
+			dest.putAll(srcMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
 }
