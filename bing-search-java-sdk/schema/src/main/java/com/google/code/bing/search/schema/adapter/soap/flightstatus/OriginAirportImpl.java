@@ -1,11 +1,10 @@
 
 package com.google.code.bing.search.schema.adapter.soap.flightstatus;
 
-import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 public class OriginAirportImpl
-    extends BaseAdapter implements OriginAirport, Adaptable<OriginAirport, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.OriginAirport>
+    extends BaseAdapter implements OriginAirport
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -36,17 +35,4 @@ public class OriginAirportImpl
     public void setTimeZoneOffset(Long value) {
         this.timeZoneOffset = value;
     }
-
-	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.OriginAirport adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.OriginAirport adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.OriginAirport();
-		copyProperties(adapter, this);
-		return adapter;
-	}
-
-	@Override
-	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.OriginAirport adaptee) {
-		copyProperties(this, adaptee);
-	}
 }

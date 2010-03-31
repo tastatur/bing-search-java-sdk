@@ -1,7 +1,6 @@
 
 package com.google.code.bing.search.schema.adapter.soap.flightstatus;
 
-import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 import com.google.code.bing.search.schema.flightstatus.FlightStatus;
@@ -9,7 +8,7 @@ import com.google.code.bing.search.schema.flightstatus.NextSegment;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 import com.google.code.bing.search.schema.flightstatus.PreviousSegment;
 public class FlightStatusImpl
-    extends BaseAdapter implements FlightStatus, Adaptable<FlightStatus, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus>
+    extends BaseAdapter implements FlightStatus
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -202,17 +201,4 @@ public class FlightStatusImpl
     public void setDataFreshness(Long value) {
         this.dataFreshness = value;
     }
-
-	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus();
-		copyProperties(adapter    , this);
-		return adapter;
-	}
-
-	@Override
-	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.FlightStatus adaptee) {
-		copyProperties(this, adaptee);
-	}
 }

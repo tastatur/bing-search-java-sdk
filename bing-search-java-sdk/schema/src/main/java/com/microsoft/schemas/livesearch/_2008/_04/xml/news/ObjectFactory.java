@@ -52,19 +52,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NewsCollections }
+     * Create an instance of {@link NewsCollection }
      * 
      */
-    public NewsCollections createNewsCollections() {
-        return new NewsCollections();
-    }
-
-    /**
-     * Create an instance of {@link RelatedSearches }
-     * 
-     */
-    public RelatedSearches createRelatedSearches() {
-        return new RelatedSearches();
+    public NewsCollection createNewsCollection() {
+        return new NewsCollection();
     }
 
     /**
@@ -76,11 +68,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Results }
+     * Create an instance of {@link RelatedSearches }
      * 
      */
-    public Results createResults() {
-        return new Results();
+    public RelatedSearches createRelatedSearches() {
+        return new RelatedSearches();
     }
 
     /**
@@ -100,19 +92,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NewsCollection }
-     * 
-     */
-    public NewsCollection createNewsCollection() {
-        return new NewsCollection();
-    }
-
-    /**
      * Create an instance of {@link NewsArticle }
      * 
      */
     public NewsArticle createNewsArticle() {
         return new NewsArticle();
+    }
+
+    /**
+     * Create an instance of {@link Results }
+     * 
+     */
+    public Results createResults() {
+        return new Results();
+    }
+
+    /**
+     * Create an instance of {@link NewsCollections }
+     * 
+     */
+    public NewsCollections createNewsCollections() {
+        return new NewsCollections();
     }
 
     /**

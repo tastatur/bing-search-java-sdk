@@ -35,6 +35,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Results }
+     * 
+     */
+    public Results createResults() {
+        return new Results();
+    }
+
+    /**
      * Create an instance of {@link RelatedSearch }
      * 
      */
@@ -48,14 +56,6 @@ public class ObjectFactory {
      */
     public RelatedSearchResult createRelatedSearchResult() {
         return new RelatedSearchResult();
-    }
-
-    /**
-     * Create an instance of {@link Results }
-     * 
-     */
-    public Results createResults() {
-        return new Results();
     }
 
     /**

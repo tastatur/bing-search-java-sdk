@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.instantanswer.Results;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfInstantAnswerResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfInstantAnswerResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfInstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfInstantAnswerResult();
 		copyProperties(adapter , this);
 		for (InstantAnswerResult o : getInstantAnswerResultList()) {
-			adapter.getInstantAnswerResultList().add(((InstantAnswerResultImpl) o).adaptTo());
+			adapter.getInstantAnswerResult().add(((InstantAnswerResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.Results adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfInstantAnswerResult adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult o : adaptee.getInstantAnswerResultList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult o : adaptee.getInstantAnswerResult()) {
 			InstantAnswerResultImpl result = new InstantAnswerResultImpl();
 			result.adaptFrom(o);
 			getInstantAnswerResultList().add(result);

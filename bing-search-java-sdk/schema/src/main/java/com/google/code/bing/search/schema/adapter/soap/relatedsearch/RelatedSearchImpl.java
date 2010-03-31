@@ -5,9 +5,8 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.RelatedSearch;
 public class RelatedSearchImpl
-    extends BaseAdapter implements RelatedSearchResponse, Adaptable<RelatedSearchResponse, RelatedSearch>
+    extends BaseAdapter implements RelatedSearchResponse, Adaptable<RelatedSearchResponse, com.microsoft.schemas.livesearch._2008._03.search.RelatedSearchResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -22,8 +21,8 @@ public class RelatedSearchImpl
     }
 
 	@Override
-	public RelatedSearch adaptTo() {
-		RelatedSearch adapter = new RelatedSearch();
+	public com.microsoft.schemas.livesearch._2008._03.search.RelatedSearchResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.RelatedSearchResponse adapter = new com.microsoft.schemas.livesearch._2008._03.search.RelatedSearchResponse();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -32,7 +31,7 @@ public class RelatedSearchImpl
 	}
 
 	@Override
-	public void adaptFrom(RelatedSearch adaptee) {
+	public void adaptFrom(com.microsoft.schemas.livesearch._2008._03.search.RelatedSearchResponse adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

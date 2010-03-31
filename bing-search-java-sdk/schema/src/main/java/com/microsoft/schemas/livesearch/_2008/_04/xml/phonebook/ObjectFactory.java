@@ -63,19 +63,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PhonebookResult }
-     * 
-     */
-    public PhonebookResult createPhonebookResult() {
-        return new PhonebookResult();
-    }
-
-    /**
      * Create an instance of {@link Phonebook }
      * 
      */
     public Phonebook createPhonebook() {
         return new Phonebook();
+    }
+
+    /**
+     * Create an instance of {@link PhonebookResult }
+     * 
+     */
+    public PhonebookResult createPhonebookResult() {
+        return new PhonebookResult();
     }
 
     /**

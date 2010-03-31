@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
 import com.google.code.bing.search.schema.phonebook.Results;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfPhonebookResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfPhonebookResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfPhonebookResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfPhonebookResult();
 		copyProperties(adapter, this);
 		for (PhonebookResult o : getPhonebookResultList()) {
-			adapter.getPhonebookResultList().add(((PhonebookResultImpl) o).adaptTo());
+			adapter.getPhonebookResult().add(((PhonebookResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Results adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfPhonebookResult adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult o : adaptee.getPhonebookResultList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult o : adaptee.getPhonebookResult()) {
 			PhonebookResultImpl result = new PhonebookResultImpl();
 			result.adaptFrom(o);
 			getPhonebookResultList().add(result);

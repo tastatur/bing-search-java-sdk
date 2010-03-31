@@ -50,19 +50,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Results }
-     * 
-     */
-    public Results createResults() {
-        return new Results();
-    }
-
-    /**
      * Create an instance of {@link MobileWebResult }
      * 
      */
     public MobileWebResult createMobileWebResult() {
         return new MobileWebResult();
+    }
+
+    /**
+     * Create an instance of {@link Results }
+     * 
+     */
+    public Results createResults() {
+        return new Results();
     }
 
     /**

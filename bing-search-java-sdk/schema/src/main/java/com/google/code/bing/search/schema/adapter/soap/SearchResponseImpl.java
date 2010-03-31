@@ -5,17 +5,17 @@ import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SearchResponse;
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
-import com.google.code.bing.search.schema.adapter.jaxb.ads.AdImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.instantanswer.InstantAnswerImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.mobileweb.MobileWebImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.multimedia.ImageImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.multimedia.VideoImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.news.NewsImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.phonebook.PhonebookImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.relatedsearch.RelatedSearchImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.spell.SpellImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.translation.TranslationImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.web.WebImpl;
+import com.google.code.bing.search.schema.adapter.soap.ads.AdImpl;
+import com.google.code.bing.search.schema.adapter.soap.instantanswer.InstantAnswerImpl;
+import com.google.code.bing.search.schema.adapter.soap.mobileweb.MobileWebImpl;
+import com.google.code.bing.search.schema.adapter.soap.multimedia.ImageImpl;
+import com.google.code.bing.search.schema.adapter.soap.multimedia.VideoImpl;
+import com.google.code.bing.search.schema.adapter.soap.news.NewsImpl;
+import com.google.code.bing.search.schema.adapter.soap.phonebook.PhonebookImpl;
+import com.google.code.bing.search.schema.adapter.soap.relatedsearch.RelatedSearchImpl;
+import com.google.code.bing.search.schema.adapter.soap.spell.SpellImpl;
+import com.google.code.bing.search.schema.adapter.soap.translation.TranslationImpl;
+import com.google.code.bing.search.schema.adapter.soap.web.WebImpl;
 import com.google.code.bing.search.schema.ads.AdResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
@@ -28,7 +28,7 @@ import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.translation.TranslationResponse;
 import com.google.code.bing.search.schema.web.WebResponse;
 public class SearchResponseImpl
-    extends BaseAdapter implements SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse>
+    extends BaseAdapter implements SearchResponse, Adaptable<SearchResponse, com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -151,15 +151,15 @@ public class SearchResponseImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse();
+	public com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adapter = new com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters();
 		copyProperties(adapter , this);
 		if (getQuery() != null) {
 			adapter.setQuery(((QueryImpl) getQuery()).adaptTo());
 		}
-		if (getAd() != null) {
-			adapter.setAd(((AdImpl) getAd()).adaptTo());
-		}
+//		if (getAd() != null) {
+//			adapter.setAd(((AdImpl) getAd()).adaptTo());
+//		}
 		if (getInstantAnswer() != null) {
 			adapter.setInstantAnswer(((InstantAnswerImpl) getInstantAnswer()).adaptTo());
 		}
@@ -196,18 +196,18 @@ public class SearchResponseImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.element.SearchResponse adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.SearchResponseParameters adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getQuery() != null) {
 			QueryImpl results = new QueryImpl();
 			results.adaptFrom(adaptee.getQuery());
 			setQuery(results);
 		}
-		if (adaptee.getAd() != null) {
-			AdImpl results = new AdImpl();
-			results.adaptFrom(adaptee.getAd());
-			setAd(results);
-		}
+//		if (adaptee.getAd() != null) {
+//			AdImpl results = new AdImpl();
+//			results.adaptFrom(adaptee.getAd());
+//			setAd(results);
+//		}
 		if (adaptee.getInstantAnswer() != null) {
 			InstantAnswerImpl results = new InstantAnswerImpl();
 			results.adaptFrom(adaptee.getInstantAnswer());

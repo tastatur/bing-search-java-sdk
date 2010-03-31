@@ -49,11 +49,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ImageResult }
+     * Create an instance of {@link Image }
      * 
      */
-    public ImageResult createImageResult() {
-        return new ImageResult();
+    public Image createImage() {
+        return new Image();
     }
 
     /**
@@ -65,27 +65,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Image }
+     * Create an instance of {@link ImageResults }
      * 
      */
-    public Image createImage() {
-        return new Image();
+    public ImageResults createImageResults() {
+        return new ImageResults();
     }
 
     /**
-     * Create an instance of {@link Thumbnail }
+     * Create an instance of {@link ImageResult }
      * 
      */
-    public Thumbnail createThumbnail() {
-        return new Thumbnail();
+    public ImageResult createImageResult() {
+        return new ImageResult();
     }
 
     /**
-     * Create an instance of {@link Results }
+     * Create an instance of {@link VideoResult }
      * 
      */
-    public Results createResults() {
-        return new Results();
+    public VideoResult createVideoResult() {
+        return new VideoResult();
+    }
+
+    /**
+     * Create an instance of {@link VideoResults }
+     * 
+     */
+    public VideoResults createVideoResults() {
+        return new VideoResults();
     }
 
     /**
@@ -97,11 +105,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VideoResult }
+     * Create an instance of {@link Thumbnail }
      * 
      */
-    public VideoResult createVideoResult() {
-        return new VideoResult();
+    public Thumbnail createThumbnail() {
+        return new Thumbnail();
     }
 
     /**

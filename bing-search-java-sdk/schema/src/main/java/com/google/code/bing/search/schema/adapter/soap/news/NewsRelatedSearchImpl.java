@@ -5,7 +5,7 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 public class NewsRelatedSearchImpl
-    extends BaseAdapter implements NewsRelatedSearch, Adaptable<NewsRelatedSearch, com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch>
+    extends BaseAdapter implements NewsRelatedSearch, Adaptable<NewsRelatedSearch, com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -29,15 +29,15 @@ public class NewsRelatedSearchImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch();
+	public com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch adapter = new com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch();
 		copyProperties(adapter, this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

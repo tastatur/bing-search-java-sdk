@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsResult;
 import com.google.code.bing.search.schema.news.Results;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.news.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.news.Results adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.news.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.Results();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsResult();
 		copyProperties(adapter, this);
 		for (NewsResult o : getNewsResultList()) {
-			adapter.getNewsResultList().add(((NewsResultImpl) o).adaptTo());
+			adapter.getNewsResult().add(((NewsResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.news.Results adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsResult adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.news.NewsResult o : adaptee.getNewsResultList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.NewsResult o : adaptee.getNewsResult()) {
 			NewsResultImpl result = new NewsResultImpl();
 			result.adaptFrom(o);
 			getNewsResultList().add(result);

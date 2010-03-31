@@ -5,9 +5,8 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.Results;
 import com.google.code.bing.search.schema.web.WebResponse;
-import com.microsoft.schemas.livesearch._2008._04.xml.web.Web;
 public class WebImpl
-    extends BaseAdapter implements WebResponse, Adaptable<WebResponse, Web>
+    extends BaseAdapter implements WebResponse, Adaptable<WebResponse, com.microsoft.schemas.livesearch._2008._03.search.WebResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -40,8 +39,8 @@ public class WebImpl
     }
 
 	@Override
-	public Web adaptTo() {
-		Web adapter = new Web();
+	public com.microsoft.schemas.livesearch._2008._03.search.WebResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.WebResponse adapter = new com.microsoft.schemas.livesearch._2008._03.search.WebResponse();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -50,7 +49,7 @@ public class WebImpl
 	}
 
 	@Override
-	public void adaptFrom(Web adaptee) {
+	public void adaptFrom(com.microsoft.schemas.livesearch._2008._03.search.WebResponse adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

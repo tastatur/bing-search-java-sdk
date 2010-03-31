@@ -19,10 +19,10 @@
 		</bindings>
 	</bindings>
 	<bindings schemaLocation="mms.xsd" node="/xs:schema">
-		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:choice/xs:element[@ref='mms:ImageResult']">
+		<bindings node="//xs:complexType[@name='ImageResults']/xs:sequence/xs:element[@ref='mms:ImageResult']">
 			<property name="imageResultList"/>
 		</bindings>
-		<bindings node="//xs:element[@name='Results']/xs:complexType/xs:choice/xs:element[@ref='mms:VideoResult']">
+		<bindings node="//xs:complexType[@name='VideoResults']/xs:sequence/xs:element[@ref='mms:VideoResult']">
 			<property name="videoResultList"/>
 		</bindings>
 	</bindings>

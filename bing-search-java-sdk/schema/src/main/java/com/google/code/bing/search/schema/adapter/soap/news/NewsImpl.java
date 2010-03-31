@@ -6,9 +6,8 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.RelatedSearches;
 import com.google.code.bing.search.schema.news.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.news.News;
 public class NewsImpl
-    extends BaseAdapter implements NewsResponse, Adaptable<NewsResponse, News>
+    extends BaseAdapter implements NewsResponse, Adaptable<NewsResponse, com.microsoft.schemas.livesearch._2008._03.search.NewsResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -50,8 +49,8 @@ public class NewsImpl
     }
 
 	@Override
-	public News adaptTo() {
-		News adapter = new News();
+	public com.microsoft.schemas.livesearch._2008._03.search.NewsResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.NewsResponse adapter = new com.microsoft.schemas.livesearch._2008._03.search.NewsResponse();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -63,7 +62,7 @@ public class NewsImpl
 	}
 
 	@Override
-	public void adaptFrom(News adaptee) {
+	public void adaptFrom(com.microsoft.schemas.livesearch._2008._03.search.NewsResponse adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

@@ -75,19 +75,19 @@ public interface VideoResponse
      * 
      * @return
      *     possible object is
-     *     {@link Results }
+     *     {@link VideoResults }
      *     
      */
-    Results getResults();
+    VideoResults getResults();
 
     /**
      * Sets the value of the results property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Results }
+     *     {@link VideoResults }
      *     
      */
-    void setResults(Results value);
+    void setResults(VideoResults value);
 
 }

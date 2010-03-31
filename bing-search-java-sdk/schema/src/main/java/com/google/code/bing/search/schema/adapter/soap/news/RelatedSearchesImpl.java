@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 import com.google.code.bing.search.schema.news.RelatedSearches;
 public class RelatedSearchesImpl
-    extends BaseAdapter implements RelatedSearches, Adaptable<RelatedSearches, com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches>
+    extends BaseAdapter implements RelatedSearches, Adaptable<RelatedSearches, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsRelatedSearch>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class RelatedSearchesImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsRelatedSearch adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsRelatedSearch adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsRelatedSearch();
 		copyProperties(adapter, this);
 		for (NewsRelatedSearch o : getNewsRelatedSearchList()) {
-			adapter.getNewsRelatedSearchList().add(((NewsRelatedSearchImpl) o).adaptTo());
+			adapter.getNewsRelatedSearch().add(((NewsRelatedSearchImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.news.RelatedSearches adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsRelatedSearch adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch o : adaptee.getNewsRelatedSearchList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.NewsRelatedSearch o : adaptee.getNewsRelatedSearch()) {
 			NewsRelatedSearchImpl result = new NewsRelatedSearchImpl();
 			result.adaptFrom(o);
 			getNewsRelatedSearchList().add(result);

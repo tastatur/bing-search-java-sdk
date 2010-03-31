@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.Results;
 import com.google.code.bing.search.schema.web.WebResult;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.web.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.Results adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.web.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.Results();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebResult();
 		copyProperties(adapter, this);
 		for (WebResult o : getWebResultList()) {
-			adapter.getWebResultList().add(((WebResultImpl) o).adaptTo());
+			adapter.getWebResult().add(((WebResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.web.Results adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfWebResult adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult o : adaptee.getWebResultList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.WebResult o : adaptee.getWebResult()) {
 			WebResultImpl result = new WebResultImpl();
 			result.adaptFrom(o);
 			getWebResultList().add(result);

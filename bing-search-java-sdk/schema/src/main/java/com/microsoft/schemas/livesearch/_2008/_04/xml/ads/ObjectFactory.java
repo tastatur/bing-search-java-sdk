@@ -53,19 +53,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Ad }
-     * 
-     */
-    public Ad createAd() {
-        return new Ad();
-    }
-
-    /**
      * Create an instance of {@link Results }
      * 
      */
     public Results createResults() {
         return new Results();
+    }
+
+    /**
+     * Create an instance of {@link Ad }
+     * 
+     */
+    public Ad createAd() {
+        return new Ad();
     }
 
     /**

@@ -5,9 +5,8 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.translation.Results;
 import com.google.code.bing.search.schema.translation.TranslationResponse;
-import com.microsoft.schemas.livesearch._2008._04.xml.translation.Translation;
 public class TranslationImpl
-    extends BaseAdapter implements TranslationResponse, Adaptable<TranslationResponse, Translation>
+    extends BaseAdapter implements TranslationResponse, Adaptable<TranslationResponse, com.microsoft.schemas.livesearch._2008._03.search.TranslationResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -22,8 +21,8 @@ public class TranslationImpl
     }
 
 	@Override
-	public Translation adaptTo() {
-		Translation adapter = new Translation();
+	public com.microsoft.schemas.livesearch._2008._03.search.TranslationResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.TranslationResponse adapter = new com.microsoft.schemas.livesearch._2008._03.search.TranslationResponse();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -32,7 +31,7 @@ public class TranslationImpl
 	}
 
 	@Override
-	public void adaptFrom(Translation adaptee) {
+	public void adaptFrom(com.microsoft.schemas.livesearch._2008._03.search.TranslationResponse adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

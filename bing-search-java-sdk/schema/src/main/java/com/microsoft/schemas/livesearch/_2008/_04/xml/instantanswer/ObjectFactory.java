@@ -38,6 +38,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Results }
+     * 
+     */
+    public Results createResults() {
+        return new Results();
+    }
+
+    /**
+     * Create an instance of {@link InstantAnswerResult }
+     * 
+     */
+    public InstantAnswerResult createInstantAnswerResult() {
+        return new InstantAnswerResult();
+    }
+
+    /**
      * Create an instance of {@link InstantAnswer }
      * 
      */
@@ -51,22 +67,6 @@ public class ObjectFactory {
      */
     public InstantAnswerSpecificData createInstantAnswerSpecificData() {
         return new InstantAnswerSpecificData();
-    }
-
-    /**
-     * Create an instance of {@link InstantAnswerResult }
-     * 
-     */
-    public InstantAnswerResult createInstantAnswerResult() {
-        return new InstantAnswerResult();
-    }
-
-    /**
-     * Create an instance of {@link Results }
-     * 
-     */
-    public Results createResults() {
-        return new Results();
     }
 
     /**

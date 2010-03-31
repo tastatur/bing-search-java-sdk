@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.DeepLink;
 import com.google.code.bing.search.schema.web.DeepLinks;
 public class DeepLinksImpl
-    extends BaseAdapter implements DeepLinks, Adaptable<DeepLinks, com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks>
+    extends BaseAdapter implements DeepLinks, Adaptable<DeepLinks, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfDeepLink>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class DeepLinksImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfDeepLink adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfDeepLink adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfDeepLink();
 		copyProperties(adapter, this);
 		for (DeepLink deepLink : getDeepLinkList()) {
-			adapter.getDeepLinkList().add(((DeepLinkImpl) deepLink).adaptTo());
+			adapter.getDeepLink().add(((DeepLinkImpl) deepLink).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfDeepLink adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink o : adaptee.getDeepLinkList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.DeepLink o : adaptee.getDeepLink()) {
 			DeepLinkImpl deepLink = new DeepLinkImpl();
 			deepLink.adaptFrom(o);
 			getDeepLinkList().add(deepLink);

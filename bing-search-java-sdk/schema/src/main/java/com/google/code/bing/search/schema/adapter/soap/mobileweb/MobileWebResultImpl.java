@@ -5,7 +5,7 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
 public class MobileWebResultImpl
-    extends BaseAdapter implements MobileWebResult, Adaptable<MobileWebResult, com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult>
+    extends BaseAdapter implements MobileWebResult, Adaptable<MobileWebResult, com.microsoft.schemas.livesearch._2008._03.search.MobileWebResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -56,15 +56,15 @@ public class MobileWebResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult();
+	public com.microsoft.schemas.livesearch._2008._03.search.MobileWebResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.MobileWebResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.MobileWebResult();
 		copyProperties(adapter , this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.MobileWebResult adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

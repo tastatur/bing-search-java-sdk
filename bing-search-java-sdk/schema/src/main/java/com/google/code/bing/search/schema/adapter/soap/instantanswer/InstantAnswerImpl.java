@@ -5,9 +5,8 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswer;
 public class InstantAnswerImpl
-    extends BaseAdapter implements InstantAnswerResponse, Adaptable<InstantAnswerResponse, InstantAnswer>
+    extends BaseAdapter implements InstantAnswerResponse, Adaptable<InstantAnswerResponse, com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResponse>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -22,8 +21,8 @@ public class InstantAnswerImpl
     }
 
 	@Override
-	public InstantAnswer adaptTo() {
-		InstantAnswer adapter = new InstantAnswer();
+	public com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResponse adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResponse adapter = new com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResponse();
 		copyProperties(adapter  , this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -32,7 +31,7 @@ public class InstantAnswerImpl
 	}
 
 	@Override
-	public void adaptFrom(InstantAnswer adaptee) {
+	public void adaptFrom(com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResponse adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

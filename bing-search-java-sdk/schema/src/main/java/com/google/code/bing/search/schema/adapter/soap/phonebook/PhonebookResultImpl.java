@@ -5,7 +5,7 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
 public class PhonebookResultImpl
-    extends BaseAdapter implements PhonebookResult, Adaptable<PhonebookResult, com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult>
+    extends BaseAdapter implements PhonebookResult, Adaptable<PhonebookResult, com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -155,15 +155,15 @@ public class PhonebookResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult();
+	public com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult();
 		copyProperties(adapter, this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.PhonebookResult adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

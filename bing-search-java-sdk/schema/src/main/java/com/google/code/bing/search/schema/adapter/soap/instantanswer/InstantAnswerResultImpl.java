@@ -6,7 +6,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
 public class InstantAnswerResultImpl
-    extends BaseAdapter implements InstantAnswerResult, Adaptable<InstantAnswerResult, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult>
+    extends BaseAdapter implements InstantAnswerResult, Adaptable<InstantAnswerResult, com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -66,24 +66,24 @@ public class InstantAnswerResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult();
+	public com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult();
 		copyProperties(adapter   , this);
-		if (getInstantAnswerSpecificData() != null) {
-			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
-		}
+//		if (getInstantAnswerSpecificData() != null) {
+//			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
+//		}
 		
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getInstantAnswerSpecificData() != null) {
-			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
-			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
-			setInstantAnswerSpecificData(results);
-		}
+//		if (adaptee.getInstantAnswerSpecificData() != null) {
+//			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
+//			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
+//			setInstantAnswerSpecificData(results);
+//		}
 	}
 }

@@ -55,11 +55,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DestinationAirport }
+     * Create an instance of {@link FlightStatus }
      * 
      */
-    public DestinationAirport createDestinationAirport() {
-        return new DestinationAirport();
+    public FlightStatus createFlightStatus() {
+        return new FlightStatus();
     }
 
     /**
@@ -68,6 +68,14 @@ public class ObjectFactory {
      */
     public NextSegment createNextSegment() {
         return new NextSegment();
+    }
+
+    /**
+     * Create an instance of {@link DestinationAirport }
+     * 
+     */
+    public DestinationAirport createDestinationAirport() {
+        return new DestinationAirport();
     }
 
     /**
@@ -84,14 +92,6 @@ public class ObjectFactory {
      */
     public OriginAirport createOriginAirport() {
         return new OriginAirport();
-    }
-
-    /**
-     * Create an instance of {@link FlightStatus }
-     * 
-     */
-    public FlightStatus createFlightStatus() {
-        return new FlightStatus();
     }
 
     /**

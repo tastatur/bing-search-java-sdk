@@ -5,7 +5,7 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.Thumbnail;
 public class ThumbnailImpl
-    extends BaseAdapter implements Thumbnail, Adaptable<Thumbnail, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Thumbnail>
+    extends BaseAdapter implements Thumbnail, Adaptable<Thumbnail, com.microsoft.schemas.livesearch._2008._03.search.Thumbnail>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -65,15 +65,15 @@ public class ThumbnailImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Thumbnail adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Thumbnail adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Thumbnail();
+	public com.microsoft.schemas.livesearch._2008._03.search.Thumbnail adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.Thumbnail adapter = new com.microsoft.schemas.livesearch._2008._03.search.Thumbnail();
 		copyProperties(adapter, this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Thumbnail adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.Thumbnail adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

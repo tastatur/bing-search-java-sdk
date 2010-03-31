@@ -45,27 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Results }
-     * 
-     */
-    public Results createResults() {
-        return new Results();
-    }
-
-    /**
      * Create an instance of {@link WebResult }
      * 
      */
     public WebResult createWebResult() {
         return new WebResult();
-    }
-
-    /**
-     * Create an instance of {@link SearchTags }
-     * 
-     */
-    public SearchTags createSearchTags() {
-        return new SearchTags();
     }
 
     /**
@@ -77,11 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Web }
+     * Create an instance of {@link WebSearchTag }
      * 
      */
-    public Web createWeb() {
-        return new Web();
+    public WebSearchTag createWebSearchTag() {
+        return new WebSearchTag();
     }
 
     /**
@@ -93,11 +77,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WebSearchTag }
+     * Create an instance of {@link Web }
      * 
      */
-    public WebSearchTag createWebSearchTag() {
-        return new WebSearchTag();
+    public Web createWeb() {
+        return new Web();
+    }
+
+    /**
+     * Create an instance of {@link Results }
+     * 
+     */
+    public Results createResults() {
+        return new Results();
+    }
+
+    /**
+     * Create an instance of {@link SearchTags }
+     * 
+     */
+    public SearchTags createSearchTags() {
+        return new SearchTags();
     }
 
     /**

@@ -9,7 +9,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsCollection;
 import com.google.code.bing.search.schema.news.NewsCollections;
 public class NewsCollectionsImpl
-    extends BaseAdapter implements NewsCollections, Adaptable<NewsCollections, com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollections>
+    extends BaseAdapter implements NewsCollections, Adaptable<NewsCollections, com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsCollection>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,20 +23,20 @@ public class NewsCollectionsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollections adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollections adapter = new com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollections();
+	public com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsCollection adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsCollection adapter = new com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsCollection();
 		copyProperties(adapter, this);
 		for (NewsCollection o : getNewsCollectionList()) {
-			adapter.getNewsCollectionList().add(((NewsCollectionImpl) o).adaptTo());
+			adapter.getNewsCollection().add(((NewsCollectionImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollections adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.ArrayOfNewsCollection adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.news.NewsCollection o : adaptee.getNewsCollectionList()) {
+		for (com.microsoft.schemas.livesearch._2008._03.search.NewsCollection o : adaptee.getNewsCollection()) {
 			NewsCollectionImpl result = new NewsCollectionImpl();
 			result.adaptFrom(o);
 			getNewsCollectionList().add(result);

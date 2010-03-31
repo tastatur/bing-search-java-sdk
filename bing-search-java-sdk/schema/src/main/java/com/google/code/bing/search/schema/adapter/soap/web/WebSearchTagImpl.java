@@ -5,7 +5,7 @@ import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 public class WebSearchTagImpl
-    extends BaseAdapter implements WebSearchTag, Adaptable<WebSearchTag, com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag>
+    extends BaseAdapter implements WebSearchTag, Adaptable<WebSearchTag, com.microsoft.schemas.livesearch._2008._03.search.WebSearchTag>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -29,15 +29,15 @@ public class WebSearchTagImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag();
+	public com.microsoft.schemas.livesearch._2008._03.search.WebSearchTag adaptTo() {
+		com.microsoft.schemas.livesearch._2008._03.search.WebSearchTag adapter = new com.microsoft.schemas.livesearch._2008._03.search.WebSearchTag();
 		copyProperties(adapter, this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag adaptee) {
+			com.microsoft.schemas.livesearch._2008._03.search.WebSearchTag adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

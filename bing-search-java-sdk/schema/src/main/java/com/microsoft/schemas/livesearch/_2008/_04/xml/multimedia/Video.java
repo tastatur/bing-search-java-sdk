@@ -23,7 +23,7 @@ import org.w3._2001.xmlschema.Adapter1;
  *       &lt;sequence>
  *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Total" minOccurs="0"/>
  *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Results" minOccurs="0"/>
+ *         &lt;element name="Results" type="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}VideoResults" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -51,7 +51,7 @@ public class Video
     @XmlJavaTypeAdapter(Adapter1 .class)
     protected Long offset;
     @XmlElement(name = "Results")
-    protected Results results;
+    protected VideoResults results;
 
     /**
      * Gets the value of the total property.
@@ -106,10 +106,10 @@ public class Video
      * 
      * @return
      *     possible object is
-     *     {@link Results }
+     *     {@link VideoResults }
      *     
      */
-    public Results getResults() {
+    public VideoResults getResults() {
         return results;
     }
 
@@ -118,10 +118,10 @@ public class Video
      * 
      * @param value
      *     allowed object is
-     *     {@link Results }
+     *     {@link VideoResults }
      *     
      */
-    public void setResults(Results value) {
+    public void setResults(VideoResults value) {
         this.results = value;
     }
 
