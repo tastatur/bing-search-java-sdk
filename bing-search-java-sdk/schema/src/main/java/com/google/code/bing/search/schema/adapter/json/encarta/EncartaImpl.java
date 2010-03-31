@@ -1,11 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.json.encarta;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.encarta.Encarta;
 public class EncartaImpl
-    extends BaseAdapter implements Encarta, Adaptable<Encarta, com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta>
+    extends BaseAdapter implements Encarta, Adaptable<Encarta, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -20,15 +22,15 @@ public class EncartaImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adapter = new com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter   , this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.encarta.Encarta adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

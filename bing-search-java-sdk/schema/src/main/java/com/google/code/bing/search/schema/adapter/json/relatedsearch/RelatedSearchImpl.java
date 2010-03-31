@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.relatedsearch;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.RelatedSearch;
 public class RelatedSearchImpl
-    extends BaseAdapter implements RelatedSearchResponse, Adaptable<RelatedSearchResponse, RelatedSearch>
+    extends BaseAdapter implements RelatedSearchResponse, Adaptable<RelatedSearchResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -22,8 +23,8 @@ public class RelatedSearchImpl
     }
 
 	@Override
-	public RelatedSearch adaptTo() {
-		RelatedSearch adapter = new RelatedSearch();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -32,7 +33,7 @@ public class RelatedSearchImpl
 	}
 
 	@Override
-	public void adaptFrom(RelatedSearch adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

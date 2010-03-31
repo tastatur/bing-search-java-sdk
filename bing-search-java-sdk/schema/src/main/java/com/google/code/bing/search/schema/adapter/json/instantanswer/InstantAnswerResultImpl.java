@@ -1,12 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.instantanswer;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
 public class InstantAnswerResultImpl
-    extends BaseAdapter implements InstantAnswerResult, Adaptable<InstantAnswerResult, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult>
+    extends BaseAdapter implements InstantAnswerResult, Adaptable<InstantAnswerResult, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -66,8 +68,8 @@ public class InstantAnswerResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter   , this);
 		if (getInstantAnswerSpecificData() != null) {
 			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
@@ -78,7 +80,7 @@ public class InstantAnswerResultImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getInstantAnswerSpecificData() != null) {
 			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();

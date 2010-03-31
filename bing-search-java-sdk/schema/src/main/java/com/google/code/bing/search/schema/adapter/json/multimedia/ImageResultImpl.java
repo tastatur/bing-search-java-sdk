@@ -1,12 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.multimedia;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
 import com.google.code.bing.search.schema.multimedia.Thumbnail;
 public class ImageResultImpl
-    extends BaseAdapter implements ImageResult, Adaptable<ImageResult, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult>
+    extends BaseAdapter implements ImageResult, Adaptable<ImageResult, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -93,8 +95,8 @@ public class ImageResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		if (getThumbnail() != null) {
 			adapter.setThumbnail(((ThumbnailImpl) getThumbnail()).adaptTo());
@@ -105,7 +107,7 @@ public class ImageResultImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getThumbnail() != null) {
 			ThumbnailImpl thumbnail = new ThumbnailImpl();

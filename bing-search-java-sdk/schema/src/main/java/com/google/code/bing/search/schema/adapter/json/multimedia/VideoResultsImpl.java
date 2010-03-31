@@ -4,13 +4,15 @@ package com.google.code.bing.search.schema.adapter.json.multimedia;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
 import com.google.code.bing.search.schema.multimedia.VideoResult;
 import com.google.code.bing.search.schema.multimedia.VideoResults;
 public class VideoResultsImpl
-    extends BaseAdapter implements VideoResults, Adaptable<VideoResults, com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResults>
+    extends BaseAdapter implements VideoResults, Adaptable<VideoResults, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -25,8 +27,8 @@ public class VideoResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResults adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResults adapter = new com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResults();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		for (VideoResult o : getVideoResultList()) {
 			adapter.getVideoResultList().add(((VideoResultImpl) o).adaptTo());
@@ -36,7 +38,7 @@ public class VideoResultsImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResults adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		for (com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult o : adaptee.getVideoResultList()) {
 			VideoResultImpl result = new VideoResultImpl();

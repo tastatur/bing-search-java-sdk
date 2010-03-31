@@ -1,14 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.json.news;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.RelatedSearches;
 import com.google.code.bing.search.schema.news.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.news.News;
 public class NewsImpl
-    extends BaseAdapter implements NewsResponse, Adaptable<NewsResponse, News>
+    extends BaseAdapter implements NewsResponse, Adaptable<NewsResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -50,8 +51,8 @@ public class NewsImpl
     }
 
 	@Override
-	public News adaptTo() {
-		News adapter = new News();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -63,7 +64,7 @@ public class NewsImpl
 	}
 
 	@Override
-	public void adaptFrom(News adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

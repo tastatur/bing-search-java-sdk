@@ -1,14 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.json.ads;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.ads.AdResponse;
 import com.google.code.bing.search.schema.ads.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.ads.Ad;
 
 public class AdImpl
-    extends BaseAdapter implements AdResponse, Adaptable<AdResponse, Ad>
+    extends BaseAdapter implements AdResponse, Adaptable<AdResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -50,8 +51,8 @@ public class AdImpl
     }
 
 	@Override
-	public Ad adaptTo() {
-		Ad adapter = new Ad();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -60,7 +61,7 @@ public class AdImpl
 	}
 
 	@Override
-	public void adaptFrom(Ad adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

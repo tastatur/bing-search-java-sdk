@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.instantanswer;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswer;
 public class InstantAnswerImpl
-    extends BaseAdapter implements InstantAnswerResponse, Adaptable<InstantAnswerResponse, InstantAnswer>
+    extends BaseAdapter implements InstantAnswerResponse, Adaptable<InstantAnswerResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -22,8 +23,8 @@ public class InstantAnswerImpl
     }
 
 	@Override
-	public InstantAnswer adaptTo() {
-		InstantAnswer adapter = new InstantAnswer();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -32,7 +33,7 @@ public class InstantAnswerImpl
 	}
 
 	@Override
-	public void adaptFrom(InstantAnswer adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.mobileweb;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
 import com.google.code.bing.search.schema.mobileweb.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWeb;
 public class MobileWebImpl
-    extends BaseAdapter implements MobileWebResponse, Adaptable<MobileWebResponse, MobileWeb>
+    extends BaseAdapter implements MobileWebResponse, Adaptable<MobileWebResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -40,8 +41,8 @@ public class MobileWebImpl
     }
 
 	@Override
-	public MobileWeb adaptTo() {
-		MobileWeb adapter = new MobileWeb();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -50,7 +51,7 @@ public class MobileWebImpl
 	}
 
 	@Override
-	public void adaptFrom(MobileWeb adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

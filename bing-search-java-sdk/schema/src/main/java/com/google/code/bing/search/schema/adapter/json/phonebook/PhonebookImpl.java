@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.phonebook;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.Results;
-import com.microsoft.schemas.livesearch._2008._04.xml.phonebook.Phonebook;
 public class PhonebookImpl
-    extends BaseAdapter implements PhonebookResponse, Adaptable<PhonebookResponse, Phonebook>
+    extends BaseAdapter implements PhonebookResponse, Adaptable<PhonebookResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -58,8 +59,8 @@ public class PhonebookImpl
     }
 
 	@Override
-	public Phonebook adaptTo() {
-		Phonebook adapter = new Phonebook();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -68,7 +69,7 @@ public class PhonebookImpl
 	}
 
 	@Override
-	public void adaptFrom(Phonebook adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

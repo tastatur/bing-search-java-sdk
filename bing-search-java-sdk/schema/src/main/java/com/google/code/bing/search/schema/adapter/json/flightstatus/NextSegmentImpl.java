@@ -1,13 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.json.flightstatus;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.flightstatus.DestinationAirport;
 import com.google.code.bing.search.schema.flightstatus.NextSegment;
 import com.google.code.bing.search.schema.flightstatus.OriginAirport;
 public class NextSegmentImpl
-    extends BaseAdapter implements NextSegment, Adaptable<NextSegment, com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment>
+    extends BaseAdapter implements NextSegment, Adaptable<NextSegment, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -40,15 +42,15 @@ public class NextSegmentImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter     , this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.element.flightstatus.NextSegment adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 	}
 }

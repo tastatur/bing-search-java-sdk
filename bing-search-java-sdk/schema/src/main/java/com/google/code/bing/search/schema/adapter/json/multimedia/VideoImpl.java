@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.multimedia;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
-import com.google.code.bing.search.schema.multimedia.VideoResults;
 import com.google.code.bing.search.schema.multimedia.VideoResponse;
-import com.microsoft.schemas.livesearch._2008._04.xml.multimedia.Video;
+import com.google.code.bing.search.schema.multimedia.VideoResults;
 public class VideoImpl
-    extends BaseAdapter implements VideoResponse, Adaptable<VideoResponse, Video>
+    extends BaseAdapter implements VideoResponse, Adaptable<VideoResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -40,8 +41,8 @@ public class VideoImpl
     }
 
 	@Override
-	public Video adaptTo() {
-		Video adapter = new Video();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		if (getResults() != null) {
 			adapter.setResults(((VideoResultsImpl) getResults()).adaptTo());
@@ -50,7 +51,7 @@ public class VideoImpl
 	}
 
 	@Override
-	public void adaptFrom(Video adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			VideoResultsImpl results = new VideoResultsImpl();

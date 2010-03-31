@@ -1,13 +1,15 @@
 
 package com.google.code.bing.search.schema.adapter.json.web;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.DeepLinks;
 import com.google.code.bing.search.schema.web.SearchTags;
 import com.google.code.bing.search.schema.web.WebResult;
 public class WebResultImpl
-    extends BaseAdapter implements WebResult, Adaptable<WebResult, com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult>
+    extends BaseAdapter implements WebResult, Adaptable<WebResult, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -85,8 +87,8 @@ public class WebResultImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getSearchTags() != null) {
 			adapter.setSearchTags(((SearchTagsImpl) getSearchTags()).adaptTo());
@@ -99,7 +101,7 @@ public class WebResultImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.web.WebResult adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getSearchTags() != null) {
 			SearchTagsImpl results = new SearchTagsImpl();

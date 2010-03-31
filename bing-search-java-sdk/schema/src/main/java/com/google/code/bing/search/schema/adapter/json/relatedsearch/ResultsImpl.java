@@ -4,12 +4,14 @@ package com.google.code.bing.search.schema.adapter.json.relatedsearch;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
 import com.google.code.bing.search.schema.relatedsearch.Results;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.Results>
+    extends BaseAdapter implements Results, Adaptable<Results, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,8 +25,8 @@ public class ResultsImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.Results adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.Results adapter = new com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.Results();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (RelatedSearchResult o : getRelatedSearchResultList()) {
 			adapter.getRelatedSearchResultList().add(((RelatedSearchResultImpl) o).adaptTo());
@@ -34,7 +36,7 @@ public class ResultsImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.Results adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		for (com.microsoft.schemas.livesearch._2008._04.xml.relatedsearch.RelatedSearchResult o : adaptee.getRelatedSearchResultList()) {
 			RelatedSearchResultImpl result = new RelatedSearchResultImpl();

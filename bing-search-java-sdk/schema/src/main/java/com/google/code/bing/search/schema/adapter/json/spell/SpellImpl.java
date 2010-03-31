@@ -1,13 +1,14 @@
 
 package com.google.code.bing.search.schema.adapter.json.spell;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.spell.Results;
 import com.google.code.bing.search.schema.spell.SpellResponse;
-import com.microsoft.schemas.livesearch._2008._04.xml.spell.Spell;
 public class SpellImpl
-    extends BaseAdapter implements SpellResponse, Adaptable<SpellResponse, Spell>
+    extends BaseAdapter implements SpellResponse, Adaptable<SpellResponse, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -31,8 +32,8 @@ public class SpellImpl
     }
 
 	@Override
-	public Spell adaptTo() {
-		Spell adapter = new Spell();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
 			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
@@ -41,7 +42,7 @@ public class SpellImpl
 	}
 
 	@Override
-	public void adaptFrom(Spell adaptee) {
+	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getResults() != null) {
 			ResultsImpl results = new ResultsImpl();

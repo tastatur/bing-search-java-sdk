@@ -1,6 +1,8 @@
 
 package com.google.code.bing.search.schema.adapter.json.instantanswer;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.adapter.jaxb.encarta.EncartaImpl;
@@ -9,7 +11,7 @@ import com.google.code.bing.search.schema.encarta.Encarta;
 import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
 public class InstantAnswerSpecificDataImpl
-    extends BaseAdapter implements InstantAnswerSpecificData, Adaptable<InstantAnswerSpecificData, com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData>
+    extends BaseAdapter implements InstantAnswerSpecificData, Adaptable<InstantAnswerSpecificData, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -33,8 +35,8 @@ public class InstantAnswerSpecificDataImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adapter = new com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter    , this);
 		if (getFlightStatus() != null) {
 			adapter.setFlightStatus(((FlightStatusImpl) getFlightStatus()).adaptTo());
@@ -47,7 +49,7 @@ public class InstantAnswerSpecificDataImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerSpecificData adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		if (adaptee.getFlightStatus() != null) {
 			FlightStatusImpl results = new FlightStatusImpl();

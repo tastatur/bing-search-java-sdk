@@ -4,12 +4,14 @@ package com.google.code.bing.search.schema.adapter.json.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.DeepLink;
 import com.google.code.bing.search.schema.web.DeepLinks;
 public class DeepLinksImpl
-    extends BaseAdapter implements DeepLinks, Adaptable<DeepLinks, com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks>
+    extends BaseAdapter implements DeepLinks, Adaptable<DeepLinks, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -23,8 +25,8 @@ public class DeepLinksImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adapter = new com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (DeepLink deepLink : getDeepLinkList()) {
 			adapter.getDeepLinkList().add(((DeepLinkImpl) deepLink).adaptTo());
@@ -34,7 +36,7 @@ public class DeepLinksImpl
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLinks adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 		for (com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink o : adaptee.getDeepLinkList()) {
 			DeepLinkImpl deepLink = new DeepLinkImpl();

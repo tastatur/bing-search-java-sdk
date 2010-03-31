@@ -1,11 +1,13 @@
 
 package com.google.code.bing.search.schema.adapter.json;
 
+import org.json.simple.JSONObject;
+
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
 public class QueryImpl
-    extends BaseAdapter implements Query, Adaptable<Query, com.microsoft.schemas.livesearch._2008._04.xml.element.Query>
+    extends BaseAdapter implements Query, Adaptable<Query, JSONObject>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -38,15 +40,15 @@ public class QueryImpl
     }
 
 	@Override
-	public com.microsoft.schemas.livesearch._2008._04.xml.element.Query adaptTo() {
-		com.microsoft.schemas.livesearch._2008._04.xml.element.Query adapter = new com.microsoft.schemas.livesearch._2008._04.xml.element.Query();
+	public JSONObject adaptTo() {
+		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			com.microsoft.schemas.livesearch._2008._04.xml.element.Query adaptee) {
+			JSONObject adaptee) {
 		copyProperties(this, adaptee);
 	}
 }
