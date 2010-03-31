@@ -15,7 +15,9 @@ public abstract class BaseAdapter implements Serializable {
 	protected void copyProperties(Object dest, Object src) {
 		try {
 			BeanUtils.copyProperties(dest, src);
-		} catch (Exception e) {}		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 }
