@@ -1,6 +1,7 @@
 
 package com.google.code.bing.search.schema.adapter.json.news;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -93,7 +94,7 @@ public class NewsResultImpl
 		copyProperties(this, adaptee);
 		if (adaptee.get("NewsCollections") != null) {
 			NewsCollectionsImpl results = new NewsCollectionsImpl();
-			results.adaptFrom((JSONObject) adaptee.get("NewsCollections"));
+			results.adaptFrom((JSONArray) adaptee.get("NewsCollections"));
 			setNewsCollections(results);
 		}
 	}

@@ -1,6 +1,7 @@
 
 package com.google.code.bing.search.schema.adapter.json.web;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -106,12 +107,12 @@ public class WebResultImpl
 		copyProperties(this, adaptee);
 		if (adaptee.get("SearchTags") != null) {
 			SearchTagsImpl results = new SearchTagsImpl();
-			results.adaptFrom((JSONObject) adaptee.get("SearchTags"));
+			results.adaptFrom((JSONArray) adaptee.get("SearchTags"));
 			setSearchTags(results);
 		}
 		if (adaptee.get("DeepLinks") != null) {
 			DeepLinksImpl results = new DeepLinksImpl();
-			results.adaptFrom((JSONObject) adaptee.get("DeepLinks"));
+			results.adaptFrom((JSONArray) adaptee.get("DeepLinks"));
 			setDeepLinks(results);
 		}
 	}

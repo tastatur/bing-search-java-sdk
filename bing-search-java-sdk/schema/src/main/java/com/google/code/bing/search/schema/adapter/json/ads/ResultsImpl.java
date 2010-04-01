@@ -13,7 +13,7 @@ import com.google.code.bing.search.schema.ads.AdResult;
 import com.google.code.bing.search.schema.ads.Results;
 
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, JSONObject>
+    extends BaseAdapter implements Results, Adaptable<Results, JSONArray>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -28,20 +28,18 @@ public class ResultsImpl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public JSONObject adaptTo() {
-		JSONObject adapter = new JSONObject();
-		copyProperties(adapter   , this);
+	public JSONArray adaptTo() {
+		JSONArray adapter = new JSONArray();
 		for (AdResult o : getAdResultList()) {
-			((JSONArray)adapter.get("AdResult")).add(((AdResultImpl) o).adaptTo());
+			adapter.add(((AdResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			JSONObject adaptee) {
-		copyProperties(this, adaptee);
-		for (Object o : getJSONArray(adaptee, "AdResult")) {
+			JSONArray adaptee) {
+		for (Object o : adaptee) {
 			AdResultImpl result = new AdResultImpl();
 			result.adaptFrom((JSONObject) o);
 			getAdResultList().add(result);

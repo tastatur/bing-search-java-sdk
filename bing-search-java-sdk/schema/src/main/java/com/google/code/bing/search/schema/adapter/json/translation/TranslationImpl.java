@@ -1,6 +1,7 @@
 
 package com.google.code.bing.search.schema.adapter.json.translation;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -38,7 +39,7 @@ public class TranslationImpl
 		copyProperties(this, adaptee);
 		if (adaptee.get("Results") != null) {
 			ResultsImpl results = new ResultsImpl();
-			results.adaptFrom((JSONObject) adaptee.get("Results"));
+			results.adaptFrom((JSONArray) adaptee.get("Results"));
 			setResults(results);
 		}
 	}

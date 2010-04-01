@@ -1,6 +1,7 @@
 
 package com.google.code.bing.search.schema.adapter.json.multimedia;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -56,7 +57,7 @@ public class ImageImpl
 		copyProperties(this, adaptee);
 		if (adaptee.get("Results") != null) {
 			ImageResultsImpl results = new ImageResultsImpl();
-			results.adaptFrom((JSONObject) adaptee.get("Results"));
+			results.adaptFrom((JSONArray) adaptee.get("Results"));
 			setResults(results);
 		}
 	}

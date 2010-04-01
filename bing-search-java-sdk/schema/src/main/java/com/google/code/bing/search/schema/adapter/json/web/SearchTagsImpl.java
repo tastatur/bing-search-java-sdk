@@ -4,6 +4,7 @@ package com.google.code.bing.search.schema.adapter.json.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -11,7 +12,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.web.SearchTags;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 public class SearchTagsImpl
-    extends BaseAdapter implements SearchTags, Adaptable<SearchTags, JSONObject>
+    extends BaseAdapter implements SearchTags, Adaptable<SearchTags, JSONArray>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -26,20 +27,18 @@ public class SearchTagsImpl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public JSONObject adaptTo() {
-		JSONObject adapter = new JSONObject();
-		copyProperties(adapter, this);
+	public JSONArray adaptTo() {
+		JSONArray adapter = new JSONArray();
 		for (WebSearchTag o : getWebSearchTagList()) {
-			(getJSONArray(adapter, "WebSearchTag")).add(((WebSearchTagImpl) o).adaptTo());
+			adapter.add(((WebSearchTagImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			JSONObject adaptee) {
-		copyProperties(this, adaptee);
-		for (Object o : getJSONArray(adaptee, "WebSearchTag")) {
+			JSONArray adaptee) {
+		for (Object o : adaptee) {
 			WebSearchTagImpl result = new WebSearchTagImpl();
 			result.adaptFrom((JSONObject) o);
 			getWebSearchTagList().add(result);

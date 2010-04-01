@@ -4,6 +4,7 @@ package com.google.code.bing.search.schema.adapter.json.translation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -11,7 +12,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.translation.Results;
 import com.google.code.bing.search.schema.translation.TranslationResult;
 public class ResultsImpl
-    extends BaseAdapter implements Results, Adaptable<Results, JSONObject>
+    extends BaseAdapter implements Results, Adaptable<Results, JSONArray>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -26,20 +27,18 @@ public class ResultsImpl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public JSONObject adaptTo() {
-		JSONObject adapter = new JSONObject();
-		copyProperties(adapter, this);
+	public JSONArray adaptTo() {
+		JSONArray adapter = new JSONArray();
 		for (TranslationResult o : getTranslationResultList()) {
-			(getJSONArray(adapter, "TranslationResult")).add(((TranslationResultImpl) o).adaptTo());
+			adapter.add(((TranslationResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
 
 	@Override
 	public void adaptFrom(
-			JSONObject adaptee) {
-		copyProperties(this, adaptee);
-		for (Object o : getJSONArray(adaptee, "TranslationResult")) {
+			JSONArray adaptee) {
+		for (Object o : adaptee) {
 			TranslationResultImpl result = new TranslationResultImpl();
 			result.adaptFrom((JSONObject) o);
 			getTranslationResultList().add(result);

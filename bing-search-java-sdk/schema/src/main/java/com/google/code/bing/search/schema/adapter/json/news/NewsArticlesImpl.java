@@ -4,6 +4,7 @@ package com.google.code.bing.search.schema.adapter.json.news;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -11,7 +12,7 @@ import com.google.code.bing.search.schema.adapter.BaseAdapter;
 import com.google.code.bing.search.schema.news.NewsArticle;
 import com.google.code.bing.search.schema.news.NewsArticles;
 public class NewsArticlesImpl
-    extends BaseAdapter implements NewsArticles, Adaptable<NewsArticles, JSONObject>
+    extends BaseAdapter implements NewsArticles, Adaptable<NewsArticles, JSONArray>
 {
 
     private final static long serialVersionUID = 2461660169443089969L;
@@ -26,11 +27,10 @@ public class NewsArticlesImpl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public JSONObject adaptTo() {
-		JSONObject adapter = new JSONObject();
-		copyProperties(adapter , this);
+	public JSONArray adaptTo() {
+		JSONArray adapter = new JSONArray();
 		for (NewsArticle o : getNewsArticleList()) {
-			(getJSONArray(adapter, "NewsArticle")).add(((NewsArticleImpl) o).adaptTo());
+			adapter.add(((NewsArticleImpl) o).adaptTo());
 		}
 		
 		return adapter;
@@ -38,9 +38,8 @@ public class NewsArticlesImpl
 
 	@Override
 	public void adaptFrom(
-			JSONObject adaptee) {
-		copyProperties(this, adaptee);
-		for (Object o : getJSONArray(adaptee, "NewsArticle")) {
+			JSONArray adaptee) {
+		for (Object o : adaptee) {
 			NewsArticleImpl result = new NewsArticleImpl();
 			result.adaptFrom((JSONObject) o);
 			getNewsArticleList().add(result);

@@ -5,14 +5,11 @@ package com.google.code.bing.search.schema.adapter;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 /**
  * @author nmukhtar
@@ -66,15 +63,6 @@ public abstract class BaseAdapter implements Serializable {
 			}
 		}
 		
-		return retValue;
-	}
-	
-	@SuppressWarnings("unchecked")
-	protected List getJSONArray(JSONObject object, String name) {
-		List retValue = (List) object.get(name); 
-		if (retValue == null) {
-			retValue = new JSONArray(); 			
-		}
 		return retValue;
 	}
 }

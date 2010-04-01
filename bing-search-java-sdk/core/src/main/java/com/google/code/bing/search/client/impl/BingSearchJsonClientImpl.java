@@ -8,18 +8,23 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.beanutils.BeanUtilsBean;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.google.code.bing.search.schema.SchemaEntity;
+import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.SourceType;
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.json.ErrorImpl;
 import com.google.code.bing.search.schema.adapter.json.QueryImpl;
@@ -90,6 +95,7 @@ import com.google.code.bing.search.schema.web.DeepLink;
 import com.google.code.bing.search.schema.web.WebRequest;
 import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebResult;
+import com.google.code.bing.search.schema.web.WebSearchOption;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 
 /**
@@ -111,6 +117,7 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
 	
 	static {
 		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
+		BeanUtilsBean.setInstance(new com.google.code.bing.search.schema.adapter.BeanUtilsBean());
 	}
     
     /**
@@ -127,9 +134,11 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
         try {
         	Object response = parser.parse(new InputStreamReader(jsonContent));
         	if (response instanceof JSONObject) {
-        		Adaptable<?, JSONObject> adaptable = (Adaptable<?, JSONObject>) ADAPTER_CLASSES_MAP.get(clazz).newInstance();
-        		adaptable.adaptFrom((JSONObject) response);
-        		return (T) adaptable;
+        		if (((JSONObject) response).get("SearchResponse") != null) {
+            		Adaptable<?, JSONObject> adaptable = (Adaptable<?, JSONObject>) ADAPTER_CLASSES_MAP.get(clazz).newInstance();
+            		adaptable.adaptFrom((JSONObject) ((JSONObject) response).get("SearchResponse"));
+            		return (T) adaptable;
+        		}
         	}
         	throw new BingSearchException("Unknown content found in response:" + response.toString());
         } catch (Exception e) {
@@ -176,6 +185,26 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
         return new BingSearchApiUrlBuilder(urlFormat, SUPPORTED_PROTOCOL);
     }
+    
+	public static void main(String[] args) throws Exception {
+		BingSearchClient client = new BingSearchJsonClientImpl();
+		SearchResponse response = client.search(((BingSearchJsonClientImpl) client).createSearchRequest());
+		for (WebResult result : response.getWeb().getResults().getWebResultList()) {
+			System.out.println(result.getTitle());
+			System.out.println(result.getDescription());
+			System.out.println(result.getUrl());
+		}
+	}
+	
+	private SearchRequest createSearchRequest() {
+		SearchRequestBuilder builder = newSearchRequestBuilder();
+		builder.withAppId("49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40").withQuery("msdn blogs");
+		builder.withSourceType(SourceType.WEB).withVersion("2.0").withMarket("en-us");
+		builder.withAdultOption(AdultOption.MODERATE).withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
+		builder.withWebRequestCount(10L).withWebRequestOffset(0L);
+		builder.withWebRequestSearchOption(WebSearchOption.DISABLE_HOST_COLLAPSING).withWebRequestSearchOption(WebSearchOption.DISABLE_QUERY_ALTERATIONS);
+		return builder.getResult();
+	}
     
 	private static class JsonElementFactory implements SchemaElementFactory {
 		public JsonElementFactory() {
