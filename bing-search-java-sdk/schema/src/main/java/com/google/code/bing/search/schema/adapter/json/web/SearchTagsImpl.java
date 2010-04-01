@@ -24,12 +24,13 @@ public class SearchTagsImpl
         return this.webSearchTagList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (WebSearchTag o : getWebSearchTagList()) {
-			adapter.getWebSearchTagList().add(((WebSearchTagImpl) o).adaptTo());
+			(getJSONArray(adapter, "WebSearchTag")).add(((WebSearchTagImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class SearchTagsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.web.WebSearchTag o : adaptee.getWebSearchTagList()) {
+		for (Object o : getJSONArray(adaptee, "WebSearchTag")) {
 			WebSearchTagImpl result = new WebSearchTagImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getWebSearchTagList().add(result);
 		}
 	}

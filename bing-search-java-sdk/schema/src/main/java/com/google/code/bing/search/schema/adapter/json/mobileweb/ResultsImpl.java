@@ -24,12 +24,13 @@ public class ResultsImpl
         return this.mobileWebResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		for (MobileWebResult o : getMobileWebResultList()) {
-			adapter.getMobileWebResultList().add(((MobileWebResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "MobileWebResult")).add(((MobileWebResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class ResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.mobileweb.MobileWebResult o : adaptee.getMobileWebResultList()) {
+		for (Object o : getJSONArray(adaptee, "MobileWebResult")) {
 			MobileWebResultImpl result = new MobileWebResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getMobileWebResultList().add(result);
 		}
 	}

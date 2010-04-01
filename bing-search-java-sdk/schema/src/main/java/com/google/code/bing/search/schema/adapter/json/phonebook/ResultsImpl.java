@@ -24,12 +24,13 @@ public class ResultsImpl
         return this.phonebookResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (PhonebookResult o : getPhonebookResultList()) {
-			adapter.getPhonebookResultList().add(((PhonebookResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "PhonebookResult")).add(((PhonebookResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class ResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.phonebook.PhonebookResult o : adaptee.getPhonebookResultList()) {
+		for (Object o : getJSONArray(adaptee, "PhonebookResult")) {
 			PhonebookResultImpl result = new PhonebookResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getPhonebookResultList().add(result);
 		}
 	}

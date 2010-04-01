@@ -24,12 +24,13 @@ public class ResultsImpl
         return this.instantAnswerResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		for (InstantAnswerResult o : getInstantAnswerResultList()) {
-			adapter.getInstantAnswerResultList().add(((InstantAnswerResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "InstantAnswerResult")).add(((InstantAnswerResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class ResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.instantanswer.InstantAnswerResult o : adaptee.getInstantAnswerResultList()) {
+		for (Object o : getJSONArray(adaptee, "InstantAnswerResult")) {
 			InstantAnswerResultImpl result = new InstantAnswerResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getInstantAnswerResultList().add(result);
 		}
 	}

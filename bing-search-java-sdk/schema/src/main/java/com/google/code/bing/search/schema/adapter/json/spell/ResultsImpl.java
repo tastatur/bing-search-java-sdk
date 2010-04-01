@@ -24,12 +24,13 @@ public class ResultsImpl
         return this.spellResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (SpellResult o : getSpellResultList()) {
-			adapter.getSpellResultList().add(((SpellResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "SpellResult")).add(((SpellResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class ResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.spell.SpellResult o : adaptee.getSpellResultList()) {
+		for (Object o : getJSONArray(adaptee, "SpellResultList")) {
 			SpellResultImpl result = new SpellResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getSpellResultList().add(result);
 		}
 	}

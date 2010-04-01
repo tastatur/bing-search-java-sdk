@@ -26,12 +26,13 @@ public class VideoResultsImpl
         return this.videoResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		for (VideoResult o : getVideoResultList()) {
-			adapter.getVideoResultList().add(((VideoResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "VideoResult")).add(((VideoResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -40,9 +41,9 @@ public class VideoResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.multimedia.VideoResult o : adaptee.getVideoResultList()) {
+		for (Object o : getJSONArray(adaptee, "VideoResult")) {
 			VideoResultImpl result = new VideoResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getVideoResultList().add(result);
 		}
 	}

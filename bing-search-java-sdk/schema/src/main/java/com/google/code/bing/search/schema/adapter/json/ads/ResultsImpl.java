@@ -4,6 +4,7 @@ package com.google.code.bing.search.schema.adapter.json.ads;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
@@ -25,12 +26,13 @@ public class ResultsImpl
         return this.adResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter   , this);
 		for (AdResult o : getAdResultList()) {
-			adapter.getAdResultList().add(((AdResultImpl) o).adaptTo());
+			((JSONArray)adapter.get("AdResult")).add(((AdResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -39,9 +41,9 @@ public class ResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.ads.AdResult o : adaptee.getAdResultList()) {
+		for (Object o : getJSONArray(adaptee, "AdResult")) {
 			AdResultImpl result = new AdResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getAdResultList().add(result);
 		}
 	}

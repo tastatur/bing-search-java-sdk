@@ -26,12 +26,13 @@ public class ImageResultsImpl
         return this.imageResultList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter  , this);
 		for (ImageResult o : getImageResultList()) {
-			adapter.getImageResultList().add(((ImageResultImpl) o).adaptTo());
+			(getJSONArray(adapter, "ImageResult")).add(((ImageResultImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -40,9 +41,9 @@ public class ImageResultsImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.multimedia.ImageResult o : adaptee.getImageResultList()) {
+		for (Object o : getJSONArray(adaptee, "ImageResultList")) {
 			ImageResultImpl result = new ImageResultImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getImageResultList().add(result);
 		}
 	}

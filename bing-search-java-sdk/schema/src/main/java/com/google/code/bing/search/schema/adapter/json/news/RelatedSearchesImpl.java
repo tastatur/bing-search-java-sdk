@@ -24,12 +24,13 @@ public class RelatedSearchesImpl
         return this.newsRelatedSearchList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (NewsRelatedSearch o : getNewsRelatedSearchList()) {
-			adapter.getNewsRelatedSearchList().add(((NewsRelatedSearchImpl) o).adaptTo());
+			(getJSONArray(adapter, "NewsRelatedSearch")).add(((NewsRelatedSearchImpl) o).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class RelatedSearchesImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.news.NewsRelatedSearch o : adaptee.getNewsRelatedSearchList()) {
+		for (Object o : getJSONArray(adaptee, "NewsRelatedSearch")) {
 			NewsRelatedSearchImpl result = new NewsRelatedSearchImpl();
-			result.adaptFrom(o);
+			result.adaptFrom((JSONObject) o);
 			getNewsRelatedSearchList().add(result);
 		}
 	}

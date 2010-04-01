@@ -24,12 +24,13 @@ public class DeepLinksImpl
         return this.deepLinkList;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		for (DeepLink deepLink : getDeepLinkList()) {
-			adapter.getDeepLinkList().add(((DeepLinkImpl) deepLink).adaptTo());
+			(getJSONArray(adapter, "DeepLink")).add(((DeepLinkImpl) deepLink).adaptTo());
 		}
 		return adapter;
 	}
@@ -38,9 +39,9 @@ public class DeepLinksImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		for (com.microsoft.schemas.livesearch._2008._04.xml.web.DeepLink o : adaptee.getDeepLinkList()) {
+		for (Object o : getJSONArray(adaptee, "DeepLink")) {
 			DeepLinkImpl deepLink = new DeepLinkImpl();
-			deepLink.adaptFrom(o);
+			deepLink.adaptFrom((JSONObject) o);
 			getDeepLinkList().add(deepLink);
 		}
 	}
