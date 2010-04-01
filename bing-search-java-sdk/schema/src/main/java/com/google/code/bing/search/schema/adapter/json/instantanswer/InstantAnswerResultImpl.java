@@ -67,12 +67,13 @@ public class InstantAnswerResultImpl
         this.instantAnswerSpecificData = ((InstantAnswerSpecificDataImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter   , this);
 		if (getInstantAnswerSpecificData() != null) {
-			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
+			adapter.put("InstantAnswerSpecificData", ((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
 		}
 		
 		return adapter;
@@ -82,9 +83,9 @@ public class InstantAnswerResultImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getInstantAnswerSpecificData() != null) {
+		if (adaptee.get("InstantAnswerSpecificData") != null) {
 			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
-			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
+			results.adaptFrom((JSONObject) adaptee.get("InstantAnswerSpecificData"));
 			setInstantAnswerSpecificData(results);
 		}
 	}
