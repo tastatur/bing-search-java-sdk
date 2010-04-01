@@ -5,8 +5,8 @@ import org.json.simple.JSONObject;
 
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
-import com.google.code.bing.search.schema.adapter.jaxb.encarta.EncartaImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.flightstatus.FlightStatusImpl;
+import com.google.code.bing.search.schema.adapter.json.encarta.EncartaImpl;
+import com.google.code.bing.search.schema.adapter.json.flightstatus.FlightStatusImpl;
 import com.google.code.bing.search.schema.encarta.Encarta;
 import com.google.code.bing.search.schema.flightstatus.FlightStatus;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerSpecificData;
@@ -34,15 +34,16 @@ public class InstantAnswerSpecificDataImpl
         this.encarta = ((EncartaImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter    , this);
 		if (getFlightStatus() != null) {
-			adapter.setFlightStatus(((FlightStatusImpl) getFlightStatus()).adaptTo());
+			adapter.put("FlightStatus", ((FlightStatusImpl) getFlightStatus()).adaptTo());
 		}
 		if (getEncarta() != null) {
-			adapter.setEncarta(((EncartaImpl) getEncarta()).adaptTo());
+			adapter.put("Encarta", ((EncartaImpl) getEncarta()).adaptTo());
 		}
 		return adapter;
 	}
@@ -51,14 +52,14 @@ public class InstantAnswerSpecificDataImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getFlightStatus() != null) {
+		if (adaptee.get("FlightStatus") != null) {
 			FlightStatusImpl results = new FlightStatusImpl();
-			results.adaptFrom(adaptee.getFlightStatus());
+			results.adaptFrom((JSONObject) adaptee.get("FlightStatus"));
 			setFlightStatus(results);
 		}
-		if (adaptee.getEncarta() != null) {
+		if (adaptee.get("Encarta") != null) {
 			EncartaImpl results = new EncartaImpl();
-			results.adaptFrom(adaptee.getEncarta());
+			results.adaptFrom((JSONObject) adaptee.get("Encarta"));
 			setEncarta(results);
 		}
 	}
