@@ -7,17 +7,17 @@ import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SearchResponse;
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.BaseAdapter;
-import com.google.code.bing.search.schema.adapter.jaxb.ads.AdImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.instantanswer.InstantAnswerImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.mobileweb.MobileWebImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.multimedia.ImageImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.multimedia.VideoImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.news.NewsImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.phonebook.PhonebookImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.relatedsearch.RelatedSearchImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.spell.SpellImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.translation.TranslationImpl;
-import com.google.code.bing.search.schema.adapter.jaxb.web.WebImpl;
+import com.google.code.bing.search.schema.adapter.json.ads.AdImpl;
+import com.google.code.bing.search.schema.adapter.json.instantanswer.InstantAnswerImpl;
+import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.ImageImpl;
+import com.google.code.bing.search.schema.adapter.json.multimedia.VideoImpl;
+import com.google.code.bing.search.schema.adapter.json.news.NewsImpl;
+import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookImpl;
+import com.google.code.bing.search.schema.adapter.json.relatedsearch.RelatedSearchImpl;
+import com.google.code.bing.search.schema.adapter.json.spell.SpellImpl;
+import com.google.code.bing.search.schema.adapter.json.translation.TranslationImpl;
+import com.google.code.bing.search.schema.adapter.json.web.WebImpl;
 import com.google.code.bing.search.schema.ads.AdResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
@@ -152,45 +152,46 @@ public class SearchResponseImpl
         this.version = value;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		if (getQuery() != null) {
-			adapter.setQuery(((QueryImpl) getQuery()).adaptTo());
+			adapter.put("Query", ((QueryImpl) getQuery()).adaptTo());
 		}
 		if (getAd() != null) {
-			adapter.setAd(((AdImpl) getAd()).adaptTo());
+			adapter.put("Ad", ((AdImpl) getAd()).adaptTo());
 		}
 		if (getInstantAnswer() != null) {
-			adapter.setInstantAnswer(((InstantAnswerImpl) getInstantAnswer()).adaptTo());
+			adapter.put("InstantAnswer", ((InstantAnswerImpl) getInstantAnswer()).adaptTo());
 		}
 		if (getMobileWeb() != null) {
-			adapter.setMobileWeb(((MobileWebImpl) getMobileWeb()).adaptTo());
+			adapter.put("MobileWeb", ((MobileWebImpl) getMobileWeb()).adaptTo());
 		}
 		if (getImage() != null) {
-			adapter.setImage(((ImageImpl) getImage()).adaptTo());
+			adapter.put("Image", ((ImageImpl) getImage()).adaptTo());
 		}
 		if (getVideo() != null) {
-			adapter.setVideo(((VideoImpl) getVideo()).adaptTo());
+			adapter.put("Video", ((VideoImpl) getVideo()).adaptTo());
 		}
 		if (getPhonebook() != null) {
-			adapter.setPhonebook(((PhonebookImpl) getPhonebook()).adaptTo());
+			adapter.put("Phonebook", ((PhonebookImpl) getPhonebook()).adaptTo());
 		}
 		if (getRelatedSearch() != null) {
-			adapter.setRelatedSearch(((RelatedSearchImpl) getRelatedSearch()).adaptTo());
+			adapter.put("RelatedSearch", ((RelatedSearchImpl) getRelatedSearch()).adaptTo());
 		}
 		if (getSpell() != null) {
-			adapter.setSpell(((SpellImpl) getSpell()).adaptTo());
+			adapter.put("Spell", ((SpellImpl) getSpell()).adaptTo());
 		}
 		if (getNews() != null) {
-			adapter.setNews(((NewsImpl) getNews()).adaptTo());
+			adapter.put("News", ((NewsImpl) getNews()).adaptTo());
 		}
 		if (getTranslation() != null) {
-			adapter.setTranslation(((TranslationImpl) getTranslation()).adaptTo());
+			adapter.put("Translation", ((TranslationImpl) getTranslation()).adaptTo());
 		}
 		if (getWeb() != null) {
-			adapter.setWeb(((WebImpl) getWeb()).adaptTo());
+			adapter.put("Web", ((WebImpl) getWeb()).adaptTo());
 		}
 		
 		return adapter;
@@ -200,64 +201,64 @@ public class SearchResponseImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getQuery() != null) {
+		if (adaptee.get("Query") != null) {
 			QueryImpl results = new QueryImpl();
-			results.adaptFrom(adaptee.getQuery());
+			results.adaptFrom((JSONObject) adaptee.get("Query"));
 			setQuery(results);
 		}
-		if (adaptee.getAd() != null) {
+		if (adaptee.get("Ad") != null) {
 			AdImpl results = new AdImpl();
-			results.adaptFrom(adaptee.getAd());
+			results.adaptFrom((JSONObject) adaptee.get("Ad"));
 			setAd(results);
 		}
-		if (adaptee.getInstantAnswer() != null) {
+		if (adaptee.get("InstantAnswer") != null) {
 			InstantAnswerImpl results = new InstantAnswerImpl();
-			results.adaptFrom(adaptee.getInstantAnswer());
+			results.adaptFrom((JSONObject) adaptee.get("InstantAnswer"));
 			setInstantAnswer(results);
 		}
-		if (adaptee.getMobileWeb() != null) {
+		if (adaptee.get("MobileWeb") != null) {
 			MobileWebImpl results = new MobileWebImpl();
-			results.adaptFrom(adaptee.getMobileWeb());
+			results.adaptFrom((JSONObject) adaptee.get("MobileWeb"));
 			setMobileWeb(results);
 		}
-		if (adaptee.getImage() != null) {
+		if (adaptee.get("Image") != null) {
 			ImageImpl results = new ImageImpl();
-			results.adaptFrom(adaptee.getImage());
+			results.adaptFrom((JSONObject) adaptee.get("Image"));
 			setImage(results);
 		}
-		if (adaptee.getVideo() != null) {
+		if (adaptee.get("Video") != null) {
 			VideoImpl results = new VideoImpl();
-			results.adaptFrom(adaptee.getVideo());
+			results.adaptFrom((JSONObject) adaptee.get("Video"));
 			setVideo(results);
 		}
-		if (adaptee.getPhonebook() != null) {
+		if (adaptee.get("Phonebook") != null) {
 			PhonebookImpl results = new PhonebookImpl();
-			results.adaptFrom(adaptee.getPhonebook());
+			results.adaptFrom((JSONObject) adaptee.get("Phonebook"));
 			setPhonebook(results);
 		}
-		if (adaptee.getRelatedSearch() != null) {
+		if (adaptee.get("RelatedSearch") != null) {
 			RelatedSearchImpl results = new RelatedSearchImpl();
-			results.adaptFrom(adaptee.getRelatedSearch());
+			results.adaptFrom((JSONObject) adaptee.get("RelatedSearch"));
 			setRelatedSearch(results);
 		}
-		if (adaptee.getSpell() != null) {
+		if (adaptee.get("Spell") != null) {
 			SpellImpl results = new SpellImpl();
-			results.adaptFrom(adaptee.getSpell());
+			results.adaptFrom((JSONObject) adaptee.get("Spell"));
 			setSpell(results);
 		}
-		if (adaptee.getNews() != null) {
+		if (adaptee.get("News") != null) {
 			NewsImpl results = new NewsImpl();
-			results.adaptFrom(adaptee.getNews());
+			results.adaptFrom((JSONObject) adaptee.get("News"));
 			setNews(results);
 		}
-		if (adaptee.getTranslation() != null) {
+		if (adaptee.get("Translation") != null) {
 			TranslationImpl results = new TranslationImpl();
-			results.adaptFrom(adaptee.getTranslation());
+			results.adaptFrom((JSONObject) adaptee.get("Translation"));
 			setTranslation(results);
 		}
-		if (adaptee.getWeb() != null) {
+		if (adaptee.get("Web") != null) {
 			WebImpl results = new WebImpl();
-			results.adaptFrom(adaptee.getWeb());
+			results.adaptFrom((JSONObject) adaptee.get("Web"));
 			setWeb(results);
 		}
 	}
