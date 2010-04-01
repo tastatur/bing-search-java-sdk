@@ -94,12 +94,13 @@ public class ImageResultImpl
         this.thumbnail = ((ThumbnailImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter , this);
 		if (getThumbnail() != null) {
-			adapter.setThumbnail(((ThumbnailImpl) getThumbnail()).adaptTo());
+			adapter.put("Thumbnail", ((ThumbnailImpl) getThumbnail()).adaptTo());
 		}
 		
 		return adapter;
@@ -109,9 +110,9 @@ public class ImageResultImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getThumbnail() != null) {
+		if (adaptee.get("Thumbnail") != null) {
 			ThumbnailImpl thumbnail = new ThumbnailImpl();
-			thumbnail.adaptFrom(adaptee.getThumbnail());
+			thumbnail.adaptFrom((JSONObject) adaptee.get("Thumbnail"));
 			setThumbnail(thumbnail);
 		}
 	}
