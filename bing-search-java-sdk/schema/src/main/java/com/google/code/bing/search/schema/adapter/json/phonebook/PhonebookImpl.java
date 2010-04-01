@@ -58,12 +58,13 @@ public class PhonebookImpl
         this.results = ((ResultsImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
-			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+			adapter.put("Results", ((ResultsImpl) getResults()).adaptTo());
 		}
 		return adapter;
 	}
@@ -71,9 +72,9 @@ public class PhonebookImpl
 	@Override
 	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getResults() != null) {
+		if (adaptee.get("Results") != null) {
 			ResultsImpl results = new ResultsImpl();
-			results.adaptFrom(adaptee.getResults());
+			results.adaptFrom((JSONObject) adaptee.get("Results"));
 			setResults(results);
 		}
 	}

@@ -31,12 +31,13 @@ public class NewsCollectionImpl
         this.newsArticles = ((NewsArticlesImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getNewsArticles() != null) {
-			adapter.setNewsArticles(((NewsArticlesImpl) getNewsArticles()).adaptTo());
+			adapter.put("NewsArticles", ((NewsArticlesImpl) getNewsArticles()).adaptTo());
 		}
 		return adapter;
 	}
@@ -45,9 +46,9 @@ public class NewsCollectionImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getNewsArticles() != null) {
+		if (adaptee.get("NewsArticles") != null) {
 			NewsArticlesImpl results = new NewsArticlesImpl();
-			results.adaptFrom(adaptee.getNewsArticles());
+			results.adaptFrom((JSONObject) adaptee.get("NewsArticles"));
 			setNewsArticles(results);
 		}
 	}

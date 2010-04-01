@@ -67,12 +67,13 @@ public class VideoResultImpl
         this.staticThumbnail = ((StaticThumbnailImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getStaticThumbnail() != null) {
-			adapter.setStaticThumbnail(((StaticThumbnailImpl) getStaticThumbnail()).adaptTo());
+			adapter.put("StaticThumbnail", ((StaticThumbnailImpl) getStaticThumbnail()).adaptTo());
 		}
 		return adapter;
 	}
@@ -81,9 +82,9 @@ public class VideoResultImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getStaticThumbnail() != null) {
+		if (adaptee.get("StaticThumbnail") != null) {
 			StaticThumbnailImpl results = new StaticThumbnailImpl();
-			results.adaptFrom(adaptee.getStaticThumbnail());
+			results.adaptFrom((JSONObject) adaptee.get("StaticThumbnail"));
 			setStaticThumbnail(results);
 		}
 	}

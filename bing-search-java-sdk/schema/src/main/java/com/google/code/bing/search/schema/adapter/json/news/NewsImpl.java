@@ -50,15 +50,16 @@ public class NewsImpl
         this.results = ((ResultsImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
-			adapter.setResults(((ResultsImpl) getResults()).adaptTo());
+			adapter.put("Results", ((ResultsImpl) getResults()).adaptTo());
 		}
 		if (getRelatedSearches() != null) {
-			adapter.setRelatedSearches(((RelatedSearchesImpl) getRelatedSearches()).adaptTo());
+			adapter.put("RelatedSearches", ((RelatedSearchesImpl) getRelatedSearches()).adaptTo());
 		}
 		return adapter;
 	}
@@ -66,14 +67,14 @@ public class NewsImpl
 	@Override
 	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getResults() != null) {
+		if (adaptee.get("Results") != null) {
 			ResultsImpl results = new ResultsImpl();
-			results.adaptFrom(adaptee.getResults());
+			results.adaptFrom((JSONObject) adaptee.get("Results"));
 			setResults(results);
 		}
-		if (adaptee.getRelatedSearches() != null) {
+		if (adaptee.get("RelatedSearches") != null) {
 			RelatedSearchesImpl results = new RelatedSearchesImpl();
-			results.adaptFrom(adaptee.getRelatedSearches());
+			results.adaptFrom((JSONObject) adaptee.get("RelatedSearches"));
 			setRelatedSearches(results);
 		}
 	}

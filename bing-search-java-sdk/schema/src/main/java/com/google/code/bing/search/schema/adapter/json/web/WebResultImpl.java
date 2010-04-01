@@ -86,15 +86,16 @@ public class WebResultImpl
         this.deepLinks = ((DeepLinksImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getSearchTags() != null) {
-			adapter.setSearchTags(((SearchTagsImpl) getSearchTags()).adaptTo());
+			adapter.put("SearchTags", ((SearchTagsImpl) getSearchTags()).adaptTo());
 		}
 		if (getDeepLinks() != null) {
-			adapter.setDeepLinks(((DeepLinksImpl) getDeepLinks()).adaptTo());
+			adapter.put("DeepLinks", ((DeepLinksImpl) getDeepLinks()).adaptTo());
 		}
 		return adapter;
 	}
@@ -103,14 +104,14 @@ public class WebResultImpl
 	public void adaptFrom(
 			JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getSearchTags() != null) {
+		if (adaptee.get("SearchTags") != null) {
 			SearchTagsImpl results = new SearchTagsImpl();
-			results.adaptFrom(adaptee.getSearchTags());
+			results.adaptFrom((JSONObject) adaptee.get("SearchTags"));
 			setSearchTags(results);
 		}
-		if (adaptee.getDeepLinks() != null) {
+		if (adaptee.get("DeepLinks") != null) {
 			DeepLinksImpl results = new DeepLinksImpl();
-			results.adaptFrom(adaptee.getDeepLinks());
+			results.adaptFrom((JSONObject) adaptee.get("DeepLinks"));
 			setDeepLinks(results);
 		}
 	}
