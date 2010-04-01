@@ -40,12 +40,13 @@ public class ImageImpl
         this.results = ((ImageResultsImpl) value);
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public JSONObject adaptTo() {
 		JSONObject adapter = new JSONObject();
 		copyProperties(adapter, this);
 		if (getResults() != null) {
-			adapter.setResults(((ImageResultsImpl) getResults()).adaptTo());
+			adapter.put("Results", ((ImageResultsImpl) getResults()).adaptTo());
 		}
 		return adapter;
 	}
@@ -53,9 +54,9 @@ public class ImageImpl
 	@Override
 	public void adaptFrom(JSONObject adaptee) {
 		copyProperties(this, adaptee);
-		if (adaptee.getResults() != null) {
+		if (adaptee.get("Results") != null) {
 			ImageResultsImpl results = new ImageResultsImpl();
-			results.adaptFrom(adaptee.getResults());
+			results.adaptFrom((JSONObject) adaptee.get("Results"));
 			setResults(results);
 		}
 	}
