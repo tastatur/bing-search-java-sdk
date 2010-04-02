@@ -68,7 +68,6 @@ public class BingSearchRssClientImpl extends BaseBingSearchApiClient {
      *
      * @return
      */
-    @SuppressWarnings("unchecked")
     protected <T> T unmarshallObject(Class<T> clazz, InputStream xmlContent) {
         try {
         	// TODO-NM: Implement this method..

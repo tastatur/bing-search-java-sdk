@@ -18,6 +18,10 @@ import org.apache.commons.logging.LogFactory;
 public abstract class BaseAdapter implements Serializable {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1923669359663905722L;
+	/**
 	 * Logging for this instance
 	 */
 	protected Log log = LogFactory.getLog(getClass());

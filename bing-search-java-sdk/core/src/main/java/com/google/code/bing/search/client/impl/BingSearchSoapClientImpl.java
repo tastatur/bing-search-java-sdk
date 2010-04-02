@@ -134,7 +134,6 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public SearchResponse search(SearchRequest request) {
 		try {
@@ -150,7 +149,6 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Future<SearchResponse> searchAsync(SearchRequest request) {
 		try {
