@@ -10,6 +10,10 @@ import java.util.concurrent.Executors;
 
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.google.code.bing.search.client.impl.BaseBingSearchServiceClientImpl;
+import com.google.code.bing.search.client.impl.BingSearchJaxbClientImpl;
+import com.google.code.bing.search.client.impl.BingSearchJsonClientImpl;
+import com.google.code.bing.search.client.impl.BingSearchRssClientImpl;
+import com.google.code.bing.search.client.impl.BingSearchSoapClientImpl;
 
 /**
  * A factory for creating LinkedInApiClient objects.
@@ -21,11 +25,16 @@ public class BingSearchServiceClientFactory {
     /** The task executor. */
     private ExecutorService taskExecutor = Executors.newCachedThreadPool();
     
-    private Map<ApiProtocol, ? extends BaseBingSearchServiceClientImpl> clientImplementations = new EnumMap<ApiProtocol, BaseBingSearchServiceClientImpl>(ApiProtocol.class);
+    private static final Map<ApiProtocol, BingSearchClient> clientImplementations = new EnumMap<ApiProtocol, BingSearchClient>(ApiProtocol.class);
     
-    private BingSearchServiceClientFactory() {
-    	// TODO-NM: populate map from properties file.
+    static {
+    	clientImplementations.put(ApiProtocol.JSON, new BingSearchJsonClientImpl());
+    	clientImplementations.put(ApiProtocol.XML, new BingSearchJaxbClientImpl());
+    	clientImplementations.put(ApiProtocol.SOAP, new BingSearchSoapClientImpl());
+    	clientImplementations.put(ApiProtocol.RSS, new BingSearchRssClientImpl());
     }
+    
+    private BingSearchServiceClientFactory() {}
 
     /**
      * Sets the task executor to be used for asynchronous API calls. 
@@ -53,7 +62,7 @@ public class BingSearchServiceClientFactory {
      * 
      */
     public BingSearchClient createBingSearchClient(ApiProtocol protocol) {
-    	BaseBingSearchServiceClientImpl client = clientImplementations.get(protocol);
+    	BaseBingSearchServiceClientImpl client = (BaseBingSearchServiceClientImpl) clientImplementations.get(protocol);
     	client.setTaskExecutor(taskExecutor);
     	return client;
     }
