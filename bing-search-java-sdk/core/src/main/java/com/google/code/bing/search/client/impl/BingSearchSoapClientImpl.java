@@ -320,8 +320,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.AdultOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.AdultOption.valueOf(((AdultOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.AdultOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.AdultOption.valueOf(((AdultOption) value).name());
+					}
 				}
 				return null;
 			}
@@ -331,8 +333,11 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SearchOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.SearchOption.valueOf(((SearchOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SearchOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.SearchOption.valueOf(((SearchOption) value).name());
+					}
+					
 				}
 				return null;
 			}
@@ -342,8 +347,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SourceType.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.SourceType.valueOf(((SourceType) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.SourceType.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.SourceType.valueOf(((SourceType) value).name());
+					}
 				}
 				return null;
 			}
@@ -353,8 +360,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.valueOf(((WebSearchOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.WebSearchOption.valueOf(((WebSearchOption) value).name());
+					}
 				}
 				return null;
 			}
@@ -364,8 +373,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.valueOf(((PhonebookSortOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.PhonebookSortOption.valueOf(((PhonebookSortOption) value).name());
+					}
 				}
 				return null;
 			}
@@ -375,8 +386,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.valueOf(((VideoSortOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.VideoSortOption.valueOf(((VideoSortOption) value).name());
+					}
 				}
 				return null;
 			}
@@ -386,8 +399,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.valueOf(((NewsSortOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.NewsSortOption.valueOf(((NewsSortOption) value).name());
+					}
 				}
 				return null;
 			}
@@ -397,8 +412,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ConvertUtils.register(new Converter() {
 			@Override
 			public Object convert(Class clazz, Object value) {
-				if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.class)) {
-					return com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.valueOf(((MobileWebSearchOption) value).name());
+				if (value != null) {
+					if (clazz.equals(com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.class)) {
+						return com.microsoft.schemas.livesearch._2008._03.search.MobileWebSearchOption.valueOf(((MobileWebSearchOption) value).name());
+					}
 				}
 				return null;
 			}
