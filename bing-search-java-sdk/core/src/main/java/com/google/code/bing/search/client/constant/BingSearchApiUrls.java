@@ -317,7 +317,6 @@ public final class BingSearchApiUrls {
         			} else if (QUERY_PARAMETERS_PLACEHOLDER.equals(placeHolder)) {
     			    	StringBuilder builder = new StringBuilder();
     			    	if (!parametersMap.isEmpty()) {
-    			        	builder.append("?");
     			    		Iterator<String> iter = parametersMap.keySet().iterator();
     			    		while (iter.hasNext()) {
     			    			String name = iter.next();

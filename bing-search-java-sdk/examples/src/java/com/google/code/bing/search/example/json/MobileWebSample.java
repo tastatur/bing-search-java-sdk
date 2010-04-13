@@ -5,9 +5,14 @@ package com.google.code.bing.search.example.json;
 
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchServiceClientFactory;
+import com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.google.code.bing.search.schema.AdultOption;
+import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
+import com.google.code.bing.search.schema.SourceType;
+import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
 
 /**
  * @author nmukhtar
@@ -26,12 +31,29 @@ public class MobileWebSample {
 	}
 
 	private static void printResponse(SearchResponse response) {
-		// TODO Auto-generated method stub
+		System.out.println("Bing API Version " + response.getVersion());
+		System.out.println("MobileWeb results for " + response.getQuery().getSearchTerms());
+		for (MobileWebResult result : response.getMobileWeb().getResults().getMobileWebResultList()) {
+			System.out.println(result.getTitle());
+			System.out.println(result.getDescription());
+			System.out.println(result.getUrl());
+			System.out.println(result.getDateTime());
+		}
 		
 	}
 
 	private static SearchRequest createSearchRequest(BingSearchClient client) {
-		// TODO Auto-generated method stub
-		return null;
+		SearchRequestBuilder builder = client.newSearchRequestBuilder();
+		builder.withAppId("49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40");
+		builder.withQuery("msdn blogs");
+		builder.withSourceType(SourceType.MOBILE_WEB);
+		builder.withVersion("2.0");
+		builder.withMarket("en-us");
+		builder.withAdultOption(AdultOption.MODERATE);
+		builder.withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
+		
+		builder.withMobileWebRequestCount(2L);
+		builder.withMobileWebRequestOffset(0L);
+		return builder.getResult();
 	}
 }

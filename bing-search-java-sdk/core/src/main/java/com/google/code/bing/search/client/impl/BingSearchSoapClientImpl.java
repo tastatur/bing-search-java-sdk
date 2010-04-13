@@ -122,6 +122,8 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
 		ADAPTER_CLASSES_MAP.put(SearchRequest.class, SearchRequestImpl.class);
 		registerEnumConverters();
+		// TODO-NM: If not injected.
+		searchService = new LiveSearchService();
 	}
 
 	public BingSearchSoapClientImpl() {
