@@ -6,25 +6,25 @@ public interface AdRequest
 	extends SchemaEntity
 {
 
-	/**
-	 * Gets the value of the sourceLanguage property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link String }
-	 *     
-	 */
-	public String getSourceLanguage();
+    /**
+     * Gets the value of the pageNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    Long getPageNumber();
 
-	/**
-	 * Sets the value of the sourceLanguage property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link String }
-	 *     
-	 */
-	public void setSourceLanguage(String value);
+    /**
+     * Sets the value of the pageNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    void setPageNumber(Long value);
 
 	/**
 	 * Gets the value of the targetLanguage property.
@@ -34,7 +34,7 @@ public interface AdRequest
 	 *     {@link String }
 	 *     
 	 */
-	public String getTargetLanguage();
+	public String getAdUnitId();
 
 	/**
 	 * Sets the value of the targetLanguage property.
@@ -44,6 +44,85 @@ public interface AdRequest
 	 *     {@link String }
 	 *     
 	 */
-	public void setTargetLanguage(String value);
+	public void setAdUnitId(String value);
 
+	/**
+	 * Gets the value of the targetLanguage property.
+	 * 
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *     
+	 */
+	public String getPropertyId();
+
+	/**
+	 * Sets the value of the targetLanguage property.
+	 * 
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *     
+	 */
+	public void setPropertyId(String value);
+	
+	/**
+	 * Gets the value of the targetLanguage property.
+	 * 
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *     
+	 */
+	public String getChannelId();
+
+	/**
+	 * Sets the value of the targetLanguage property.
+	 * 
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *     
+	 */
+	public void setChannelId(String value);
+	
+	/**
+	 * Gets the value of the targetLanguage property.
+	 * 
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *     
+	 */
+	public String getMlAdCount();
+
+	/**
+	 * Sets the value of the targetLanguage property.
+	 * 
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *     
+	 */
+	public void setMlAdCount(String value);
+	
+	/**
+	 * Gets the value of the targetLanguage property.
+	 * 
+	 * @return
+	 *     possible object is
+	 *     {@link String }
+	 *     
+	 */
+	public String getSbAdCount();
+
+	/**
+	 * Sets the value of the targetLanguage property.
+	 * 
+	 * @param value
+	 *     allowed object is
+	 *     {@link String }
+	 *     
+	 */
+	public void setSbAdCount(String value);
 }
