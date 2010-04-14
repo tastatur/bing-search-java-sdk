@@ -69,9 +69,9 @@ public class InstantAnswerResultImpl
 	public com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adaptTo() {
 		com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adapter = new com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult();
 		copyProperties(adapter   , this);
-//		if (getInstantAnswerSpecificData() != null) {
-//			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
-//		}
+		if (getInstantAnswerSpecificData() != null) {
+			adapter.setInstantAnswerSpecificData(((InstantAnswerSpecificDataImpl) getInstantAnswerSpecificData()).adaptTo());
+		}
 		
 		return adapter;
 	}
@@ -80,10 +80,26 @@ public class InstantAnswerResultImpl
 	public void adaptFrom(
 			com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult adaptee) {
 		copyProperties(this, adaptee);
-//		if (adaptee.getInstantAnswerSpecificData() != null) {
-//			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
-//			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
-//			setInstantAnswerSpecificData(results);
-//		}
+		if (adaptee.getInstantAnswerSpecificData() != null) {
+			InstantAnswerSpecificDataImpl results = new InstantAnswerSpecificDataImpl();
+			results.adaptFrom(adaptee.getInstantAnswerSpecificData());
+			setInstantAnswerSpecificData(results);
+		}
+	}
+	
+	protected void copyProperties(com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult dest, InstantAnswerResultImpl src) {
+		dest.setContentType(src.getContentType());
+		dest.setTitle(src.getTitle());
+		dest.setClickThroughUrl(src.getClickThroughUrl());
+		dest.setUrl(src.getUrl());
+		dest.setAttribution(src.getAttribution());
+	}
+	
+	protected void copyProperties(InstantAnswerResultImpl dest, com.microsoft.schemas.livesearch._2008._03.search.InstantAnswerResult src) { 
+		dest.setContentType(src.getContentType());
+		dest.setTitle(src.getTitle());
+		dest.setClickThroughUrl(src.getClickThroughUrl());
+		dest.setUrl(src.getUrl());
+		dest.setAttribution(src.getAttribution());
 	}
 }
