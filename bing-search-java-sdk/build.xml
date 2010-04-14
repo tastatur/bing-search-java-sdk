@@ -174,4 +174,10 @@
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
+    <target name="MobileWebSample">
+        <java classname="com.google.code.bing.search.example.MobileWebSample" failonerror="true" fork="yes">
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msdn blogs&quot;"/>
+            <classpath refid="bing-search-java-sdk.classpath"/>
+        </java>
+    </target>
 </project>
