@@ -110,73 +110,73 @@
     </target>
     <target name="ImageSample">
         <java classname="com.google.code.bing.search.example.ImageSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;xbox site:microsoft.com&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;xbox site:microsoft.com&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="InstantAnswerEncartaSample">
         <java classname="com.google.code.bing.search.example.InstantAnswerEncartaSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;define salient&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;define salient&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="InstantAnswerFlightStatusSample">
         <java classname="com.google.code.bing.search.example.InstantAnswerFlightStatusSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;CO234&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;CO234&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="MultipleSourceTypesSample">
         <java classname="com.google.code.bing.search.example.MultipleSourceTypesSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;microsoft&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;microsoft&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="NewsSample">
         <java classname="com.google.code.bing.search.example.NewsSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msn moneycentral&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msn moneycentral&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="PhonebookSample">
         <java classname="com.google.code.bing.search.example.PhonebookSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;microsoft offices&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;microsoft offices&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="RelatedSearchSample">
         <java classname="com.google.code.bing.search.example.RelatedSearchSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;free&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;free&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="SpellSample">
         <java classname="com.google.code.bing.search.example.SpellSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;Mispeling words is a common ocurrence.&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;Mispeling words is a common ocurrence.&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="TranslationSample">
         <java classname="com.google.code.bing.search.example.TranslationSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;Espero&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;Espero&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="VideoSample">
         <java classname="com.google.code.bing.search.example.VideoSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;xbox site:microsoft.com&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;xbox site:microsoft.com&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="WebSample">
         <java classname="com.google.code.bing.search.example.WebSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msdn blogs&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msdn blogs&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
     <target name="MobileWebSample">
         <java classname="com.google.code.bing.search.example.MobileWebSample" failonerror="true" fork="yes">
-            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msdn blogs&quot;"/>
+            <arg line="-appid 49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40 -query &quot;msdn blogs&quot; -protocol xml"/>
             <classpath refid="bing-search-java-sdk.classpath"/>
         </java>
     </target>
