@@ -152,7 +152,7 @@ public class MobileWebSample {
 		builder.withAppId(applicationId);
 		builder.withQuery(query);
 		builder.withSourceType(SourceType.MOBILE_WEB);
-		builder.withVersion("2.0");
+		builder.withVersion("2.1");
 		builder.withMarket("en-us");
 		builder.withAdultOption(AdultOption.MODERATE);
 		builder.withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
