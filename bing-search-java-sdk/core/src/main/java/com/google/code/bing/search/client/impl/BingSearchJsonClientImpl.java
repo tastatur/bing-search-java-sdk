@@ -12,19 +12,15 @@ import org.apache.commons.beanutils.BeanUtilsBean;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
 import com.google.code.bing.search.client.enumeration.ApiProtocol;
-import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
 import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.google.code.bing.search.schema.SchemaEntity;
-import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
-import com.google.code.bing.search.schema.SourceType;
 import com.google.code.bing.search.schema.adapter.Adaptable;
 import com.google.code.bing.search.schema.adapter.json.ErrorImpl;
 import com.google.code.bing.search.schema.adapter.json.QueryImpl;
@@ -95,7 +91,6 @@ import com.google.code.bing.search.schema.web.DeepLink;
 import com.google.code.bing.search.schema.web.WebRequest;
 import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebResult;
-import com.google.code.bing.search.schema.web.WebSearchOption;
 import com.google.code.bing.search.schema.web.WebSearchTag;
 
 /**
@@ -185,26 +180,6 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
         return new BingSearchApiUrlBuilder(urlFormat, SUPPORTED_PROTOCOL);
     }
-    
-	public static void main(String[] args) throws Exception {
-		BingSearchClient client = new BingSearchJsonClientImpl();
-		SearchResponse response = client.search(((BingSearchJsonClientImpl) client).createSearchRequest());
-		for (WebResult result : response.getWeb().getResults().getWebResultList()) {
-			System.out.println(result.getTitle());
-			System.out.println(result.getDescription());
-			System.out.println(result.getUrl());
-		}
-	}
-	
-	private SearchRequest createSearchRequest() {
-		SearchRequestBuilder builder = newSearchRequestBuilder();
-		builder.withAppId("49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40").withQuery("msdn blogs");
-		builder.withSourceType(SourceType.WEB).withVersion("2.0").withMarket("en-us");
-		builder.withAdultOption(AdultOption.MODERATE).withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
-		builder.withWebRequestCount(10L).withWebRequestOffset(0L);
-		builder.withWebRequestSearchOption(WebSearchOption.DISABLE_HOST_COLLAPSING).withWebRequestSearchOption(WebSearchOption.DISABLE_QUERY_ALTERATIONS);
-		return builder.getResult();
-	}
     
 	private static class JsonElementFactory implements SchemaElementFactory {
 		public JsonElementFactory() {

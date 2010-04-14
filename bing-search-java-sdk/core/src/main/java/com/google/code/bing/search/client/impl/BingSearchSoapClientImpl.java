@@ -60,9 +60,6 @@ import com.google.code.bing.search.schema.adapter.soap.web.WebImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebRequestImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebResultImpl;
 import com.google.code.bing.search.schema.adapter.soap.web.WebSearchTagImpl;
-import com.google.code.bing.search.schema.ads.AdRequest;
-import com.google.code.bing.search.schema.ads.AdResponse;
-import com.google.code.bing.search.schema.instantanswer.InstantAnswerRequest;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
@@ -88,10 +85,8 @@ import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
 import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
-import com.google.code.bing.search.schema.relatedsearch.RelatedSearchRequest;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
-import com.google.code.bing.search.schema.spell.SpellRequest;
 import com.google.code.bing.search.schema.spell.SpellResponse;
 import com.google.code.bing.search.schema.spell.SpellResult;
 import com.google.code.bing.search.schema.translation.TranslationRequest;
@@ -130,17 +125,6 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		searchService.setExecutor(taskExecutor);
 	}
 	
-	public static void main(String[] args) throws Exception {
-		searchService = new LiveSearchService();
-		BingSearchClient client = new BingSearchSoapClientImpl();
-		SearchResponse response = client.search(((BingSearchSoapClientImpl) client).createSearchRequest());
-		for (WebResult result : response.getWeb().getResults().getWebResultList()) {
-			System.out.println(result.getTitle());
-			System.out.println(result.getDescription());
-			System.out.println(result.getUrl());
-		}
-	}
-
 	@Override
 	public SearchResponse search(SearchRequest request) {
 		try {
@@ -165,150 +149,6 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		} catch (Exception e) {
 			throw new BingSearchException(e); 
 		}
-	}
-	
-	@Override
-	public ImageResponse search(ImageRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AdResponse search(AdRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InstantAnswerResponse search(InstantAnswerRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MobileWebResponse search(MobileWebRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public VideoResponse search(VideoRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PhonebookResponse search(PhonebookRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RelatedSearchResponse search(RelatedSearchRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SpellResponse search(SpellRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public NewsResponse search(NewsRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TranslationResponse search(TranslationRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WebResponse search(WebRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<ImageResponse> searchAsync(ImageRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<AdResponse> searchAsync(AdRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<InstantAnswerResponse> searchAsync(
-			InstantAnswerRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<MobileWebResponse> searchAsync(MobileWebRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<VideoResponse> searchAsync(VideoRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<PhonebookResponse> searchAsync(PhonebookRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<RelatedSearchResponse> searchAsync(
-			RelatedSearchRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<SpellResponse> searchAsync(SpellRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<NewsResponse> searchAsync(NewsRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<TranslationResponse> searchAsync(TranslationRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Future<WebResponse> searchAsync(WebRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	private SearchRequest createSearchRequest() {
-		SearchRequestBuilder builder = newSearchRequestBuilder();
-		builder.withAppId("49EB1BB201E8950D5CEE9AC199C7ADD7CE08AA40").withQuery("msdn blogs");
-		builder.withSourceType(SourceType.WEB).withVersion("2.0").withMarket("en-us");
-		builder.withAdultOption(AdultOption.MODERATE).withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
-		builder.withWebRequestCount(10L).withWebRequestOffset(0L);
-		builder.withWebRequestSearchOption(WebSearchOption.DISABLE_HOST_COLLAPSING).withWebRequestSearchOption(WebSearchOption.DISABLE_QUERY_ALTERATIONS);
-		return builder.getResult();
 	}
 	
 	/**

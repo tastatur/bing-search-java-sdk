@@ -10,32 +10,10 @@ import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
 import com.google.code.bing.search.schema.SourceType;
-import com.google.code.bing.search.schema.ads.AdRequest;
-import com.google.code.bing.search.schema.ads.AdResponse;
-import com.google.code.bing.search.schema.instantanswer.InstantAnswerRequest;
-import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
-import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
-import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption;
-import com.google.code.bing.search.schema.multimedia.ImageRequest;
-import com.google.code.bing.search.schema.multimedia.ImageResponse;
-import com.google.code.bing.search.schema.multimedia.VideoRequest;
-import com.google.code.bing.search.schema.multimedia.VideoResponse;
 import com.google.code.bing.search.schema.multimedia.VideoSortOption;
-import com.google.code.bing.search.schema.news.NewsRequest;
-import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.NewsSortOption;
-import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
-import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
-import com.google.code.bing.search.schema.relatedsearch.RelatedSearchRequest;
-import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
-import com.google.code.bing.search.schema.spell.SpellRequest;
-import com.google.code.bing.search.schema.spell.SpellResponse;
-import com.google.code.bing.search.schema.translation.TranslationRequest;
-import com.google.code.bing.search.schema.translation.TranslationResponse;
-import com.google.code.bing.search.schema.web.WebRequest;
-import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebSearchOption;
 
 /**
@@ -49,31 +27,31 @@ public interface BingSearchClient {
 	
 	public SearchResponse search(SearchRequest request);
 	
-	public ImageResponse search(ImageRequest request);
-	public AdResponse search(AdRequest request);
-	public InstantAnswerResponse search(InstantAnswerRequest request);
-	public MobileWebResponse search(MobileWebRequest request);
-	public VideoResponse search(VideoRequest request);
-	public PhonebookResponse search(PhonebookRequest request);
-	public RelatedSearchResponse search(RelatedSearchRequest request);
-	public SpellResponse search(SpellRequest request);
-	public NewsResponse search(NewsRequest request);
-	public TranslationResponse search(TranslationRequest request);
-	public WebResponse search(WebRequest request);
+//	public ImageResponse search(ImageRequest request);
+//	public AdResponse search(AdRequest request);
+//	public InstantAnswerResponse search(InstantAnswerRequest request);
+//	public MobileWebResponse search(MobileWebRequest request);
+//	public VideoResponse search(VideoRequest request);
+//	public PhonebookResponse search(PhonebookRequest request);
+//	public RelatedSearchResponse search(RelatedSearchRequest request);
+//	public SpellResponse search(SpellRequest request);
+//	public NewsResponse search(NewsRequest request);
+//	public TranslationResponse search(TranslationRequest request);
+//	public WebResponse search(WebRequest request);
 	
 	public Future<SearchResponse> searchAsync(SearchRequest request);
 	
-	public Future<ImageResponse> searchAsync(ImageRequest request);
-	public Future<AdResponse> searchAsync(AdRequest request);
-	public Future<InstantAnswerResponse> searchAsync(InstantAnswerRequest request);
-	public Future<MobileWebResponse> searchAsync(MobileWebRequest request);
-	public Future<VideoResponse> searchAsync(VideoRequest request);
-	public Future<PhonebookResponse> searchAsync(PhonebookRequest request);
-	public Future<RelatedSearchResponse> searchAsync(RelatedSearchRequest request);
-	public Future<SpellResponse> searchAsync(SpellRequest request);
-	public Future<NewsResponse> searchAsync(NewsRequest request);
-	public Future<TranslationResponse> searchAsync(TranslationRequest request);
-	public Future<WebResponse> searchAsync(WebRequest request);
+//	public Future<ImageResponse> searchAsync(ImageRequest request);
+//	public Future<AdResponse> searchAsync(AdRequest request);
+//	public Future<InstantAnswerResponse> searchAsync(InstantAnswerRequest request);
+//	public Future<MobileWebResponse> searchAsync(MobileWebRequest request);
+//	public Future<VideoResponse> searchAsync(VideoRequest request);
+//	public Future<PhonebookResponse> searchAsync(PhonebookRequest request);
+//	public Future<RelatedSearchResponse> searchAsync(RelatedSearchRequest request);
+//	public Future<SpellResponse> searchAsync(SpellRequest request);
+//	public Future<NewsResponse> searchAsync(NewsRequest request);
+//	public Future<TranslationResponse> searchAsync(TranslationRequest request);
+//	public Future<WebResponse> searchAsync(WebRequest request);
 	
 	public interface SearchRequestBuilder {
 		
