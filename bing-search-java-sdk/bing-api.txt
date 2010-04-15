@@ -203,11 +203,13 @@ E:\backup\metro\bin\wsimport -b search.xjb -keep -s E:\workspace\opensource\bing
 generate the xsd.
 X. 1. Remove BeanUtils or change it.
 X. 2. Implement JSON.
-3. Write request builders.
+X. 3. Write request builders.
 4. Write client api for both maps and search.
 5. Write Factory for search.
 6. Test both maps sdk and search sdk.
 7. Release on Monday...!!!
+8. Write exception classes for maps.
+9. Add a constant to initializa web service.
 
 Change ErrorImpl. {"Errors":[{"Message":"Required parameter is missing.","HelpUrl":"http:\/\/msdn.microsoft.com\/en-us\/library\/dd251042.aspx","Parameter":"SearchRequest.Query","Code":1001}],"Version":"2.0"}
 In FlightStatus set origin air port and destination airport.
