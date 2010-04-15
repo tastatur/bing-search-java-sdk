@@ -209,7 +209,7 @@ X. 3. Write request builders.
 6. Test both maps sdk and search sdk.
 7. Release on Monday...!!!
 8. Write exception classes for maps.
-9. Add a constant to initializa web service.
+X. 9. Add a constant to initializa web service.
 
 Change ErrorImpl. {"Errors":[{"Message":"Required parameter is missing.","HelpUrl":"http:\/\/msdn.microsoft.com\/en-us\/library\/dd251042.aspx","Parameter":"SearchRequest.Query","Code":1001}],"Version":"2.0"}
 In FlightStatus set origin air port and destination airport.
