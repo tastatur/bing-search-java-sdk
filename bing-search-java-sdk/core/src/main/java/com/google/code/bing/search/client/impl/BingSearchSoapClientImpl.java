@@ -119,7 +119,7 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ADAPTER_CLASSES_MAP.put(SearchRequest.class, SearchRequestImpl.class);
 		registerEnumConverters();
 		
-		if (!ApplicationConstants.IN_WS_CONTAINER) {
+		if (ApplicationConstants.STANDALONE_MODE) {
 			searchService = new LiveSearchService();
 		}
 	}
