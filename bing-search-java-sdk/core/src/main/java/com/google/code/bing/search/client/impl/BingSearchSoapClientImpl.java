@@ -12,6 +12,7 @@ import org.apache.commons.beanutils.Converter;
 
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
+import com.google.code.bing.search.client.constant.ApplicationConstants;
 import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
@@ -117,8 +118,10 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
 		ADAPTER_CLASSES_MAP.put(SearchRequest.class, SearchRequestImpl.class);
 		registerEnumConverters();
-		// TODO-NM: If not injected.
-		searchService = new LiveSearchService();
+		
+		if (!ApplicationConstants.IN_WS_CONTAINER) {
+			searchService = new LiveSearchService();
+		}
 	}
 
 	public BingSearchSoapClientImpl() {

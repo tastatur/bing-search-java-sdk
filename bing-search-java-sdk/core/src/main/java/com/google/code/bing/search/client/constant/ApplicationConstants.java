@@ -39,6 +39,9 @@ public final class ApplicationConstants {
     /** The Constant CONTENT_ENCODING. */
     public static final String CONTENT_ENCODING = getProperty("com.google.code.bing.search.client.encoding");
     
+    /** The Constant IN_WS_CONTAINER. */
+    public static final boolean IN_WS_CONTAINER = getBooleanProperty("com.google.code.bing.search.client.wsContainer");
+    
     /**
      * Instantiates a new application constants.
      */
