@@ -204,11 +204,11 @@ generate the xsd.
 X. 1. Remove BeanUtils or change it.
 X. 2. Implement JSON.
 X. 3. Write request builders.
-4. Write client api for both maps and search.
-5. Write Factory for search.
+X. 4. Write client api for both maps and search.
+X. 5. Write Factory for search.
 6. Test both maps sdk and search sdk.
-7. Release on Monday...!!!
-8. Write exception classes for maps.
+X. 7. Release on Monday...!!!
+X. 8. Write exception classes for maps.
 X. 9. Add a constant to initializa web service.
 
 Change ErrorImpl. {"Errors":[{"Message":"Required parameter is missing.","HelpUrl":"http:\/\/msdn.microsoft.com\/en-us\/library\/dd251042.aspx","Parameter":"SearchRequest.Query","Code":1001}],"Version":"2.0"}
@@ -216,3 +216,9 @@ In FlightStatus set origin air port and destination airport.
 X. Query and AppID should be command line arguments.
 In InstantAnswer set specific data in soap.
 AdRequest
+
+
+E:\axis2-1.5.1\bin\wsdl2java -ss  -t -o E:\axis2-1.5.1\bing-maps-java-sdk -f jaxb -uri http://dev.virtualearth.net/webservices/v1/metadata/searchservice/dev.virtualearth.net.webservices.v1.search.wsdl
+
+10. Post on forum.
+11. Post on programmableweb.
