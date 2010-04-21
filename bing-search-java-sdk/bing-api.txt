@@ -220,5 +220,5 @@ AdRequest
 
 E:\axis2-1.5.1\bin\wsdl2java -ss  -t -o E:\axis2-1.5.1\bing-maps-java-sdk -f jaxb -uri http://dev.virtualearth.net/webservices/v1/metadata/searchservice/dev.virtualearth.net.webservices.v1.search.wsdl
 
-10. Post on forum.
-11. Post on programmableweb.
+X. 10. Post on forum.
+X. 11. Post on programmableweb.
