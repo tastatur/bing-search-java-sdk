@@ -125,7 +125,9 @@ public class BingSearchSoapClientImpl extends BaseBingSearchServiceClientImpl im
 	}
 
 	public BingSearchSoapClientImpl() {
-		searchService.setExecutor(taskExecutor);
+		if (searchService != null) {
+			searchService.setExecutor(taskExecutor);
+		}
 	}
 	
 	@Override
