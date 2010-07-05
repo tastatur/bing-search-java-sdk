@@ -222,3 +222,5 @@ E:\axis2-1.5.1\bin\wsdl2java -ss  -t -o E:\axis2-1.5.1\bing-maps-java-sdk -f jax
 
 X. 10. Post on forum.
 X. 11. Post on programmableweb.
+
+Use GSON.
