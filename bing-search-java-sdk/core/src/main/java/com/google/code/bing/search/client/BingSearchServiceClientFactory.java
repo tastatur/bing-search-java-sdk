@@ -25,13 +25,13 @@ public class BingSearchServiceClientFactory {
     /** The task executor. */
     private ExecutorService taskExecutor = Executors.newCachedThreadPool();
     
-    private static final Map<ApiProtocol, BingSearchClient> clientImplementations = new EnumMap<ApiProtocol, BingSearchClient>(ApiProtocol.class);
+    private static final Map<ApiProtocol, Class<? extends BingSearchClient>> clientImplementations = new EnumMap<ApiProtocol, Class<? extends BingSearchClient>>(ApiProtocol.class);
     
     static {
-    	clientImplementations.put(ApiProtocol.JSON, new BingSearchJsonClientImpl());
-    	clientImplementations.put(ApiProtocol.XML, new BingSearchJaxbClientImpl());
-    	clientImplementations.put(ApiProtocol.SOAP, new BingSearchSoapClientImpl());
-    	clientImplementations.put(ApiProtocol.RSS, new BingSearchRssClientImpl());
+    	clientImplementations.put(ApiProtocol.JSON, BingSearchJsonClientImpl.class);
+    	clientImplementations.put(ApiProtocol.XML, BingSearchJaxbClientImpl.class);
+    	clientImplementations.put(ApiProtocol.SOAP, BingSearchSoapClientImpl.class);
+    	clientImplementations.put(ApiProtocol.RSS, BingSearchRssClientImpl.class);
     }
     
     private BingSearchServiceClientFactory() {}
@@ -62,8 +62,13 @@ public class BingSearchServiceClientFactory {
      * 
      */
     public BingSearchClient createBingSearchClient(ApiProtocol protocol) {
-    	BaseBingSearchServiceClientImpl client = (BaseBingSearchServiceClientImpl) clientImplementations.get(protocol);
-    	client.setTaskExecutor(taskExecutor);
-    	return client;
+    	BaseBingSearchServiceClientImpl client;
+		try {
+			client = (BaseBingSearchServiceClientImpl) clientImplementations.get(protocol).newInstance();
+	    	client.setTaskExecutor(taskExecutor);
+	    	return client;
+		} catch (Exception e) {
+			throw new BingSearchException(e);
+		}
     }
 }
