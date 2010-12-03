@@ -224,3 +224,8 @@ X. 10. Post on forum.
 X. 11. Post on programmableweb.
 
 Use GSON.
+
+http://www.bing.com/community/blogs/developer/archive/2010/06/25/guide-to-bing-query-language-published.aspx
+
+
+http://msdn.microsoft.com/en-us/library/ff701713.aspx
