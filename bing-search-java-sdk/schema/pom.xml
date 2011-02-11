@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.googleapis.ajax</groupId>
-    <artifactId>google-search-java-sdk</artifactId>
-    <version>0.1</version>
+    <groupId>com.google.code.bing.search</groupId>
+    <artifactId>bing-search-java-sdk</artifactId>
+    <version>2.0</version>
   </parent>
-  <artifactId>schema</artifactId>
+  <artifactId>bing-search-java-sdk-schema</artifactId>
   <packaging>jar</packaging>
 </project>

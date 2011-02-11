@@ -1,23 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googleapis.ajax</groupId>
-  <artifactId>google-search-java-sdk</artifactId>
+  <groupId>com.google.code.bing.search</groupId>
+  <artifactId>bing-search-java-sdk</artifactId>
   <packaging>pom</packaging>
-  <version>0.1</version>
-  <name>Google AJAX APIs Java SDK</name>
+  <version>2.0</version>
+  <name>Bing APIs Java SDK</name>
   <inceptionYear>2010</inceptionYear>
-  <description>A Java wrapper for Google AJAX APIs.</description>
-  <url>http://code.google.com/p/google-search-java-sdk/</url>
+  <description>A Java wrapper for Bing APIs.</description>
+  <url>http://code.google.com/p/bing-search-java-sdk/</url>
 
   <issueManagement>
     <system>google-code</system>
-    <url>http://code.google.com/p/google-search-java-sdk/issues/list</url>
+    <url>http://code.google.com/p/bing-search-java-sdk/issues/list</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:svn:http://google-search-java-sdk.googlecode.com/svn/trunk</connection>
-    <developerConnection>scm:svn:https://google-search-java-sdk.googlecode.com/svn/trunk</developerConnection>
-    <url>http://google-search-java-sdk.googlecode.com/svn/trunk/</url>
+    <connection>scm:svn:http://bing-search-java-sdk.googlecode.com/svn/trunk</connection>
+    <developerConnection>scm:svn:https://bing-search-java-sdk.googlecode.com/svn/trunk</developerConnection>
+    <url>http://bing-search-java-sdk.googlecode.com/svn/trunk/</url>
   </scm>
 
   <developers>
