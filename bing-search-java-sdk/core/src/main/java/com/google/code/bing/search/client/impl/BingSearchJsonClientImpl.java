@@ -97,7 +97,7 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
     @SuppressWarnings("unchecked")
     protected <T> T unmarshallObject(Class<T> clazz, InputStream jsonContent) {
         try {
-        	JsonElement response = parser.parse(new InputStreamReader(jsonContent));
+        	JsonElement response = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
         	if (response.isJsonObject()) {
         		if (response.getAsJsonObject().get("SearchResponse") != null) {
         			Gson gson = getGsonBuilder().create();
