@@ -17,6 +17,8 @@
 
 package com.google.code.bing.search.schema.flightstatus;
 
+import java.util.Date;
+
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
@@ -38,7 +40,7 @@ extends SchemaEntity
     protected String airlineName;
     
     /** The flight number. */
-    protected Long flightNumber;
+    protected String flightNumber;
     
     /** The flight name. */
     protected String flightName;
@@ -56,16 +58,16 @@ extends SchemaEntity
     protected String onTimeString;
     
     /** The scheduled departure. */
-    protected String scheduledDeparture;
+    protected Date scheduledDeparture;
     
     /** The updated departure. */
-    protected String updatedDeparture;
+    protected Date updatedDeparture;
     
     /** The scheduled arrival. */
-    protected String scheduledArrival;
+    protected Date scheduledArrival;
     
     /** The updated arrival. */
-    protected String updatedArrival;
+    protected Date updatedArrival;
     
     /** The origin airport. */
     protected OriginAirport originAirport;
@@ -74,13 +76,13 @@ extends SchemaEntity
     protected DestinationAirport destinationAirport;
     
     /** The departure gate. */
-    protected Long departureGate;
+    protected String departureGate;
     
     /** The departure terminal. */
     protected String departureTerminal;
     
     /** The arrival gate. */
-    protected Long arrivalGate;
+    protected String arrivalGate;
     
     /** The arrival terminal. */
     protected String arrivalTerminal;
@@ -135,7 +137,7 @@ extends SchemaEntity
      * 
      * @return the flight number
      */
-    public Long getFlightNumber() {
+    public String getFlightNumber() {
         return flightNumber;
     }
 
@@ -144,7 +146,7 @@ extends SchemaEntity
      * 
      * @param value the new flight number
      */
-    public void setFlightNumber(Long value) {
+    public void setFlightNumber(String value) {
         this.flightNumber = value;
     }
 
@@ -243,7 +245,7 @@ extends SchemaEntity
      * 
      * @return the scheduled departure
      */
-    public String getScheduledDeparture() {
+    public Date getScheduledDeparture() {
         return scheduledDeparture;
     }
 
@@ -252,7 +254,7 @@ extends SchemaEntity
      * 
      * @param value the new scheduled departure
      */
-    public void setScheduledDeparture(String value) {
+    public void setScheduledDeparture(Date value) {
         this.scheduledDeparture = value;
     }
 
@@ -261,7 +263,7 @@ extends SchemaEntity
      * 
      * @return the updated departure
      */
-    public String getUpdatedDeparture() {
+    public Date getUpdatedDeparture() {
         return updatedDeparture;
     }
 
@@ -270,7 +272,7 @@ extends SchemaEntity
      * 
      * @param value the new updated departure
      */
-    public void setUpdatedDeparture(String value) {
+    public void setUpdatedDeparture(Date value) {
         this.updatedDeparture = value;
     }
 
@@ -279,7 +281,7 @@ extends SchemaEntity
      * 
      * @return the scheduled arrival
      */
-    public String getScheduledArrival() {
+    public Date getScheduledArrival() {
         return scheduledArrival;
     }
 
@@ -288,7 +290,7 @@ extends SchemaEntity
      * 
      * @param value the new scheduled arrival
      */
-    public void setScheduledArrival(String value) {
+    public void setScheduledArrival(Date value) {
         this.scheduledArrival = value;
     }
 
@@ -297,7 +299,7 @@ extends SchemaEntity
      * 
      * @return the updated arrival
      */
-    public String getUpdatedArrival() {
+    public Date getUpdatedArrival() {
         return updatedArrival;
     }
 
@@ -306,7 +308,7 @@ extends SchemaEntity
      * 
      * @param value the new updated arrival
      */
-    public void setUpdatedArrival(String value) {
+    public void setUpdatedArrival(Date value) {
         this.updatedArrival = value;
     }
 
@@ -351,7 +353,7 @@ extends SchemaEntity
      * 
      * @return the departure gate
      */
-    public Long getDepartureGate() {
+    public String getDepartureGate() {
         return departureGate;
     }
 
@@ -360,7 +362,7 @@ extends SchemaEntity
      * 
      * @param value the new departure gate
      */
-    public void setDepartureGate(Long value) {
+    public void setDepartureGate(String value) {
         this.departureGate = value;
     }
 
@@ -387,7 +389,7 @@ extends SchemaEntity
      * 
      * @return the arrival gate
      */
-    public Long getArrivalGate() {
+    public String getArrivalGate() {
         return arrivalGate;
     }
 
@@ -396,7 +398,7 @@ extends SchemaEntity
      * 
      * @param value the new arrival gate
      */
-    public void setArrivalGate(Long value) {
+    public void setArrivalGate(String value) {
         this.arrivalGate = value;
     }
 

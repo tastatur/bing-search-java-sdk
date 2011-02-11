@@ -17,6 +17,9 @@
 
 package com.google.code.bing.search.schema.news;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
@@ -34,7 +37,7 @@ public class NewsCollection
     protected String name;
     
     /** The news articles. */
-    protected NewsArticles newsArticles;
+    protected List<NewsArticle> newsArticles;
 
     /**
      * Gets the name.
@@ -59,16 +62,10 @@ public class NewsCollection
      * 
      * @return the news articles
      */
-    public NewsArticles getNewsArticles() {
-        return newsArticles;
-    }
-
-    /**
-     * Sets the news articles.
-     * 
-     * @param value the new news articles
-     */
-    public void setNewsArticles(NewsArticles value) {
-        this.newsArticles = value;
+    public List<NewsArticle> getNewsArticles() {
+        if (newsArticles == null) {
+        	newsArticles = new ArrayList<NewsArticle>();
+        }
+        return this.newsArticles;
     }
 }
