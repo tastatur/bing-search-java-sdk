@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.multimedia;
 
@@ -5,152 +21,138 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Url" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}ContentType" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Width" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Height" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}FileSize" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}RunTime" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class Thumbnail.
  */
-public interface Thumbnail
+public class Thumbnail
     extends SchemaEntity
 {
 
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The content type. */
+    protected String contentType;
+    
+    /** The width. */
+    protected Long width;
+    
+    /** The height. */
+    protected Long height;
+    
+    /** The file size. */
+    protected Long fileSize;
+    
+    /** The run time. */
+    protected Long runTime;
 
     /**
-     * Gets the value of the url property.
+     * Gets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    String getUrl();
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Sets the value of the url property.
+     * Sets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new url
      */
-    void setUrl(String value);
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Gets the value of the contentType property.
+     * Gets the content type.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the content type
      */
-    String getContentType();
+    public String getContentType() {
+        return contentType;
+    }
 
     /**
-     * Sets the value of the contentType property.
+     * Sets the content type.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new content type
      */
-    void setContentType(String value);
+    public void setContentType(String value) {
+        this.contentType = value;
+    }
 
     /**
-     * Gets the value of the width property.
+     * Gets the width.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the width
      */
-    Long getWidth();
+    public Long getWidth() {
+        return width;
+    }
 
     /**
-     * Sets the value of the width property.
+     * Sets the width.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new width
      */
-    void setWidth(Long value);
+    public void setWidth(Long value) {
+        this.width = value;
+    }
 
     /**
-     * Gets the value of the height property.
+     * Gets the height.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the height
      */
-    Long getHeight();
+    public Long getHeight() {
+        return height;
+    }
 
     /**
-     * Sets the value of the height property.
+     * Sets the height.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new height
      */
-    void setHeight(Long value);
+    public void setHeight(Long value) {
+        this.height = value;
+    }
 
     /**
-     * Gets the value of the fileSize property.
+     * Gets the file size.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the file size
      */
-    Long getFileSize();
+    public Long getFileSize() {
+        return fileSize;
+    }
 
     /**
-     * Sets the value of the fileSize property.
+     * Sets the file size.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new file size
      */
-    void setFileSize(Long value);
+    public void setFileSize(Long value) {
+        this.fileSize = value;
+    }
 
     /**
-     * Gets the value of the runTime property.
+     * Gets the run time.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the run time
      */
-    Long getRunTime();
+    public Long getRunTime() {
+        return runTime;
+    }
 
     /**
-     * Sets the value of the runTime property.
+     * Sets the run time.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new run time
      */
-    void setRunTime(Long value);
-
+    public void setRunTime(Long value) {
+        this.runTime = value;
+    }
 }

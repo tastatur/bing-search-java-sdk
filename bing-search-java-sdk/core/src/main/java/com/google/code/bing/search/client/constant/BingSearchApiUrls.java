@@ -1,5 +1,18 @@
-/**
- *
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
  */
 package com.google.code.bing.search.client.constant;
 
@@ -15,7 +28,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SourceType;
@@ -30,17 +42,17 @@ import com.google.code.bing.search.schema.web.WebRequest;
 import com.google.code.bing.search.schema.web.WebSearchOption;
 
 /**
- * The Class LinkedInApiUrls.
+ * The Class BingSearchApiUrls.
  */
 public final class BingSearchApiUrls {
 
     /** The Constant API_URLS_FILE. */
     public static final String API_URLS_FILE = "BingSearchApiUrls.properties";
 
-    /** The static logger. */
+    /** The Constant LOG. */
     private static final Logger LOG = Logger.getLogger(BingSearchApiUrls.class.getCanonicalName());
     
-    /** The Constant linkedInApiUrls. */
+    /** The Constant bingSearchApiUrls. */
     private static final Properties bingSearchApiUrls = new Properties();
 
     static {
@@ -56,16 +68,19 @@ public final class BingSearchApiUrls {
         bingSearchApiUrls.getProperty("com.google.code.bing.search.client.url");
 
     /**
-     * Instantiates a new linked in api urls.
+     * Instantiates a new bing search api urls.
      */
     private BingSearchApiUrls() {}
 
     /**
-     * The Class LinkedInApiUrlBuilder.
+     * The Class BingSearchApiUrlBuilder.
      */
     public static class BingSearchApiUrlBuilder {
         
-        /** The Constant API_URLS_PLACEHOLDER_START. */
+        /** The Constant API_PROTOCOL. */
+        private static final String API_PROTOCOL = "json";
+
+		/** The Constant API_URLS_PLACEHOLDER_START. */
         private static final char API_URLS_PLACEHOLDER_START = '{';
 
         /** The Constant API_URLS_PLACEHOLDER_END. */
@@ -74,26 +89,22 @@ public final class BingSearchApiUrls {
         /** The Constant PROTOCOL_PLACEHOLDER. */
         private static final String PROTOCOL_PLACEHOLDER = "protocol";
     	
-        /** The Constant PROTOCOL_PLACEHOLDER. */
+        /** The Constant QUERY_PARAMETERS_PLACEHOLDER. */
         private static final String QUERY_PARAMETERS_PLACEHOLDER = "queryParameters";
         
     	/** The url format. */
 	    private String urlFormat;
     	
-	    /** The protocol. */
-		private ApiProtocol protocol;
-    	
     	/** The parameters map. */
 	    private Map<String, String> parametersMap = new HashMap<String, String>();
     	
     	/**
-	     * Instantiates a new linked in api url builder.
+	     * Instantiates a new bing search api url builder.
 	     * 
 	     * @param urlFormat the url format
 	     */
-	    public BingSearchApiUrlBuilder(String urlFormat, ApiProtocol protocol) {
+	    public BingSearchApiUrlBuilder(String urlFormat) {
     		this.urlFormat = urlFormat;
-    		this.protocol = protocol;
     	}
     	
     	/**
@@ -102,7 +113,7 @@ public final class BingSearchApiUrls {
 	     * @param name the name
 	     * @param value the value
 	     * 
-	     * @return the linked in api url builder
+	     * @return the bing search api url builder
 	     */
 	    public BingSearchApiUrlBuilder withParameter(String name, String value) {
 	    	if (value != null && value.length() > 0) {
@@ -116,9 +127,9 @@ public final class BingSearchApiUrls {
 	     * With parameter.
 	     * 
 	     * @param name the name
-	     * @param value the value
+	     * @param values the values
 	     * 
-	     * @return the linked in api url builder
+	     * @return the bing search api url builder
 	     */
 	    private BingSearchApiUrlBuilder withParameter(String name, List<String> values) {
 	    	if (values != null && values.size() > 0) {
@@ -142,7 +153,7 @@ public final class BingSearchApiUrls {
 	     * @param name the name
 	     * @param value the value
 	     * 
-	     * @return the linked in api url builder
+	     * @return the bing search api url builder
 	     */
 	    private BingSearchApiUrlBuilder withParameter(String name, Object value) {
 	    	if (value != null) {
@@ -152,7 +163,14 @@ public final class BingSearchApiUrls {
     		return this;
     	}
 	    
-	    public BingSearchApiUrlBuilder withSearchRequest(SearchRequest parameters) {
+	    /**
+    	 * With search request.
+    	 * 
+    	 * @param parameters the parameters
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withSearchRequest(SearchRequest parameters) {
     		withParameter("Version", parameters.getVersion());
     		withParameter("Market", parameters.getMarket());
     		withParameter("UILanguage", parameters.getUILanguage());
@@ -202,7 +220,15 @@ public final class BingSearchApiUrls {
     		return this;
     	}
 	    
-	    public BingSearchApiUrlBuilder withWebRequest(String name, WebRequest request) {
+	    /**
+    	 * With web request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withWebRequest(String name, WebRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
 	    	withParameter(name + ".FileType", request.getFileType());
@@ -225,7 +251,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withImageRequest(String name, ImageRequest request) {
+	    /**
+    	 * With image request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withImageRequest(String name, ImageRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
     		if (!request.getFilterList().isEmpty()) {
@@ -238,7 +272,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withPhonebookRequest(String name, PhonebookRequest request) {
+	    /**
+    	 * With phonebook request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withPhonebookRequest(String name, PhonebookRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
 	    	withParameter(name + ".FileType", request.getFileType());
@@ -251,7 +293,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withVideoRequest(String name, VideoRequest request) {
+	    /**
+    	 * With video request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withVideoRequest(String name, VideoRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
     		if (!request.getFilterList().isEmpty()) {
@@ -267,7 +317,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withNewsRequest(String name, NewsRequest request) {
+	    /**
+    	 * With news request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withNewsRequest(String name, NewsRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
 	    	withParameter(name + ".LocationOverride", request.getLocationOverride());
@@ -278,7 +336,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withMobileWebRequest(String name, MobileWebRequest request) {
+	    /**
+    	 * With mobile web request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withMobileWebRequest(String name, MobileWebRequest request) {
 	    	withParameter(name + ".Offset", request.getOffset());
 	    	withParameter(name + ".Count", request.getCount());
     		if (!request.getMobileWebSearchOptionList().isEmpty()) {
@@ -291,7 +357,15 @@ public final class BingSearchApiUrls {
 	    	return this;
 	    }
 	    
-	    public BingSearchApiUrlBuilder withTranslationRequest(String name, TranslationRequest request) {
+	    /**
+    	 * With translation request.
+    	 * 
+    	 * @param name the name
+    	 * @param request the request
+    	 * 
+    	 * @return the bing search api url builder
+    	 */
+    	public BingSearchApiUrlBuilder withTranslationRequest(String name, TranslationRequest request) {
 	    	withParameter(name + ".SourceLanguage", request.getSourceLanguage());
 	    	withParameter(name + ".TargetLanguage", request.getTargetLanguage());
 	    	return this;
@@ -313,7 +387,7 @@ public final class BingSearchApiUrls {
         		} else if (placeHolderFlag && urlFormat.charAt(i) == API_URLS_PLACEHOLDER_END) {
         			String placeHolder = placeHolderBuilder.toString();
         			if (PROTOCOL_PLACEHOLDER.equals(placeHolder)) {
-        				urlBuilder.append(protocol.value());
+        				urlBuilder.append(API_PROTOCOL);
         			} else if (QUERY_PARAMETERS_PLACEHOLDER.equals(placeHolder)) {
     			    	StringBuilder builder = new StringBuilder();
     			    	if (!parametersMap.isEmpty()) {
@@ -352,7 +426,6 @@ public final class BingSearchApiUrls {
          * Encode url.
          * 
          * @param original the original
-         * @param encoding the encoding
          * 
          * @return the string
          */

@@ -1,45 +1,43 @@
-/**
- *
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
  */
 package com.google.code.bing.search.client;
 
-import java.util.EnumMap;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.google.code.bing.search.client.enumeration.ApiProtocol;
-import com.google.code.bing.search.client.impl.BaseBingSearchServiceClientImpl;
-import com.google.code.bing.search.client.impl.BingSearchJaxbClientImpl;
 import com.google.code.bing.search.client.impl.BingSearchJsonClientImpl;
-import com.google.code.bing.search.client.impl.BingSearchRssClientImpl;
-import com.google.code.bing.search.client.impl.BingSearchSoapClientImpl;
 
 /**
- * A factory for creating LinkedInApiClient objects.
- * 
- * @author Nabeel Mukhtar
+ * A factory for creating BingSearchServiceClient objects.
  */
 public class BingSearchServiceClientFactory {
 
     /** The task executor. */
     private ExecutorService taskExecutor = Executors.newCachedThreadPool();
     
-    private static final Map<ApiProtocol, Class<? extends BingSearchClient>> clientImplementations = new EnumMap<ApiProtocol, Class<? extends BingSearchClient>>(ApiProtocol.class);
-    
-    static {
-    	clientImplementations.put(ApiProtocol.JSON, BingSearchJsonClientImpl.class);
-    	clientImplementations.put(ApiProtocol.XML, BingSearchJaxbClientImpl.class);
-    	clientImplementations.put(ApiProtocol.SOAP, BingSearchSoapClientImpl.class);
-    	clientImplementations.put(ApiProtocol.RSS, BingSearchRssClientImpl.class);
-    }
-    
+    /**
+     * Instantiates a new bing search service client factory.
+     */
     private BingSearchServiceClientFactory() {}
 
     /**
-     * Sets the task executor to be used for asynchronous API calls. 
+     * Sets the task executor.
      * 
-     * @param taskExecutor the task executor
+     * @param taskExecutor the new task executor
      */
 	public void setTaskExecutor(ExecutorService taskExecutor) {
         this.taskExecutor = taskExecutor;
@@ -48,27 +46,20 @@ public class BingSearchServiceClientFactory {
     /**
      * New instance.
      * 
-     * @param consumerKey the consumer key
-     * @param consumerSecret the consumer secret
-     * 
-     * @return the linked in api client factory
+     * @return the bing search service client factory
      */
     public static BingSearchServiceClientFactory newInstance() {
         return new BingSearchServiceClientFactory();
     }
     
     /**
+     * Creates a new BingSearchServiceClient object.
      * 
-     * 
+     * @return the bing search client
      */
-    public BingSearchClient createBingSearchClient(ApiProtocol protocol) {
-    	BaseBingSearchServiceClientImpl client;
-		try {
-			client = (BaseBingSearchServiceClientImpl) clientImplementations.get(protocol).newInstance();
-	    	client.setTaskExecutor(taskExecutor);
-	    	return client;
-		} catch (Exception e) {
-			throw new BingSearchException(e);
-		}
+    public BingSearchClient createBingSearchClient() {
+    	BingSearchClient client = new BingSearchJsonClientImpl();
+    	((BingSearchJsonClientImpl) client).setTaskExecutor(taskExecutor);
+    	return client;
     }
 }

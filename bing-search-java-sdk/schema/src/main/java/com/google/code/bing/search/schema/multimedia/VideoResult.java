@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.multimedia;
 
@@ -5,152 +21,138 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Title" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}PlayUrl" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}SourceTitle" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}RunTime" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}ClickThroughPageUrl" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}StaticThumbnail" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class VideoResult.
  */
-public interface VideoResult
+public class VideoResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTitle(String value);
-
-    /**
-     * Gets the value of the playUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getPlayUrl();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The play url. */
+    protected String playUrl;
+    
+    /** The source title. */
+    protected String sourceTitle;
+    
+    /** The run time. */
+    protected Long runTime;
+    
+    /** The click through page url. */
+    protected String clickThroughPageUrl;
+    
+    /** The static thumbnail. */
+    protected StaticThumbnail staticThumbnail;
 
     /**
-     * Sets the value of the playUrl property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setPlayUrl(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the sourceTitle property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getSourceTitle();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the sourceTitle property.
+     * Gets the play url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the play url
      */
-    void setSourceTitle(String value);
+    public String getPlayUrl() {
+        return playUrl;
+    }
 
     /**
-     * Gets the value of the runTime property.
+     * Sets the play url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new play url
      */
-    Long getRunTime();
+    public void setPlayUrl(String value) {
+        this.playUrl = value;
+    }
 
     /**
-     * Sets the value of the runTime property.
+     * Gets the source title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the source title
      */
-    void setRunTime(Long value);
+    public String getSourceTitle() {
+        return sourceTitle;
+    }
 
     /**
-     * Gets the value of the clickThroughPageUrl property.
+     * Sets the source title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new source title
      */
-    String getClickThroughPageUrl();
+    public void setSourceTitle(String value) {
+        this.sourceTitle = value;
+    }
 
     /**
-     * Sets the value of the clickThroughPageUrl property.
+     * Gets the run time.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the run time
      */
-    void setClickThroughPageUrl(String value);
+    public Long getRunTime() {
+        return runTime;
+    }
 
     /**
-     * Gets the value of the staticThumbnail property.
+     * Sets the run time.
      * 
-     * @return
-     *     possible object is
-     *     {@link StaticThumbnail }
-     *     
+     * @param value the new run time
      */
-    StaticThumbnail getStaticThumbnail();
+    public void setRunTime(Long value) {
+        this.runTime = value;
+    }
 
     /**
-     * Sets the value of the staticThumbnail property.
+     * Gets the click through page url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link StaticThumbnail }
-     *     
+     * @return the click through page url
      */
-    void setStaticThumbnail(StaticThumbnail value);
+    public String getClickThroughPageUrl() {
+        return clickThroughPageUrl;
+    }
 
+    /**
+     * Sets the click through page url.
+     * 
+     * @param value the new click through page url
+     */
+    public void setClickThroughPageUrl(String value) {
+        this.clickThroughPageUrl = value;
+    }
+
+    /**
+     * Gets the static thumbnail.
+     * 
+     * @return the static thumbnail
+     */
+    public StaticThumbnail getStaticThumbnail() {
+        return staticThumbnail;
+    }
+
+    /**
+     * Sets the static thumbnail.
+     * 
+     * @param value the new static thumbnail
+     */
+    public void setStaticThumbnail(StaticThumbnail value) {
+        this.staticThumbnail = value;
+    }
 }

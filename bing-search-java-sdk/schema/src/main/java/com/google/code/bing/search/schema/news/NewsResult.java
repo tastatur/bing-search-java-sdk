@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.news;
 
@@ -5,173 +21,159 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Title" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Url" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Source" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Snippet" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Date" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}BreakingNews" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}NewsCollections" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class NewsResult.
  */
-public interface NewsResult
+public class NewsResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTitle(String value);
-
-    /**
-     * Gets the value of the url property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getUrl();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The source. */
+    protected String source;
+    
+    /** The snippet. */
+    protected String snippet;
+    
+    /** The date. */
+    protected String date;
+    
+    /** The breaking news. */
+    protected Long breakingNews;
+    
+    /** The news collections. */
+    protected NewsCollections newsCollections;
 
     /**
-     * Sets the value of the url property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setUrl(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the source property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getSource();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the source property.
+     * Gets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    void setSource(String value);
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Gets the value of the snippet property.
+     * Sets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new url
      */
-    String getSnippet();
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Sets the value of the snippet property.
+     * Gets the source.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the source
      */
-    void setSnippet(String value);
+    public String getSource() {
+        return source;
+    }
 
     /**
-     * Gets the value of the date property.
+     * Sets the source.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new source
      */
-    String getDate();
+    public void setSource(String value) {
+        this.source = value;
+    }
 
     /**
-     * Sets the value of the date property.
+     * Gets the snippet.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the snippet
      */
-    void setDate(String value);
+    public String getSnippet() {
+        return snippet;
+    }
 
     /**
-     * Gets the value of the breakingNews property.
+     * Sets the snippet.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new snippet
      */
-    Long getBreakingNews();
+    public void setSnippet(String value) {
+        this.snippet = value;
+    }
 
     /**
-     * Sets the value of the breakingNews property.
+     * Gets the date.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the date
      */
-    void setBreakingNews(Long value);
+    public String getDate() {
+        return date;
+    }
 
     /**
-     * Gets the value of the newsCollections property.
+     * Sets the date.
      * 
-     * @return
-     *     possible object is
-     *     {@link NewsCollections }
-     *     
+     * @param value the new date
      */
-    NewsCollections getNewsCollections();
+    public void setDate(String value) {
+        this.date = value;
+    }
 
     /**
-     * Sets the value of the newsCollections property.
+     * Gets the breaking news.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NewsCollections }
-     *     
+     * @return the breaking news
      */
-    void setNewsCollections(NewsCollections value);
+    public Long getBreakingNews() {
+        return breakingNews;
+    }
 
+    /**
+     * Sets the breaking news.
+     * 
+     * @param value the new breaking news
+     */
+    public void setBreakingNews(Long value) {
+        this.breakingNews = value;
+    }
+
+    /**
+     * Gets the news collections.
+     * 
+     * @return the news collections
+     */
+    public NewsCollections getNewsCollections() {
+        return newsCollections;
+    }
+
+    /**
+     * Sets the news collections.
+     * 
+     * @param value the new news collections
+     */
+    public void setNewsCollections(NewsCollections value) {
+        this.newsCollections = value;
+    }
 }

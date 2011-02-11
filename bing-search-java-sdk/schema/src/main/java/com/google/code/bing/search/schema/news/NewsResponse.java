@@ -1,114 +1,113 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.news;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}RelatedSearches" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}Results" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class NewsResponse.
  */
-public interface NewsResponse
+public class NewsResponse
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the total property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    Long getTotal();
-
-    /**
-     * Sets the value of the total property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTotal(Long value);
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The total. */
+    protected Long total;
+    
+    /** The offset. */
+    protected Long offset;
+    
+    /** The related searches. */
+    protected RelatedSearches relatedSearches;
+    
+    /** The results. */
+    protected List<NewsResult> results;
 
     /**
-     * Gets the value of the offset property.
+     * Gets the total.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the total
      */
-    Long getOffset();
+    public Long getTotal() {
+        return total;
+    }
 
     /**
-     * Sets the value of the offset property.
+     * Sets the total.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new total
      */
-    void setOffset(Long value);
+    public void setTotal(Long value) {
+        this.total = value;
+    }
 
     /**
-     * Gets the value of the relatedSearches property.
+     * Gets the offset.
      * 
-     * @return
-     *     possible object is
-     *     {@link RelatedSearches }
-     *     
+     * @return the offset
      */
-    RelatedSearches getRelatedSearches();
+    public Long getOffset() {
+        return offset;
+    }
 
     /**
-     * Sets the value of the relatedSearches property.
+     * Sets the offset.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link RelatedSearches }
-     *     
+     * @param value the new offset
      */
-    void setRelatedSearches(RelatedSearches value);
+    public void setOffset(Long value) {
+        this.offset = value;
+    }
 
     /**
-     * Gets the value of the results property.
+     * Gets the related searches.
      * 
-     * @return
-     *     possible object is
-     *     {@link Results }
-     *     
+     * @return the related searches
      */
-    Results getResults();
+    public RelatedSearches getRelatedSearches() {
+        return relatedSearches;
+    }
 
     /**
-     * Sets the value of the results property.
+     * Sets the related searches.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Results }
-     *     
+     * @param value the new related searches
      */
-    void setResults(Results value);
+    public void setRelatedSearches(RelatedSearches value) {
+        this.relatedSearches = value;
+    }
 
+    /**
+     * Gets the results.
+     * 
+     * @return the results
+     */
+    public List<NewsResult> getResults() {
+        if (results == null) {
+        	results = new ArrayList<NewsResult>();
+        }
+        return this.results;
+    }
 }

@@ -1,114 +1,113 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.ads;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Total"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}PageNumber"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}AdApiVersion"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Results"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class AdResponse.
  */
-public interface AdResponse
+public class AdResponse
     extends SchemaEntity
 {
 
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The total. */
+    protected Long total;
+    
+    /** The page number. */
+    protected Long pageNumber;
+    
+    /** The ad api version. */
+    protected Double adApiVersion;
+    
+    /** The results. */
+    protected List<AdResult> results;
 
     /**
-     * Gets the value of the total property.
+     * Gets the total.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the total
      */
-    Long getTotal();
+    public Long getTotal() {
+        return total;
+    }
 
     /**
-     * Sets the value of the total property.
+     * Sets the total.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new total
      */
-    void setTotal(Long value);
+    public void setTotal(Long value) {
+        this.total = value;
+    }
 
     /**
-     * Gets the value of the pageNumber property.
+     * Gets the page number.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the page number
      */
-    Long getPageNumber();
+    public Long getPageNumber() {
+        return pageNumber;
+    }
 
     /**
-     * Sets the value of the pageNumber property.
+     * Sets the page number.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new page number
      */
-    void setPageNumber(Long value);
+    public void setPageNumber(Long value) {
+        this.pageNumber = value;
+    }
 
     /**
-     * Gets the value of the adApiVersion property.
+     * Gets the ad api version.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the ad api version
      */
-    Double getAdApiVersion();
+    public Double getAdApiVersion() {
+        return adApiVersion;
+    }
 
     /**
-     * Sets the value of the adApiVersion property.
+     * Sets the ad api version.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new ad api version
      */
-    void setAdApiVersion(Double value);
+    public void setAdApiVersion(Double value) {
+        this.adApiVersion = value;
+    }
 
     /**
-     * Gets the value of the results property.
+     * Gets the results.
      * 
-     * @return
-     *     possible object is
-     *     {@link Results }
-     *     
+     * @return the results
      */
-    Results getResults();
-
-    /**
-     * Sets the value of the results property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Results }
-     *     
-     */
-    void setResults(Results value);
-
+    public List<AdResult> getResults() {
+        if (results == null) {
+        	results = new ArrayList<AdResult>();
+        }
+        return this.results;
+    }
 }

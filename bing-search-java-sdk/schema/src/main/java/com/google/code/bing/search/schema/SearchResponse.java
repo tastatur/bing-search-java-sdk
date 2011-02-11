@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema;
 
@@ -15,299 +31,285 @@ import com.google.code.bing.search.schema.web.WebResponse;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element}Query"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Ad" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}InstantAnswer" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}MobileWeb" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Image" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Video" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Phonebook" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/relatedsearch}RelatedSearch" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/spell}Spell" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/news}News" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/translation}Translation" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Web" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="Version" use="required" type="{http://www.w3.org/2001/XMLSchema}double" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class SearchResponse.
  */
-public interface SearchResponse
+public class SearchResponse
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the query property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Query }
-     *     
-     */
-    Query getQuery();
-
-    /**
-     * Sets the value of the query property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Query }
-     *     
-     */
-    void setQuery(Query value);
-
-    /**
-     * Gets the value of the ad property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AdResponse }
-     *     
-     */
-    AdResponse getAd();
-
-    /**
-     * Sets the value of the ad property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AdResponse }
-     *     
-     */
-    void setAd(AdResponse value);
-
-    /**
-     * Gets the value of the instantAnswer property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link InstantAnswerResponse }
-     *     
-     */
-    InstantAnswerResponse getInstantAnswer();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The query. */
+    protected Query query;
+    
+    /** The ad. */
+    protected AdResponse ad;
+    
+    /** The instant answer. */
+    protected InstantAnswerResponse instantAnswer;
+    
+    /** The mobile web. */
+    protected MobileWebResponse mobileWeb;
+    
+    /** The image. */
+    protected ImageResponse image;
+    
+    /** The video. */
+    protected VideoResponse video;
+    
+    /** The phonebook. */
+    protected PhonebookResponse phonebook;
+    
+    /** The related search. */
+    protected RelatedSearchResponse relatedSearch;
+    
+    /** The spell. */
+    protected SpellResponse spell;
+    
+    /** The news. */
+    protected NewsResponse news;
+    
+    /** The translation. */
+    protected TranslationResponse translation;
+    
+    /** The web. */
+    protected WebResponse web;
+    
+    /** The version. */
+    protected Double version;
 
     /**
-     * Sets the value of the instantAnswer property.
+     * Gets the query.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link InstantAnswerResponse }
-     *     
+     * @return the query
      */
-    void setInstantAnswer(InstantAnswerResponse value);
+    public Query getQuery() {
+        return query;
+    }
 
     /**
-     * Gets the value of the mobileWeb property.
+     * Sets the query.
      * 
-     * @return
-     *     possible object is
-     *     {@link MobileWebResponse }
-     *     
+     * @param value the new query
      */
-    MobileWebResponse getMobileWeb();
+    public void setQuery(Query value) {
+        this.query = value;
+    }
 
     /**
-     * Sets the value of the mobileWeb property.
+     * Gets the ad.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link MobileWebResponse }
-     *     
+     * @return the ad
      */
-    void setMobileWeb(MobileWebResponse value);
+    public AdResponse getAd() {
+        return ad;
+    }
 
     /**
-     * Gets the value of the image property.
+     * Sets the ad.
      * 
-     * @return
-     *     possible object is
-     *     {@link ImageResponse }
-     *     
+     * @param value the new ad
      */
-    ImageResponse getImage();
+    public void setAd(AdResponse value) {
+        this.ad = value;
+    }
 
     /**
-     * Sets the value of the image property.
+     * Gets the instant answer.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ImageResponse }
-     *     
+     * @return the instant answer
      */
-    void setImage(ImageResponse value);
+    public InstantAnswerResponse getInstantAnswer() {
+        return instantAnswer;
+    }
 
     /**
-     * Gets the value of the video property.
+     * Sets the instant answer.
      * 
-     * @return
-     *     possible object is
-     *     {@link VideoResponse }
-     *     
+     * @param value the new instant answer
      */
-    VideoResponse getVideo();
+    public void setInstantAnswer(InstantAnswerResponse value) {
+        this.instantAnswer = value;
+    }
 
     /**
-     * Sets the value of the video property.
+     * Gets the mobile web.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link VideoResponse }
-     *     
+     * @return the mobile web
      */
-    void setVideo(VideoResponse value);
+    public MobileWebResponse getMobileWeb() {
+        return mobileWeb;
+    }
 
     /**
-     * Gets the value of the phonebook property.
+     * Sets the mobile web.
      * 
-     * @return
-     *     possible object is
-     *     {@link PhonebookResponse }
-     *     
+     * @param value the new mobile web
      */
-    PhonebookResponse getPhonebook();
+    public void setMobileWeb(MobileWebResponse value) {
+        this.mobileWeb = value;
+    }
 
     /**
-     * Sets the value of the phonebook property.
+     * Gets the image.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PhonebookResponse }
-     *     
+     * @return the image
      */
-    void setPhonebook(PhonebookResponse value);
+    public ImageResponse getImage() {
+        return image;
+    }
 
     /**
-     * Gets the value of the relatedSearch property.
+     * Sets the image.
      * 
-     * @return
-     *     possible object is
-     *     {@link RelatedSearchResponse }
-     *     
+     * @param value the new image
      */
-    RelatedSearchResponse getRelatedSearch();
+    public void setImage(ImageResponse value) {
+        this.image = value;
+    }
 
     /**
-     * Sets the value of the relatedSearch property.
+     * Gets the video.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link RelatedSearchResponse }
-     *     
+     * @return the video
      */
-    void setRelatedSearch(RelatedSearchResponse value);
+    public VideoResponse getVideo() {
+        return video;
+    }
 
     /**
-     * Gets the value of the spell property.
+     * Sets the video.
      * 
-     * @return
-     *     possible object is
-     *     {@link SpellResponse }
-     *     
+     * @param value the new video
      */
-    SpellResponse getSpell();
+    public void setVideo(VideoResponse value) {
+        this.video = value;
+    }
 
     /**
-     * Sets the value of the spell property.
+     * Gets the phonebook.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link SpellResponse }
-     *     
+     * @return the phonebook
      */
-    void setSpell(SpellResponse value);
+    public PhonebookResponse getPhonebook() {
+        return phonebook;
+    }
 
     /**
-     * Gets the value of the news property.
+     * Sets the phonebook.
      * 
-     * @return
-     *     possible object is
-     *     {@link NewsResponse }
-     *     
+     * @param value the new phonebook
      */
-    NewsResponse getNews();
+    public void setPhonebook(PhonebookResponse value) {
+        this.phonebook = value;
+    }
 
     /**
-     * Sets the value of the news property.
+     * Gets the related search.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NewsResponse }
-     *     
+     * @return the related search
      */
-    void setNews(NewsResponse value);
+    public RelatedSearchResponse getRelatedSearch() {
+        return relatedSearch;
+    }
 
     /**
-     * Gets the value of the translation property.
+     * Sets the related search.
      * 
-     * @return
-     *     possible object is
-     *     {@link TranslationResponse }
-     *     
+     * @param value the new related search
      */
-    TranslationResponse getTranslation();
+    public void setRelatedSearch(RelatedSearchResponse value) {
+        this.relatedSearch = value;
+    }
 
     /**
-     * Sets the value of the translation property.
+     * Gets the spell.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TranslationResponse }
-     *     
+     * @return the spell
      */
-    void setTranslation(TranslationResponse value);
+    public SpellResponse getSpell() {
+        return spell;
+    }
 
     /**
-     * Gets the value of the web property.
+     * Sets the spell.
      * 
-     * @return
-     *     possible object is
-     *     {@link WebResponse }
-     *     
+     * @param value the new spell
      */
-    WebResponse getWeb();
+    public void setSpell(SpellResponse value) {
+        this.spell = value;
+    }
 
     /**
-     * Sets the value of the web property.
+     * Gets the news.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link WebResponse }
-     *     
+     * @return the news
      */
-    void setWeb(WebResponse value);
+    public NewsResponse getNews() {
+        return news;
+    }
 
     /**
-     * Gets the value of the version property.
+     * Sets the news.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new news
      */
-    Double getVersion();
+    public void setNews(NewsResponse value) {
+        this.news = value;
+    }
 
     /**
-     * Sets the value of the version property.
+     * Gets the translation.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the translation
      */
-    void setVersion(Double value);
+    public TranslationResponse getTranslation() {
+        return translation;
+    }
 
+    /**
+     * Sets the translation.
+     * 
+     * @param value the new translation
+     */
+    public void setTranslation(TranslationResponse value) {
+        this.translation = value;
+    }
+
+    /**
+     * Gets the web.
+     * 
+     * @return the web
+     */
+    public WebResponse getWeb() {
+        return web;
+    }
+
+    /**
+     * Sets the web.
+     * 
+     * @param value the new web
+     */
+    public void setWeb(WebResponse value) {
+        this.web = value;
+    }
+
+    /**
+     * Gets the version.
+     * 
+     * @return the version
+     */
+    public Double getVersion() {
+        return version;
+    }
+
+    /**
+     * Sets the version.
+     * 
+     * @param value the new version
+     */
+    public void setVersion(Double value) {
+        this.version = value;
+    }
 }

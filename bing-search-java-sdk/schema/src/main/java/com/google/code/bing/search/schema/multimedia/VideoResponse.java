@@ -1,93 +1,92 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.multimedia;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Total" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Offset" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/multimedia}Results" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class VideoResponse.
  */
-public interface VideoResponse
+public class VideoResponse
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the total property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    Long getTotal();
-
-    /**
-     * Sets the value of the total property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTotal(Long value);
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The total. */
+    protected Long total;
+    
+    /** The offset. */
+    protected Long offset;
+    
+    /** The results. */
+    protected List<VideoResult> results;
 
     /**
-     * Gets the value of the offset property.
+     * Gets the total.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the total
      */
-    Long getOffset();
+    public Long getTotal() {
+        return total;
+    }
 
     /**
-     * Sets the value of the offset property.
+     * Sets the total.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new total
      */
-    void setOffset(Long value);
+    public void setTotal(Long value) {
+        this.total = value;
+    }
 
     /**
-     * Gets the value of the results property.
+     * Gets the offset.
      * 
-     * @return
-     *     possible object is
-     *     {@link VideoResults }
-     *     
+     * @return the offset
      */
-    VideoResults getResults();
+    public Long getOffset() {
+        return offset;
+    }
 
     /**
-     * Sets the value of the results property.
+     * Sets the offset.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link VideoResults }
-     *     
+     * @param value the new offset
      */
-    void setResults(VideoResults value);
+    public void setOffset(Long value) {
+        this.offset = value;
+    }
 
+    /**
+     * Gets the results.
+     * 
+     * @return the results
+     */
+    public List<VideoResult> getResults() {
+        if (results == null) {
+        	results = new ArrayList<VideoResult>();
+        }
+        return this.results;
+    }
 }

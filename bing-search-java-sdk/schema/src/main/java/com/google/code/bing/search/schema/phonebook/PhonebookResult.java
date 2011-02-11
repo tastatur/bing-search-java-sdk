@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.phonebook;
 
@@ -5,362 +21,348 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Title"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Url"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Business"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}PhoneNumber"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Address"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}City"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}StateOrProvince"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}CountryOrRegion"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}PostalCode"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Latitude"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}Longitude"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}UniqueId"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}BusinessUrl"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}UserRating"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}ReviewCount"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/phonebook}DisplayUrl"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class PhonebookResult.
  */
-public interface PhonebookResult
+public class PhonebookResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTitle(String value);
-
-    /**
-     * Gets the value of the url property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getUrl();
-
-    /**
-     * Sets the value of the url property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setUrl(String value);
-
-    /**
-     * Gets the value of the business property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getBusiness();
-
-    /**
-     * Sets the value of the business property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setBusiness(String value);
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The business. */
+    protected String business;
+    
+    /** The phone number. */
+    protected String phoneNumber;
+    
+    /** The address. */
+    protected String address;
+    
+    /** The city. */
+    protected String city;
+    
+    /** The state or province. */
+    protected String stateOrProvince;
+    
+    /** The country or region. */
+    protected String countryOrRegion;
+    
+    /** The postal code. */
+    protected String postalCode;
+    
+    /** The latitude. */
+    protected Double latitude;
+    
+    /** The longitude. */
+    protected Double longitude;
+    
+    /** The unique id. */
+    protected String uniqueId;
+    
+    /** The business url. */
+    protected String businessUrl;
+    
+    /** The user rating. */
+    protected Double userRating;
+    
+    /** The review count. */
+    protected Long reviewCount;
+    
+    /** The display url. */
+    protected String displayUrl;
 
     /**
-     * Gets the value of the phoneNumber property.
+     * Gets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    String getPhoneNumber();
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Sets the value of the phoneNumber property.
+     * Sets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    void setPhoneNumber(String value);
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Gets the value of the address property.
+     * Gets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    String getAddress();
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Sets the value of the address property.
+     * Sets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new url
      */
-    void setAddress(String value);
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Gets the value of the city property.
+     * Gets the business.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the business
      */
-    String getCity();
+    public String getBusiness() {
+        return business;
+    }
 
     /**
-     * Sets the value of the city property.
+     * Sets the business.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new business
      */
-    void setCity(String value);
+    public void setBusiness(String value) {
+        this.business = value;
+    }
 
     /**
-     * Gets the value of the stateOrProvince property.
+     * Gets the phone number.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the phone number
      */
-    String getStateOrProvince();
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
     /**
-     * Sets the value of the stateOrProvince property.
+     * Sets the phone number.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new phone number
      */
-    void setStateOrProvince(String value);
+    public void setPhoneNumber(String value) {
+        this.phoneNumber = value;
+    }
 
     /**
-     * Gets the value of the countryOrRegion property.
+     * Gets the address.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the address
      */
-    String getCountryOrRegion();
+    public String getAddress() {
+        return address;
+    }
 
     /**
-     * Sets the value of the countryOrRegion property.
+     * Sets the address.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new address
      */
-    void setCountryOrRegion(String value);
+    public void setAddress(String value) {
+        this.address = value;
+    }
 
     /**
-     * Gets the value of the postalCode property.
+     * Gets the city.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the city
      */
-    String getPostalCode();
+    public String getCity() {
+        return city;
+    }
 
     /**
-     * Sets the value of the postalCode property.
+     * Sets the city.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new city
      */
-    void setPostalCode(String value);
+    public void setCity(String value) {
+        this.city = value;
+    }
 
     /**
-     * Gets the value of the latitude property.
+     * Gets the state or province.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the state or province
      */
-    Double getLatitude();
+    public String getStateOrProvince() {
+        return stateOrProvince;
+    }
 
     /**
-     * Sets the value of the latitude property.
+     * Sets the state or province.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new state or province
      */
-    void setLatitude(Double value);
+    public void setStateOrProvince(String value) {
+        this.stateOrProvince = value;
+    }
 
     /**
-     * Gets the value of the longitude property.
+     * Gets the country or region.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the country or region
      */
-    Double getLongitude();
+    public String getCountryOrRegion() {
+        return countryOrRegion;
+    }
 
     /**
-     * Sets the value of the longitude property.
+     * Sets the country or region.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new country or region
      */
-    void setLongitude(Double value);
+    public void setCountryOrRegion(String value) {
+        this.countryOrRegion = value;
+    }
 
     /**
-     * Gets the value of the uniqueId property.
+     * Gets the postal code.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the postal code
      */
-    String getUniqueId();
+    public String getPostalCode() {
+        return postalCode;
+    }
 
     /**
-     * Sets the value of the uniqueId property.
+     * Sets the postal code.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new postal code
      */
-    void setUniqueId(String value);
+    public void setPostalCode(String value) {
+        this.postalCode = value;
+    }
 
     /**
-     * Gets the value of the businessUrl property.
+     * Gets the latitude.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the latitude
      */
-    String getBusinessUrl();
+    public Double getLatitude() {
+        return latitude;
+    }
 
     /**
-     * Sets the value of the businessUrl property.
+     * Sets the latitude.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new latitude
      */
-    void setBusinessUrl(String value);
+    public void setLatitude(Double value) {
+        this.latitude = value;
+    }
 
     /**
-     * Gets the value of the userRating property.
+     * Gets the longitude.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the longitude
      */
-    Double getUserRating();
+    public Double getLongitude() {
+        return longitude;
+    }
 
     /**
-     * Sets the value of the userRating property.
+     * Sets the longitude.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new longitude
      */
-    void setUserRating(Double value);
+    public void setLongitude(Double value) {
+        this.longitude = value;
+    }
 
     /**
-     * Gets the value of the reviewCount property.
+     * Gets the unique id.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the unique id
      */
-    Long getReviewCount();
+    public String getUniqueId() {
+        return uniqueId;
+    }
 
     /**
-     * Sets the value of the reviewCount property.
+     * Sets the unique id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new unique id
      */
-    void setReviewCount(Long value);
+    public void setUniqueId(String value) {
+        this.uniqueId = value;
+    }
 
     /**
-     * Gets the value of the displayUrl property.
+     * Gets the business url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the business url
      */
-    String getDisplayUrl();
+    public String getBusinessUrl() {
+        return businessUrl;
+    }
 
     /**
-     * Sets the value of the displayUrl property.
+     * Sets the business url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new business url
      */
-    void setDisplayUrl(String value);
+    public void setBusinessUrl(String value) {
+        this.businessUrl = value;
+    }
 
+    /**
+     * Gets the user rating.
+     * 
+     * @return the user rating
+     */
+    public Double getUserRating() {
+        return userRating;
+    }
+
+    /**
+     * Sets the user rating.
+     * 
+     * @param value the new user rating
+     */
+    public void setUserRating(Double value) {
+        this.userRating = value;
+    }
+
+    /**
+     * Gets the review count.
+     * 
+     * @return the review count
+     */
+    public Long getReviewCount() {
+        return reviewCount;
+    }
+
+    /**
+     * Sets the review count.
+     * 
+     * @param value the new review count
+     */
+    public void setReviewCount(Long value) {
+        this.reviewCount = value;
+    }
+
+    /**
+     * Gets the display url.
+     * 
+     * @return the display url
+     */
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
+
+    /**
+     * Sets the display url.
+     * 
+     * @param value the new display url
+     */
+    public void setDisplayUrl(String value) {
+        this.displayUrl = value;
+    }
 }

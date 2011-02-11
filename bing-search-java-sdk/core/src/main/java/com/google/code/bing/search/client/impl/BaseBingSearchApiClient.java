@@ -1,5 +1,18 @@
-/**
- *
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
  */
 package com.google.code.bing.search.client.impl;
 
@@ -12,39 +25,38 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 
+import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchException;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
-import com.google.code.bing.search.schema.SchemaElementFactory;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
 
 /**
- * @author Nabeel Mukhtar
- *
+ * The Class BaseBingSearchApiClient.
  */
-public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClientImpl {
+public abstract class BaseBingSearchApiClient implements BingSearchClient {
 
-    /** Field description */
+    /** The Constant GZIP_ENCODING. */
     private static final String GZIP_ENCODING = "gzip";
 
-    /** The static logger. */
+    /** The LOG. */
     protected final Logger LOG = Logger.getLogger(getClass().getCanonicalName());
     
-    /** Field description */
+    /** The request headers. */
     private Map<String, String> requestHeaders;
     
+    /** The task executor. */
+    protected ExecutorService taskExecutor;
+
     /**
-     * Constructs ...
-     *
-     *
-     * @param consumerKey
-     * @param consumerSecret
+     * Instantiates a new base bing search api client.
      */
     protected BaseBingSearchApiClient() {
         requestHeaders = new HashMap<String, String>();
@@ -54,40 +66,48 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * {@inheritDoc}
+     * Sets the request headers.
+     * 
+     * @param requestHeaders the request headers
      */
     public void setRequestHeaders(Map<String, String> requestHeaders) {
         this.requestHeaders = requestHeaders;
     }
 
     /**
-     * {@inheritDoc}
+     * Gets the request headers.
+     * 
+     * @return the request headers
      */
     public Map<String, String> getRequestHeaders() {
         return requestHeaders;
     }
 
     /**
-     * {@inheritDoc}
+     * Adds the request header.
+     * 
+     * @param headerName the header name
+     * @param headerValue the header value
      */
     public void addRequestHeader(String headerName, String headerValue) {
         requestHeaders.put(headerName, headerValue);
     }
 
     /**
-     * {@inheritDoc}
+     * Removes the request header.
+     * 
+     * @param headerName the header name
      */
     public void removeRequestHeader(String headerName) {
         requestHeaders.remove(headerName);
     }
 
     /**
-     * Method description
-     *
-     *
-     * @param task
-     *
-     * @return
+     * Execute.
+     * 
+     * @param task the task
+     * 
+     * @return the future
      */
     @SuppressWarnings("unchecked")
 	protected Future execute(Runnable task) {
@@ -95,20 +115,18 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * Method description
-     *
-     *
-     * @param task
-     * @param <T>
-     *
-     * @return
+     * Execute.
+     * 
+     * @param task the task
+     * 
+     * @return the future< t>
      */
     protected <T> Future<T> execute(Callable<T> task) {
         return taskExecutor.submit(task);
     }
     
-    /**
-     * {@inheritDoc}
+    /* (non-Javadoc)
+     * @see com.google.code.bing.search.client.BingSearchClient#search(com.google.code.bing.search.schema.SearchRequest)
      */
 	@Override
 	public SearchResponse search(SearchRequest request) {
@@ -121,8 +139,8 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
         return readResponse(SearchResponse.class, callApiMethod(apiUrl));
 	}
 
-    /**
-     * {@inheritDoc}
+    /* (non-Javadoc)
+     * @see com.google.code.bing.search.client.BingSearchClient#searchAsync(com.google.code.bing.search.schema.SearchRequest)
      */
 	@Override
 	public Future<SearchResponse> searchAsync(final SearchRequest request) {
@@ -135,16 +153,12 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
      }
 	
     /**
-     * Method description
-     *
-     *
-     *
-     *
-     * @param clazz
-     * @param is
-     * @param <T>
-     *
-     * @return
+     * Read response.
+     * 
+     * @param clazz the clazz
+     * @param is the is
+     * 
+     * @return the t
      */
     protected <T> T readResponse(Class<T> clazz, InputStream is) {
         try {
@@ -155,25 +169,23 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     *
-     *
-     * @param apiUrl
-     * @param httpHeaders
-     *
-     * @return
+     * Call api method.
+     * 
+     * @param apiUrl the api url
+     * 
+     * @return the input stream
      */
     protected InputStream callApiMethod(String apiUrl) {
         return callApiMethod(apiUrl, HttpURLConnection.HTTP_OK);
     }
 
     /**
-     *
-     *
-     * @param apiUrl
-     * @param expected
-     * @param httpHeaders
-     *
-     * @return
+     * Call api method.
+     * 
+     * @param apiUrl the api url
+     * @param expected the expected
+     * 
+     * @return the input stream
      */
     protected InputStream callApiMethod(String apiUrl, int expected) {
         try {
@@ -202,11 +214,9 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * Method description
-     *
-     *
-     * @param is
-     *
+     * Close stream.
+     * 
+     * @param is the is
      */
     protected void closeStream(InputStream is) {
         try {
@@ -217,11 +227,9 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * Method description
-     *
-     *
-     * @param connection
-     *
+     * Close connection.
+     * 
+     * @param connection the connection
      */
     protected void closeConnection(HttpURLConnection connection) {
         try {
@@ -234,24 +242,25 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
     
     /**
-     * Method description
-     *
-     *
-     * @param error
-     * @return
+     * Creates the bing search api client exception.
+     * 
+     * @param error the error
+     * 
+     * @return the bing search exception
      */
     protected BingSearchException createBingSearchApiClientException(Error error) {
         return new BingSearchException();
     }
 
     /**
-     * Method description
-     *
-     *
-     * @param is
-     * @param gzip
-     * @return
-     * @throws IOException
+     * Gets the wrapped input stream.
+     * 
+     * @param is the is
+     * @param gzip the gzip
+     * 
+     * @return the wrapped input stream
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     protected InputStream getWrappedInputStream(InputStream is, boolean gzip) throws IOException {
         if (gzip) {
@@ -262,21 +271,21 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * Get property as long.
-     *
-     * @param s
-     *
-     * @return
+     * Checks if is null or empty.
+     * 
+     * @param s the s
+     * 
+     * @return true, if is null or empty
      */
     protected boolean isNullOrEmpty(String s) {
         return ((s == null) || (s.length() == 0));
     }
 
     /**
-     *
-     *
-     * @param name
-     * @param value
+     * Assert not null or empty.
+     * 
+     * @param name the name
+     * @param value the value
      */
     protected void assertNotNullOrEmpty(String name, String value) {
         if (isNullOrEmpty(value)) {
@@ -285,10 +294,10 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     *
-     *
-     * @param name
-     * @param value
+     * Assert not null or empty.
+     * 
+     * @param name the name
+     * @param value the value
      */
     protected void assertNotNullOrEmpty(String name, Collection<?> value) {
         if ((value == null) || value.isEmpty()) {
@@ -297,10 +306,10 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     *
-     *
-     * @param name
-     * @param value
+     * Assert positive number.
+     * 
+     * @param name the name
+     * @param value the value
      */
     protected void assertPositiveNumber(String name, int value) {
         if (value < 0) {
@@ -309,10 +318,10 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     *
-     *
-     * @param name
-     * @param value
+     * Assert not null.
+     * 
+     * @param name the name
+     * @param value the value
      */
     protected void assertNotNull(String name, Object value) {
         if (value == null) {
@@ -321,42 +330,48 @@ public abstract class BaseBingSearchApiClient extends BaseBingSearchServiceClien
     }
 
     /**
-     * Method description
-     *
-     *
-     *
-     * @param clazz
-     * @param xmlContent
-     * @param <T>
-     *
-     * @return
+     * Unmarshall object.
+     * 
+     * @param clazz the clazz
+     * @param xmlContent the xml content
+     * 
+     * @return the t
      */
     protected abstract <T> T unmarshallObject(Class<T> clazz, InputStream xmlContent);
 
     /**
-     * Method description
-     *
-     *
-     * @param element
-     *
-     * @return
+     * Marshall object.
+     * 
+     * @param element the element
+     * 
+     * @return the string
      */
     protected abstract String marshallObject(Object element);
 
     /**
-     * Method description
-     *
-     *
-     * @param urlFormat
-     *
-     * @return
+     * Creates the bing search api url builder.
+     * 
+     * @param urlFormat the url format
+     * 
+     * @return the bing search api url builder
      */
     protected abstract BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat);
 
-    /**
-     * Method description
-     *
-     * @return
-     */
-    protected abstract SchemaElementFactory createObjectFactory();
+	/**
+	 * Gets the task executor.
+	 * 
+	 * @return the task executor
+	 */
+	public ExecutorService getTaskExecutor() {
+		return taskExecutor;
+	}
+
+	/**
+	 * Sets the task executor.
+	 * 
+	 * @param taskExecutor the new task executor
+	 */
+	public void setTaskExecutor(ExecutorService taskExecutor) {
+		this.taskExecutor = taskExecutor;
+	}
 }

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.instantanswer;
 
@@ -5,152 +21,138 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}ContentType" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}Title" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}ClickThroughUrl" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}Url" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}Attribution" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/instantanswer}InstantAnswerSpecificData" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class InstantAnswerResult.
  */
-public interface InstantAnswerResult
+public class InstantAnswerResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the contentType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getContentType();
-
-    /**
-     * Sets the value of the contentType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setContentType(String value);
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The content type. */
+    protected String contentType;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The click through url. */
+    protected String clickThroughUrl;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The attribution. */
+    protected String attribution;
+    
+    /** The instant answer specific data. */
+    protected InstantAnswerSpecificData instantAnswerSpecificData;
 
     /**
-     * Sets the value of the title property.
+     * Gets the content type.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the content type
      */
-    void setTitle(String value);
+    public String getContentType() {
+        return contentType;
+    }
 
     /**
-     * Gets the value of the clickThroughUrl property.
+     * Sets the content type.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new content type
      */
-    String getClickThroughUrl();
+    public void setContentType(String value) {
+        this.contentType = value;
+    }
 
     /**
-     * Sets the value of the clickThroughUrl property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setClickThroughUrl(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the url property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getUrl();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the url property.
+     * Gets the click through url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the click through url
      */
-    void setUrl(String value);
+    public String getClickThroughUrl() {
+        return clickThroughUrl;
+    }
 
     /**
-     * Gets the value of the attribution property.
+     * Sets the click through url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new click through url
      */
-    String getAttribution();
+    public void setClickThroughUrl(String value) {
+        this.clickThroughUrl = value;
+    }
 
     /**
-     * Sets the value of the attribution property.
+     * Gets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    void setAttribution(String value);
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Gets the value of the instantAnswerSpecificData property.
+     * Sets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link InstantAnswerSpecificData }
-     *     
+     * @param value the new url
      */
-    InstantAnswerSpecificData getInstantAnswerSpecificData();
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Sets the value of the instantAnswerSpecificData property.
+     * Gets the attribution.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link InstantAnswerSpecificData }
-     *     
+     * @return the attribution
      */
-    void setInstantAnswerSpecificData(InstantAnswerSpecificData value);
+    public String getAttribution() {
+        return attribution;
+    }
 
+    /**
+     * Sets the attribution.
+     * 
+     * @param value the new attribution
+     */
+    public void setAttribution(String value) {
+        this.attribution = value;
+    }
+
+    /**
+     * Gets the instant answer specific data.
+     * 
+     * @return the instant answer specific data
+     */
+    public InstantAnswerSpecificData getInstantAnswerSpecificData() {
+        return instantAnswerSpecificData;
+    }
+
+    /**
+     * Sets the instant answer specific data.
+     * 
+     * @param value the new instant answer specific data
+     */
+    public void setInstantAnswerSpecificData(InstantAnswerSpecificData value) {
+        this.instantAnswerSpecificData = value;
+    }
 }

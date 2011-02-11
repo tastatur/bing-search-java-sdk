@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.flightstatus;
 
@@ -5,69 +21,76 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 
-public interface NextSegment
+/**
+ * The Class NextSegment.
+ */
+public class NextSegment
 extends SchemaEntity
 {
 
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The flight history id. */
+    protected Long flightHistoryId;
+    
+    /** The origin airport. */
+    protected OriginAirport originAirport;
+    
+    /** The destination airport. */
+    protected DestinationAirport destinationAirport;
 
     /**
-     * Gets the value of the flightHistoryId property.
+     * Gets the flight history id.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the flight history id
      */
-    Long getFlightHistoryId();
+    public Long getFlightHistoryId() {
+        return flightHistoryId;
+    }
 
     /**
-     * Sets the value of the flightHistoryId property.
+     * Sets the flight history id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new flight history id
      */
-    void setFlightHistoryId(Long value);
+    public void setFlightHistoryId(Long value) {
+        this.flightHistoryId = value;
+    }
 
     /**
-     * Gets the value of the originAirport property.
+     * Gets the origin airport.
      * 
-     * @return
-     *     possible object is
-     *     {@link OriginAirport }
-     *     
+     * @return the origin airport
      */
-    OriginAirport getOriginAirport();
+    public OriginAirport getOriginAirport() {
+        return originAirport;
+    }
 
     /**
-     * Sets the value of the originAirport property.
+     * Sets the origin airport.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link OriginAirport }
-     *     
+     * @param value the new origin airport
      */
-    void setOriginAirport(OriginAirport value);
+    public void setOriginAirport(OriginAirport value) {
+        this.originAirport = value;
+    }
 
     /**
-     * Gets the value of the destinationAirport property.
+     * Gets the destination airport.
      * 
-     * @return
-     *     possible object is
-     *     {@link DestinationAirport }
-     *     
+     * @return the destination airport
      */
-    DestinationAirport getDestinationAirport();
+    public DestinationAirport getDestinationAirport() {
+        return destinationAirport;
+    }
 
     /**
-     * Sets the value of the destinationAirport property.
+     * Sets the destination airport.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DestinationAirport }
-     *     
+     * @param value the new destination airport
      */
-    void setDestinationAirport(DestinationAirport value);
-
+    public void setDestinationAirport(DestinationAirport value) {
+        this.destinationAirport = value;
+    }
 }

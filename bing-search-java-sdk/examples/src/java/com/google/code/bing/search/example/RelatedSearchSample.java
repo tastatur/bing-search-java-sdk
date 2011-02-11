@@ -1,4 +1,17 @@
-/**
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
  * 
  */
 package com.google.code.bing.search.example;
@@ -16,7 +29,6 @@ import org.apache.commons.cli.ParseException;
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchServiceClientFactory;
 import com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder;
-import com.google.code.bing.search.client.enumeration.ApiProtocol;
 import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
@@ -24,34 +36,24 @@ import com.google.code.bing.search.schema.SourceType;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
 
 /**
- * @author nmukhtar
- *
+ * The Class RelatedSearchSample.
  */
 public class RelatedSearchSample {
 
-    /**
-     * Application Key
-     */
+    /** The Constant APPLICATION_KEY_OPTION. */
     private static final String APPLICATION_KEY_OPTION = "appid";
 	
-    /**
-     * Query
-     */
+    /** The Constant QUERY_OPTION. */
     private static final String QUERY_OPTION = "query";
 	
-    /**
-     * Query
-     */
-    private static final String PROTOCOL_OPTION = "protocol";
-    
-    /**
-     * Name of the help command line option.
-     */
+    /** The Constant HELP_OPTION. */
     private static final String HELP_OPTION = "help";
     
     /**
-	 * @param args
-	 */
+     * The main method.
+     * 
+     * @param args the arguments
+     */
 	public static void main(String[] args) {
 		Options options = buildOptions();
         try {
@@ -64,23 +66,17 @@ public class RelatedSearchSample {
 	}
     
 	/**
-	 * @param args
+	 * Process command line.
+	 * 
+	 * @param line the line
+	 * @param options the options
 	 */
     private static void processCommandLine(CommandLine line, Options options) {
         if(line.hasOption(HELP_OPTION)) {
             printHelp(options);            
         } else if(line.hasOption(APPLICATION_KEY_OPTION) && line.hasOption(QUERY_OPTION)) {
-        	ApiProtocol protocol = ApiProtocol.JSON;
-        	if (line.hasOption(PROTOCOL_OPTION)) {
-        		protocol = ApiProtocol.fromValue(line.getOptionValue(PROTOCOL_OPTION));
-        		if (protocol == null) {
-        			printHelp(options);
-        			return;
-        		}
-        	}
-        	
     		BingSearchServiceClientFactory factory = BingSearchServiceClientFactory.newInstance();
-    		BingSearchClient client = factory.createBingSearchClient(protocol);
+    		BingSearchClient client = factory.createBingSearchClient();
     		SearchResponse response = client.search(createSearchRequest(client, line.getOptionValue(APPLICATION_KEY_OPTION), line.getOptionValue(QUERY_OPTION)));
     		printResponse(response);
         } else {
@@ -89,8 +85,10 @@ public class RelatedSearchSample {
 	}
 
 	/**
-     * Build command line options object.
-     */
+	 * Builds the options.
+	 * 
+	 * @return the options
+	 */
     private static Options buildOptions() {
        
         Options opts = new Options();
@@ -113,36 +111,45 @@ public class RelatedSearchSample {
         Option query = OptionBuilder.create(QUERY_OPTION);
         opts.addOption(query);
         
-        String protocolMsg = "API Protocol";
-        OptionBuilder.withArgName("protocol");
-        OptionBuilder.hasArg();
-        OptionBuilder.withDescription(protocolMsg);
-        Option protocol = OptionBuilder.create(PROTOCOL_OPTION);
-        opts.addOption(protocol);
-        
         return opts;
     }
     
     /**
-     * Print help and usage.
+     * Prints the help.
+     * 
+     * @param options the options
      */
     private static void printHelp(Options options) {
         int width = 80;
         String syntax = RelatedSearchSample.class.getName() + " <options>";
         String header = MessageFormat.format("\nThe -{0} and -{1} options are required. All others are optional.", APPLICATION_KEY_OPTION, QUERY_OPTION);
-        String footer = MessageFormat.format("\nThe valid values for -{0} option are xml|json|soap. The default is json.", PROTOCOL_OPTION);
+        String footer = "";
         new HelpFormatter().printHelp(width, syntax, header, options, footer, false);
     }
 
+	/**
+	 * Prints the response.
+	 * 
+	 * @param response the response
+	 */
 	private static void printResponse(SearchResponse response) {
 		System.out.println("Bing API Version " + response.getVersion());
 		System.out.println("RelatedSearch results for " + response.getQuery().getSearchTerms());
-		for (RelatedSearchResult result : response.getRelatedSearch().getResults().getRelatedSearchResultList()) {
+		for (RelatedSearchResult result : response.getRelatedSearch().getResults()) {
 			System.out.println(result.getTitle());
 			System.out.println(result.getUrl());
 		}
 	}
 
+	/**
+	 * Creates the search request.
+	 * 
+	 * @param client the client
+	 * @param applicationId the application id
+	 * @param query the query
+	 * 
+	 * @return the search request
+	 */
 	private static SearchRequest createSearchRequest(BingSearchClient client, String applicationId, String query) {
 		SearchRequestBuilder builder = client.newSearchRequestBuilder();
 		builder.withAppId(applicationId);

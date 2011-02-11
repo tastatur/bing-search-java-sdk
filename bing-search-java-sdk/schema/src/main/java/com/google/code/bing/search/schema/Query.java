@@ -1,92 +1,94 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema;
 
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element}SearchTerms" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element}AlteredQuery" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/element}AlterationOverrideQuery" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class Query.
  */
-public interface Query
+public class Query
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the searchTerms property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getSearchTerms();
-
-    /**
-     * Sets the value of the searchTerms property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setSearchTerms(String value);
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The search terms. */
+    protected String searchTerms;
+    
+    /** The altered query. */
+    protected String alteredQuery;
+    
+    /** The alteration override query. */
+    protected String alterationOverrideQuery;
 
     /**
-     * Gets the value of the alteredQuery property.
+     * Gets the search terms.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the search terms
      */
-    String getAlteredQuery();
+    public String getSearchTerms() {
+        return searchTerms;
+    }
 
     /**
-     * Sets the value of the alteredQuery property.
+     * Sets the search terms.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new search terms
      */
-    void setAlteredQuery(String value);
+    public void setSearchTerms(String value) {
+        this.searchTerms = value;
+    }
 
     /**
-     * Gets the value of the alterationOverrideQuery property.
+     * Gets the altered query.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the altered query
      */
-    String getAlterationOverrideQuery();
+    public String getAlteredQuery() {
+        return alteredQuery;
+    }
 
     /**
-     * Sets the value of the alterationOverrideQuery property.
+     * Sets the altered query.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new altered query
      */
-    void setAlterationOverrideQuery(String value);
+    public void setAlteredQuery(String value) {
+        this.alteredQuery = value;
+    }
 
+    /**
+     * Gets the alteration override query.
+     * 
+     * @return the alteration override query
+     */
+    public String getAlterationOverrideQuery() {
+        return alterationOverrideQuery;
+    }
+
+    /**
+     * Sets the alteration override query.
+     * 
+     * @param value the new alteration override query
+     */
+    public void setAlterationOverrideQuery(String value) {
+        this.alterationOverrideQuery = value;
+    }
 }

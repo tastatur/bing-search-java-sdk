@@ -1,87 +1,109 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 package com.google.code.bing.search.schema.multimedia;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface VideoRequest {
+import com.google.code.bing.search.schema.SchemaEntity;
+
+/**
+ * The Class VideoRequest.
+ */
+public class VideoRequest extends SchemaEntity {
+
+    /** The Constant serialVersionUID. */
+	private static final long serialVersionUID = -387064944800851035L;
+	
+	/** The offset. */
+	protected Long offset;
+    
+    /** The count. */
+    protected Long count;
+    
+    /** The sort by. */
+    protected VideoSortOption sortBy;
+	
+	/** The filter list. */
+	protected List<String> filterList;
+
+    /**
+     * Gets the offset.
+     * 
+     * @return the offset
+     */
+    public Long getOffset() {
+        return offset;
+    }
+
+    /**
+     * Sets the offset.
+     * 
+     * @param value the new offset
+     */
+    public void setOffset(Long value) {
+        this.offset = value;
+    }
+
+    /**
+     * Gets the count.
+     * 
+     * @return the count
+     */
+    public Long getCount() {
+        return count;
+    }
+
+    /**
+     * Sets the count.
+     * 
+     * @param value the new count
+     */
+    public void setCount(Long value) {
+        this.count = value;
+    }
+
+    /**
+     * Gets the sort by.
+     * 
+     * @return the sort by
+     */
+    public VideoSortOption getSortBy() {
+        return sortBy;
+    }
+
+    /**
+     * Sets the sort by.
+     * 
+     * @param value the new sort by
+     */
+    public void setSortBy(VideoSortOption value) {
+        this.sortBy = value;
+    }
 
 	/**
-	 * Gets the value of the offset property.
+	 * Gets the filter list.
 	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
+	 * @return the filter list
 	 */
-	public Long getOffset();
-
-	/**
-	 * Sets the value of the offset property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
-	 */
-	public void setOffset(Long value);
-
-	/**
-	 * Gets the value of the count property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
-	 */
-	public Long getCount();
-
-	/**
-	 * Sets the value of the count property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
-	 */
-	public void setCount(Long value);
-
-	/**
-	 * Gets the value of the filters property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link }
-	 *     
-	 */
-	public List<String> getFilterList();
-
-	/**
-	 * Sets the value of the filters property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link }
-	 *     
-	 */
-	public void setFilterList(List<String> value);
-
-	/**
-	 * Gets the value of the sortBy property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link VideoSortOption }
-	 *     
-	 */
-	public VideoSortOption getSortBy();
-
-	/**
-	 * Sets the value of the sortBy property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link VideoSortOption }
-	 *     
-	 */
-	public void setSortBy(VideoSortOption value);
-
+	public List<String> getFilterList() {
+        if (filterList == null) {
+        	filterList = new ArrayList<String>();
+        }
+        return this.filterList;
+	}
 }

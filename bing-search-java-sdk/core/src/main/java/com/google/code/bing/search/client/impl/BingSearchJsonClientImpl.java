@@ -1,69 +1,43 @@
-/**
- *
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
  */
 package com.google.code.bing.search.client.impl;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.beanutils.BeanUtilsBean;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 import com.google.code.bing.search.client.BingSearchException;
+import com.google.code.bing.search.client.constant.ApplicationConstants;
 import com.google.code.bing.search.client.constant.BingSearchApiUrls.BingSearchApiUrlBuilder;
-import com.google.code.bing.search.client.enumeration.ApiProtocol;
+import com.google.code.bing.search.schema.AdultOption;
 import com.google.code.bing.search.schema.Error;
 import com.google.code.bing.search.schema.Query;
-import com.google.code.bing.search.schema.SchemaElementFactory;
-import com.google.code.bing.search.schema.SchemaEntity;
+import com.google.code.bing.search.schema.SearchOption;
 import com.google.code.bing.search.schema.SearchRequest;
 import com.google.code.bing.search.schema.SearchResponse;
-import com.google.code.bing.search.schema.adapter.Adaptable;
-import com.google.code.bing.search.schema.adapter.json.ErrorImpl;
-import com.google.code.bing.search.schema.adapter.json.QueryImpl;
-import com.google.code.bing.search.schema.adapter.json.SearchRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.SearchResponseImpl;
-import com.google.code.bing.search.schema.adapter.json.instantanswer.InstantAnswerImpl;
-import com.google.code.bing.search.schema.adapter.json.instantanswer.InstantAnswerResultImpl;
-import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebImpl;
-import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.mobileweb.MobileWebResultImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.ImageImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.ImageRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.ImageResultImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.ThumbnailImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.VideoImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.VideoRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.multimedia.VideoResultImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsArticleImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsCollectionImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsRelatedSearchImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.news.NewsResultImpl;
-import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookImpl;
-import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.phonebook.PhonebookResultImpl;
-import com.google.code.bing.search.schema.adapter.json.relatedsearch.RelatedSearchImpl;
-import com.google.code.bing.search.schema.adapter.json.relatedsearch.RelatedSearchResultImpl;
-import com.google.code.bing.search.schema.adapter.json.spell.SpellImpl;
-import com.google.code.bing.search.schema.adapter.json.spell.SpellResultImpl;
-import com.google.code.bing.search.schema.adapter.json.translation.TranslationImpl;
-import com.google.code.bing.search.schema.adapter.json.translation.TranslationRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.translation.TranslationResultImpl;
-import com.google.code.bing.search.schema.adapter.json.web.DeepLinkImpl;
-import com.google.code.bing.search.schema.adapter.json.web.WebImpl;
-import com.google.code.bing.search.schema.adapter.json.web.WebRequestImpl;
-import com.google.code.bing.search.schema.adapter.json.web.WebResultImpl;
-import com.google.code.bing.search.schema.adapter.json.web.WebSearchTagImpl;
+import com.google.code.bing.search.schema.SourceType;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResponse;
 import com.google.code.bing.search.schema.instantanswer.InstantAnswerResult;
 import com.google.code.bing.search.schema.mobileweb.MobileWebRequest;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResponse;
 import com.google.code.bing.search.schema.mobileweb.MobileWebResult;
+import com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption;
 import com.google.code.bing.search.schema.multimedia.ImageRequest;
 import com.google.code.bing.search.schema.multimedia.ImageResponse;
 import com.google.code.bing.search.schema.multimedia.ImageResult;
@@ -71,15 +45,18 @@ import com.google.code.bing.search.schema.multimedia.Thumbnail;
 import com.google.code.bing.search.schema.multimedia.VideoRequest;
 import com.google.code.bing.search.schema.multimedia.VideoResponse;
 import com.google.code.bing.search.schema.multimedia.VideoResult;
+import com.google.code.bing.search.schema.multimedia.VideoSortOption;
 import com.google.code.bing.search.schema.news.NewsArticle;
 import com.google.code.bing.search.schema.news.NewsCollection;
 import com.google.code.bing.search.schema.news.NewsRelatedSearch;
 import com.google.code.bing.search.schema.news.NewsRequest;
 import com.google.code.bing.search.schema.news.NewsResponse;
 import com.google.code.bing.search.schema.news.NewsResult;
+import com.google.code.bing.search.schema.news.NewsSortOption;
 import com.google.code.bing.search.schema.phonebook.PhonebookRequest;
 import com.google.code.bing.search.schema.phonebook.PhonebookResponse;
 import com.google.code.bing.search.schema.phonebook.PhonebookResult;
+import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResponse;
 import com.google.code.bing.search.schema.relatedsearch.RelatedSearchResult;
 import com.google.code.bing.search.schema.spell.SpellResponse;
@@ -91,48 +68,40 @@ import com.google.code.bing.search.schema.web.DeepLink;
 import com.google.code.bing.search.schema.web.WebRequest;
 import com.google.code.bing.search.schema.web.WebResponse;
 import com.google.code.bing.search.schema.web.WebResult;
+import com.google.code.bing.search.schema.web.WebSearchOption;
 import com.google.code.bing.search.schema.web.WebSearchTag;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
- * @author Nabeel Mukhtar
- *
+ * The Class BingSearchJsonClientImpl.
  */
 public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
 
-    /** Field description */
-    private static final SchemaElementFactory OBJECT_FACTORY = new JsonElementFactory();
+    /** The Constant OBJECT_FACTORY. */
+    private static final JsonElementFactory OBJECT_FACTORY = new JsonElementFactory();
     
-    /** Field description */
-    private static final ApiProtocol SUPPORTED_PROTOCOL = ApiProtocol.JSON;
-    
-    private final JSONParser parser = new JSONParser();
-    
-    /** Field description */
-	private static final Map<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>> ADAPTER_CLASSES_MAP = new HashMap<Class<? extends SchemaEntity>, Class<? extends Adaptable<?, ?>>>();
+	/** The Constant UTF_8_CHAR_SET. */
+	protected static final Charset UTF_8_CHAR_SET = Charset.forName(ApplicationConstants.CONTENT_ENCODING);
 	
-	static {
-		ADAPTER_CLASSES_MAP.put(SearchResponse.class, SearchResponseImpl.class);
-		BeanUtilsBean.setInstance(new com.google.code.bing.search.schema.adapter.BeanUtilsBean());
-	}
+    /** The parser. */
+    private final JsonParser parser = new JsonParser();
     
-    /**
-     * Method description
-     *
-     *
-     * @param xmlContent
-     * @param <T>
-     *
-     * @return
+    /* (non-Javadoc)
+     * @see com.google.code.bing.search.client.impl.BaseBingSearchApiClient#unmarshallObject(java.lang.Class, java.io.InputStream)
      */
     @SuppressWarnings("unchecked")
     protected <T> T unmarshallObject(Class<T> clazz, InputStream jsonContent) {
         try {
-        	Object response = parser.parse(new InputStreamReader(jsonContent));
-        	if (response instanceof JSONObject) {
-        		if (((JSONObject) response).get("SearchResponse") != null) {
-            		Adaptable<?, JSONObject> adaptable = (Adaptable<?, JSONObject>) ADAPTER_CLASSES_MAP.get(clazz).newInstance();
-            		adaptable.adaptFrom((JSONObject) ((JSONObject) response).get("SearchResponse"));
-            		return (T) adaptable;
+        	JsonElement response = parser.parse(new InputStreamReader(jsonContent));
+        	if (response.isJsonObject()) {
+        		if (response.getAsJsonObject().get("SearchResponse") != null) {
+        			Gson gson = getGsonBuilder().create();
+        			return (T) gson.fromJson(response.getAsJsonObject().get("SearchResponse"), clazz);
         		}
         	}
         	throw new BingSearchException("Unknown content found in response:" + response.toString());
@@ -141,13 +110,8 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
         }
     }
 
-    /**
-     * Method description
-     *
-     *
-     * @param element
-     *
-     * @return
+    /* (non-Javadoc)
+     * @see com.google.code.bing.search.client.impl.BaseBingSearchApiClient#marshallObject(java.lang.Object)
      */
     protected String marshallObject(Object element) {
         try {
@@ -160,215 +124,1001 @@ public class BingSearchJsonClientImpl extends BaseBingSearchApiClient {
         }
     }
 
-    /**
-     * Method description
-     *
-     * @return
-     */
-    protected SchemaElementFactory createObjectFactory() {
-    	return OBJECT_FACTORY;
-    }
-    
-    /**
-     * Method description
-     *
-     *
-     * @param urlFormat
-     *
-     * @return
+    /* (non-Javadoc)
+     * @see com.google.code.bing.search.client.impl.BaseBingSearchApiClient#createBingSearchApiUrlBuilder(java.lang.String)
      */
     protected BingSearchApiUrlBuilder createBingSearchApiUrlBuilder(String urlFormat) {
-        return new BingSearchApiUrlBuilder(urlFormat, SUPPORTED_PROTOCOL);
+        return new BingSearchApiUrlBuilder(urlFormat);
     }
     
-	private static class JsonElementFactory implements SchemaElementFactory {
+	/**
+	 * The Class SearchRequestBuilderImpl.
+	 */
+	public static class SearchRequestBuilderImpl implements SearchRequestBuilder {
+		
+		/** The result. */
+		protected SearchRequest result;
+		
+		/** The factory. */
+		protected JsonElementFactory factory;
+		
+		/**
+		 * Instantiates a new search request builder impl.
+		 * 
+		 * @param factory the factory
+		 */
+		protected SearchRequestBuilderImpl(JsonElementFactory factory) {
+			this.factory = factory;
+			this.result = factory.createSearchRequest();
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withAppId(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withAppId(String applicationId) {
+			getParameters().setAppId(applicationId);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withAdultOption(com.google.code.bing.search.schema.AdultOption)
+		 */
+		@Override
+		public SearchRequestBuilder withAdultOption(AdultOption adult) {
+			getParameters().setAdult(adult);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withImageRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withImageRequestCount(Long count) {
+			getImageRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withImageRequestFilter(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withImageRequestFilter(String filter) {
+			getImageRequestFilters().add(filter);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withImageRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withImageRequestOffset(Long offset) {
+			getImageRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withLatitude(java.lang.Double)
+		 */
+		@Override
+		public SearchRequestBuilder withLatitude(Double latitude) {
+			getParameters().setLatitude(latitude);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withLongitude(java.lang.Double)
+		 */
+		@Override
+		public SearchRequestBuilder withLongitude(Double longitude) {
+			getParameters().setLongitude(longitude);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withMarket(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withMarket(String market) {
+			getParameters().setMarket(market);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withMobileWebRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withMobileWebRequestCount(Long count) {
+			getMobileWebRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withMobileWebRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withMobileWebRequestOffset(Long offset) {
+			getMobileWebRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withMobileWebRequestSearchOption(com.google.code.bing.search.schema.mobileweb.MobileWebSearchOption)
+		 */
+		@Override
+		public SearchRequestBuilder withMobileWebRequestSearchOption(
+				MobileWebSearchOption mobileWebSearchOption) {
+			getMobileWebRequestOptions().add(mobileWebSearchOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withNewsRequestCategory(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withNewsRequestCategory(String category) {
+			getNewsRequest().setCategory(category);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withNewsRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withNewsRequestCount(Long count) {
+			getNewsRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withNewsRequestLocationOverride(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withNewsRequestLocationOverride(
+				String locationOverride) {
+			getNewsRequest().setLocationOverride(locationOverride);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withNewsRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withNewsRequestOffset(Long offset) {
+			getNewsRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withNewsRequestSortOption(com.google.code.bing.search.schema.news.NewsSortOption)
+		 */
+		@Override
+		public SearchRequestBuilder withNewsRequestSortOption(
+				NewsSortOption newsSortOption) {
+			getNewsRequest().setSortBy(newsSortOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestCategory(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestCategory(String category) {
+			getPhonebookRequest().setCategory(category);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestCount(Long count) {
+			getPhonebookRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestFileType(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestFileType(String fileType) {
+			getPhonebookRequest().setFileType(fileType);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestLocId(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestLocId(String locId) {
+			getPhonebookRequest().setLocId(locId);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestOffset(Long offset) {
+			getPhonebookRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withPhonebookRequestSortOption(com.google.code.bing.search.schema.phonebook.PhonebookSortOption)
+		 */
+		@Override
+		public SearchRequestBuilder withPhonebookRequestSortOption(
+				PhonebookSortOption phonebookSortOption) {
+			getPhonebookRequest().setSortBy(phonebookSortOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withQuery(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withQuery(String query) {
+			getParameters().setQuery(query);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withRadius(java.lang.Double)
+		 */
+		@Override
+		public SearchRequestBuilder withRadius(Double radius) {
+			getParameters().setRadius(radius);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withSearchOption(com.google.code.bing.search.schema.SearchOption)
+		 */
+		@Override
+		public SearchRequestBuilder withSearchOption(SearchOption searchOption) {
+			getParameterOptions().add(searchOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withSourceType(com.google.code.bing.search.schema.SourceType)
+		 */
+		@Override
+		public SearchRequestBuilder withSourceType(SourceType sourceType) {
+			getParameterSources().add(sourceType);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withTranslationRequestSourceLanguage(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withTranslationRequestSourceLanguage(
+				String sourceLanguage) {
+			getTranslationRequest().setSourceLanguage(sourceLanguage);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withTranslationRequestTargetLanguage(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withTranslationRequestTargetLanguage(
+				String targetLanguage) {
+			getTranslationRequest().setTargetLanguage(targetLanguage);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withUILanguage(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withUILanguage(String uiLanguage) {
+			getParameters().setUILanguage(uiLanguage);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withVersion(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withVersion(String version) {
+			getParameters().setVersion(version);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withVideoRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withVideoRequestCount(Long count) {
+			getVideoRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withVideoRequestFilter(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withVideoRequestFilter(String filter) {
+			getVideoRequestFilters().add(filter);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withVideoRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withVideoRequestOffset(Long offset) {
+			getVideoRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withVideoRequestSortOption(com.google.code.bing.search.schema.multimedia.VideoSortOption)
+		 */
+		@Override
+		public SearchRequestBuilder withVideoRequestSortOption(
+				VideoSortOption videoSortOption) {
+			getVideoRequest().setSortBy(videoSortOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withWebRequestCount(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withWebRequestCount(Long count) {
+			getWebRequest().setCount(count);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withWebRequestFileType(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withWebRequestFileType(String fileType) {
+			getWebRequest().setFileType(fileType);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withWebRequestOffset(java.lang.Long)
+		 */
+		@Override
+		public SearchRequestBuilder withWebRequestOffset(Long offset) {
+			getWebRequest().setOffset(offset);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withWebRequestSearchOption(com.google.code.bing.search.schema.web.WebSearchOption)
+		 */
+		@Override
+		public SearchRequestBuilder withWebRequestSearchOption(
+				WebSearchOption webSearchOption) {
+			getWebRequestOptions().add(webSearchOption);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#withWebRequestSearchTag(java.lang.String)
+		 */
+		@Override
+		public SearchRequestBuilder withWebRequestSearchTag(String searchTag) {
+			getWebRequestSearchTags().add(searchTag);
+			return this;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#getResult()
+		 */
+		public SearchRequest getResult() {
+			return result;
+		}
+
+		/* (non-Javadoc)
+		 * @see com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder#reset()
+		 */
+		@Override
+		public void reset() {
+			result = factory.createSearchRequest();
+		}
+		
+		/**
+		 * Gets the parameters.
+		 * 
+		 * @return the parameters
+		 */
+		private SearchRequest getParameters() {
+			return result;
+		}
+		
+		/**
+		 * Gets the image request.
+		 * 
+		 * @return the image request
+		 */
+		private ImageRequest getImageRequest() {
+			if (getParameters().getImageRequest() == null) {
+				getParameters().setImageRequest(factory.createImageRequest());
+			}
+			return getParameters().getImageRequest();
+		}
+
+		/**
+		 * Gets the mobile web request.
+		 * 
+		 * @return the mobile web request
+		 */
+		private MobileWebRequest getMobileWebRequest() {
+			if (getParameters().getMobileWebRequest() == null) {
+				getParameters().setMobileWebRequest(factory.createMobileWebRequest());
+			}
+			return getParameters().getMobileWebRequest();
+		}
+
+		/**
+		 * Gets the news request.
+		 * 
+		 * @return the news request
+		 */
+		private NewsRequest getNewsRequest() {
+			if (getParameters().getNewsRequest() == null) {
+				getParameters().setNewsRequest(factory.createNewsRequest());
+			}
+			return getParameters().getNewsRequest();
+		}
+
+		/**
+		 * Gets the phonebook request.
+		 * 
+		 * @return the phonebook request
+		 */
+		private PhonebookRequest getPhonebookRequest() {
+			if (getParameters().getPhonebookRequest() == null) {
+				getParameters().setPhonebookRequest(factory.createPhonebookRequest());
+			}
+			return getParameters().getPhonebookRequest();
+		}
+
+		/**
+		 * Gets the translation request.
+		 * 
+		 * @return the translation request
+		 */
+		private TranslationRequest getTranslationRequest() {
+			if (getParameters().getTranslationRequest() == null) {
+				getParameters().setTranslationRequest(factory.createTranslationRequest());
+			}
+			return getParameters().getTranslationRequest();
+		}
+		
+		/**
+		 * Gets the video request.
+		 * 
+		 * @return the video request
+		 */
+		private VideoRequest getVideoRequest() {
+			if (getParameters().getVideoRequest() == null) {
+				getParameters().setVideoRequest(factory.createVideoRequest());
+			}
+			return getParameters().getVideoRequest();
+		}
+		
+		/**
+		 * Gets the web request.
+		 * 
+		 * @return the web request
+		 */
+		private WebRequest getWebRequest() {
+			if (getParameters().getWebRequest() == null) {
+				getParameters().setWebRequest(factory.createWebRequest());
+			}
+			return getParameters().getWebRequest();
+		}
+		
+		/**
+		 * Gets the image request filters.
+		 * 
+		 * @return the image request filters
+		 */
+		private  List<String> getImageRequestFilters() {
+			return getImageRequest().getFilterList();
+		}
+
+		/**
+		 * Gets the mobile web request options.
+		 * 
+		 * @return the mobile web request options
+		 */
+		private  List<MobileWebSearchOption> getMobileWebRequestOptions() {
+			return getMobileWebRequest().getMobileWebSearchOptionList();
+		}
+		
+		/**
+		 * Gets the parameter options.
+		 * 
+		 * @return the parameter options
+		 */
+		private  List<SearchOption> getParameterOptions() {
+			return getParameters().getSearchOptionList();
+		}
+
+		/**
+		 * Gets the parameter sources.
+		 * 
+		 * @return the parameter sources
+		 */
+		private  List<SourceType> getParameterSources() {
+			return getParameters().getSourceTypeList();
+		}
+
+		/**
+		 * Gets the video request filters.
+		 * 
+		 * @return the video request filters
+		 */
+		private  List<String> getVideoRequestFilters() {
+			return getVideoRequest().getFilterList();
+		}
+		
+		/**
+		 * Gets the web request options.
+		 * 
+		 * @return the web request options
+		 */
+		private  List<WebSearchOption> getWebRequestOptions() {
+			return getWebRequest().getWebSearchOptionList();
+		}
+		
+		/**
+		 * Gets the web request search tags.
+		 * 
+		 * @return the web request search tags
+		 */
+		private  List<String> getWebRequestSearchTags() {
+			return getWebRequest().getSearchTagList();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.google.code.bing.search.client.BingSearchClient#newSearchRequestBuilder()
+	 */
+	@Override
+	public SearchRequestBuilder newSearchRequestBuilder() {
+		return new SearchRequestBuilderImpl(OBJECT_FACTORY);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.google.code.bing.search.client.impl.BaseBingSearchApiClient#getTaskExecutor()
+	 */
+	public ExecutorService getTaskExecutor() {
+		return taskExecutor;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.google.code.bing.search.client.impl.BaseBingSearchApiClient#setTaskExecutor(java.util.concurrent.ExecutorService)
+	 */
+	public void setTaskExecutor(ExecutorService taskExecutor) {
+		this.taskExecutor = taskExecutor;
+	}
+
+	
+	/**
+	 * Gets the gson builder.
+	 * 
+	 * @return the gson builder
+	 */
+	protected GsonBuilder getGsonBuilder() {
+		GsonBuilder builder = new GsonBuilder();
+		builder.setDateFormat(ApplicationConstants.DATE_FORMAT);
+		builder.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE);
+//		builder.registerTypeAdapter(Issue.State.class, new JsonDeserializer<Issue.State>() {
+//			@Override
+//			public Issue.State deserialize(JsonElement arg0, Type arg1,
+//					JsonDeserializationContext arg2) throws JsonParseException {
+//				return Issue.State.fromValue(arg0.getAsString());
+//			}
+//		});
+		return builder;
+	}
+    
+	/**
+	 * Unmarshall.
+	 * 
+	 * @param jsonContent the json content
+	 * 
+	 * @return the json object
+	 */
+	protected JsonObject unmarshall(InputStream jsonContent) {
+        try {
+        	JsonElement element = parser.parse(new InputStreamReader(jsonContent, UTF_8_CHAR_SET));
+        	if (element.isJsonObject()) {
+        		return element.getAsJsonObject();
+        	} else {
+        		throw new BingSearchException("Unknown content found in response." + element);
+        	}
+        } catch (Exception e) {
+            throw new BingSearchException(e);
+        } finally {
+	        closeStream(jsonContent);
+	    }
+	}
+	
+	/**
+	 * A factory for creating JsonElement objects.
+	 */
+	private static class JsonElementFactory {
+		
+		/**
+		 * Instantiates a new json element factory.
+		 */
 		public JsonElementFactory() {
 			super();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the deep link
+		 */
 		public DeepLink createDeepLink() {
-			return new DeepLinkImpl();
+			return new DeepLink();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the error
+		 */
 		public Error createError() {
-			return new ErrorImpl();
+			return new Error();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the image request
+		 */
 		public ImageRequest createImageRequest() {
-			return new ImageRequestImpl();
+			return new ImageRequest();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the image response
+		 */
 		public ImageResponse createImageResponse() {
-			return new ImageImpl();
+			return new ImageResponse();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the image result
+		 */
 		public ImageResult createImageResult() {
-			return new ImageResultImpl();
+			return new ImageResult();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the instant answer response
+		 */
 		public InstantAnswerResponse createInstantAnswerResponse() {
-			return new InstantAnswerImpl();
+			return new InstantAnswerResponse();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the instant answer result
+		 */
 		public InstantAnswerResult createInstantAnswerResult() {
-			return new InstantAnswerResultImpl();
+			return new InstantAnswerResult();
 		}
 
-		@Override
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the mobile web request
+		 */
 		public MobileWebRequest createMobileWebRequest() {
-			return new MobileWebRequestImpl();
+			return new MobileWebRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the mobile web response
+		 */
 		public MobileWebResponse createMobileWebResponse() {
-			return new MobileWebImpl();
+			return new MobileWebResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the mobile web result
+		 */
 		public MobileWebResult createMobileWebResult() {
-			return new MobileWebResultImpl();
+			return new MobileWebResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news article
+		 */
 		public NewsArticle createNewsArticle() {
-			return new NewsArticleImpl();
+			return new NewsArticle();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news collection
+		 */
 		public NewsCollection createNewsCollection() {
-			return new NewsCollectionImpl();
+			return new NewsCollection();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news related search
+		 */
 		public NewsRelatedSearch createNewsRelatedSearch() {
-			return new NewsRelatedSearchImpl();
+			return new NewsRelatedSearch();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news request
+		 */
 		public NewsRequest createNewsRequest() {
-			return new NewsRequestImpl();
+			return new NewsRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news response
+		 */
 		public NewsResponse createNewsResponse() {
-			return new NewsImpl();
+			return new NewsResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the news result
+		 */
 		public NewsResult createNewsResult() {
-			return new NewsResultImpl();
+			return new NewsResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the phonebook request
+		 */
 		public PhonebookRequest createPhonebookRequest() {
-			return new PhonebookRequestImpl();
+			return new PhonebookRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the phonebook response
+		 */
 		public PhonebookResponse createPhonebookResponse() {
-			return new PhonebookImpl();
+			return new PhonebookResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the phonebook result
+		 */
 		public PhonebookResult createPhonebookResult() {
-			return new PhonebookResultImpl();
+			return new PhonebookResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the query
+		 */
 		public Query createQuery() {
-			return new QueryImpl();
+			return new Query();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the related search response
+		 */
 		public RelatedSearchResponse createRelatedSearchResponse() {
-			return new RelatedSearchImpl();
+			return new RelatedSearchResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the related search result
+		 */
 		public RelatedSearchResult createRelatedSearchResult() {
-			return new RelatedSearchResultImpl();
+			return new RelatedSearchResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the search request
+		 */
 		public SearchRequest createSearchRequest() {
-			return new SearchRequestImpl();
+			return new SearchRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the search response
+		 */
 		public SearchResponse createSearchResponse() {
-			return new SearchResponseImpl();
+			return new SearchResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the spell response
+		 */
 		public SpellResponse createSpellResponse() {
-			return new SpellImpl();
+			return new SpellResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the spell result
+		 */
 		public SpellResult createSpellResult() {
-			return new SpellResultImpl();
+			return new SpellResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the thumbnail
+		 */
 		public Thumbnail createThumbnail() {
-			return new ThumbnailImpl();
+			return new Thumbnail();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the translation request
+		 */
 		public TranslationRequest createTranslationRequest() {
-			return new TranslationRequestImpl();
+			return new TranslationRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the translation response
+		 */
 		public TranslationResponse createTranslationResponse() {
-			return new TranslationImpl();
+			return new TranslationResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the translation result
+		 */
 		public TranslationResult createTranslationResult() {
-			return new TranslationResultImpl();
+			return new TranslationResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the video request
+		 */
 		public VideoRequest createVideoRequest() {
-			return new VideoRequestImpl();
+			return new VideoRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the video response
+		 */
 		public VideoResponse createVideoResponse() {
-			return new VideoImpl();
+			return new VideoResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the video result
+		 */
 		public VideoResult createVideoResult() {
-			return new VideoResultImpl();
+			return new VideoResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the web request
+		 */
 		public WebRequest createWebRequest() {
-			return new WebRequestImpl();
+			return new WebRequest();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the web response
+		 */
 		public WebResponse createWebResponse() {
-			return new WebImpl();
+			return new WebResponse();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the web result
+		 */
 		public WebResult createWebResult() {
-			return new WebResultImpl();
+			return new WebResult();
 		}
 
-		@Override
+		
+		/**
+		 * Creates a new JsonElement object.
+		 * 
+		 * @return the web search tag
+		 */
 		public WebSearchTag createWebSearchTag() {
-			return new WebSearchTagImpl();
+			return new WebSearchTag();
 		}
 	}
 }

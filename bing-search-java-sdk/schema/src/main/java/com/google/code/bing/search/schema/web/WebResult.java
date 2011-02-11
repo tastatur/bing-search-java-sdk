@@ -1,198 +1,202 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.web;
+
+import java.util.Date;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Title" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Description" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Url" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}CacheUrl" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}DisplayUrl" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}DateTime" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}SearchTags" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}DeepLinks" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class WebResult.
  */
-public interface WebResult
+public class WebResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTitle(String value);
-
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getDescription();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The description. */
+    protected String description;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The cache url. */
+    protected String cacheUrl;
+    
+    /** The display url. */
+    protected String displayUrl;
+    
+    /** The date time. */
+    protected Date dateTime;
+    
+    /** The search tags. */
+    protected SearchTags searchTags;
+    
+    /** The deep links. */
+    protected DeepLinks deepLinks;
 
     /**
-     * Sets the value of the description property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setDescription(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the url property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getUrl();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the url property.
+     * Gets the description.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the description
      */
-    void setUrl(String value);
+    public String getDescription() {
+        return description;
+    }
 
     /**
-     * Gets the value of the cacheUrl property.
+     * Sets the description.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new description
      */
-    String getCacheUrl();
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
     /**
-     * Sets the value of the cacheUrl property.
+     * Gets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    void setCacheUrl(String value);
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Gets the value of the displayUrl property.
+     * Sets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new url
      */
-    String getDisplayUrl();
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Sets the value of the displayUrl property.
+     * Gets the cache url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the cache url
      */
-    void setDisplayUrl(String value);
+    public String getCacheUrl() {
+        return cacheUrl;
+    }
 
     /**
-     * Gets the value of the dateTime property.
+     * Sets the cache url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new cache url
      */
-    String getDateTime();
+    public void setCacheUrl(String value) {
+        this.cacheUrl = value;
+    }
 
     /**
-     * Sets the value of the dateTime property.
+     * Gets the display url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the display url
      */
-    void setDateTime(String value);
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
 
     /**
-     * Gets the value of the searchTags property.
+     * Sets the display url.
      * 
-     * @return
-     *     possible object is
-     *     {@link SearchTags }
-     *     
+     * @param value the new display url
      */
-    SearchTags getSearchTags();
+    public void setDisplayUrl(String value) {
+        this.displayUrl = value;
+    }
 
     /**
-     * Sets the value of the searchTags property.
+     * Gets the date time.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link SearchTags }
-     *     
+     * @return the date time
      */
-    void setSearchTags(SearchTags value);
+    public Date getDateTime() {
+        return dateTime;
+    }
 
     /**
-     * Gets the value of the deepLinks property.
+     * Sets the date time.
      * 
-     * @return
-     *     possible object is
-     *     {@link DeepLinks }
-     *     
+     * @param value the new date time
      */
-    DeepLinks getDeepLinks();
+    public void setDateTime(Date value) {
+        this.dateTime = value;
+    }
 
     /**
-     * Sets the value of the deepLinks property.
+     * Gets the search tags.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DeepLinks }
-     *     
+     * @return the search tags
      */
-    void setDeepLinks(DeepLinks value);
+    public SearchTags getSearchTags() {
+        return searchTags;
+    }
 
+    /**
+     * Sets the search tags.
+     * 
+     * @param value the new search tags
+     */
+    public void setSearchTags(SearchTags value) {
+        this.searchTags = value;
+    }
+
+    /**
+     * Gets the deep links.
+     * 
+     * @return the deep links
+     */
+    public DeepLinks getDeepLinks() {
+        return deepLinks;
+    }
+
+    /**
+     * Sets the deep links.
+     * 
+     * @param value the new deep links
+     */
+    public void setDeepLinks(DeepLinks value) {
+        this.deepLinks = value;
+    }
 }

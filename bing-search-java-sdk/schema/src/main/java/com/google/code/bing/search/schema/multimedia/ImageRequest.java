@@ -1,71 +1,99 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 package com.google.code.bing.search.schema.multimedia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
-public interface ImageRequest 
+/**
+ * The Class ImageRequest.
+ */
+public class ImageRequest 
 	extends SchemaEntity
 {
+    
+    /** The Constant serialVersionUID. */
+	private static final long serialVersionUID = -1726990456300068785L;
+	
+	/** The offset. */
+	protected Long offset;
+    
+    /** The count. */
+    protected Long count;
+	
+	/** The filter list. */
+	protected List<String> filterList;
+
+    /**
+     * Gets the offset.
+     * 
+     * @return the offset
+     */
+    public Long getOffset() {
+        return offset;
+    }
+
+    /**
+     * Sets the offset.
+     * 
+     * @param value the new offset
+     */
+    public void setOffset(Long value) {
+        this.offset = value;
+    }
+
+    /**
+     * Gets the count.
+     * 
+     * @return the count
+     */
+    public Long getCount() {
+        return count;
+    }
+
+    /**
+     * Sets the count.
+     * 
+     * @param value the new count
+     */
+    public void setCount(Long value) {
+        this.count = value;
+    }
 
 	/**
-	 * Gets the value of the offset property.
+	 * Gets the filter list.
 	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
+	 * @return the filter list
 	 */
-	public Long getOffset();
+	public List<String> getFilterList() {
+		if (filterList == null) {
+			filterList = new ArrayList<String>();
+		}
+		return filterList;
+	}
 
 	/**
-	 * Sets the value of the offset property.
+	 * Sets the filter list.
 	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
+	 * @param value the new filter list
 	 */
-	public void setOffset(Long value);
-
-	/**
-	 * Gets the value of the count property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
-	 */
-	public Long getCount();
-
-	/**
-	 * Sets the value of the count property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
-	 */
-	public void setCount(Long value);
-
-	/**
-	 * Gets the value of the filters property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link }
-	 *     
-	 */
-	public List<String> getFilterList();
-
-	/**
-	 * Sets the value of the filters property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link }
-	 *     
-	 */
-	public void setFilterList(List<String> value);
-
+	public void setFilterList(List<String> value) {
+		filterList = value;
+	}
 }

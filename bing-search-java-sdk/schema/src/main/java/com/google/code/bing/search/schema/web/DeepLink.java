@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.web;
 
@@ -5,68 +21,54 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Title" minOccurs="0"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/web}Url" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class DeepLink.
  */
-public interface DeepLink
+public class DeepLink
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The url. */
+    protected String url;
 
     /**
-     * Sets the value of the title property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setTitle(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the url property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getUrl();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the url property.
+     * Gets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    void setUrl(String value);
+    public String getUrl() {
+        return url;
+    }
 
+    /**
+     * Sets the url.
+     * 
+     * @param value the new url
+     */
+    public void setUrl(String value) {
+        this.url = value;
+    }
 }

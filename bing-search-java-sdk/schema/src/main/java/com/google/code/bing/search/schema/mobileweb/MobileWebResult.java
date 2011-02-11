@@ -1,135 +1,139 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.mobileweb;
+
+import java.util.Date;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Title"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Description"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}Url"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}DisplayUrl"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/mobileweb}DateTime"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class MobileWebResult.
  */
-public interface MobileWebResult
+public class MobileWebResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getTitle();
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setTitle(String value);
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The description. */
+    protected String description;
+    
+    /** The url. */
+    protected String url;
+    
+    /** The display url. */
+    protected String displayUrl;
+    
+    /** The date time. */
+    protected Date dateTime;
 
     /**
-     * Gets the value of the description property.
+     * Gets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    String getDescription();
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Sets the value of the description property.
+     * Sets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    void setDescription(String value);
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Gets the value of the url property.
+     * Gets the description.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the description
      */
-    String getUrl();
+    public String getDescription() {
+        return description;
+    }
 
     /**
-     * Sets the value of the url property.
+     * Sets the description.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new description
      */
-    void setUrl(String value);
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
     /**
-     * Gets the value of the displayUrl property.
+     * Gets the url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the url
      */
-    String getDisplayUrl();
+    public String getUrl() {
+        return url;
+    }
 
     /**
-     * Sets the value of the displayUrl property.
+     * Sets the url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new url
      */
-    void setDisplayUrl(String value);
+    public void setUrl(String value) {
+        this.url = value;
+    }
 
     /**
-     * Gets the value of the dateTime property.
+     * Gets the display url.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return the display url
      */
-    String getDateTime();
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
 
     /**
-     * Sets the value of the dateTime property.
+     * Sets the display url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value the new display url
      */
-    void setDateTime(String value);
+    public void setDisplayUrl(String value) {
+        this.displayUrl = value;
+    }
 
+    /**
+     * Gets the date time.
+     * 
+     * @return the date time
+     */
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    /**
+     * Sets the date time.
+     * 
+     * @param value the new date time
+     */
+    public void setDateTime(Date value) {
+        this.dateTime = value;
+    }
 }

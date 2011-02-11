@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.flightstatus;
 
@@ -5,429 +21,454 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 
-public interface FlightStatus
+/**
+ * The Class FlightStatus.
+ */
+public class FlightStatus
 extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the airlineCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getAirlineCode();
-
-    /**
-     * Sets the value of the airlineCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setAirlineCode(String value);
-
-    /**
-     * Gets the value of the airlineName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getAirlineName();
-
-    /**
-     * Sets the value of the airlineName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setAirlineName(String value);
-
-    /**
-     * Gets the value of the flightNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    Long getFlightNumber();
-
-    /**
-     * Sets the value of the flightNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setFlightNumber(Long value);
-
-    /**
-     * Gets the value of the flightName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getFlightName();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The airline code. */
+    protected String airlineCode;
+    
+    /** The airline name. */
+    protected String airlineName;
+    
+    /** The flight number. */
+    protected Long flightNumber;
+    
+    /** The flight name. */
+    protected String flightName;
+    
+    /** The flight history id. */
+    protected Long flightHistoryId;
+    
+    /** The status string. */
+    protected String statusString;
+    
+    /** The status code. */
+    protected Long statusCode;
+    
+    /** The on time string. */
+    protected String onTimeString;
+    
+    /** The scheduled departure. */
+    protected String scheduledDeparture;
+    
+    /** The updated departure. */
+    protected String updatedDeparture;
+    
+    /** The scheduled arrival. */
+    protected String scheduledArrival;
+    
+    /** The updated arrival. */
+    protected String updatedArrival;
+    
+    /** The origin airport. */
+    protected OriginAirport originAirport;
+    
+    /** The destination airport. */
+    protected DestinationAirport destinationAirport;
+    
+    /** The departure gate. */
+    protected Long departureGate;
+    
+    /** The departure terminal. */
+    protected String departureTerminal;
+    
+    /** The arrival gate. */
+    protected Long arrivalGate;
+    
+    /** The arrival terminal. */
+    protected String arrivalTerminal;
+    
+    /** The previous segment. */
+    protected PreviousSegment previousSegment;
+    
+    /** The next segment. */
+    protected NextSegment nextSegment;
+    
+    /** The data freshness. */
+    protected Long dataFreshness;
 
     /**
-     * Sets the value of the flightName property.
+     * Gets the airline code.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the airline code
      */
-    void setFlightName(String value);
+    public String getAirlineCode() {
+        return airlineCode;
+    }
 
     /**
-     * Gets the value of the flightHistoryId property.
+     * Sets the airline code.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new airline code
      */
-    Long getFlightHistoryId();
+    public void setAirlineCode(String value) {
+        this.airlineCode = value;
+    }
 
     /**
-     * Sets the value of the flightHistoryId property.
+     * Gets the airline name.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the airline name
      */
-    void setFlightHistoryId(Long value);
+    public String getAirlineName() {
+        return airlineName;
+    }
 
     /**
-     * Gets the value of the statusString property.
+     * Sets the airline name.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new airline name
      */
-    String getStatusString();
+    public void setAirlineName(String value) {
+        this.airlineName = value;
+    }
 
     /**
-     * Sets the value of the statusString property.
+     * Gets the flight number.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the flight number
      */
-    void setStatusString(String value);
+    public Long getFlightNumber() {
+        return flightNumber;
+    }
 
     /**
-     * Gets the value of the statusCode property.
+     * Sets the flight number.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new flight number
      */
-    Long getStatusCode();
+    public void setFlightNumber(Long value) {
+        this.flightNumber = value;
+    }
 
     /**
-     * Sets the value of the statusCode property.
+     * Gets the flight name.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the flight name
      */
-    void setStatusCode(Long value);
+    public String getFlightName() {
+        return flightName;
+    }
 
     /**
-     * Gets the value of the onTimeString property.
+     * Sets the flight name.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new flight name
      */
-    String getOnTimeString();
+    public void setFlightName(String value) {
+        this.flightName = value;
+    }
 
     /**
-     * Sets the value of the onTimeString property.
+     * Gets the flight history id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the flight history id
      */
-    void setOnTimeString(String value);
+    public Long getFlightHistoryId() {
+        return flightHistoryId;
+    }
 
     /**
-     * Gets the value of the scheduledDeparture property.
+     * Sets the flight history id.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new flight history id
      */
-    String getScheduledDeparture();
+    public void setFlightHistoryId(Long value) {
+        this.flightHistoryId = value;
+    }
 
     /**
-     * Sets the value of the scheduledDeparture property.
+     * Gets the status string.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the status string
      */
-    void setScheduledDeparture(String value);
+    public String getStatusString() {
+        return statusString;
+    }
 
     /**
-     * Gets the value of the updatedDeparture property.
+     * Sets the status string.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new status string
      */
-    String getUpdatedDeparture();
+    public void setStatusString(String value) {
+        this.statusString = value;
+    }
 
     /**
-     * Sets the value of the updatedDeparture property.
+     * Gets the status code.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the status code
      */
-    void setUpdatedDeparture(String value);
+    public Long getStatusCode() {
+        return statusCode;
+    }
 
     /**
-     * Gets the value of the scheduledArrival property.
+     * Sets the status code.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new status code
      */
-    String getScheduledArrival();
+    public void setStatusCode(Long value) {
+        this.statusCode = value;
+    }
 
     /**
-     * Sets the value of the scheduledArrival property.
+     * Gets the on time string.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the on time string
      */
-    void setScheduledArrival(String value);
+    public String getOnTimeString() {
+        return onTimeString;
+    }
 
     /**
-     * Gets the value of the updatedArrival property.
+     * Sets the on time string.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new on time string
      */
-    String getUpdatedArrival();
+    public void setOnTimeString(String value) {
+        this.onTimeString = value;
+    }
 
     /**
-     * Sets the value of the updatedArrival property.
+     * Gets the scheduled departure.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the scheduled departure
      */
-    void setUpdatedArrival(String value);
+    public String getScheduledDeparture() {
+        return scheduledDeparture;
+    }
 
     /**
-     * Gets the value of the originAirport property.
+     * Sets the scheduled departure.
      * 
-     * @return
-     *     possible object is
-     *     {@link OriginAirport }
-     *     
+     * @param value the new scheduled departure
      */
-    OriginAirport getOriginAirport();
+    public void setScheduledDeparture(String value) {
+        this.scheduledDeparture = value;
+    }
 
     /**
-     * Sets the value of the originAirport property.
+     * Gets the updated departure.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link OriginAirport }
-     *     
+     * @return the updated departure
      */
-    void setOriginAirport(OriginAirport value);
+    public String getUpdatedDeparture() {
+        return updatedDeparture;
+    }
 
     /**
-     * Gets the value of the destinationAirport property.
+     * Sets the updated departure.
      * 
-     * @return
-     *     possible object is
-     *     {@link DestinationAirport }
-     *     
+     * @param value the new updated departure
      */
-    DestinationAirport getDestinationAirport();
+    public void setUpdatedDeparture(String value) {
+        this.updatedDeparture = value;
+    }
 
     /**
-     * Sets the value of the destinationAirport property.
+     * Gets the scheduled arrival.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DestinationAirport }
-     *     
+     * @return the scheduled arrival
      */
-    void setDestinationAirport(DestinationAirport value);
+    public String getScheduledArrival() {
+        return scheduledArrival;
+    }
 
     /**
-     * Gets the value of the departureGate property.
+     * Sets the scheduled arrival.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new scheduled arrival
      */
-    Long getDepartureGate();
+    public void setScheduledArrival(String value) {
+        this.scheduledArrival = value;
+    }
 
     /**
-     * Sets the value of the departureGate property.
+     * Gets the updated arrival.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the updated arrival
      */
-    void setDepartureGate(Long value);
+    public String getUpdatedArrival() {
+        return updatedArrival;
+    }
 
     /**
-     * Gets the value of the departureTerminal property.
+     * Sets the updated arrival.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new updated arrival
      */
-    String getDepartureTerminal();
+    public void setUpdatedArrival(String value) {
+        this.updatedArrival = value;
+    }
 
     /**
-     * Sets the value of the departureTerminal property.
+     * Gets the origin airport.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the origin airport
      */
-    void setDepartureTerminal(String value);
+    public OriginAirport getOriginAirport() {
+        return originAirport;
+    }
 
     /**
-     * Gets the value of the arrivalGate property.
+     * Sets the origin airport.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new origin airport
      */
-    Long getArrivalGate();
+    public void setOriginAirport(OriginAirport value) {
+        this.originAirport = value;
+    }
 
     /**
-     * Sets the value of the arrivalGate property.
+     * Gets the destination airport.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the destination airport
      */
-    void setArrivalGate(Long value);
+    public DestinationAirport getDestinationAirport() {
+        return destinationAirport;
+    }
 
     /**
-     * Gets the value of the arrivalTerminal property.
+     * Sets the destination airport.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new destination airport
      */
-    String getArrivalTerminal();
+    public void setDestinationAirport(DestinationAirport value) {
+        this.destinationAirport = value;
+    }
 
     /**
-     * Sets the value of the arrivalTerminal property.
+     * Gets the departure gate.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the departure gate
      */
-    void setArrivalTerminal(String value);
+    public Long getDepartureGate() {
+        return departureGate;
+    }
 
     /**
-     * Gets the value of the previousSegment property.
+     * Sets the departure gate.
      * 
-     * @return
-     *     possible object is
-     *     {@link PreviousSegment }
-     *     
+     * @param value the new departure gate
      */
-    PreviousSegment getPreviousSegment();
+    public void setDepartureGate(Long value) {
+        this.departureGate = value;
+    }
 
     /**
-     * Sets the value of the previousSegment property.
+     * Gets the departure terminal.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PreviousSegment }
-     *     
+     * @return the departure terminal
      */
-    void setPreviousSegment(PreviousSegment value);
+    public String getDepartureTerminal() {
+        return departureTerminal;
+    }
 
     /**
-     * Gets the value of the nextSegment property.
+     * Sets the departure terminal.
      * 
-     * @return
-     *     possible object is
-     *     {@link NextSegment }
-     *     
+     * @param value the new departure terminal
      */
-    NextSegment getNextSegment();
+    public void setDepartureTerminal(String value) {
+        this.departureTerminal = value;
+    }
 
     /**
-     * Sets the value of the nextSegment property.
+     * Gets the arrival gate.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link NextSegment }
-     *     
+     * @return the arrival gate
      */
-    void setNextSegment(NextSegment value);
+    public Long getArrivalGate() {
+        return arrivalGate;
+    }
 
     /**
-     * Gets the value of the dataFreshness property.
+     * Sets the arrival gate.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new arrival gate
      */
-    Long getDataFreshness();
+    public void setArrivalGate(Long value) {
+        this.arrivalGate = value;
+    }
 
     /**
-     * Sets the value of the dataFreshness property.
+     * Gets the arrival terminal.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the arrival terminal
      */
-    void setDataFreshness(Long value);
+    public String getArrivalTerminal() {
+        return arrivalTerminal;
+    }
 
+    /**
+     * Sets the arrival terminal.
+     * 
+     * @param value the new arrival terminal
+     */
+    public void setArrivalTerminal(String value) {
+        this.arrivalTerminal = value;
+    }
+
+    /**
+     * Gets the previous segment.
+     * 
+     * @return the previous segment
+     */
+    public PreviousSegment getPreviousSegment() {
+        return previousSegment;
+    }
+
+    /**
+     * Sets the previous segment.
+     * 
+     * @param value the new previous segment
+     */
+    public void setPreviousSegment(PreviousSegment value) {
+        this.previousSegment = value;
+    }
+
+    /**
+     * Gets the next segment.
+     * 
+     * @return the next segment
+     */
+    public NextSegment getNextSegment() {
+        return nextSegment;
+    }
+
+    /**
+     * Sets the next segment.
+     * 
+     * @param value the new next segment
+     */
+    public void setNextSegment(NextSegment value) {
+        this.nextSegment = value;
+    }
+
+    /**
+     * Gets the data freshness.
+     * 
+     * @return the data freshness
+     */
+    public Long getDataFreshness() {
+        return dataFreshness;
+    }
+
+    /**
+     * Sets the data freshness.
+     * 
+     * @param value the new data freshness
+     */
+    public void setDataFreshness(Long value) {
+        this.dataFreshness = value;
+    }
 }

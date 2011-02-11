@@ -1,5 +1,18 @@
-/**
- *
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
  */
 package com.google.code.bing.search.client;
 
@@ -17,14 +30,24 @@ import com.google.code.bing.search.schema.phonebook.PhonebookSortOption;
 import com.google.code.bing.search.schema.web.WebSearchOption;
 
 /**
- * The Interface BingMapsWebServiesClient. 
- * 
- * @author Nabeel Mukhtar
+ * The Interface BingSearchClient.
  */
 public interface BingSearchClient {
 	
+	/**
+	 * New search request builder.
+	 * 
+	 * @return the search request builder
+	 */
 	public SearchRequestBuilder newSearchRequestBuilder();
 	
+	/**
+	 * Search.
+	 * 
+	 * @param request the request
+	 * 
+	 * @return the search response
+	 */
 	public SearchResponse search(SearchRequest request);
 	
 //	public ImageResponse search(ImageRequest request);
@@ -39,7 +62,14 @@ public interface BingSearchClient {
 //	public TranslationResponse search(TranslationRequest request);
 //	public WebResponse search(WebRequest request);
 	
-	public Future<SearchResponse> searchAsync(SearchRequest request);
+	/**
+ * Search async.
+ * 
+ * @param request the request
+ * 
+ * @return the future< search response>
+ */
+public Future<SearchResponse> searchAsync(SearchRequest request);
 	
 //	public Future<ImageResponse> searchAsync(ImageRequest request);
 //	public Future<AdResponse> searchAsync(AdRequest request);
@@ -53,57 +83,372 @@ public interface BingSearchClient {
 //	public Future<TranslationResponse> searchAsync(TranslationRequest request);
 //	public Future<WebResponse> searchAsync(WebRequest request);
 	
-	public interface SearchRequestBuilder {
+	/**
+ * The Interface SearchRequestBuilder.
+ */
+public interface SearchRequestBuilder {
 		
+		/**
+		 * With app id.
+		 * 
+		 * @param applicationId the application id
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withAppId(String applicationId);
+		
+		/**
+		 * With version.
+		 * 
+		 * @param version the version
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withVersion(String version);
+		
+		/**
+		 * With market.
+		 * 
+		 * @param market the market
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withMarket(String market);
+		
+		/**
+		 * With ui language.
+		 * 
+		 * @param uiLanguage the ui language
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withUILanguage(String uiLanguage);
+		
+		/**
+		 * With query.
+		 * 
+		 * @param query the query
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withQuery(String query);
+		
+		/**
+		 * With adult option.
+		 * 
+		 * @param adult the adult
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withAdultOption(AdultOption adult);
+		
+		/**
+		 * With latitude.
+		 * 
+		 * @param latitude the latitude
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withLatitude(Double latitude);
+		
+		/**
+		 * With longitude.
+		 * 
+		 * @param longitude the longitude
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withLongitude(Double longitude);
+		
+		/**
+		 * With radius.
+		 * 
+		 * @param radius the radius
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withRadius(Double radius);
+		
+		/**
+		 * With search option.
+		 * 
+		 * @param searchOption the search option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withSearchOption(SearchOption searchOption);
+		
+		/**
+		 * With source type.
+		 * 
+		 * @param sourceType the source type
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withSourceType(SourceType sourceType);
 		
+		/**
+		 * With web request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withWebRequestOffset(Long offset);
+		
+		/**
+		 * With web request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withWebRequestCount(Long count);
+		
+		/**
+		 * With web request file type.
+		 * 
+		 * @param fileType the file type
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withWebRequestFileType(String fileType);
+		
+		/**
+		 * With web request search option.
+		 * 
+		 * @param webSearchOption the web search option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withWebRequestSearchOption(WebSearchOption webSearchOption);
+		
+		/**
+		 * With web request search tag.
+		 * 
+		 * @param searchTag the search tag
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withWebRequestSearchTag(String searchTag);
 		
+		/**
+		 * With image request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withImageRequestOffset(Long offset);
+		
+		/**
+		 * With image request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withImageRequestCount(Long count);
+		
+		/**
+		 * With image request filter.
+		 * 
+		 * @param filter the filter
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withImageRequestFilter(String filter);
 		
+		/**
+		 * With phonebook request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestOffset(Long offset);
+		
+		/**
+		 * With phonebook request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestCount(Long count);
+		
+		/**
+		 * With phonebook request file type.
+		 * 
+		 * @param fileType the file type
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestFileType(String fileType);
+		
+		/**
+		 * With phonebook request sort option.
+		 * 
+		 * @param phonebookSortOption the phonebook sort option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestSortOption(PhonebookSortOption phonebookSortOption);
+		
+		/**
+		 * With phonebook request loc id.
+		 * 
+		 * @param locId the loc id
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestLocId(String locId);
+		
+		/**
+		 * With phonebook request category.
+		 * 
+		 * @param category the category
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withPhonebookRequestCategory(String category);
 		
+		/**
+		 * With video request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withVideoRequestOffset(Long offset);
+		
+		/**
+		 * With video request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withVideoRequestCount(Long count);
+		
+		/**
+		 * With video request filter.
+		 * 
+		 * @param filter the filter
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withVideoRequestFilter(String filter);
+		
+		/**
+		 * With video request sort option.
+		 * 
+		 * @param videoSortOption the video sort option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withVideoRequestSortOption(VideoSortOption videoSortOption);
 		
+		/**
+		 * With news request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withNewsRequestOffset(Long offset);
+		
+		/**
+		 * With news request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withNewsRequestCount(Long count);
+		
+		/**
+		 * With news request location override.
+		 * 
+		 * @param locationOverride the location override
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withNewsRequestLocationOverride(String locationOverride);
+		
+		/**
+		 * With news request category.
+		 * 
+		 * @param category the category
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withNewsRequestCategory(String category);
+		
+		/**
+		 * With news request sort option.
+		 * 
+		 * @param newsSortOption the news sort option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withNewsRequestSortOption(NewsSortOption newsSortOption);
 		
+		/**
+		 * With mobile web request offset.
+		 * 
+		 * @param offset the offset
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withMobileWebRequestOffset(Long offset);
+		
+		/**
+		 * With mobile web request count.
+		 * 
+		 * @param count the count
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withMobileWebRequestCount(Long count);
+		
+		/**
+		 * With mobile web request search option.
+		 * 
+		 * @param mobileWebSearchOption the mobile web search option
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withMobileWebRequestSearchOption(MobileWebSearchOption mobileWebSearchOption);
 		
+		/**
+		 * With translation request source language.
+		 * 
+		 * @param sourceLanguage the source language
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withTranslationRequestSourceLanguage(String sourceLanguage);
+		
+		/**
+		 * With translation request target language.
+		 * 
+		 * @param targetLanguage the target language
+		 * 
+		 * @return the search request builder
+		 */
 		public SearchRequestBuilder withTranslationRequestTargetLanguage(String targetLanguage);
 		
+		/**
+		 * Gets the result.
+		 * 
+		 * @return the result
+		 */
 		public SearchRequest getResult();
 		
+		/**
+		 * Reset.
+		 */
 		public void reset();
 	}
 }

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 
 package com.google.code.bing.search.schema.ads;
 
@@ -5,152 +21,138 @@ import com.google.code.bing.search.schema.SchemaEntity;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Rank"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Position"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Title"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}Description"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}DisplayUrl"/>
- *         &lt;element ref="{http://schemas.microsoft.com/LiveSearch/2008/04/XML/ads}AdLinkUrl"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
+ * The Class AdResult.
  */
-public interface AdResult
+public class AdResult
     extends SchemaEntity
 {
-
-
-    /**
-     * Gets the value of the rank property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    Long getRank();
-
-    /**
-     * Sets the value of the rank property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    void setRank(Long value);
-
-    /**
-     * Gets the value of the position property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    String getPosition();
+    
+    /** The Constant serialVersionUID. */
+    private final static long serialVersionUID = 2461660169443089969L;
+    
+    /** The rank. */
+    protected Long rank;
+    
+    /** The position. */
+    protected String position;
+    
+    /** The title. */
+    protected String title;
+    
+    /** The description. */
+    protected String description;
+    
+    /** The display url. */
+    protected String displayUrl;
+    
+    /** The ad link url. */
+    protected String adLinkUrl;
 
     /**
-     * Sets the value of the position property.
+     * Gets the rank.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the rank
      */
-    void setPosition(String value);
+    public Long getRank() {
+        return rank;
+    }
 
     /**
-     * Gets the value of the title property.
+     * Sets the rank.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new rank
      */
-    String getTitle();
+    public void setRank(Long value) {
+        this.rank = value;
+    }
 
     /**
-     * Sets the value of the title property.
+     * Gets the position.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the position
      */
-    void setTitle(String value);
+    public String getPosition() {
+        return position;
+    }
 
     /**
-     * Gets the value of the description property.
+     * Sets the position.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new position
      */
-    String getDescription();
+    public void setPosition(String value) {
+        this.position = value;
+    }
 
     /**
-     * Sets the value of the description property.
+     * Gets the title.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the title
      */
-    void setDescription(String value);
+    public String getTitle() {
+        return title;
+    }
 
     /**
-     * Gets the value of the displayUrl property.
+     * Sets the title.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new title
      */
-    String getDisplayUrl();
+    public void setTitle(String value) {
+        this.title = value;
+    }
 
     /**
-     * Sets the value of the displayUrl property.
+     * Gets the description.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the description
      */
-    void setDisplayUrl(String value);
+    public String getDescription() {
+        return description;
+    }
 
     /**
-     * Gets the value of the adLinkUrl property.
+     * Sets the description.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @param value the new description
      */
-    String getAdLinkUrl();
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
     /**
-     * Sets the value of the adLinkUrl property.
+     * Gets the display url.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @return the display url
      */
-    void setAdLinkUrl(String value);
+    public String getDisplayUrl() {
+        return displayUrl;
+    }
 
+    /**
+     * Sets the display url.
+     * 
+     * @param value the new display url
+     */
+    public void setDisplayUrl(String value) {
+        this.displayUrl = value;
+    }
+
+    /**
+     * Gets the ad link url.
+     * 
+     * @return the ad link url
+     */
+    public String getAdLinkUrl() {
+        return adLinkUrl;
+    }
+
+    /**
+     * Sets the ad link url.
+     * 
+     * @param value the new ad link url
+     */
+    public void setAdLinkUrl(String value) {
+        this.adLinkUrl = value;
+    }
 }

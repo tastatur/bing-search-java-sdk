@@ -1,129 +1,156 @@
+/*
+ * Copyright 2010 Nabeel Mukhtar 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ * 
+ */
 package com.google.code.bing.search.schema.phonebook;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
-public interface PhonebookRequest 
+/**
+ * The Class PhonebookRequest.
+ */
+public class PhonebookRequest 
 	extends SchemaEntity
 {
+    
+    /** The Constant serialVersionUID. */
+	private static final long serialVersionUID = -7837729787903858018L;
+	
+	/** The offset. */
+	protected Long offset;
+    
+    /** The count. */
+    protected Long count;
+    
+    /** The file type. */
+    protected String fileType;
+    
+    /** The sort by. */
+    protected PhonebookSortOption sortBy;
+    
+    /** The loc id. */
+    protected String locId;
+    
+    /** The category. */
+    protected String category;
 
-	/**
-	 * Gets the value of the offset property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
-	 */
-	public Long getOffset();
+    /**
+     * Gets the offset.
+     * 
+     * @return the offset
+     */
+    public Long getOffset() {
+        return offset;
+    }
 
-	/**
-	 * Sets the value of the offset property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
-	 */
-	public void setOffset(Long value);
+    /**
+     * Sets the offset.
+     * 
+     * @param value the new offset
+     */
+    public void setOffset(Long value) {
+        this.offset = value;
+    }
 
-	/**
-	 * Gets the value of the count property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link Long }
-	 *     
-	 */
-	public Long getCount();
+    /**
+     * Gets the count.
+     * 
+     * @return the count
+     */
+    public Long getCount() {
+        return count;
+    }
 
-	/**
-	 * Sets the value of the count property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link Long }
-	 *     
-	 */
-	public void setCount(Long value);
+    /**
+     * Sets the count.
+     * 
+     * @param value the new count
+     */
+    public void setCount(Long value) {
+        this.count = value;
+    }
 
-	/**
-	 * Gets the value of the fileType property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link String }
-	 *     
-	 */
-	public String getFileType();
+    /**
+     * Gets the file type.
+     * 
+     * @return the file type
+     */
+    public String getFileType() {
+        return fileType;
+    }
 
-	/**
-	 * Sets the value of the fileType property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link String }
-	 *     
-	 */
-	public void setFileType(String value);
+    /**
+     * Sets the file type.
+     * 
+     * @param value the new file type
+     */
+    public void setFileType(String value) {
+        this.fileType = value;
+    }
 
-	/**
-	 * Gets the value of the sortBy property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link PhonebookSortOption }
-	 *     
-	 */
-	public PhonebookSortOption getSortBy();
+    /**
+     * Gets the sort by.
+     * 
+     * @return the sort by
+     */
+    public PhonebookSortOption getSortBy() {
+        return sortBy;
+    }
 
-	/**
-	 * Sets the value of the sortBy property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link PhonebookSortOption }
-	 *     
-	 */
-	public void setSortBy(PhonebookSortOption value);
+    /**
+     * Sets the sort by.
+     * 
+     * @param value the new sort by
+     */
+    public void setSortBy(PhonebookSortOption value) {
+        this.sortBy = value;
+    }
 
-	/**
-	 * Gets the value of the locId property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link String }
-	 *     
-	 */
-	public String getLocId();
+    /**
+     * Gets the loc id.
+     * 
+     * @return the loc id
+     */
+    public String getLocId() {
+        return locId;
+    }
 
-	/**
-	 * Sets the value of the locId property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link String }
-	 *     
-	 */
-	public void setLocId(String value);
+    /**
+     * Sets the loc id.
+     * 
+     * @param value the new loc id
+     */
+    public void setLocId(String value) {
+        this.locId = value;
+    }
 
-	/**
-	 * Gets the value of the category property.
-	 * 
-	 * @return
-	 *     possible object is
-	 *     {@link String }
-	 *     
-	 */
-	public String getCategory();
+    /**
+     * Gets the category.
+     * 
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
 
-	/**
-	 * Sets the value of the category property.
-	 * 
-	 * @param value
-	 *     allowed object is
-	 *     {@link String }
-	 *     
-	 */
-	public void setCategory(String value);
-
+    /**
+     * Sets the category.
+     * 
+     * @param value the new category
+     */
+    public void setCategory(String value) {
+        this.category = value;
+    }
 }
