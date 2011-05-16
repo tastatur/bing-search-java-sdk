@@ -1,13 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.google.code.bing.search</groupId>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>  
+  <groupId>com.googlecode.bing-search-java-sdk</groupId>
   <artifactId>bing-search-java-sdk</artifactId>
   <packaging>pom</packaging>
-  <version>2.0</version>
-  <name>Bing APIs Java SDK</name>
+  <version>1.0</version>
+  <name>Bing Search APIs Java SDK</name>
   <inceptionYear>2010</inceptionYear>
-  <description>A Java wrapper for Bing APIs.</description>
+  <description>A Java wrapper for Bing Search APIs.</description>
   <url>http://code.google.com/p/bing-search-java-sdk/</url>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <issueManagement>
     <system>google-code</system>
@@ -28,9 +40,8 @@
   </developers>
 	
   <modules>
-    <module>schema</module>
     <module>core</module>
-	<module>dist</module>
+	<module>examples</module>
   </modules>
   <build>
 	<plugins>
@@ -43,6 +54,19 @@
 				<target>1.6</target>
 			</configuration>
 		</plugin>
+	    <plugin>
+	       <groupId>org.apache.maven.plugins</groupId>
+	       <artifactId>maven-gpg-plugin</artifactId>
+	       <executions>
+	         <execution>
+	           <id>sign-artifacts</id>
+	           <phase>verify</phase>
+	           <goals>
+	             <goal>sign</goal>
+	           </goals>
+	         </execution>
+	       </executions>
+	    </plugin>
 	</plugins>
   </build>
 </project>
