@@ -8,7 +8,7 @@
   <groupId>com.googlecode.bing-search-java-sdk</groupId>
   <artifactId>bing-search-java-sdk</artifactId>
   <packaging>pom</packaging>
-  <version>1.0</version>
+  <version>1.0.180-SNAPSHOT</version>
   <name>Bing Search APIs Java SDK</name>
   <inceptionYear>2010</inceptionYear>
   <description>A Java wrapper for Bing Search APIs.</description>
@@ -27,9 +27,9 @@
   </issueManagement>
 
   <scm>
-    <connection>scm:svn:http://bing-search-java-sdk.googlecode.com/svn/trunk</connection>
-    <developerConnection>scm:svn:https://bing-search-java-sdk.googlecode.com/svn/trunk</developerConnection>
-    <url>http://bing-search-java-sdk.googlecode.com/svn/trunk/</url>
+    <connection>scm:svn:http://bing-search-java-sdk.googlecode.com/svn/trunk/bing-search-java-sdk/</connection>
+    <developerConnection>scm:svn:https://bing-search-java-sdk.googlecode.com/svn/trunk/bing-search-java-sdk/</developerConnection>
+    <url>http://bing-search-java-sdk.googlecode.com/svn/trunk/bing-search-java-sdk/</url>
   </scm>
 
   <developers>

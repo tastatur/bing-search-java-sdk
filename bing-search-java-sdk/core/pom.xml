@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.googlecode.bing-search-java-sdk</groupId>
     <artifactId>bing-search-java-sdk</artifactId>
-    <version>1.0</version>
+    <version>1.0.180-SNAPSHOT</version>
   </parent>
   <artifactId>bing-search-java-sdk-core</artifactId>
   <packaging>jar</packaging>
