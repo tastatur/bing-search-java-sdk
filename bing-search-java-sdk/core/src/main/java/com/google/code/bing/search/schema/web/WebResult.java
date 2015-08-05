@@ -18,6 +18,7 @@
 package com.google.code.bing.search.schema.web;
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.code.bing.search.schema.SchemaEntity;
 
@@ -51,10 +52,10 @@ public class WebResult
     protected Date dateTime;
     
     /** The search tags. */
-    protected SearchTags searchTags;
+    protected List<WebSearchTag> searchTags;
     
     /** The deep links. */
-    protected DeepLinks deepLinks;
+    protected List<DeepLink> deepLinks;
 
     /**
      * Gets the title.
@@ -169,7 +170,7 @@ public class WebResult
      * 
      * @return the search tags
      */
-    public SearchTags getSearchTags() {
+    public List<WebSearchTag> getSearchTags() {
         return searchTags;
     }
 
@@ -178,7 +179,7 @@ public class WebResult
      * 
      * @param value the new search tags
      */
-    public void setSearchTags(SearchTags value) {
+    public void setSearchTags(List<WebSearchTag> value) {
         this.searchTags = value;
     }
 
@@ -187,7 +188,7 @@ public class WebResult
      * 
      * @return the deep links
      */
-    public DeepLinks getDeepLinks() {
+    public List<DeepLink> getDeepLinks() {
         return deepLinks;
     }
 
@@ -196,7 +197,7 @@ public class WebResult
      * 
      * @param value the new deep links
      */
-    public void setDeepLinks(DeepLinks value) {
+    public void setDeepLinks(List<DeepLink> value) {
         this.deepLinks = value;
     }
 }
